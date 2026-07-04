@@ -244,9 +244,9 @@ export default function News() {
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                  backgroundColor: 'rgba(var(--primary-rgb), 0.05)',
                   border: '1px solid var(--border-color)',
-                  color: '#FFF',
+                  color: 'var(--text-white)',
                   padding: '12px 24px',
                   borderRadius: '4px',
                   fontSize: '0.85rem',
@@ -255,8 +255,14 @@ export default function News() {
                   letterSpacing: '0.05em',
                   transition: 'var(--transition-fast)'
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--primary)'}
-                onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--border-color)'}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--primary)';
+                  e.currentTarget.style.color = 'var(--primary)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--border-color)';
+                  e.currentTarget.style.color = 'var(--text-white)';
+                }}
               >
                 Media Inquiries
               </a>
@@ -344,7 +350,7 @@ export default function News() {
                     <span>{feat.date}</span>
                   </div>
                   
-                  <h3 style={{ color: '#FFF', fontSize: '1.3rem', fontWeight: 800, marginBottom: '14px', lineHeight: '1.4' }}>
+                  <h3 style={{ color: 'var(--text-white)', fontSize: '1.3rem', fontWeight: 800, marginBottom: '14px', lineHeight: '1.4' }}>
                     {feat.title}
                   </h3>
 
@@ -361,7 +367,7 @@ export default function News() {
                     fontWeight: 700,
                     textTransform: 'uppercase',
                     letterSpacing: '0.05em',
-                    borderTop: '1px solid rgba(255, 255, 255, 0.05)',
+                    borderTop: '1px solid var(--border-color)',
                     paddingTop: '16px',
                     marginTop: 'auto'
                   }}>
@@ -436,15 +442,15 @@ export default function News() {
                   backgroundColor: 'var(--bg-card)',
                   border: '1px solid var(--border-color)',
                   borderRadius: '4px',
-                  color: '#FFF',
+                  color: 'var(--text-white)',
                   fontSize: '0.875rem',
                   outline: 'none',
                   cursor: 'pointer'
                 }}
               >
-                <option value="All">All Topics</option>
+                <option value="All" style={{ color: 'var(--text-white)', backgroundColor: 'var(--bg-card)' }}>All Topics</option>
                 {TOPICS.slice(1).map((top) => (
-                  <option key={top} value={top}>{top}</option>
+                  <option key={top} value={top} style={{ color: 'var(--text-white)', backgroundColor: 'var(--bg-card)' }}>{top}</option>
                 ))}
               </select>
             </div>
@@ -463,15 +469,15 @@ export default function News() {
                   backgroundColor: 'var(--bg-card)',
                   border: '1px solid var(--border-color)',
                   borderRadius: '4px',
-                  color: '#FFF',
+                  color: 'var(--text-white)',
                   fontSize: '0.875rem',
                   outline: 'none',
                   cursor: 'pointer'
                 }}
               >
-                <option value="All">All Content Types</option>
+                <option value="All" style={{ color: 'var(--text-white)', backgroundColor: 'var(--bg-card)' }}>All Content Types</option>
                 {CONTENT_TYPES.slice(1).map((type) => (
-                  <option key={type} value={type}>{type}</option>
+                  <option key={type} value={type} style={{ color: 'var(--text-white)', backgroundColor: 'var(--bg-card)' }}>{type}</option>
                 ))}
               </select>
             </div>
@@ -551,7 +557,7 @@ export default function News() {
                       <span style={{ fontSize: '0.75rem', color: 'var(--primary)', fontWeight: 600 }}>• &nbsp; {art.topic}</span>
                     </div>
 
-                    <h3 style={{ color: '#FFF', fontSize: '1.1rem', fontWeight: 700, marginBottom: '10px', lineHeight: '1.4' }}>
+                    <h3 style={{ color: 'var(--text-white)', fontSize: '1.1rem', fontWeight: 700, marginBottom: '10px', lineHeight: '1.4' }}>
                       {art.title}
                     </h3>
                     <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem', lineHeight: '1.5', flexGrow: 1 }}>
@@ -567,7 +573,7 @@ export default function News() {
                       fontWeight: 700,
                       textTransform: 'uppercase',
                       letterSpacing: '0.05em',
-                      borderTop: '1px solid rgba(255, 255, 255, 0.05)',
+                      borderTop: '1px solid var(--border-color)',
                       paddingTop: '14px',
                       marginTop: '16px'
                     }}>
@@ -581,7 +587,7 @@ export default function News() {
           ) : (
             <div style={{ textAlign: 'center', padding: '60px 24px', backgroundColor: 'var(--bg-deep)', borderRadius: '6px', border: '1px solid var(--border-color)', marginBottom: '50px' }}>
               <BookOpen size={44} style={{ color: 'var(--text-muted)', marginBottom: '16px', opacity: 0.5 }} />
-              <h3 style={{ color: '#FFF', marginBottom: '8px' }}>No News Matches Found</h3>
+              <h3 style={{ color: 'var(--text-white)', marginBottom: '8px' }}>No News Matches Found</h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Try refining your keywords or updating your filter selections.</p>
             </div>
           )}
@@ -681,7 +687,7 @@ export default function News() {
                   <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'rgba(8, 10, 16, 0.3)' }} />
                 </div>
                 <div style={{ padding: '20px' }}>
-                  <h4 style={{ color: '#FFF', fontSize: '0.95rem', fontWeight: 700, marginBottom: '8px' }}>{v.title}</h4>
+                  <h4 style={{ color: 'var(--text-white)', fontSize: '0.95rem', fontWeight: 700, marginBottom: '8px' }}>{v.title}</h4>
                   <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem', lineHeight: '1.4' }}>{v.desc}</p>
                 </div>
               </div>
@@ -800,7 +806,7 @@ export default function News() {
                 <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{activeArticle.date}</span>
               </div>
               
-              <h3 style={{ color: '#FFF', fontSize: '1.6rem', fontWeight: 800, lineHeight: '1.3' }}>
+              <h3 style={{ color: 'var(--text-white)', fontSize: '1.6rem', fontWeight: 800, lineHeight: '1.3' }}>
                 {activeArticle.title}
               </h3>
             </div>
@@ -849,7 +855,7 @@ export default function News() {
             </div>
 
             <div>
-              <h4 style={{ color: '#FFF', fontSize: '1.05rem', fontWeight: 700, marginBottom: '8px' }}>Description</h4>
+              <h4 style={{ color: 'var(--text-white)', fontSize: '1.05rem', fontWeight: 700, marginBottom: '8px' }}>Description</h4>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: '1.6' }}>
                 {playingVideo.desc}
               </p>
