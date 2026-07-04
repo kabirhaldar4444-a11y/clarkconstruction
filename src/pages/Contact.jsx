@@ -5,11 +5,11 @@ import Accordion from '../components/UI/Accordion';
 
 const OFFICES = [
   {
-    city: "Seattle HQ",
-    address: "100 Clark Tower Parkway, Suite 450",
-    zip: "Seattle, WA 98101",
+    city: "San Francisco HQ",
+    address: "181 Fremont St",
+    zip: "San Francisco, CA 94105",
     phone: "+1 (800) 555-0199",
-    email: "seattle@clarkconstruction.com"
+    email: "sf@clarkconstruction.com"
   },
   {
     city: "Mid-Atlantic Office",
@@ -51,7 +51,7 @@ export default function Contact() {
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [activePin, setActivePin] = useState('Seattle HQ');
+  const [activePin, setActivePin] = useState('San Francisco HQ');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -287,9 +287,9 @@ export default function Contact() {
               }} />
 
               {/* Map Pins */}
-              {/* Seattle Pin (Northwest) */}
+              {/* San Francisco Pin (Northwest) */}
               <div
-                onClick={() => setActivePin('Seattle HQ')}
+                onClick={() => setActivePin('San Francisco HQ')}
                 style={{
                   position: 'absolute',
                   top: '40px',
@@ -302,14 +302,14 @@ export default function Contact() {
                   width: '14px',
                   height: '14px',
                   borderRadius: '50%',
-                  backgroundColor: activePin === 'Seattle HQ' ? 'var(--primary)' : 'var(--text-muted)',
+                  backgroundColor: activePin === 'San Francisco HQ' ? 'var(--primary)' : 'var(--text-muted)',
                   border: '2px solid #000',
-                  boxShadow: activePin === 'Seattle HQ' ? 'var(--shadow-glow)' : 'none',
+                  boxShadow: activePin === 'San Francisco HQ' ? 'var(--shadow-glow)' : 'none',
                   transition: 'var(--transition-fast)'
                 }} />
-                {activePin === 'Seattle HQ' && (
+                {activePin === 'San Francisco HQ' && (
                   <span style={{ position: 'absolute', top: '-24px', left: '-20px', backgroundColor: 'var(--primary)', color: '#FFF', fontSize: '0.65rem', padding: '2px 6px', borderRadius: '3px', fontWeight: 800, whiteSpace: 'nowrap' }}>
-                    Seattle HQ
+                    San Francisco HQ
                   </span>
                 )}
               </div>

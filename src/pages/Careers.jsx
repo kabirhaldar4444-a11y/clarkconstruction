@@ -31,7 +31,7 @@ const JOBS = [
     id: 1,
     title: 'Senior Project Manager',
     dept: 'Operations & Execution',
-    loc: 'Seattle, WA',
+    loc: 'San Francisco, CA',
     type: 'Full-Time',
     desc: 'Overseeing heavy civil structures and airport wings. Coordinates subcontractor crews, crane logistics, and municipal inspections.'
   },
@@ -39,7 +39,7 @@ const JOBS = [
     id: 2,
     title: 'Lead VDC / BIM Engineer',
     dept: 'Engineering & Modeling',
-    loc: 'Seattle, WA',
+    loc: 'San Francisco, CA',
     type: 'Full-Time',
     desc: 'Runs Navisworks clash-detection checks on high-rise layouts. Works with estimators to output structural tolerance reports.'
   },
@@ -186,7 +186,7 @@ export default function Careers() {
                   {b.icon}
                 </div>
                 <div>
-                  <h4 style={{ color: '#FFF', fontSize: '1.05rem', marginBottom: '6px' }}>{b.title}</h4>
+                  <h4 style={{ color: 'var(--text-white)', fontSize: '1.05rem', marginBottom: '6px' }}>{b.title}</h4>
                   <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', lineHeight: '1.5' }}>{b.desc}</p>
                 </div>
               </div>
@@ -233,7 +233,7 @@ export default function Careers() {
                     <span style={{ width: '4px', height: '4px', backgroundColor: 'var(--text-muted)', borderRadius: '50%' }}></span>
                     <span style={{ fontSize: '0.75rem', color: 'var(--text-primary)' }}>{job.type}</span>
                   </div>
-                  <h3 style={{ color: '#FFF', fontSize: '1.3rem', marginBottom: '8px', fontWeight: 700 }}>{job.title}</h3>
+                  <h3 style={{ color: 'var(--text-white)', fontSize: '1.3rem', marginBottom: '8px', fontWeight: 700 }}>{job.title}</h3>
                   <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem', lineHeight: '1.6' }}>{job.desc}</p>
                 </div>
                 
@@ -256,7 +256,7 @@ export default function Careers() {
         {success ? (
           <div style={{ textAlign: 'center', padding: '30px 0' }} className="animate-fade">
             <CheckCircle size={56} color="var(--success)" style={{ margin: '0 auto 20px auto' }} />
-            <h3 style={{ color: '#FFF', fontSize: '1.4rem', marginBottom: '10px' }}>Application Submitted!</h3>
+            <h3 style={{ color: 'var(--text-white)', fontSize: '1.4rem', marginBottom: '10px' }}>Application Submitted!</h3>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '24px', lineHeight: '1.6' }}>
               Thank you for applying for the <strong>{selectedJob?.title}</strong> role. Our human resources staff will review your credentials and contact you via email or phone.
             </p>
@@ -336,7 +336,7 @@ export default function Careers() {
                   }}
                 />
                 <FileText size={24} style={{ color: 'var(--primary)', marginBottom: '8px' }} />
-                <span style={{ display: 'block', fontSize: '0.85rem', color: formData.file ? '#FFF' : 'var(--text-muted)' }}>
+                <span style={{ display: 'block', fontSize: '0.85rem', color: formData.file ? 'var(--text-white)' : 'var(--text-muted)' }}>
                   {formData.file ? `Selected file: ${formData.file.name}` : 'Click here or drag file to upload'}
                 </span>
               </div>

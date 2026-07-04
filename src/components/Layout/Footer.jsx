@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, ArrowRight, HardHat, Phone, MapPin } from 'lucide-react';
+import { Mail, ArrowRight, Phone, MapPin } from 'lucide-react';
+import logo from '../../assets/logo.png';
 
 const Facebook = (props) => (
   <svg viewBox="0 0 24 24" width="1em" height="1em" stroke="currentColor" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -109,23 +110,11 @@ export default function Footer() {
           {/* Col 1: About */}
           <div>
             <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '24px' }}>
-              <div style={{
-                background: 'linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)',
-                padding: '6px',
-                borderRadius: '4px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}>
-                <HardHat size={20} color="#FFF" />
-              </div>
-              <span style={{
-                fontFamily: 'var(--font-heading)',
-                fontSize: '1.25rem',
-                fontWeight: 900,
-                color: 'var(--text-white)',
-                letterSpacing: '0.05em'
-              }}>CLARK</span>
+              <img 
+                src={logo} 
+                alt="Clark Construction Group Logo" 
+                style={{ height: '36px', objectFit: 'contain' }} 
+              />
             </Link>
             <p style={{ fontSize: '0.9rem', lineHeight: '1.7', marginBottom: '24px' }}>
               A leading modern infrastructure firm specializing in heavy civil, high-rise commercial, healthcare, and sustainable building solutions.
@@ -196,7 +185,7 @@ export default function Footer() {
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '0.9rem' }}>
               <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                 <MapPin size={18} style={{ color: 'var(--primary)', flexShrink: 0, marginTop: '2px' }} />
-                <span>100 Clark Tower Parkway,<br />Suite 450, Seattle, WA 98101</span>
+                <span>181 Fremont St,<br />San Francisco, CA 94105</span>
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <Phone size={18} style={{ color: 'var(--primary)', flexShrink: 0 }} />

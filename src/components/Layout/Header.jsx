@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import { Menu, X, HardHat, PhoneCall } from 'lucide-react';
+import { Menu, X, PhoneCall } from 'lucide-react';
+import logo from '../../assets/logo.png';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -94,29 +95,11 @@ export default function Header() {
         <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           {/* Logo */}
           <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <div style={{
-              background: 'linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)',
-              padding: '8px',
-              borderRadius: '6px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              boxShadow: 'var(--shadow-glow)'
-            }}>
-              <HardHat size={24} color="#FFF" />
-            </div>
-            <span style={{
-              fontFamily: 'var(--font-heading)',
-              fontSize: '1.4rem',
-              fontWeight: 900,
-              letterSpacing: '0.05em',
-              color: 'var(--text-white)',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '4px'
-            }}>
-              CLARK <span className="logo-construction" style={{ color: 'var(--primary)', fontWeight: 400, fontSize: '0.8rem', borderLeft: '1px solid var(--border-color)', paddingLeft: '8px', marginLeft: '4px' }}>CONSTRUCTION</span>
-            </span>
+            <img 
+              src={logo} 
+              alt="Clark Construction Group Logo" 
+              style={{ height: '40px', objectFit: 'contain' }} 
+            />
           </Link>
 
           {/* Desktop Nav */}
