@@ -99,7 +99,7 @@ export default function Button({
       e.currentTarget.style.color = '#FFFFFF';
       e.currentTarget.style.transform = 'translateY(-2px)';
     } else if (variant === 'glass') {
-      e.currentTarget.style.backgroundColor = 'rgba(217, 119, 6, 0.1)';
+      e.currentTarget.style.backgroundColor = 'rgba(var(--primary-rgb), 0.1)';
       e.currentTarget.style.borderColor = 'var(--primary)';
       e.currentTarget.style.color = 'var(--primary)';
       e.currentTarget.style.transform = 'translateY(-2px)';

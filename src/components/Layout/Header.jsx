@@ -150,7 +150,7 @@ export default function Header() {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '8px',
-                backgroundColor: 'rgba(217, 119, 6, 0.1)',
+                backgroundColor: 'rgba(var(--primary-rgb), 0.1)',
                 border: '1px solid var(--primary)',
                 color: 'var(--primary)',
                 padding: '10px 20px',
@@ -166,7 +166,7 @@ export default function Header() {
                 e.currentTarget.style.color = '#FFF';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(217, 119, 6, 0.1)';
+                e.currentTarget.style.backgroundColor = 'rgba(var(--primary-rgb), 0.1)';
                 e.currentTarget.style.color = 'var(--primary)';
               }}
             >
