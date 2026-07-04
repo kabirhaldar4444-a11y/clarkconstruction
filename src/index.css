@@ -8,12 +8,12 @@
   --border-color: rgba(15, 23, 42, 0.08);
   --border-color-hover: rgba(15, 23, 42, 0.16);
   
-  --primary: #D97706; /* Golden Amber */
-  --primary-hover: #B45309;
-  --primary-rgb: 217, 119, 6;
+  --primary: #00D6AB; /* Vibrant Brand Teal */
+  --primary-hover: #00B38F;
+  --primary-rgb: 0, 214, 171;
   
-  --secondary: #B47F43; /* Copper Bronze */
-  --secondary-hover: #9A6A34;
+  --secondary: #000080; /* Brand Navy Blue */
+  --secondary-hover: #00005C;
   
   --text-white: #0F172A; /* Slate-900 for main headings */
   --text-primary: #334155; /* Slate-700 for readable body text */
@@ -34,7 +34,7 @@
 
   /* Shadows */
   --shadow-premium: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
-  --shadow-glow: 0 0 20px rgba(217, 119, 6, 0.12);
+  --shadow-glow: 0 0 20px rgba(0, 214, 171, 0.15);
 }
 
 /* Scrollbar styling */

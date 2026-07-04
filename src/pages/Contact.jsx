@@ -126,7 +126,7 @@ export default function Contact() {
             {success ? (
               <div style={{ textAlign: 'center', padding: '40px 0' }} className="animate-fade">
                 <CheckCircle size={56} color="var(--success)" style={{ margin: '0 auto 20px auto' }} />
-                <h3 style={{ color: '#FFF', fontSize: '1.4rem', marginBottom: '10px' }}>Message Dispatched!</h3>
+                <h3 style={{ color: 'var(--text-white)', fontSize: '1.4rem', marginBottom: '10px' }}>Message Dispatched!</h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '24px', lineHeight: '1.6' }}>
                   Your brief has been logged. A Clark Construction division manager or quantity surveyor will contact you shortly.
                 </p>
@@ -137,7 +137,7 @@ export default function Contact() {
             ) : (
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 <span className="subtitle-amber" style={{ marginBottom: 0 }}>Project inquiry</span>
-                <h2 style={{ fontSize: '1.8rem', color: '#FFF', marginBottom: '8px' }}>Send Us a Message</h2>
+                <h2 style={{ fontSize: '1.8rem', color: 'var(--text-white)', marginBottom: '8px' }}>Send Us a Message</h2>
 
                 {/* Name */}
                 <div className="form-group">
@@ -225,7 +225,7 @@ export default function Contact() {
           {/* Right: Office cards & Map mockup */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
             <span className="subtitle-amber" style={{ marginBottom: 0 }}>Global Presence</span>
-            <h2 style={{ fontSize: '2.2rem', color: '#FFF' }}>Our Offices</h2>
+            <h2 style={{ fontSize: '2.2rem', color: 'var(--text-white)' }}>Our Offices</h2>
             
             {/* Offices list */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px' }}>
@@ -234,7 +234,7 @@ export default function Contact() {
                   key={idx}
                   onClick={() => setActivePin(office.city)}
                   style={{
-                    backgroundColor: activePin === office.city ? 'rgba(217, 119, 6, 0.05)' : 'var(--bg-card)',
+                    backgroundColor: activePin === office.city ? 'rgba(0, 214, 171, 0.05)' : 'var(--bg-card)',
                     border: '1px solid',
                     borderColor: activePin === office.city ? 'var(--primary)' : 'var(--border-color)',
                     padding: '24px',
@@ -243,7 +243,7 @@ export default function Contact() {
                     transition: 'var(--transition-fast)'
                   }}
                 >
-                  <h4 style={{ color: '#FFF', fontSize: '1.1rem', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <h4 style={{ color: 'var(--text-white)', fontSize: '1.1rem', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <MapPin size={16} color={activePin === office.city ? 'var(--primary)' : 'var(--text-muted)'} />
                     {office.city}
                   </h4>
@@ -383,7 +383,7 @@ export default function Contact() {
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
             <HelpCircle size={32} color="var(--primary)" style={{ margin: '0 auto 12px auto' }} />
             <span className="subtitle-amber">Answers & Support</span>
-            <h2 style={{ fontSize: '2.4rem', color: '#FFF' }}>Frequently Asked Questions</h2>
+            <h2 style={{ fontSize: '2.4rem', color: 'var(--text-white)' }}>Frequently Asked Questions</h2>
           </div>
 
           <Accordion items={FAQS} allowMultiple={false} />

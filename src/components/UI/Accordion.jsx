@@ -48,7 +48,7 @@ export default function Accordion({ items = [], allowMultiple = false }) {
                 background: 'none',
                 border: 'none',
                 textAlign: 'left',
-                color: '#FFF',
+                color: isOpen ? 'var(--primary)' : 'var(--text-white)',
                 fontSize: '1.05rem',
                 fontWeight: 600,
                 cursor: 'pointer',
@@ -56,7 +56,7 @@ export default function Accordion({ items = [], allowMultiple = false }) {
               }}
               onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'}
               onMouseLeave={(e) => {
-                if (!isOpen) e.currentTarget.style.color = '#FFF';
+                e.currentTarget.style.color = isOpen ? 'var(--primary)' : 'var(--text-white)';
               }}
             >
               <span>{item.title}</span>
