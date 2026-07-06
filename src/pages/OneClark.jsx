@@ -8,25 +8,25 @@ export default function OneClark() {
     {
       title: "Culture",
       desc: "We welcome employees and project partners from all backgrounds and cultivate a respectful workplace.",
-      img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=400",
+      img: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=400",
       icon: <Heart size={20} color="var(--primary)" />
     },
     {
       title: "Growth",
       desc: "We are passionate about attracting, retaining, growing, and promoting a mix of talent at all levels of our organization.",
-      img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400",
+      img: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=400",
       icon: <Award size={20} color="var(--primary)" />
     },
     {
       title: "Resources",
       desc: "We equip employees with resources to foster collaboration across diverse perspectives and regularly review our benefits programs and workplace policies.",
-      img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=400",
+      img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=400",
       icon: <Shield size={20} color="var(--primary)" />
     },
     {
       title: "Engagement",
       desc: "We provide diverse pathways to pursuing careers through partnerships with trade schools, high schools, colleges, and non-profit organizations.",
-      img: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=400",
+      img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=400",
       icon: <Users size={20} color="var(--primary)" />
     }
   ];
@@ -37,7 +37,7 @@ export default function OneClark() {
       <section className="page-hero">
         <div className="page-hero-bg">
           <img
-            src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1600"
+            src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1600"
             alt="OneClark group collaboration meeting"
           />
         </div>

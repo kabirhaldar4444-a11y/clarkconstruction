@@ -129,7 +129,7 @@ export default function Careers() {
       <section className="page-hero">
         <div className="page-hero-bg">
           <img
-            src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=1600"
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600"
             alt="Clark Construction BIM software coordination screens"
           />
         </div>

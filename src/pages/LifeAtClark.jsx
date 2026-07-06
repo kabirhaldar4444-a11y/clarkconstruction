@@ -99,7 +99,7 @@ export default function LifeAtClark() {
       <section className="page-hero">
         <div className="page-hero-bg">
           <img
-            src="https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?q=80&w=1600"
+            src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1600"
             alt="Life at clark employees collaborating"
           />
         </div>

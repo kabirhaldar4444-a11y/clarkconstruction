@@ -58,28 +58,28 @@ const LEADERS = [
     name: "Marcus Sterling",
     role: "Chief Executive Officer & Founder",
     school: "M.S. Civil Engineering, Stanford University",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400",
     bio: "Marcus has steered Clark Construction for over 30 years, transitioning it from a concrete paving business into a national infrastructure leader."
   },
   {
     name: "Elena Rostova",
     role: "Chief Operating Officer",
     school: "B.S. Construction Management, Georgia Tech",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400",
+    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400",
     bio: "Elena oversees all regional divisions and active project managers. She specializes in large-scale transit and airport expansions."
   },
   {
     name: "Thomas Drake",
     role: "VP of Estimating & Preconstruction",
     school: "B.S. Quantity Surveying, MIT",
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400",
     bio: "Thomas leads our preconstruction phase, using algorithmic modeling and historical indices to draft exact project estimates."
   },
   {
     name: "Sarah Kim",
     role: "Director of VDC & BIM Systems",
     school: "M.Arch, UC Berkeley",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400",
+    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400",
     bio: "Sarah integrates virtual modeling pipelines, cloud coordinates, and robotic site layouts to prevent construction design clashes."
   }
 ];
@@ -93,7 +93,7 @@ export default function About() {
       <section className="page-hero">
         <div className="page-hero-bg">
           <img
-            src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1600"
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600"
             alt="Clark Construction metal scaffolding"
           />
         </div>
@@ -132,7 +132,7 @@ export default function About() {
 
           <div className="img-overlay-wrapper" style={{ height: '420px' }}>
             <img
-              src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800"
+              src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=800"
               alt="Heavy cranes and construction crew members"
             />
           </div>

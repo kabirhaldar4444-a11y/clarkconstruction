@@ -34,25 +34,25 @@ export default function RecentGraduates() {
       title: "Engineer",
       desc: "Work in a variety of roles on and off the jobsite to learn the fundamentals of the industry and our business.",
       caption: "On-site field operations training",
-      img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=400"
+      img: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=400"
     },
     {
       title: "Safety Coordinator",
       desc: "Play a critical role in ensuring the safety of thousands of team members on our jobsites each day.",
       caption: "Daily safety inspection checks",
-      img: "https://images.unsplash.com/photo-1590487988256-9ed24133863e?q=80&w=400"
+      img: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=400"
     },
     {
       title: "Business Analyst",
       desc: "Learn business strategy during a multi-year rotation that offers a unique, cross-functional experience.",
       caption: "A Clark employee reads in front of computer screens at a desk in a Clark office",
-      img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=400"
+      img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=400"
     },
     {
       title: "Project Controls Analyst",
       desc: "Serve as a trusted resource to project delivery teams to ensure the financial health of our projects.",
       caption: "Recent graduates - business manager",
-      img: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=400"
+      img: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=400"
     }
   ];
 
@@ -67,7 +67,7 @@ export default function RecentGraduates() {
       <section className="page-hero">
         <div className="page-hero-bg">
           <img
-            src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1600"
+            src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1600"
             alt="Young engineering grads on site"
           />
         </div>

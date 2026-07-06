@@ -12,7 +12,7 @@ const EXPERTISE_LIST = [
     title: "Delivery Methods",
     projectSign: "Salesforce Tower",
     desc: "Tailoring procurement and collaboration models to ensure optimal budget control, speed, and execution quality.",
-    bgImage: "https://images.unsplash.com/photo-1549692520-acc6669e2f0c?q=80&w=800",
+    bgImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800",
     detailedDesc: "Our delivery methods include Design-Build, CMAR (Construction Manager at Risk), and General Contracting. By aligning the design teams and contractors under unified incentives, we deliver signature projects on schedule and with unmatched quality. For landmarks like the Salesforce Tower, our delivery methods ensured smooth multi-stakeholder collaboration and rapid execution.",
     icon: <FileText size={22} color="var(--primary)" />,
     bullets: [
@@ -27,7 +27,7 @@ const EXPERTISE_LIST = [
     title: "Modular Construction",
     projectSign: "Modular",
     desc: "Assembling structural systems off-site in controlled environments to compress timelines and elevate precision.",
-    bgImage: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800",
+    bgImage: "https://images.unsplash.com/photo-1558442086-8ea19a79cd4d?q=80&w=800",
     detailedDesc: "Modular construction allows us to manufacture complex building modules, bathroom pods, structural frames, and MEP systems in dedicated off-site facilities. This drastically reduces on-site labor demands, eliminates weather delays, and enhances safety and quality. By building in a controlled setting, we deliver higher consistency and finish quality.",
     icon: <Cpu size={22} color="var(--primary)" />,
     bullets: [
@@ -42,7 +42,7 @@ const EXPERTISE_LIST = [
     title: "Project Development",
     projectSign: "Project Development",
     desc: "Supporting projects from inception with financial modeling, site selection, and public-private partnerships (P3).",
-    bgImage: "https://images.unsplash.com/photo-1503387762-592dec58ef4e?q=80&w=800",
+    bgImage: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=800",
     detailedDesc: "Clark's project development division collaborates with clients on site acquisition, entitlement processes, feasibility studies, capital structuring, and P3 models. We bridge the gap between finance and construction to make ambitious projects viable, ensuring long-term asset value.",
     icon: <Compass size={22} color="var(--primary)" />,
     bullets: [
@@ -57,7 +57,7 @@ const EXPERTISE_LIST = [
     title: "Quality",
     projectSign: "Quality Assurance",
     desc: "Applying rigid structural inspections and digital laser verification to assure defect-free handovers.",
-    bgImage: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=800",
+    bgImage: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=800",
     detailedDesc: "Quality is engineered into our daily operations. We use laser scanners, concrete core diagnostics, thermal imaging, and digital QA/QC systems to track structural accuracy down to the millimeter. Our dedicated quality managers monitor every stage from foundation to finishing.",
     icon: <Shield size={22} color="var(--primary)" />,
     bullets: [
@@ -72,7 +72,7 @@ const EXPERTISE_LIST = [
     title: "Safety",
     projectSign: "Putting Safety First",
     desc: "Enforcing a proactive, zero-incident safety culture across every active job site in the nation.",
-    bgImage: "https://images.unsplash.com/photo-1590487988256-9ed24133863e?q=80&w=800",
+    bgImage: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=800",
     detailedDesc: "Our 'Safety First' mandate is the foundation of every Clark project. We employ real-time digital risk evaluations, comprehensive field safety coordinates, and continuous subcontractor training to achieve industry-leading safety metrics. We believe that every worker should return home safely, every single day.",
     icon: <HardHat size={22} color="var(--primary)" />,
     bullets: [
@@ -87,7 +87,7 @@ const EXPERTISE_LIST = [
     title: "Self-Perform",
     projectSign: "Renovation & Historic Preservation",
     desc: "Directly employing skilled trade unions to execute critical concrete, carpentry, and masonry work.",
-    bgImage: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=800",
+    bgImage: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=800",
     detailedDesc: "By self-performing concrete foundations, structural framing, historic masonry, and interior systems, we control the critical path of construction. This capability ensures that complex historic preservation projects (like the Kia Forum) are handled with the highest level of craftsmanship and structural integrity.",
     icon: <Activity size={22} color="var(--primary)" />,
     bullets: [
@@ -102,7 +102,7 @@ const EXPERTISE_LIST = [
     title: "Sustainability",
     projectSign: "Sustainability",
     desc: "Implementing green building techniques, LEED certifications, and low-carbon materials.",
-    bgImage: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=800",
+    bgImage: "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=800",
     detailedDesc: "Clark is a pioneer in sustainable construction. We guide project teams through LEED and WELL certification, utilize low-carbon concrete mixes, and manage massive waste diversion programs to ensure structures minimize their lifecycle carbon footprint and operating costs.",
     icon: <Leaf size={22} color="var(--primary)" />,
     bullets: [
@@ -117,7 +117,7 @@ const EXPERTISE_LIST = [
     title: "Systems",
     projectSign: "Systems Integration",
     desc: "Integrating high-efficiency MEP layouts, backup power grids, and smart building automation.",
-    bgImage: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=800",
+    bgImage: "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=800",
     detailedDesc: "Modern buildings rely on complex mechanical, electrical, plumbing, and automation systems. We coordinate system designs early in the BIM phase, ensuring seamless installation, energy efficiency, and reliable facilities operations after handover.",
     icon: <Settings size={22} color="var(--primary)" />,
     bullets: [
@@ -132,7 +132,7 @@ const EXPERTISE_LIST = [
     title: "Virtual Design & Construction",
     projectSign: "VDC",
     desc: "Simulating projects digitally using advanced 3D BIM, clash detection, and VR walkthroughs.",
-    bgImage: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?q=80&w=800",
+    bgImage: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=800",
     detailedDesc: "Virtual Design and Construction (VDC) allows us to resolve potential design conflicts before construction begins. We build a fully detailed digital twin of the project, allowing our clients to walk through spaces virtually, optimize costs, and coordinate trades.",
     icon: <Laptop size={22} color="var(--primary)" />,
     bullets: [
@@ -153,7 +153,7 @@ export default function Services() {
       <section className="page-hero">
         <div className="page-hero-bg">
           <img
-            src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1600"
+            src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1600"
             alt="Steel scaffolding construction skyline"
           />
         </div>

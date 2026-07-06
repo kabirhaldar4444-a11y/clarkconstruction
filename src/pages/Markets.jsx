@@ -12,7 +12,7 @@ const SECTORS = [
     market: "Building",
     project: "The Wharf",
     desc: "Delivering large-scale, complex building structures that form the foundations of modern communities.",
-    bgImage: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=800",
+    bgImage: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800",
     category: "Commercial & Mixed-Use",
     icon: <Building2 size={20} color="var(--primary)" />
   },
@@ -20,7 +20,7 @@ const SECTORS = [
     market: "Infrastructure",
     project: "The Wharf",
     desc: "Engineering and constructing robust heavy civil infrastructure, bridge networks, and marine systems.",
-    bgImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800",
+    bgImage: "https://images.unsplash.com/photo-1517984922331-8dbaa8ffa9c1?q=80&w=800",
     category: "Infrastructure & Tech",
     icon: <HardHat size={20} color="var(--primary)" />
   },
@@ -28,7 +28,7 @@ const SECTORS = [
     market: "Convention Centers",
     project: "Convention Center",
     desc: "Creating massive, high-capacity venues with flexible spaces and modern structural designs.",
-    bgImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800",
+    bgImage: "https://images.unsplash.com/photo-1579758629938-03607ccdbaba?q=80&w=800",
     category: "Infrastructure & Tech",
     icon: <Landmark size={20} color="var(--primary)" />
   },
@@ -36,7 +36,7 @@ const SECTORS = [
     market: "Education",
     project: "IDEA Factory",
     desc: "Building state-of-the-art educational spaces, research laboratories, and academic halls.",
-    bgImage: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800",
+    bgImage: "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=800",
     category: "Public & Institutional",
     icon: <GraduationCap size={20} color="var(--primary)" />
   },
@@ -44,7 +44,7 @@ const SECTORS = [
     market: "Government",
     project: "Govt - FBI Central Records Complex",
     desc: "Constructing highly secure, mission-critical federal facilities and administrative offices.",
-    bgImage: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=800",
+    bgImage: "https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?q=80&w=800",
     category: "Public & Institutional",
     icon: <Shield size={20} color="var(--primary)" />
   },
@@ -52,7 +52,7 @@ const SECTORS = [
     market: "Healthcare",
     project: "UM Capital Region Medical Center",
     desc: "Developing advanced medical complexes, high-reliability utility systems, and patient care spaces.",
-    bgImage: "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?q=80&w=800",
+    bgImage: "https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=800",
     category: "Public & Institutional",
     icon: <HeartPulse size={20} color="var(--primary)" />
   },
@@ -60,7 +60,7 @@ const SECTORS = [
     market: "Hospitality",
     project: "Presidential Bathroom Suite",
     desc: "A part of Clark's hospitality portfolio, the presidential bathroom suite includes a freestanding tub with windows overlooking downtown Chicago.",
-    bgImage: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800",
+    bgImage: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=800",
     category: "Commercial & Mixed-Use",
     icon: <Hotel size={20} color="var(--primary)" />
   },
@@ -84,7 +84,7 @@ const SECTORS = [
     market: "Museums & Monuments",
     project: "Smithsonian's National Air and Space Museum",
     desc: "Silver airplanes are suspended in the air in an atrium of the Smithsonian's National Air and Space Museum.",
-    bgImage: "https://images.unsplash.com/photo-1519074002996-a69e7ac46a42?q=80&w=800",
+    bgImage: "https://images.unsplash.com/photo-1508849789987-4e5333c12b78?q=80&w=800",
     category: "Public & Institutional",
     icon: <Compass size={20} color="var(--primary)" />
   },
@@ -92,7 +92,7 @@ const SECTORS = [
     market: "Office",
     project: "midtown center",
     desc: "Constructing premium glass-faced corporate office towers and sustainable urban developments.",
-    bgImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800",
+    bgImage: "https://images.unsplash.com/photo-1554469384-e58fac16e23a?q=80&w=800",
     category: "Commercial & Mixed-Use",
     icon: <Building size={20} color="var(--primary)" />
   },
@@ -100,7 +100,7 @@ const SECTORS = [
     market: "Renovation & Historic Preservation",
     project: "The Kia Forum",
     desc: "Restoring and upgrading historic landmarks, combining classical form with modern structural integrity.",
-    bgImage: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=800",
+    bgImage: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?q=80&w=800",
     category: "Specialized & Renovation",
     icon: <History size={20} color="var(--primary)" />
   },
@@ -116,7 +116,7 @@ const SECTORS = [
     market: "Science",
     project: "Argonne",
     desc: "Building high-tech laboratories, clean rooms, and computing facilities for scientific innovation.",
-    bgImage: "https://images.unsplash.com/photo-1532187863486-abf9d39d66e8?q=80&w=800",
+    bgImage: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=800",
     category: "Infrastructure & Tech",
     icon: <Atom size={20} color="var(--primary)" />
   },
@@ -124,7 +124,7 @@ const SECTORS = [
     market: "Seismic",
     project: "Base isolator at LACMA",
     desc: "Implementing advanced seismic base isolators and engineering retrofits to secure public infrastructure.",
-    bgImage: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800",
+    bgImage: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=800",
     category: "Specialized & Renovation",
     icon: <Activity size={20} color="var(--primary)" />
   },
@@ -132,7 +132,7 @@ const SECTORS = [
     market: "Sports & Entertainment",
     project: "Chase Center",
     desc: "Chase Center basketball court during a game, featuring world-class sports facilities.",
-    bgImage: "https://images.unsplash.com/photo-1504450758481-7338eaa75e61?q=80&w=800",
+    bgImage: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?q=80&w=800",
     category: "Infrastructure & Tech",
     icon: <Trophy size={20} color="var(--primary)" />
   },
@@ -140,7 +140,7 @@ const SECTORS = [
     market: "Technology",
     project: "FBI Central Records Complex robots",
     desc: "FBI Central Records Complex robots operating in automated, tech-driven workspaces.",
-    bgImage: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=800",
+    bgImage: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=800",
     category: "Infrastructure & Tech",
     icon: <Cpu size={20} color="var(--primary)" />
   }
@@ -161,7 +161,7 @@ export default function Markets() {
       <section className="page-hero">
         <div className="page-hero-bg">
           <img
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600"
+            src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1600"
             alt="Commercial construction skyline background"
           />
         </div>

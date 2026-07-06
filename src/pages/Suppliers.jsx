@@ -42,7 +42,7 @@ export default function Suppliers() {
       title: "VIDEO: E-Invoicing & Remit-to Setup",
       description: "Learn how to configure your company profile, billing addresses, and tax remit-to settings inside the Coupa Supplier Portal.",
       duration: "4 mins",
-      thumbnail: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=400",
+      thumbnail: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=400",
       steps: [
         "Log into Coupa Supplier Portal and click 'Admin' tab.",
         "Navigate to 'Remit-To' and select 'Add Remit-To'.",
@@ -54,7 +54,7 @@ export default function Suppliers() {
       title: "VIDEO: Submitting an Invoice with a Purchase Order",
       description: "Step-by-step walkthrough showing how to convert an active Clark purchase order directly into a billing voucher.",
       duration: "5 mins",
-      thumbnail: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=400",
+      thumbnail: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=400",
       steps: [
         "Go to the 'Orders' tab in the Coupa Supplier Portal.",
         "Locate the correct PO number and click the gold 'Coins' icon.",
@@ -66,7 +66,7 @@ export default function Suppliers() {
       title: "VIDEO: Submitting an Invoice without a Purchase Order",
       description: "Instructions on submitting non-PO service invoices to Clark division managers for internal routing.",
       duration: "3 mins",
-      thumbnail: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=400",
+      thumbnail: "https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?q=80&w=400",
       steps: [
         "Navigate to the 'Invoices' menu and select 'Create Invoice'.",
         "Choose 'Non-PO Invoice' option.",
@@ -78,7 +78,7 @@ export default function Suppliers() {
       title: "VIDEO: Submitting an Invoice against a Contract",
       description: "How to bill recurring services, rentals, or construction sub-contracts structured under a master agreement.",
       duration: "6 mins",
-      thumbnail: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=400",
+      thumbnail: "https://images.unsplash.com/photo-1554469384-e58fac16e23a?q=80&w=400",
       steps: [
         "Access the 'Contracts' menu in the Coupa Supplier Portal.",
         "Select the active Contract ID matching your scope of work.",
@@ -112,7 +112,7 @@ export default function Suppliers() {
       <section className="page-hero">
         <div className="page-hero-bg">
           <img
-            src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1600"
+            src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=1600"
             alt="Suppliers inventory warehouse shipping logistics"
           />
         </div>

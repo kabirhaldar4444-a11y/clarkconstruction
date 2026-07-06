@@ -33,7 +33,7 @@ export default function Sustainability() {
       <section className="page-hero">
         <div className="page-hero-bg">
           <img
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600"
+            src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=1600"
             alt="Eco-friendly timber framed townhouses"
           />
         </div>
@@ -167,7 +167,7 @@ export default function Sustainability() {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px' }}>
             <Card
-              image="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800"
+              image="https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=800"
               title="Cascade Heights Eco Blocks"
               subtitle="LEED Platinum Certified"
               tag="Portland, OR"
@@ -177,7 +177,7 @@ export default function Sustainability() {
             </Card>
 
             <Card
-              image="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800"
+              image="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800"
               title="Clark Corporate Skyscraper"
               subtitle="LEED Gold Target"
               tag="Chicago, IL"

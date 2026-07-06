@@ -36,7 +36,8 @@ export default function Header() {
         { name: 'Companies', path: '/about/companies' },
         { name: 'Corporate Responsibility', path: '/about/corporate-responsibility' },
         { name: 'Our Story', path: '/about/our-story' },
-        { name: 'Building What Matters', path: '/about/building-what-matters' }
+        { name: 'Building What Matters', path: '/about/building-what-matters' },
+        { name: 'India Partnerships', path: '/about/india-partnerships' }
       ]
     },
     {

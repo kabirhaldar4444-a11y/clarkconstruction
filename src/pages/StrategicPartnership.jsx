@@ -19,35 +19,35 @@ const TESTIMONIALS = [
     author: "Eric Sohn",
     title: "President, J. Roberts",
     location: "Washington, DC",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200"
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200"
   },
   {
     quote: "The Strategic Partnership Program helped to eliminate the learning curve that comes with the construction industry. I wanted to build a strong network – and that is exactly what I received.",
     author: "Kala Fleming",
     title: "Founder, Frontline Gig",
     location: "Baltimore",
-    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200"
+    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200"
   },
   {
     quote: "This program opened my eyes to what I needed to do to run a successful company and gave me greater confidence that I could become one of the elite steel erectors in the region.",
     author: "Corey Smith",
     title: "President, New Horizon Steel",
     location: "Chicago",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200"
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200"
   },
   {
     quote: "What has surprised me most about the SPP is the passion of the individuals teaching us. With Clark in my corner, I have a group that supports our vision.",
     author: "Marti Hoffer",
     title: "Owner, Lumenomics",
     location: "Seattle",
-    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200"
+    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200"
   },
   {
     quote: "I still call on Clark executives for references. They’ve helped us develop our company’s profile … their advice is gold.",
     author: "Nick Colina",
     title: "Co-principal, Anco Iron & Construction",
     location: "San Francisco",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200"
+    avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200"
   }
 ];
 
@@ -57,21 +57,21 @@ const RECENT_NEWS = [
     category: "SPP Graduation",
     date: "June 2026",
     desc: "A fresh class of minority-, women-, and veteran-owned businesses graduate from our intensive executive training program.",
-    img: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=400"
+    img: "https://images.unsplash.com/photo-1568992687947-868a62a9f521?q=80&w=400"
   },
   {
     title: "Clark Construction Debuts Small Business Training Program in Nashville",
     category: "Program Launch",
     date: "May 2026",
     desc: "Nashville becomes the newest hub for Clark's local capacity building efforts, fostering Tennessee subcontractor growth.",
-    img: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=400"
+    img: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=400"
   },
   {
     title: "Clark Construction Announces Graduates From Baltimore Small Business Training Program",
     category: "Local Impact",
     date: "April 2026",
     desc: "Local Baltimore specialty trade contractors finish a rigorous curriculum to qualify for upcoming mid-atlantic civil works.",
-    img: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=400"
+    img: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=400"
   }
 ];
 
@@ -138,7 +138,7 @@ export default function StrategicPartnership() {
       <section className="page-hero">
         <div className="page-hero-bg">
           <img
-            src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1600"
+            src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1600"
             alt="Business development classroom and presentation screens"
           />
         </div>

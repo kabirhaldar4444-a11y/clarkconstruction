@@ -52,7 +52,7 @@ const COMPANIES_DATABASE = [
   {
     name: "Clark Water",
     desc: "Serving as a trusted construction partner to both public and private sector clients, Clark Water specializes in the delivery of water and wastewater infrastructure projects. Clark Water provides a full range of custom planning, design, construction, and construction management services to meet the specialized needs of the community.",
-    image: "https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?q=80&w=800"
+    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=800"
   },
   {
     name: "Tekton",

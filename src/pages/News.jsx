@@ -20,7 +20,7 @@ const FEATURED_NEWS = [
     title: "CFP Breaks Ground on Aspect, the First Residential Building at WestEnd Alexandria",
     date: "June 11, 2026",
     category: "Featured News",
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=800",
+    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800",
     summary: "Alexandria, VA - On June 8, CFP, a division of Clark Construction, and developer Foulger-Pratt joined Alexandria Mayor Alyia Gaskins, Howard Hughes Communities, and Silverstein Properties to celebrate the start of work on Aspect at WestEnd in Alexandria, Virginia.",
     content: "Alexandria, VA - On June 8, CFP, a division of Clark Construction, and developer Foulger-Pratt joined Alexandria Mayor Alyia Gaskins, Howard Hughes Communities, and Silverstein Properties to celebrate the start of work on Aspect at WestEnd in Alexandria, Virginia. The groundbreaking ceremony marks the official commencement of a multi-phase development that will provide mixed-use residential opportunities, local parks, and sustainable green structures to the growing northern Virginia corridor."
   },
@@ -29,7 +29,7 @@ const FEATURED_NEWS = [
     title: "Rooted in Performance: Crafting World-Class Athletic Fields",
     date: "May 05, 2026",
     category: "Featured News",
-    image: "https://images.unsplash.com/photo-1504450758481-7338eaa75e61?q=80&w=800",
+    image: "https://images.unsplash.com/photo-1508962914676-134849a727f0?q=80&w=800",
     summary: "Delivering elite athletic fields requires more than laying sod or installing turf; it demands a deep understanding of performance standards, site logistics, and sport-specific needs.",
     content: "Delivering elite athletic fields requires more than laying sod or installing turf; it demands a deep understanding of performance standards, site logistics, and sport-specific needs. Our team integrates sub-grade soil analytics, precision watering and drainage grids, and advanced root systems. This ensures that sports complexes and fields can withstand high impact, retain color, and optimize drainage during heavy weather, setting a new standard for athletic turf engineering."
   }
@@ -42,7 +42,7 @@ const ALL_ARTICLES = [
     date: "July 01, 2026",
     topic: "Building with Purpose",
     contentType: "Blog",
-    image: "https://images.unsplash.com/photo-1549692520-acc6669e2f0c?q=80&w=600",
+    image: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?q=80&w=600",
     summary: "Balancing strict preservation guidelines with contemporary utility codes on one of Washington's historic landmarks.",
     content: "Balancing modernization with preservation at the Cannon House Office Building requires meticulous planning and coordination. The project team is systematically replacing MEP systems, reinforcing structural elements, and restoring historic masonry and stone facades. This ensures the building matches contemporary safety, ADA compliance, and utility codes, while keeping its architectural integrity intact for generations to come."
   },
@@ -52,7 +52,7 @@ const ALL_ARTICLES = [
     date: "June 15, 2026",
     topic: "Our People",
     contentType: "Video",
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=600",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600",
     summary: "A historical retrospective highlighting Clark's construction milestones that shaped Washington DC's mid-century skyline.",
     content: "As part of our Clark 120 retrospective, we examine the critical decade of 1956 to 1965, where Clark Construction undertook monumental projects that defined the modern DC skyline. From heavy highway links to iconic government complexes, our teams laid the physical foundations of corporate and public progress, establishing a legacy of safety and structural quality."
   },
@@ -62,7 +62,7 @@ const ALL_ARTICLES = [
     date: "June 08, 2026",
     topic: "Markets",
     contentType: "Blog",
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=600",
+    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=600",
     summary: "Atkinson Construction partners with WSDOT on highway expansion contracts to ease traffic congestion in Washington.",
     content: "Atkinson Construction, a Clark Group company, is partnering with the Washington State Department of Transportation (WSDOT) on key corridor improvements near Puget Sound. The scope of work includes widening lanes, constructing concrete flyover supports, and grading sub-bases. This project will significantly improve safety and transit times for thousands of commuters daily."
   },
@@ -72,7 +72,7 @@ const ALL_ARTICLES = [
     date: "May 25, 2026",
     topic: "Building with Purpose",
     contentType: "Press Releases",
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=600",
+    image: "https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=600",
     summary: "Breaking ground on the Bancroft Student Housing complex to deliver sustainable, modern student living spaces.",
     content: "UC Berkeley and Clark Construction have officially broken ground on the new Bancroft Student Housing development. The structural timber-framed building will provide eco-friendly, modern living spaces for over 800 students. Equipped with solar roof panels, mass timber framing, and green water retention loops, the building targets LEED Gold certification."
   },
@@ -82,7 +82,7 @@ const ALL_ARTICLES = [
     date: "May 18, 2026",
     topic: "Awards",
     contentType: "Press Releases",
-    image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=600",
+    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=600",
     summary: "Celebrating the ribbon cutting of the Canton Wastewater Plant expansion, boosting filtration capacity.",
     content: "The joint venture team of Clark Water and Reeves Young celebrated the official ribbon cutting of the Canton Wastewater Treatment Plant expansion. The project involved constructing massive concrete aeration basins, setting up advanced filtration tanks, and integrating smart flow control systems, doubling the local wastewater processing capacity."
   },
@@ -92,7 +92,7 @@ const ALL_ARTICLES = [
     date: "April 20, 2026",
     topic: "Building with Purpose",
     contentType: "Blog",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=600",
+    image: "https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=600",
     summary: "How Clark teams coordinated 29 separate mass timber roof systems to construct the Bloomberg Student Center.",
     content: "Constructing the Johns Hopkins University Bloomberg Student Center involved a complex structural task: orchestrating 29 separate mass timber roof structures. By modeling the timber trusses virtually in BIM, our VDC teams resolved over 300 trade coordination clashes prior to delivery. This allowed field crews to hoist and bolt the massive wooden structures on schedule."
   },
@@ -102,7 +102,7 @@ const ALL_ARTICLES = [
     date: "April 12, 2026",
     topic: "Markets",
     contentType: "In The Media",
-    image: "https://images.unsplash.com/photo-1504450758481-7338eaa75e61?q=80&w=600",
+    image: "https://images.unsplash.com/photo-1517646287270-a5a9ca602e5c?q=80&w=600",
     summary: "Clark Construction modifies SoFi Stadium's structural components to meet FIFA field dimensions and standards.",
     content: "In preparation for the 2026 FIFA World Cup, Clark is leading the structural modifications at SoFi Stadium in Los Angeles. The scope involves adjusting lower bowl seating decks, expanding concrete tunnel entries, and laying specialized grass turf support trays. This ensures the arena matches soccer regulations while maintaining its status as a premier multi-sport venue."
   },
@@ -112,7 +112,7 @@ const ALL_ARTICLES = [
     date: "March 29, 2026",
     topic: "Our People",
     contentType: "In The Media",
-    image: "https://images.unsplash.com/photo-1590487988256-9ed24133863e?q=80&w=600",
+    image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=600",
     summary: "Clark participates in national panels to promote mental health resources and site support networks.",
     content: "Addressing mental health is a vital priority in the construction industry. Clark Construction is actively participating in national safety panels, integrating peer-to-peer counseling programs, and training site managers to identify signs of stress. Our 'Be Kind to Your Mind' initiative connects workers with 24/7 confidential counseling services."
   },
@@ -135,7 +135,7 @@ const EXTRA_ARTICLES = [
     date: "February 28, 2026",
     topic: "Awards",
     contentType: "Press Releases",
-    image: "https://images.unsplash.com/photo-1508962914676-134849a727f0?q=80&w=600",
+    image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=600",
     summary: "Clark receives AGC safety awards for our nationwide zero-accident construction milestones.",
     content: "At the National Construction Safety Conference, Clark Construction was awarded the Safety Excellence Shield. With over 3 million cumulative hours logged across multiple high-rise and civil contracts without an OSHA recordable incident, this award highlights our commitment to putting field safety first, every single day."
   },
@@ -145,7 +145,7 @@ const EXTRA_ARTICLES = [
     date: "February 12, 2026",
     topic: "Markets",
     contentType: "Press Releases",
-    image: "https://images.unsplash.com/photo-1590487988256-9ed24133863e?q=80&w=600",
+    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=600",
     summary: "Heavy equipment crews begin grading and utilities setup for airport tarmac extensions.",
     content: "Our heavy civil division has mobilized grading operations for the regional airport runway expansion project. Crews are installing deep underground storm utilities, reinforcing sub-grade base aggregate, and setting up laser-guided concrete paving machinery to extend the main runway by 2,500 feet while keeping airport operations active."
   },
@@ -155,9 +155,9 @@ const EXTRA_ARTICLES = [
     date: "January 20, 2026",
     topic: "Small Business Inclusion",
     contentType: "Blog",
-    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=600",
+    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=600",
     summary: "Small businesses can now apply to join our upcoming executive construction training cohort.",
-    content: "Enrollment is now officially open for the Winter cohort of the Clark Strategic Partnership Program (SPP). Small, minority-, women-, and veteran-owned specialty trade businesses can submit details to receive 9 months of classroom and hands-on instruction from Clark estimators and finance directors, positioning their firms for smart growth."
+    content: "Enrollment is now officially open for the Winter cohort of the Clark Strategic Partnership Program (SPP). Small, minority-, women-, and veteran-owned specialty trade contractors can submit details to receive 9 months of classroom and hands-on instruction from Clark estimators and finance directors, positioning their firms for smart growth."
   }
 ];
 
@@ -168,19 +168,19 @@ const VIDEOS = [
   {
     title: "Clark 120: Setting the DC Standard",
     desc: "A documentary highlighting Clark's iconic historical builds in Washington DC.",
-    img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=300",
+    img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=300",
     url: "#play-dc"
   },
   {
     title: "Building the Chase Center Arena",
     desc: "Timelapse and site spotlights detailing the structural logistics of San Francisco's landmark stadium.",
-    img: "https://images.unsplash.com/photo-1504450758481-7338eaa75e61?q=80&w=300",
+    img: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=300",
     url: "#play-chase"
   },
   {
     title: "SPP Alumni Stories: Kala Fleming",
     desc: "Hear how the Strategic Partnership Program helped Frontline Gig build a strong construction network.",
-    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=300",
+    img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=300",
     url: "#play-spp"
   }
 ];
@@ -218,7 +218,7 @@ export default function News() {
       <section className="page-hero">
         <div className="page-hero-bg">
           <img
-            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1600"
+            src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1600"
             alt="Clark corporate building skyline"
           />
         </div>
@@ -710,7 +710,7 @@ export default function News() {
               border: '1px solid var(--border-color)'
             }}>
               <img
-                src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=600"
+                src="https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=600"
                 alt="cover photo"
                 style={{ width: '100%', display: 'block', height: '340px', objectFit: 'cover' }}
               />

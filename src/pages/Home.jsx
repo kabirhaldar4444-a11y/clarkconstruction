@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, ShieldCheck, Award, Star, HardHat, HeartHandshake } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Award, Star, HardHat, HeartHandshake, Zap, Factory, Train } from 'lucide-react';
 import Button from '../components/UI/Button';
 import Card from '../components/UI/Card';
 import AnimatedCounter from '../components/UI/AnimatedCounter';
 
 const HERO_SLIDES = [
   {
-    image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1600',
+    image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=1600',
     title: 'Building Modern Infrastructure',
     subtitle: 'ENGINEERING EXCELLENCE SINCE 1976',
     description: 'We construct commercial towers, state-of-the-art airports, and vital transit structures with unmatched precision.',
@@ -14,7 +14,7 @@ const HERO_SLIDES = [
     ctaLink: '/projects',
   },
   {
-    image: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=1600',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600',
     title: 'Designing Smarter Spaces',
     subtitle: 'INNOVATIVE DESIGN-BUILD SERVICES',
     description: 'Using BIM virtual construction technologies to minimize project risk, control cost, and maximize environmental efficiency.',
@@ -22,7 +22,7 @@ const HERO_SLIDES = [
     ctaLink: '/services',
   },
   {
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600',
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1600',
     title: 'Pioneering Sustainable Building',
     subtitle: 'LEED CERTIFIED GREEN INFRASTRUCTURE',
     description: 'Empowering future generations with energy-neutral developments, carbon-neutral concrete, and eco-friendly construction cycles.',
@@ -233,7 +233,7 @@ export default function Home() {
               bottom: '24px',
               left: '24px',
               right: '24px',
-              backgroundColor: 'rgba(255, 255, 255, 0.85)',
+              backgroundColor: 'rgba(8, 10, 16, 0.85)',
               backdropFilter: 'blur(10px)',
               border: '1px solid var(--border-color)',
               padding: '24px',
@@ -272,6 +272,149 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 3.5. GOVERNMENT & INSTITUTIONAL PARTNERSHIP IN INDIA */}
+      <section className="section-padding" style={{ backgroundColor: 'var(--bg-card)', borderTop: '1px solid var(--border-color)' }}>
+        <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '60px', alignItems: 'center' }}>
+          
+          {/* Left Column: Details */}
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+              <span style={{ width: '32px', height: '3px', backgroundColor: 'var(--secondary)', display: 'inline-block' }} />
+              <span style={{
+                color: 'var(--secondary)',
+                fontFamily: 'var(--font-heading)',
+                fontSize: '0.8rem',
+                fontWeight: 800,
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase'
+              }}>
+                Clark Construction
+              </span>
+            </div>
+            
+            <h2 style={{ fontSize: '2.5rem', marginBottom: '16px', lineHeight: '1.2' }}>
+              Government & Institutional Partnership in India
+            </h2>
+            
+            <p style={{ color: 'var(--text-primary)', marginBottom: '32px', fontSize: '1rem', lineHeight: '1.6' }}>
+              Strategic collaborations driving national development and infrastructure modernization across the Republic of India.
+            </p>
+
+            {/* List of projects */}
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              {/* Project 1 */}
+              <div style={{ display: 'flex', gap: '20px', marginBottom: '24px', alignItems: 'flex-start' }}>
+                <div style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '8px',
+                  backgroundColor: 'rgba(0, 0, 128, 0.05)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0
+                }}>
+                  <Zap size={20} color="var(--secondary)" />
+                </div>
+                <div>
+                  <h4 style={{ fontSize: '1.15rem', color: 'var(--text-white)', marginBottom: '6px', fontWeight: 700 }}>
+                    Kovvada Nuclear Power Plant
+                  </h4>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: '1.5' }}>
+                    Strategic energy infrastructure in Andhra Pradesh, powering India's industrial growth.
+                  </p>
+                </div>
+              </div>
+
+              {/* Project 2 */}
+              <div style={{ display: 'flex', gap: '20px', marginBottom: '24px', alignItems: 'flex-start' }}>
+                <div style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '8px',
+                  backgroundColor: 'rgba(0, 0, 128, 0.05)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0
+                }}>
+                  <Factory size={20} color="var(--secondary)" />
+                </div>
+                <div>
+                  <h4 style={{ fontSize: '1.15rem', color: 'var(--text-white)', marginBottom: '6px', fontWeight: 700 }}>
+                    Reliance Jamnagar Refinery
+                  </h4>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: '1.5' }}>
+                    World-class industrial engineering for the world's largest oil refinery complex.
+                  </p>
+                </div>
+              </div>
+
+              {/* Project 3 */}
+              <div style={{ display: 'flex', gap: '20px', marginBottom: '32px', alignItems: 'flex-start' }}>
+                <div style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '8px',
+                  backgroundColor: 'rgba(0, 0, 128, 0.05)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0
+                }}>
+                  <Train size={20} color="var(--secondary)" />
+                </div>
+                <div>
+                  <h4 style={{ fontSize: '1.15rem', color: 'var(--text-white)', marginBottom: '6px', fontWeight: 700 }}>
+                    Railway and Metro projects
+                  </h4>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: '1.5' }}>
+                    Historically well known for Delhi Metro consulting roles and similar work on other rail/metro programs.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <Button to="/about/india-partnerships" variant="text" icon={ArrowRight} iconPosition="right">
+              Read More
+            </Button>
+          </div>
+
+          {/* Right Column: Image Montage Grid */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: '20px', alignItems: 'center' }}>
+            {/* Left Column of Grid: Tall Image */}
+            <div style={{ height: '440px', borderRadius: '12px', overflow: 'hidden', boxShadow: 'var(--shadow-premium)' }}>
+              <img
+                src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800"
+                alt="Kovvada Nuclear Power Plant Cooling Towers"
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              />
+            </div>
+            
+            {/* Right Column of Grid: Two stacked images */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              {/* Top Image */}
+              <div style={{ height: '210px', borderRadius: '12px', overflow: 'hidden', boxShadow: 'var(--shadow-premium)' }}>
+                <img
+                  src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=800"
+                  alt="Navi Mumbai International Airport Construction"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </div>
+              {/* Bottom Image */}
+              <div style={{ height: '210px', borderRadius: '12px', overflow: 'hidden', boxShadow: 'var(--shadow-premium)' }}>
+                <img
+                  src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=800"
+                  alt="Reliance Jamnagar Refinery Complex"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
       {/* 4. SERVICES OVERVIEW */}
       <section className="section-padding" style={{ backgroundColor: 'var(--bg-card)', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
         <div className="container">
@@ -289,7 +432,7 @@ export default function Home() {
             gap: '30px'
           }}>
             <Card
-              image="https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?q=80&w=800"
+              image="https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=800"
               title="Preconstruction & VDC"
               subtitle="01. Phase Planning"
               tag="Virtual Design"
@@ -299,7 +442,7 @@ export default function Home() {
             </Card>
 
             <Card
-              image="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=800"
+              image="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=800"
               title="General Contracting"
               subtitle="02. Core Execution"
               tag="Heavy Construction"
@@ -309,7 +452,7 @@ export default function Home() {
             </Card>
 
             <Card
-              image="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800"
+              image="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=800"
               title="Sustainability Consulting"
               subtitle="03. Green Building"
               tag="LEED Strategy"
@@ -438,21 +581,21 @@ export default function Home() {
               {
                 title: 'Capital One Arena',
                 desc: 'Construction of the premier indoor sports and entertainment venue directly above an active Metro station hub.',
-                image: 'https://images.unsplash.com/photo-1517646287270-a5a9ca602e5c?q=80&w=800',
+                image: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?q=80&w=800',
                 tag: 'Commercial & Mixed-Use',
                 loc: 'Washington, D.C.'
               },
               {
                 title: 'The Wharf (Phase 1 & 2)',
                 desc: 'A massive waterfront destination containing residential, hotel, marina, and concert halls along the Potomac.',
-                image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800',
+                image: 'https://images.unsplash.com/photo-1517984922331-8dbaa8ffa9c1?q=80&w=800',
                 tag: 'Commercial & Mixed-Use',
                 loc: 'Washington, D.C.'
               },
               {
                 title: 'LAX Midfield Satellite Concourse',
                 desc: 'A modern multi-level concourse terminal featuring 12 gates connected via underground passenger tunnels.',
-                image: 'https://images.unsplash.com/photo-1590487988256-9ed24133863e?q=80&w=800',
+                image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=800',
                 tag: 'Aviation & Infrastructure',
                 loc: 'Los Angeles, CA'
               }
@@ -585,7 +728,7 @@ export default function Home() {
             gap: '30px'
           }}>
             <Card
-              image="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800"
+              image="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=800"
               title="Clark Construction Implements Low-Hydration Concrete Mixes"
               subtitle="Innovation & Tech"
               tag="Press Release"
@@ -595,7 +738,7 @@ export default function Home() {
             </Card>
 
             <Card
-              image="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800"
+              image="https://images.unsplash.com/photo-1568992687947-868a62a9f521?q=80&w=800"
               title="Gold Award Won for Central Corporate Skyscraper"
               subtitle="Company Awards"
               tag="Award"
@@ -605,7 +748,7 @@ export default function Home() {
             </Card>
 
             <Card
-              image="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=800"
+              image="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800"
               title="Training the Next Generation: BIM Internships open"
               subtitle="Careers & Internships"
               tag="Notice"

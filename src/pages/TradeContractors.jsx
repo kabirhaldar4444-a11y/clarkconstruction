@@ -91,7 +91,7 @@ export default function TradeContractors() {
       <section className="page-hero">
         <div className="page-hero-bg">
           <img
-            src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1600"
+            src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1600"
             alt="Safety briefing and trade contractor operations"
           />
         </div>
@@ -130,7 +130,7 @@ export default function TradeContractors() {
               padding: '16px'
             }}>
               <img
-                src="https://images.unsplash.com/photo-1590487988256-9ed24133863e?q=80&w=800"
+                src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=800"
                 alt="Trade contractor receives a safety helmet as part of Safety Week"
                 style={{ width: '100%', borderRadius: '4px', display: 'block', height: '240px', objectFit: 'cover' }}
               />

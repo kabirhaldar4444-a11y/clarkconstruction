@@ -5,6 +5,7 @@ import Layout from './components/Layout/Layout';
 // Import Core Pages
 import Home from './pages/Home';
 import About from './pages/About';
+import IndiaPartnerships from './pages/IndiaPartnerships';
 import Services from './pages/Services';
 import Projects from './pages/Projects';
 import Markets from './pages/Markets';
@@ -40,6 +41,7 @@ function App() {
 
           {/* About Us Submenu */}
           <Route path="/about" element={<About />} />
+          <Route path="/about/india-partnerships" element={<IndiaPartnerships />} />
           <Route path="/about/companies" element={<Companies />} />
           <Route path="/about/corporate-responsibility" element={<CorporateResponsibility />} />
           <Route path="/about/our-story" element={<OurStory />} />
