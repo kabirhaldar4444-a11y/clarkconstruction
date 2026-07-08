@@ -68,7 +68,7 @@ export default function IndiaPartnerships() {
       <section className="page-hero">
         <div className="page-hero-bg">
           <img
-            src="https://images.unsplash.com/photo-1605647540924-852290f6b0d5?q=80&w=1600"
+            src="https://images.unsplash.com/photo-1568849676085-51415703900f?q=80&w=1600"
             alt="Clark Construction Modern Indian Infrastructure"
           />
         </div>
@@ -130,7 +130,7 @@ export default function IndiaPartnerships() {
           {/* Isometric Graphic / Image montage */}
           <div className="img-overlay-wrapper" style={{ height: '480px' }}>
             <img
-              src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=800"
+              src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800"
               alt="Clark Construction high-end engineering schematics"
             />
             <div style={{

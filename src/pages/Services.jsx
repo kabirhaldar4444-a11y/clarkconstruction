@@ -42,7 +42,7 @@ const EXPERTISE_LIST = [
     title: "Project Development",
     projectSign: "Project Development",
     desc: "Supporting projects from inception with financial modeling, site selection, and public-private partnerships (P3).",
-    bgImage: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=800",
+    bgImage: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800",
     detailedDesc: "Clark's project development division collaborates with clients on site acquisition, entitlement processes, feasibility studies, capital structuring, and P3 models. We bridge the gap between finance and construction to make ambitious projects viable, ensuring long-term asset value.",
     icon: <Compass size={22} color="var(--primary)" />,
     bullets: [
@@ -57,7 +57,7 @@ const EXPERTISE_LIST = [
     title: "Quality",
     projectSign: "Quality Assurance",
     desc: "Applying rigid structural inspections and digital laser verification to assure defect-free handovers.",
-    bgImage: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=800",
+    bgImage: "https://images.unsplash.com/photo-1581094794329-c8112a89a5b8?q=80&w=800",
     detailedDesc: "Quality is engineered into our daily operations. We use laser scanners, concrete core diagnostics, thermal imaging, and digital QA/QC systems to track structural accuracy down to the millimeter. Our dedicated quality managers monitor every stage from foundation to finishing.",
     icon: <Shield size={22} color="var(--primary)" />,
     bullets: [
@@ -132,7 +132,7 @@ const EXPERTISE_LIST = [
     title: "Virtual Design & Construction",
     projectSign: "VDC",
     desc: "Simulating projects digitally using advanced 3D BIM, clash detection, and VR walkthroughs.",
-    bgImage: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=800",
+    bgImage: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=800",
     detailedDesc: "Virtual Design and Construction (VDC) allows us to resolve potential design conflicts before construction begins. We build a fully detailed digital twin of the project, allowing our clients to walk through spaces virtually, optimize costs, and coordinate trades.",
     icon: <Laptop size={22} color="var(--primary)" />,
     bullets: [

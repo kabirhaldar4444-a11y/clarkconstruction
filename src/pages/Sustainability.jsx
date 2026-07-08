@@ -167,7 +167,7 @@ export default function Sustainability() {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px' }}>
             <Card
-              image="https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=800"
+              image="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=800"
               title="Cascade Heights Eco Blocks"
               subtitle="LEED Platinum Certified"
               tag="Portland, OR"
@@ -177,7 +177,7 @@ export default function Sustainability() {
             </Card>
 
             <Card
-              image="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800"
+              image="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800"
               title="Clark Corporate Skyscraper"
               subtitle="LEED Gold Target"
               tag="Chicago, IL"

@@ -71,7 +71,7 @@ const RECENT_NEWS = [
     category: "Local Impact",
     date: "April 2026",
     desc: "Local Baltimore specialty trade contractors finish a rigorous curriculum to qualify for upcoming mid-atlantic civil works.",
-    img: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=400"
+    img: "https://images.unsplash.com/photo-1581094794329-c8112a89a5b8?q=80&w=400"
   }
 ];
 

@@ -3,6 +3,9 @@ import { ArrowRight, ShieldCheck, Award, Star, HardHat, HeartHandshake, Zap, Fac
 import Button from '../components/UI/Button';
 import Card from '../components/UI/Card';
 import AnimatedCounter from '../components/UI/AnimatedCounter';
+import KovvadaNuclearPlantImg from '../assets/kovvada_nuclear_plant.png';
+import RailwayMetroImg from '../assets/railway_metro_projects.png';
+import JamnagarRefineryImg from '../assets/jamnagar_refinery.png';
 
 const HERO_SLIDES = [
   {
@@ -385,8 +388,8 @@ export default function Home() {
             {/* Left Column of Grid: Tall Image */}
             <div style={{ height: '440px', borderRadius: '12px', overflow: 'hidden', boxShadow: 'var(--shadow-premium)' }}>
               <img
-                src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800"
-                alt="Kovvada Nuclear Power Plant Cooling Towers"
+                src={KovvadaNuclearPlantImg}
+                alt="Kovvada Nuclear Power Plant"
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
             </div>
@@ -396,15 +399,15 @@ export default function Home() {
               {/* Top Image */}
               <div style={{ height: '210px', borderRadius: '12px', overflow: 'hidden', boxShadow: 'var(--shadow-premium)' }}>
                 <img
-                  src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=800"
-                  alt="Navi Mumbai International Airport Construction"
+                  src={RailwayMetroImg}
+                  alt="Railway and Metro Projects"
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
               </div>
               {/* Bottom Image */}
               <div style={{ height: '210px', borderRadius: '12px', overflow: 'hidden', boxShadow: 'var(--shadow-premium)' }}>
                 <img
-                  src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=800"
+                  src={JamnagarRefineryImg}
                   alt="Reliance Jamnagar Refinery Complex"
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
@@ -432,7 +435,7 @@ export default function Home() {
             gap: '30px'
           }}>
             <Card
-              image="https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=800"
+              image="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800"
               title="Preconstruction & VDC"
               subtitle="01. Phase Planning"
               tag="Virtual Design"
