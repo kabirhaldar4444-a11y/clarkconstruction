@@ -591,14 +591,14 @@ export default function Home() {
               {
                 title: 'The Wharf (Phase 1 & 2)',
                 desc: 'A massive waterfront destination containing residential, hotel, marina, and concert halls along the Potomac.',
-                image: 'https://images.unsplash.com/photo-1517984922331-8dbaa8ffa9c1?q=80&w=800',
+                image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=800',
                 tag: 'Commercial & Mixed-Use',
                 loc: 'Washington, D.C.'
               },
               {
                 title: 'LAX Midfield Satellite Concourse',
                 desc: 'A modern multi-level concourse terminal featuring 12 gates connected via underground passenger tunnels.',
-                image: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=800',
+                image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=800',
                 tag: 'Aviation & Infrastructure',
                 loc: 'Los Angeles, CA'
               }

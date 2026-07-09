@@ -1,11 +1,4 @@
-import React from 'react';
 import { 
-  Zap, 
-  Factory, 
-  Plane, 
-  Cpu, 
-  Train, 
-  Settings, 
   FileText, 
   Download, 
   Building2, 
@@ -16,48 +9,369 @@ import {
 import Button from '../components/UI/Button';
 import ClarkMoUPdf from '../assets/CLARK CONSTRUCTION.pdf';
 
+// Import local project images
+import KovvadaNuclearImg from '../assets/Kovvada Nuclear Power Plant.jpg';
+import RelianceJamnagarImg from '../assets/reliance-jamnagar.jpeg';
+import GIFTCityImg from '../assets/gift-city-correct.png';
+import NaviMumbaiAirportImg from '../assets/airport.jpg';
+import RailwayMetroImg from '../assets/railway_metro_projects.png';
+import DMICImg from '../assets/Delhi-Mumbai Industrial Corridor (DMIC).png';
+import AKICImg from '../assets/Amritsar-Kolkata Industrial Corridor (AKIC).jpg';
+import PaimanaImg from '../assets/Paimana.png';
+import ChenabBridgeImg from '../assets/Chenab Rail Bridge  USBRL.jpg';
+import BharatmalaImg from '../assets/Bharatmala Pariyojna.jpg';
+import NationalMaritimeImg from '../assets/National Maritime Heritage Complex.jpg';
+import AhmedabadDholeraImg from '../assets/Ahmedabad-Dholera Express.jpg';
+import VisakhapatnamChennaiImg from '../assets/Visakhapatnam-Chennai Industrial Corridor.png';
+import SagarmalaImg from '../assets/Sagarmala Project.png';
+import BengaluruSuburbanImg from '../assets/Bengaluru Suburban Railway Project.png';
+import JSWGreenEnergyImg from "../assets/JSW Group's Green Energy Projects.png";
+import DholeraSmartCityImg from '../assets/Dholera Smart City Project.png';
+import GangaVikasImg from '../assets/Ganga Vikas Project (Riverfront).png';
+import MysoreWindImg from '../assets/Mysore Wind Power Project.png';
+import SuratWindImg from '../assets/Surat Wind Energy Project.png';
+import PugaGeothermalImg from '../assets/Puga Geothermal Energy Project.png';
+import NagpurMetallurgicalImg from '../assets/metallurgical expansion project in Hingna, Nagpur, Maharashtra -.png';
+import KrishnapatnamPortImg from '../assets/Million Krishnapatnam Port Expansion Project in Tirupati, Andhra Pradesh.png';
+
 const PROJECTS = [
   {
     title: "Kovvada Nuclear Power Plant",
     subtitle: "Strategic Energy Infrastructure",
-    description: "Strategic energy infrastructure in Andhra Pradesh, powering India's industrial growth.",
-    icon: <Zap size={24} color="var(--primary)" />,
-    location: "Andhra Pradesh, India"
+    description: "Construction of a massive 6-unit nuclear power station using AP1000 pressurized water reactor technology. The project involves extensive land reclamation, constructing seismic-resistant reactor containment vaults, cooling towers, and integrating a high-voltage grid substation. It represents a key milestone in India's transition to low-carbon base-load power, boosting industrial productivity in the southern region.",
+    category: "Infrastructure",
+    type: "Nuclear Power Generation",
+    budget: "$35 Billion",
+    duration: "2030 (Expected)",
+    location: "Andhra Pradesh, India",
+    contractor: "Westinghouse Electric Company & NPCIL",
+    status: "Pre-construction",
+    image: KovvadaNuclearImg
   },
   {
     title: "Reliance Jamnagar Refinery",
     subtitle: "Industrial Engineering",
-    description: "World-class industrial engineering for the world's largest oil refinery complex.",
-    icon: <Factory size={24} color="var(--primary)" />,
-    location: "Jamnagar, Gujarat"
+    description: "Engineering and expanding the world's largest oil refinery complex, which handles over 1.24 million barrels per day. The scope includes commissioning crude distillation units, fluidized catalytic crackers, and marine terminal docks. Key engineering features include modular pre-assembly of heavy refining columns and advanced automation systems, ensuring India's self-sufficiency in refined petroleum products.",
+    category: "Infrastructure (Refinery)",
+    type: "Petrochemical Refining",
+    budget: "$15 Billion",
+    duration: "1996 - Present",
+    location: "Jamnagar, Gujarat, India",
+    contractor: "Bechtel Corporation & Reliance Industries",
+    status: "Operational & Expanding",
+    image: RelianceJamnagarImg
+  },
+  {
+    title: "Bhadla Solar Park",
+    subtitle: "Renewable Energy",
+    description: "Development of the largest solar park in the world, spanning over 14,000 acres in the Thar Desert. The scope covers installing millions of photovoltaic panels, building power evacuation substations, and integrating robotic dry-cleaning systems to counter sand dust. This project generates over 2,245 MW of green electricity, significantly reducing fossil fuel dependency.",
+    category: "Infrastructure (Solar)",
+    type: "Renewable Power Generation",
+    budget: "$1.6 Billion",
+    duration: "2015 - 2020",
+    location: "Jodhpur, Rajasthan, India",
+    contractor: "NTPC, Adani Green Energy & Hero Future",
+    status: "Fully Operational",
+    image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=800"
+  },
+  {
+    title: "GIFT City (Gujarat International Finance Tec-City)",
+    subtitle: "Smart City Development",
+    description: "Construction of India's first operational smart city and international financial services hub. The scope encompasses high-rise office towers, automated waste collection pipelines, district cooling plants, and multi-tier utility tunnels. It serves as a model for modern urban planning, attracting international financial institutions to Gujarat.",
+    category: "Infrastructure",
+    type: "FinTech Smart City",
+    budget: "$20 Billion",
+    duration: "Ongoing Projects",
+    location: "Gandhinagar, Gujarat, India",
+    contractor: "Larsen & Toubro (L&T Construction)",
+    status: "Under Construction",
+    image: GIFTCityImg
   },
   {
     title: "Navi Mumbai International Airport",
     subtitle: "Aviation Infrastructure",
-    description: "A landmark aviation project enhancing connectivity for the Mumbai metropolitan region.",
-    icon: <Plane size={24} color="var(--primary)" />,
-    location: "Navi Mumbai, Maharashtra"
+    description: "Development of a multi-terminal international airport featuring dual parallel runways, passenger terminal buildings, and integrated cargo facilities. The engineering challenge required leveling regional hills and diverting the Ulwe river channel. Once complete, it will accommodate over 60 million passengers annually, relieving congestion at Mumbai's main airport.",
+    category: "Infrastructure",
+    type: "Aviation Terminal",
+    budget: "$2.8 Billion",
+    duration: "2018 - 2026",
+    location: "Navi Mumbai, Maharashtra, India",
+    contractor: "L&T Construction & Adani Airports",
+    status: "Under Construction",
+    image: NaviMumbaiAirportImg
   },
   {
-    title: "GIFT City Gujarat",
-    subtitle: "Smart City Development",
-    description: "Smart city utility tunnels and district cooling systems for India's first operational smart city in Gandhinagar.",
-    icon: <Cpu size={24} color="var(--primary)" />,
-    location: "Gandhinagar, Gujarat"
-  },
-  {
-    title: "Railway and Metro projects",
+    title: "Railway and Metro Projects – Global",
     subtitle: "Transit & Consulting",
-    description: "Historically well known for Delhi Metro consulting roles and work on other rail and metro programs.",
-    icon: <Train size={24} color="var(--primary)" />,
-    location: "Delhi NCR & Multiple Cities"
+    description: "Providing General Consulting, project management, and construction supervision services for extensive subway and light rail networks in metropolitan hubs. The scope includes underground tunnel boring, elevated viaduct structures, and signaling synchronization. It is a critical component of India's urban transit modernization program.",
+    category: "Infrastructure",
+    type: "Mass Transit Systems",
+    budget: "$1–40 Billion (Portfolio Value)",
+    duration: "Ongoing Projects",
+    location: "Delhi NCR & Multiple Cities, India",
+    contractor: "DMRC, L&T Metro, Tata Projects & Alstom",
+    status: "Ongoing Operations",
+    image: RailwayMetroImg
   },
   {
-    title: "Industrial Systems & Specialist Contracting",
-    subtitle: "Specialist Delivery",
-    description: "Precise installation, integration, and commissioning for complex industrial systems and refining packages.",
-    icon: <Settings size={24} color="var(--primary)" />,
-    location: "Pan-India Operations"
+    title: "Delhi-Mumbai Industrial Corridor (DMIC)",
+    subtitle: "Industrial Infrastructure",
+    description: "A mega-infrastructure project aiming to develop new smart industrial cities and logistics parks along a 1,500 km high-speed freight rail line. The project aims to double employment and industrial output, linking India's political capital with its financial hub.",
+    category: "Infrastructure",
+    type: "Industrial Corridor",
+    budget: "$90 Billion",
+    duration: "2018 - 2027",
+    location: "Western India Corridor",
+    contractor: "NICDIT & Larsen & Toubro (L&T)",
+    status: "Under Construction",
+    image: DMICImg
+  },
+  {
+    title: "Amritsar-Kolkata Industrial Corridor (AKIC)",
+    subtitle: "Industrial Infrastructure",
+    description: "Development of an economic corridor along the Eastern Dedicated Freight Corridor, spanning 20 cities. The project involves setting up integrated manufacturing zones, dry ports, and logistics parks, boosting trade and industrial growth across the densely populated northern and eastern plains.",
+    category: "Infrastructure",
+    type: "Industrial Corridor",
+    budget: "$22 Billion",
+    duration: "2020 - 2028",
+    location: "Northern & Eastern India",
+    contractor: "Tata Projects & L&T Construction",
+    status: "Under Construction",
+    image: AKICImg
+  },
+  {
+    title: "PAIMANA - India",
+    subtitle: "Expressway Network",
+    description: "A comprehensive highway corridor modernization program connecting industrial hubs. The scope includes highway expansion, constructing intelligent toll plazas, and advanced traffic control centers, facilitating seamless commerce and high-speed freight operations.",
+    category: "Infrastructure",
+    type: "High-Capacity Highway Corridor",
+    budget: "$100 Billion (Est.)",
+    duration: "2018 - 2027",
+    location: "Western India Corridor",
+    contractor: "NHAI & Dilip Buildcon",
+    status: "Under Construction",
+    image: PaimanaImg
+  },
+  {
+    title: "Chenab Rail Bridge / USBRL",
+    subtitle: "Transit Infrastructure",
+    description: "Construction of the world's highest railway bridge, spanning the Chenab River at a height of 359 meters. The engineering masterpiece utilized structural steel arches designed to withstand wind speeds of 266 km/h and high-intensity seismic activities, connecting Kashmir with the national rail network.",
+    category: "Infrastructure",
+    type: "Railway Bridge",
+    budget: "$0.18 Billion",
+    duration: "2004 - 2024",
+    location: "Jammu & Kashmir, India",
+    contractor: "Afcons Infrastructure & Konkan Railway",
+    status: "Completed",
+    image: ChenabBridgeImg
+  },
+  {
+    title: "High Productivity Freight Networks",
+    subtitle: "Transit Infrastructure",
+    description: "Enhancing the freight transit network by constructing dedicated corridors with double-stack container capacity. The project involves automatic track layout, high-capacity catenary installations, and automatic warning systems, reducing transportation costs and transit times.",
+    category: "Infrastructure",
+    type: "Freight Transport Corridor",
+    budget: "$12 Billion",
+    duration: "2019 - 2025",
+    location: "Various Corridors, India",
+    contractor: "DFCCIL & GMR Infrastructure",
+    status: "Completed",
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800"
+  },
+  {
+    title: "Bharatmala Pariyojna",
+    subtitle: "Road Development",
+    description: "A nationwide road development program constructing over 34,800 km of expressways and state highways. Focus areas include optimizing border and international connectivity, economic corridors, and coastal roads, boosting agricultural and industrial market access.",
+    category: "Infrastructure",
+    type: "Road Development Program",
+    budget: "$130 Billion",
+    duration: "2018 - 2026",
+    location: "Nationwide India",
+    contractor: "NHAI, Larsen & Toubro & Dilip Buildcon",
+    status: "Under Construction",
+    image: BharatmalaImg
+  },
+  {
+    title: "National Maritime Heritage Complex",
+    subtitle: "Cultural Heritage",
+    description: "Constructing a world-class historical theme park and educational center dedicated to India's ancient maritime history. The complex features a reconstruction of the ancient Lothal port, museums, research centers, and light shows, revitalizing regional tourism.",
+    category: "Infrastructure",
+    type: "Tourist & Cultural Center",
+    budget: "$0.40 Billion",
+    duration: "2022 - 2026",
+    location: "Lothal, Gujarat, India",
+    contractor: "Tata Projects Limited",
+    status: "Under Construction",
+    image: NationalMaritimeImg
+  },
+  {
+    title: "Ahmedabad-Dholera Express",
+    subtitle: "Transit Infrastructure",
+    description: "A 109 km long, 4-lane high-speed expressway connecting Ahmedabad to the new Dholera Special Investment Region. The highway features precast concrete overpasses and intelligent monitoring systems, accelerating regional freight movement.",
+    category: "Infrastructure",
+    type: "Express Highway",
+    budget: "$0.75 Billion",
+    duration: "2021 - 2025",
+    location: "Gujarat, India",
+    contractor: "Sadbhav Engineering & L&T Construction",
+    status: "Under Construction",
+    image: AhmedabadDholeraImg
+  },
+  {
+    title: "New Power Transformer Mfg. Project in Solan",
+    subtitle: "Electricity Infrastructure",
+    description: "Establishment of an advanced power transformer manufacturing facility. The plant specializes in high-voltage AC/DC grid transformers, enhancing the reliability of the national power transmission network and reducing electrical losses.",
+    category: "Infrastructure",
+    type: "Electricity Grid Factory",
+    budget: "$0.20 Billion",
+    duration: "2023 - 2025",
+    location: "Solan, Himachal Pradesh, India",
+    contractor: "Bharat Heavy Electricals Limited (BHEL)",
+    status: "Completed",
+    image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=800"
+  },
+  {
+    title: "Visakhapatnam-Chennai Industrial Corridor",
+    subtitle: "Industrial Infrastructure",
+    description: "Developing an industrial corridor along the east coast to enhance port-led manufacturing. The scope covers building expressways, industrial park water networks, power substations, and dedicated logistics facilities.",
+    category: "Infrastructure",
+    type: "Industrial Corridor",
+    budget: "$5 Billion",
+    duration: "2016 - 2028",
+    location: "Andhra Pradesh, India",
+    contractor: "L&T Construction & Tata Projects",
+    status: "Under Construction",
+    image: VisakhapatnamChennaiImg
+  },
+  {
+    title: "Sagarmala Project",
+    subtitle: "Maritime Infrastructure",
+    description: "A comprehensive port modernization and port-led development program. Scope includes upgrading harbor depths, constructing new deepwater ports, improving rail-road hinterland connections, and setting up coastal economic zones.",
+    category: "Infrastructure",
+    type: "Ports & Maritime Network",
+    budget: "$120 Billion",
+    duration: "2035",
+    location: "Coastal Regions, India",
+    contractor: "Adani Ports, JSW Infrastructure & VPA",
+    status: "Under Construction",
+    image: SagarmalaImg
+  },
+  {
+    title: "Bengaluru Suburban Railway Project (BSRP)",
+    subtitle: "Transit Infrastructure",
+    description: "Construction of a 148 km suburban commuter rail network featuring four corridors. The project introduces elevated commuter stations, automatic train protection, and grade-separated crossings to resolve transit congestion in Bengaluru.",
+    category: "Infrastructure",
+    type: "Railways & Urban Transit",
+    budget: "$2.1 Billion",
+    duration: "2028",
+    location: "Bengaluru, Karnataka, India",
+    contractor: "K-RIDE & L&T Construction",
+    status: "Under Construction",
+    image: BengaluruSuburbanImg
+  },
+  {
+    title: "JSW Group's Green Energy Projects",
+    subtitle: "Renewable Energy",
+    description: "A portfolio of utility-scale wind and solar power plants linked by advanced battery energy storage. The scope encompasses wind turbine installation, solar arrays, and high-voltage transmission interconnects, helping India achieve green energy targets.",
+    category: "Infrastructure",
+    type: "Wind & Solar Generation",
+    budget: "$3.8 Billion",
+    duration: "2030",
+    location: "Karnataka, Maharashtra & Tamil Nadu",
+    contractor: "JSW Energy & GE Renewable Energy",
+    status: "Under Construction",
+    image: JSWGreenEnergyImg
+  },
+  {
+    title: "Dholera Smart City Project",
+    subtitle: "Smart City & Infrastructure",
+    description: "A greenfield industrial smart city project being developed on a massive 920 sq km site. The engineering scope includes smart utility channels, computerized traffic grids, automated waste management, and rainwater harvesting nodes.",
+    category: "Infrastructure",
+    type: "Smart City",
+    budget: "$15 Billion",
+    duration: "2040",
+    location: "Dholera, Gujarat, India",
+    contractor: "DICDL & L&T Construction",
+    status: "Under Construction",
+    image: DholeraSmartCityImg
+  },
+  {
+    title: "Ganga Vikas Project (Riverfront)",
+    subtitle: "Water Infrastructure",
+    description: "Rejuvenating and beautifying the Ganges riverfront. The scope involves building concrete retaining ghats, public parks, sewage treatment plants, and river clean-up machinery, enhancing environmental health.",
+    category: "Infrastructure",
+    type: "Riverfront Development",
+    budget: "$1.5 Billion",
+    duration: "2025",
+    location: "Uttar Pradesh & Bihar, India",
+    contractor: "NMCG, Dilip Buildcon & Shapoorji Pallonji",
+    status: "Under Construction",
+    image: GangaVikasImg
+  },
+  {
+    title: "Mysore Wind Power Project",
+    subtitle: "Renewable Energy",
+    description: "Constructing wind generator farms near Mysore. Scope includes turbine installation, structural foundations, and grid connectivity, delivering green electricity to rural southern Karnataka.",
+    category: "Infrastructure",
+    type: "Wind Power Generation",
+    budget: "$0.25 Billion",
+    duration: "2022-2025",
+    location: "Mysore, Karnataka, India",
+    contractor: "Suzlon Energy Limited",
+    status: "Completed",
+    image: MysoreWindImg
+  },
+  {
+    title: "Surat Wind Energy Project",
+    subtitle: "Renewable Energy",
+    description: "Installation of high-capacity onshore wind turbines along the Surat coast, producing green energy for the region's diamond and textile manufacturing plants.",
+    category: "Infrastructure",
+    type: "Wind Power Generation",
+    budget: "$0.30 Billion",
+    duration: "2023 - 2025",
+    location: "Surat, Gujarat, India",
+    contractor: "Inox Wind & ReNew Power",
+    status: "Completed",
+    image: SuratWindImg
+  },
+  {
+    title: "Puga Geothermal Energy Project",
+    subtitle: "Renewable Energy",
+    description: "India's first geothermal power project, tapping high-temperature steam reservoirs in the Puga Valley. The project involves drilling deep geothermal wells and constructing a binary power plant, providing sustainable power to Ladakh.",
+    category: "Infrastructure",
+    type: "Geothermal Power Generation",
+    budget: "$0.05 Billion",
+    duration: "2022 - 2026",
+    location: "Puga Valley, Ladakh, India",
+    contractor: "Oil and Natural Gas Corporation (ONGC)",
+    status: "Under Construction",
+    image: PugaGeothermalImg
+  },
+  {
+    title: "Nagpur Metallurgical Expansion Project",
+    subtitle: "Industrial Infrastructure",
+    description: "Expansion of metal processing facilities, involving high-capacity blast furnaces, automatic rolling mills, and emission reduction scrubbers, boosting regional steel and alloy manufacturing.",
+    category: "Infrastructure",
+    type: "Metallurgical Facilities",
+    budget: "$0.45 Billion",
+    duration: "2023 - 2026",
+    location: "Hingna, Nagpur, Maharashtra, India",
+    contractor: "Tata Projects & SMS Group",
+    status: "Under Construction",
+    image: NagpurMetallurgicalImg
+  },
+  {
+    title: "Krishnapatnam Port Expansion Project",
+    subtitle: "Maritime Infrastructure",
+    description: "Expanding the deepwater port infrastructure by constructing new container berths, automating bulk cargo channels, and deepening harbor draft to handle larger capesize vessels, boosting maritime commerce.",
+    category: "Infrastructure",
+    type: "Port & Marine Terminal",
+    budget: "$0.85 Billion",
+    duration: "2022 - 2026",
+    location: "Krishnapatnam, Andhra Pradesh, India",
+    contractor: "Adani Ports (APSEZ)",
+    status: "Under Construction",
+    image: KrishnapatnamPortImg
   }
 ];
 
@@ -94,7 +408,7 @@ export default function IndiaPartnerships() {
               Clark Construction in India
             </h2>
             <p style={{ color: 'var(--text-primary)', marginBottom: '18px', fontSize: '1.05rem', lineHeight: '1.7' }}>
-              Clark Construction is an American construction company with an active presence in India, supporting projects through subcontracting and EPCM / PMC / General Consultant roles—helping teams manage, design, coordinate, and supervise project delivery to achieve stronger schedule, cost, safety, and quality outcomes.
+              Clark Construction supports projects in India through subcontracting, technology licensing, and EPCM / PMC / General Consultant roles—helping local partners manage, design, coordinate, and supervise project delivery to achieve stronger schedule, cost, safety, and quality outcomes.
             </p>
             <p style={{ color: 'var(--text-muted)', marginBottom: '18px', fontSize: '0.975rem', lineHeight: '1.7' }}>
               In addition, Clark works with partners as a technology licensor (particularly for refining and petrochemical applications) and also delivers specialist package contracting services for industrial systems, where precise installation, integration, and commissioning are critical.
@@ -178,7 +492,7 @@ export default function IndiaPartnerships() {
                 style={{
                   backgroundColor: 'var(--bg-deep)',
                   border: '1px solid var(--border-color)',
-                  padding: '30px',
+                  padding: '24px',
                   borderRadius: '6px',
                   display: 'flex',
                   flexDirection: 'column',
@@ -193,31 +507,82 @@ export default function IndiaPartnerships() {
                   e.currentTarget.style.transform = 'none';
                 }}
               >
+                {/* Project Image */}
                 <div style={{ 
-                  backgroundColor: 'rgba(var(--primary-rgb), 0.1)', 
-                  width: '48px', 
-                  height: '48px', 
-                  borderRadius: '6px', 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center',
-                  marginBottom: '20px'
+                  position: 'relative', 
+                  width: '100%', 
+                  height: '200px', 
+                  borderRadius: '4px', 
+                  overflow: 'hidden', 
+                  marginBottom: '20px',
+                  border: '1px solid rgba(255, 255, 255, 0.05)'
                 }}>
-                  {project.icon}
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                  <div style={{
+                    position: 'absolute',
+                    top: '12px',
+                    right: '12px',
+                    backgroundColor: project.status === 'Completed' || project.status === 'Fully Operational' ? 'rgba(16, 185, 129, 0.9)' : 'rgba(217, 119, 6, 0.9)',
+                    color: '#FFF',
+                    padding: '4px 8px',
+                    borderRadius: '4px',
+                    fontSize: '0.7rem',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em'
+                  }}>
+                    {project.status}
+                  </div>
                 </div>
+
                 <span style={{ fontSize: '0.75rem', color: 'var(--primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '4px' }}>
                   {project.subtitle}
                 </span>
-                <h3 style={{ color: 'var(--text-white)', fontSize: '1.25rem', marginBottom: '12px', fontWeight: 700 }}>
+                <h3 style={{ color: 'var(--text-primary)', fontSize: '1.25rem', marginBottom: '12px', fontWeight: 700 }}>
                   {project.title}
                 </h3>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem', lineHeight: '1.6', flexGrow: 1 }}>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem', lineHeight: '1.6', flexGrow: 1, marginBottom: '20px' }}>
                   {project.description}
                 </p>
+
+                {/* Specifications Grid */}
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: '1fr 1fr',
+                  gap: '12px',
+                  backgroundColor: 'rgba(255, 255, 255, 0.02)',
+                  border: '1px solid var(--border-color)',
+                  padding: '12px 14px',
+                  borderRadius: '4px',
+                  marginBottom: '20px',
+                  fontSize: '0.75rem'
+                }}>
+                  <div>
+                    <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.65rem', textTransform: 'uppercase', marginBottom: '2px' }}>Budget</span>
+                    <span style={{ color: 'var(--primary)', fontWeight: 700 }}>{project.budget}</span>
+                  </div>
+                  <div>
+                    <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.65rem', textTransform: 'uppercase', marginBottom: '2px' }}>Timeline</span>
+                    <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>{project.duration}</span>
+                  </div>
+                  <div>
+                    <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.65rem', textTransform: 'uppercase', marginBottom: '2px' }}>Type</span>
+                    <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>{project.type}</span>
+                  </div>
+                  <div>
+                    <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.65rem', textTransform: 'uppercase', marginBottom: '2px' }}>Contractor</span>
+                    <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>{project.contractor}</span>
+                  </div>
+                </div>
+
                 <div style={{ 
-                  marginTop: '20px', 
+                  marginTop: 'auto', 
                   paddingTop: '12px', 
-                  borderTop: '1px solid rgba(15, 23, 42, 0.05)',
+                  borderTop: '1px solid var(--border-color)',
                   fontSize: '0.8rem',
                   color: 'var(--text-muted)',
                   display: 'flex',
