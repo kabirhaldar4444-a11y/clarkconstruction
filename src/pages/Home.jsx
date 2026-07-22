@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { ArrowRight, ShieldCheck, Award, Star, HardHat, HeartHandshake, Zap, Factory, Train } from 'lucide-react';
 import Button from '../components/UI/Button';
 import Card from '../components/UI/Card';
+import Modal from '../components/UI/Modal';
+import ProjectDetailView from '../components/UI/ProjectDetailView';
 import AnimatedCounter from '../components/UI/AnimatedCounter';
 import KovvadaNuclearPlantImg from '../assets/kovvada_nuclear_plant.png';
 import RailwayMetroImg from '../assets/railway_metro_projects.png';
@@ -64,6 +66,7 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState('safety');
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [activeProject, setActiveProject] = useState(0);
+  const [modalProject, setModalProject] = useState(null);
 
   // Auto-slide Hero
   useEffect(() => {
@@ -808,8 +811,18 @@ export default function Home() {
               }
             ].map((p, i) => (
               <div key={i} style={{ display: 'flex', flexDirection: 'column' }}>
-                <Card image={p.image} title={p.title} subtitle={p.tag} tag={p.loc} hoverEffect="zoom">
-                  {p.desc}
+                <Card 
+                  image={p.image} 
+                  title={p.title} 
+                  subtitle={p.tag} 
+                  tag={p.loc} 
+                  hoverEffect="zoom"
+                  onClick={() => setModalProject(p)}
+                >
+                  <p style={{ marginBottom: '14px' }}>{p.desc}</p>
+                  <Button variant="text" size="sm" onClick={() => setModalProject(p)}>
+                    View Full Details &rarr;
+                  </Button>
                 </Card>
               </div>
             ))}
@@ -1065,6 +1078,24 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <Modal
+        isOpen={!!modalProject}
+        onClose={() => setModalProject(null)}
+        title=""
+        maxWidth="950px"
+      >
+        {modalProject && (
+          <div>
+            <ProjectDetailView project={modalProject} />
+            <div style={{ textAlign: 'right', marginTop: '32px', paddingTop: '16px', borderTop: '1px solid var(--border-color)' }}>
+              <Button onClick={() => setModalProject(null)} variant="secondary">
+                Close Case Study
+              </Button>
+            </div>
+          </div>
+        )}
+      </Modal>
 
       <style>{`
         @media (max-width: 768px) {

@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import Button from '../components/UI/Button';
 import Modal from '../components/UI/Modal';
+import ProjectDetailView from '../components/UI/ProjectDetailView';
 import ClarkMoUPdf from '../assets/CLARK CONSTRUCTION.pdf';
 
 // Import local project images
@@ -705,87 +706,13 @@ export default function IndiaPartnerships() {
       <Modal
         isOpen={!!activeProject}
         onClose={() => setActiveProject(null)}
-        title={activeProject?.title || ''}
-        maxWidth="800px"
+        title=""
+        maxWidth="950px"
       >
         {activeProject && (
           <div>
-            {/* Modal Image */}
-            <div style={{ position: 'relative', width: '100%', height: '350px', borderRadius: '4px', overflow: 'hidden', marginBottom: '24px' }}>
-              <img
-                src={activeProject.image}
-                alt={activeProject.title}
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-              <div style={{
-                position: 'absolute',
-                bottom: 0,
-                left: 0,
-                right: 0,
-                background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)',
-                padding: '24px',
-                display: 'flex',
-                gap: '24px',
-                flexWrap: 'wrap'
-              }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#FFF', fontSize: '0.85rem' }}>
-                  <MapPin size={16} color="var(--primary)" />
-                  <span>{activeProject.location}</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#FFF', fontSize: '0.85rem' }}>
-                  <Calendar size={16} color="var(--primary)" />
-                  <span>Timeline: {activeProject.duration}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Quick Specs Grid */}
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-              gap: '20px',
-              backgroundColor: 'rgba(255,255,255,0.02)',
-              border: '1px solid var(--border-color)',
-              padding: '20px',
-              borderRadius: '4px',
-              marginBottom: '24px'
-            }}>
-              <div>
-                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', display: 'block', marginBottom: '4px' }}>Category</span>
-                <span style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.95rem' }}>{activeProject.category}</span>
-              </div>
-              <div>
-                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', display: 'block', marginBottom: '4px' }}>Type</span>
-                <span style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.95rem' }}>{activeProject.type}</span>
-              </div>
-              <div>
-                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', display: 'block', marginBottom: '4px' }}>Budget</span>
-                <span style={{ color: 'var(--primary)', fontWeight: 700, fontSize: '0.95rem' }}>{activeProject.budget}</span>
-              </div>
-              <div>
-                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', display: 'block', marginBottom: '4px' }}>Status</span>
-                <span style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.95rem' }}>{activeProject.status}</span>
-              </div>
-              <div>
-                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', display: 'block', marginBottom: '4px' }}>Contractor</span>
-                <span style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.95rem' }}>{activeProject.contractor}</span>
-              </div>
-              <div>
-                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', display: 'block', marginBottom: '4px' }}>Sub Contractor</span>
-                <span style={{ color: 'var(--primary)', fontWeight: 700, fontSize: '0.95rem' }}>{activeProject.subContractor}</span>
-              </div>
-            </div>
-
-            {/* Text description */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', lineHeight: '1.7' }}>
-              <div>
-                <h4 style={{ color: 'var(--text-primary)', fontSize: '1.1rem', marginBottom: '8px', borderLeft: '3px solid var(--primary)', paddingLeft: '10px' }}>Project Overview</h4>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>{activeProject.description}</p>
-              </div>
-            </div>
-
-            {/* Close Button */}
-            <div style={{ textAlign: 'right', marginTop: '24px' }}>
+            <ProjectDetailView project={activeProject} />
+            <div style={{ textAlign: 'right', marginTop: '32px', paddingTop: '16px', borderTop: '1px solid var(--border-color)' }}>
               <Button onClick={() => setActiveProject(null)} variant="secondary">
                 Close Details
               </Button>

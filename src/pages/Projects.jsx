@@ -3,6 +3,7 @@ import { Search, MapPin, Calendar, HardHat, FileText } from 'lucide-react';
 import Card from '../components/UI/Card';
 import Modal from '../components/UI/Modal';
 import Button from '../components/UI/Button';
+import ProjectDetailView from '../components/UI/ProjectDetailView';
 
 // Import local project images
 import CapitalOneArenaImg from '../assets/Capital One Arena.png';
@@ -912,87 +913,13 @@ export default function Projects() {
       <Modal
         isOpen={!!activeProject}
         onClose={() => setActiveProject(null)}
-        title={activeProject?.title || ''}
-        maxWidth="800px"
+        title=""
+        maxWidth="950px"
       >
         {activeProject && (
           <div>
-            {/* Modal Image */}
-            <div style={{ position: 'relative', width: '100%', height: '350px', borderRadius: '4px', overflow: 'hidden', marginBottom: '24px' }}>
-              <img
-                src={activeProject.image}
-                alt={activeProject.title}
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-              <div style={{
-                position: 'absolute',
-                bottom: 0,
-                left: 0,
-                right: 0,
-                background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)',
-                padding: '24px',
-                display: 'flex',
-                gap: '24px',
-                flexWrap: 'wrap'
-              }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#FFF', fontSize: '0.85rem' }}>
-                  <MapPin size={16} color="var(--primary)" />
-                  <span>{activeProject.location}</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#FFF', fontSize: '0.85rem' }}>
-                  <Calendar size={16} color="var(--primary)" />
-                  <span>Completed: {activeProject.date}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Quick Specs Grid */}
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-              gap: '20px',
-              backgroundColor: 'rgba(255,255,255,0.02)',
-              border: '1px solid var(--border-color)',
-              padding: '20px',
-              borderRadius: '4px',
-              marginBottom: '24px'
-            }}>
-              <div>
-                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', display: 'block', marginBottom: '4px' }}>Project Client</span>
-                <span style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.95rem' }}>{activeProject.client}</span>
-              </div>
-              <div>
-                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', display: 'block', marginBottom: '4px' }}>Sector / Category</span>
-                <span style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.95rem' }}>{activeProject.category}</span>
-              </div>
-              <div>
-                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', display: 'block', marginBottom: '4px' }}>Specifications</span>
-                <span style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.95rem' }}>{activeProject.specs}</span>
-              </div>
-            </div>
-
-            {/* Text description */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', lineHeight: '1.7' }}>
-              <div>
-                <h4 style={{ color: 'var(--text-primary)', fontSize: '1.1rem', marginBottom: '8px', borderLeft: '3px solid var(--primary)', paddingLeft: '10px' }}>Project Overview</h4>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>{activeProject.details}</p>
-              </div>
-
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
-                <div style={{ backgroundColor: 'rgba(239, 68, 68, 0.03)', border: '1px solid rgba(239, 68, 68, 0.1)', padding: '20px', borderRadius: '4px' }}>
-                  <h5 style={{ color: 'var(--error)', fontSize: '0.95rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '8px' }}>The Challenge</h5>
-                  <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>{activeProject.challenge}</p>
-                </div>
-
-                <div style={{ backgroundColor: 'rgba(16, 185, 129, 0.03)', border: '1px solid rgba(16, 185, 129, 0.1)', padding: '20px', borderRadius: '4px' }}>
-                  <h5 style={{ color: 'var(--success)', fontSize: '0.95rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '8px' }}>Our Solution</h5>
-                  <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>{activeProject.solution}</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Close Button */}
-            <div style={{ textAlign: 'right', marginTop: '24px' }}>
+            <ProjectDetailView project={activeProject} />
+            <div style={{ textAlign: 'right', marginTop: '32px', paddingTop: '16px', borderTop: '1px solid var(--border-color)' }}>
               <Button onClick={() => setActiveProject(null)} variant="secondary">
                 Close Case Study
               </Button>
