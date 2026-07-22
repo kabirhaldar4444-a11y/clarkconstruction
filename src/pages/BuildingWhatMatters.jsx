@@ -2,6 +2,7 @@ import React from 'react';
 import Card from '../components/UI/Card';
 import Button from '../components/UI/Button';
 import { Heart, Building, Award, ShieldAlert, HeartPulse, Compass } from 'lucide-react';
+import HeroImg from '../assets/building_what_matters_hero.png';
 
 export default function BuildingWhatMatters() {
   return (
@@ -10,8 +11,8 @@ export default function BuildingWhatMatters() {
       <section className="page-hero">
         <div className="page-hero-bg">
           <img
-            src="https://images.unsplash.com/photo-1590487988256-9ed24133863e?q=80&w=1600"
-            alt="Eco-building models, green wood"
+            src={HeroImg}
+            alt="Civil construction site with cranes and structural framework"
           />
         </div>
         <div className="container page-hero-content">

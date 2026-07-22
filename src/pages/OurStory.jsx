@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Calendar, Compass, ShieldCheck, Award } from 'lucide-react';
 import Button from '../components/UI/Button';
+import StoryHeroImg from '../assets/Gemini_Generated_Image_agl3gdagl3gdagl3.png';
+import StoryOriginsImg from '../assets/Gemini_Generated_Image_tv3t6etv3t6etv3t.png';
 
 const TIMELINE = [
   {
@@ -44,7 +46,7 @@ export default function OurStory() {
       <section className="page-hero">
         <div className="page-hero-bg">
           <img
-            src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1600"
+            src={StoryHeroImg}
             alt="Historical and modern scaffolding alignment"
           />
         </div>
@@ -73,7 +75,7 @@ export default function OurStory() {
 
           <div className="img-overlay-wrapper" style={{ height: '420px' }}>
             <img
-              src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800"
+              src={StoryOriginsImg}
               alt="Vintage blueprint and construction layout"
             />
           </div>

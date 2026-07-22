@@ -6,6 +6,7 @@ import AnimatedCounter from '../components/UI/AnimatedCounter';
 import KovvadaNuclearPlantImg from '../assets/kovvada_nuclear_plant.png';
 import RailwayMetroImg from '../assets/railway_metro_projects.png';
 import JamnagarRefineryImg from '../assets/jamnagar_refinery.png';
+import ShapingTomorrowImg from "../assets/Shaping Tomorrow's Horizons with Rigor and Craft.png";
 
 const HERO_SLIDES = [
   {
@@ -312,7 +313,7 @@ export default function Home() {
           {/* Visual element with floating badge */}
           <div className="img-overlay-wrapper" style={{ height: '480px', position: 'relative' }}>
             <img
-              src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800"
+              src={ShapingTomorrowImg}
               alt="Clark Construction vehicle excavator"
               style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }}
             />
