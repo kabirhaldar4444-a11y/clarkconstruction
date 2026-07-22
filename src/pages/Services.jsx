@@ -263,7 +263,7 @@ export default function Services() {
                     }}>
                       {exp.icon}
                     </div>
-                    <h3 style={{ color: '#FFF', fontSize: '1.25rem', fontWeight: 700 }}>
+                    <h3 style={{ color: 'var(--text-white)', fontSize: '1.25rem', fontWeight: 700 }}>
                       {exp.title}
                     </h3>
                   </div>
@@ -370,7 +370,7 @@ export default function Services() {
 
             {/* Description */}
             <div>
-              <h4 style={{ color: '#FFF', fontSize: '1.1rem', marginBottom: '10px', fontWeight: 700 }}>About Our Capabilities</h4>
+              <h4 style={{ color: 'var(--text-white)', fontSize: '1.1rem', marginBottom: '10px', fontWeight: 700 }}>About Our Capabilities</h4>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.7' }}>
                 {selectedExpertise.detailedDesc}
               </p>
@@ -378,7 +378,7 @@ export default function Services() {
 
             {/* Core Competencies */}
             <div>
-              <h4 style={{ color: '#FFF', fontSize: '1.1rem', marginBottom: '12px', fontWeight: 700 }}>Core Features</h4>
+              <h4 style={{ color: 'var(--text-white)', fontSize: '1.1rem', marginBottom: '12px', fontWeight: 700 }}>Core Features</h4>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '10px' }}>
                 {selectedExpertise.bullets.map((bullet, idx) => (
                   <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>

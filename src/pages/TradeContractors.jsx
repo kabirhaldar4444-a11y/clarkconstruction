@@ -164,7 +164,7 @@ export default function TradeContractors() {
             {success ? (
               <div style={{ textAlign: 'center', padding: '30px 0' }} className="animate-fade">
                 <CheckCircle2 size={56} color="var(--success)" style={{ margin: '0 auto 20px auto' }} />
-                <h3 style={{ color: '#FFF', fontSize: '1.4rem', marginBottom: '10px' }}>Interest Logged!</h3>
+                <h3 style={{ color: 'var(--text-white)', fontSize: '1.4rem', marginBottom: '10px' }}>Interest Logged!</h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '24px', lineHeight: '1.6' }}>
                   Thank you for registering your interest. Our Subcontractor Development Group has received your profile and will follow up with SQA TradeTapp prequalification links.
                 </p>
@@ -175,7 +175,7 @@ export default function TradeContractors() {
             ) : (
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 <span className="subtitle-amber" style={{ marginBottom: 0 }}>Register Interest</span>
-                <h3 style={{ color: '#FFF', fontSize: '1.5rem', marginBottom: '8px' }}>Trade Contractor Interest Form</h3>
+                <h3 style={{ color: 'var(--text-white)', fontSize: '1.5rem', marginBottom: '8px' }}>Trade Contractor Interest Form</h3>
 
                 <input
                   type="text"
@@ -187,7 +187,7 @@ export default function TradeContractors() {
                     backgroundColor: 'var(--bg-deep)',
                     border: '1px solid var(--border-color)',
                     borderRadius: '4px',
-                    color: '#FFF',
+                    color: 'var(--text-white)',
                     fontSize: '0.9rem',
                     outline: 'none'
                   }}
@@ -204,7 +204,7 @@ export default function TradeContractors() {
                     backgroundColor: 'var(--bg-deep)',
                     border: '1px solid var(--border-color)',
                     borderRadius: '4px',
-                    color: '#FFF',
+                    color: 'var(--text-white)',
                     fontSize: '0.9rem',
                     outline: 'none'
                   }}
@@ -222,7 +222,7 @@ export default function TradeContractors() {
                       backgroundColor: 'var(--bg-deep)',
                       border: '1px solid var(--border-color)',
                       borderRadius: '4px',
-                      color: '#FFF',
+                      color: 'var(--text-white)',
                       fontSize: '0.9rem',
                       outline: 'none'
                     }}
@@ -238,7 +238,7 @@ export default function TradeContractors() {
                       backgroundColor: 'var(--bg-deep)',
                       border: '1px solid var(--border-color)',
                       borderRadius: '4px',
-                      color: '#FFF',
+                      color: 'var(--text-white)',
                       fontSize: '0.9rem',
                       outline: 'none'
                     }}
@@ -256,7 +256,7 @@ export default function TradeContractors() {
                       backgroundColor: 'var(--bg-deep)',
                       border: '1px solid var(--border-color)',
                       borderRadius: '4px',
-                      color: '#FFF',
+                      color: 'var(--text-white)',
                       fontSize: '0.9rem',
                       outline: 'none'
                     }}
@@ -270,7 +270,7 @@ export default function TradeContractors() {
                       backgroundColor: 'var(--bg-deep)',
                       border: '1px solid var(--border-color)',
                       borderRadius: '4px',
-                      color: '#FFF',
+                      color: 'var(--text-white)',
                       fontSize: '0.9rem',
                       outline: 'none',
                       cursor: 'pointer'
@@ -321,7 +321,7 @@ export default function TradeContractors() {
                     backgroundColor: 'var(--bg-deep)',
                     border: '1px solid var(--border-color)',
                     borderRadius: '4px',
-                    color: '#FFF',
+                    color: 'var(--text-white)',
                     fontSize: '0.9rem',
                     outline: 'none',
                     resize: 'none'
@@ -349,7 +349,7 @@ export default function TradeContractors() {
             </p>
           </div>
 
-          <h3 style={{ color: '#FFF', fontSize: '1.4rem', marginBottom: '32px', textAlign: 'center', fontWeight: 800 }}>
+          <h3 style={{ color: 'var(--text-white)', fontSize: '1.4rem', marginBottom: '32px', textAlign: 'center', fontWeight: 800 }}>
             Are you a small business looking to work with Clark?
           </h3>
 
@@ -387,7 +387,7 @@ export default function TradeContractors() {
                 }}>
                   {step.step}
                 </div>
-                <h4 style={{ color: '#FFF', fontSize: '1.1rem', fontWeight: 700, marginTop: '10px', marginBottom: '12px' }}>{step.title}</h4>
+                <h4 style={{ color: 'var(--text-white)', fontSize: '1.1rem', fontWeight: 700, marginTop: '10px', marginBottom: '12px' }}>{step.title}</h4>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', lineHeight: '1.6' }}>{step.desc}</p>
               </div>
             ))}
@@ -411,7 +411,7 @@ export default function TradeContractors() {
           }}>
             <div>
               <span className="subtitle-amber">Risk Prequalification</span>
-              <h3 style={{ color: '#FFF', fontSize: '1.6rem', marginBottom: '16px', fontWeight: 800 }}>Prequalification Process</h3>
+              <h3 style={{ color: 'var(--text-white)', fontSize: '1.6rem', marginBottom: '16px', fontWeight: 800 }}>Prequalification Process</h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.925rem', lineHeight: '1.6', marginBottom: '24px' }}>
                 All trade contractors need to complete our Subcontractor Qualification Application to be eligible to bid on our projects and contract with Clark. Clark uses TradeTapp, a BuildingConnected product, to assist our team in prequalifying trade contractors. If your company has a TradeTapp and/or BuildingConnected account already, you should skip setup and log in using your existing credentials.
               </p>
@@ -433,7 +433,7 @@ export default function TradeContractors() {
           }}>
             <div>
               <span className="subtitle-amber">Capacity Building</span>
-              <h3 style={{ color: '#FFF', fontSize: '1.6rem', marginBottom: '16px', fontWeight: 800 }}>Strategic Partnership Program</h3>
+              <h3 style={{ color: 'var(--text-white)', fontSize: '1.6rem', marginBottom: '16px', fontWeight: 800 }}>Strategic Partnership Program</h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.925rem', lineHeight: '1.6', marginBottom: '24px' }}>
                 Clark's Strategic Partnership Program (SPP) is an essential component of our commitment to fostering economic opportunities that strengthen small businesses, our communities, and our industry.
               </p>
