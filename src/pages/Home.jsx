@@ -7,10 +7,13 @@ import KovvadaNuclearPlantImg from '../assets/kovvada_nuclear_plant.png';
 import RailwayMetroImg from '../assets/railway_metro_projects.png';
 import JamnagarRefineryImg from '../assets/jamnagar_refinery.png';
 import ShapingTomorrowImg from "../assets/Shaping Tomorrow's Horizons with Rigor and Craft.png";
+import HeroSlide1Img from '../assets/home_hero_slide1.png';
+import HeroSlide2Img from '../assets/home_hero_slide2.png';
+import HeroSlide3Img from '../assets/home_hero_slide3.png';
 
 const HERO_SLIDES = [
   {
-    image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=1600',
+    image: HeroSlide1Img,
     title: 'Building Modern Infrastructure',
     subtitle: 'ENGINEERING EXCELLENCE SINCE 1976',
     description: 'We construct commercial towers, state-of-the-art airports, and vital transit structures with unmatched precision.',
@@ -18,7 +21,7 @@ const HERO_SLIDES = [
     ctaLink: '/projects',
   },
   {
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600',
+    image: HeroSlide2Img,
     title: 'Designing Smarter Spaces',
     subtitle: 'INNOVATIVE DESIGN-BUILD SERVICES',
     description: 'Using BIM virtual construction technologies to minimize project risk, control cost, and maximize environmental efficiency.',
@@ -26,7 +29,7 @@ const HERO_SLIDES = [
     ctaLink: '/services',
   },
   {
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1600',
+    image: HeroSlide3Img,
     title: 'Pioneering Sustainable Building',
     subtitle: 'LEED CERTIFIED GREEN INFRASTRUCTURE',
     description: 'Empowering future generations with energy-neutral developments, carbon-neutral concrete, and eco-friendly construction cycles.',
