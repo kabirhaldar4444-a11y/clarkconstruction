@@ -3,6 +3,8 @@ import {
   ShieldCheck, CheckCircle2, Send
 } from 'lucide-react';
 import Button from '../components/UI/Button';
+import TradeHeroImg from '../assets/trade_contractors_hero.png';
+import TradeSafetyImg from '../assets/trade_contractors_safety.png';
 
 export default function TradeContractors() {
   const [formData, setFormData] = useState({
@@ -91,7 +93,7 @@ export default function TradeContractors() {
       <section className="page-hero">
         <div className="page-hero-bg">
           <img
-            src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1600"
+            src={TradeHeroImg}
             alt="Safety briefing and trade contractor operations"
           />
         </div>
@@ -130,7 +132,7 @@ export default function TradeContractors() {
               padding: '16px'
             }}>
               <img
-                src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=800"
+                src={TradeSafetyImg}
                 alt="Trade contractor receives a safety helmet as part of Safety Week"
                 style={{ width: '100%', borderRadius: '4px', display: 'block', height: '240px', objectFit: 'cover' }}
               />

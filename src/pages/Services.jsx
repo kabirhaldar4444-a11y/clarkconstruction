@@ -5,6 +5,8 @@ import {
 } from 'lucide-react';
 import Button from '../components/UI/Button';
 import Modal from '../components/UI/Modal';
+import ExpertiseHeroImg from '../assets/expertise_hero.png';
+import QualityImg from '../assets/expertise_quality.png';
 
 const EXPERTISE_LIST = [
   {
@@ -57,7 +59,7 @@ const EXPERTISE_LIST = [
     title: "Quality",
     projectSign: "Quality Assurance",
     desc: "Applying rigid structural inspections and digital laser verification to assure defect-free handovers.",
-    bgImage: "https://images.unsplash.com/photo-1581094794329-c8112a89a5b8?q=80&w=800",
+    bgImage: QualityImg,
     detailedDesc: "Quality is engineered into our daily operations. We use laser scanners, concrete core diagnostics, thermal imaging, and digital QA/QC systems to track structural accuracy down to the millimeter. Our dedicated quality managers monitor every stage from foundation to finishing.",
     icon: <Shield size={22} color="var(--primary)" />,
     bullets: [
@@ -153,7 +155,7 @@ export default function Services() {
       <section className="page-hero">
         <div className="page-hero-bg">
           <img
-            src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1600"
+            src={ExpertiseHeroImg}
             alt="Steel scaffolding construction skyline"
           />
         </div>
@@ -235,24 +237,6 @@ export default function Services() {
                       transition: 'var(--transition-slow)'
                     }}
                   />
-                  <div style={{
-                    position: 'absolute',
-                    top: '16px',
-                    left: '16px',
-                    backgroundColor: 'rgba(8, 10, 16, 0.75)',
-                    backdropFilter: 'blur(4px)',
-                    border: '1px solid var(--border-color)',
-                    color: 'var(--text-primary)',
-                    padding: '4px 12px',
-                    borderRadius: '4px',
-                    fontSize: '0.7rem',
-                    fontWeight: 700,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.05em',
-                    zIndex: 2
-                  }}>
-                    {exp.projectSign}
-                  </div>
                   <div style={{
                     position: 'absolute',
                     top: 0,
