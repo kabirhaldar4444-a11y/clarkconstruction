@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { HeartPulse, DollarSign, Award, GraduationCap, HardHat, FileText, Send, CheckCircle } from 'lucide-react';
 import Button from '../components/UI/Button';
 import Modal from '../components/UI/Modal';
+import CareersHeroImg from '../assets/careers_hero.png';
 
 const BENEFITS = [
   {
@@ -129,8 +130,8 @@ export default function Careers() {
       <section className="page-hero">
         <div className="page-hero-bg">
           <img
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600"
-            alt="Clark Construction BIM software coordination screens"
+            src={CareersHeroImg}
+            alt="Clark Construction engineers and team on site"
           />
         </div>
         <div className="container page-hero-content">

@@ -7,6 +7,7 @@ import Button from '../components/UI/Button';
 import Modal from '../components/UI/Modal';
 import ExpertiseHeroImg from '../assets/expertise_hero.png';
 import QualityImg from '../assets/expertise_quality.png';
+import DeliveryMethodsImg from '../assets/delivery_methods.png';
 
 const EXPERTISE_LIST = [
   {
@@ -14,7 +15,7 @@ const EXPERTISE_LIST = [
     title: "Delivery Methods",
     projectSign: "Salesforce Tower",
     desc: "Tailoring procurement and collaboration models to ensure optimal budget control, speed, and execution quality.",
-    bgImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800",
+    bgImage: DeliveryMethodsImg,
     detailedDesc: "Our delivery methods include Design-Build, CMAR (Construction Manager at Risk), and General Contracting. By aligning the design teams and contractors under unified incentives, we deliver signature projects on schedule and with unmatched quality. For landmarks like the Salesforce Tower, our delivery methods ensured smooth multi-stakeholder collaboration and rapid execution.",
     icon: <FileText size={22} color="var(--primary)" />,
     bullets: [
