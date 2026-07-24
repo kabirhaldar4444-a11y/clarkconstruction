@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { 
   FileText, Play, Mail, Phone, Calendar, 
-  Download, CheckCircle2, AlertTriangle
+  Download, CheckCircle2, AlertTriangle, Eye
 } from 'lucide-react';
 import Button from '../components/UI/Button';
 import Modal from '../components/UI/Modal';
+import PdfViewer from '../components/UI/PdfViewer';
+import ClarkMoUPdf from '../assets/CLARK CONSTRUCTION.pdf';
 
 export default function Suppliers() {
   const [invoiceId, setInvoiceId] = useState('');
   const [trackerStatus, setTrackerStatus] = useState(null);
   const [activeMedia, setActiveMedia] = useState(null);
+  const [activePdf, setActivePdf] = useState(null);
 
   const handleTrackInvoice = (e) => {
     e.preventDefault();
@@ -425,34 +428,53 @@ export default function Suppliers() {
                     <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem', lineHeight: '1.4' }}>{guide.desc}</p>
                   </div>
                 </div>
-                <a
-                  href={`#download-${guide.filename}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    alert(`Initiating mock download: ${guide.filename}`);
-                  }}
-                  style={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                    border: '1px solid var(--border-color)',
-                    padding: '8px',
-                    borderRadius: '4px',
-                    color: 'var(--text-muted)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    transition: 'var(--transition-fast)'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--primary)';
-                    e.currentTarget.style.color = '#FFF';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--border-color)';
-                    e.currentTarget.style.color = 'var(--text-muted)';
-                  }}
-                >
-                  <Download size={16} />
-                </a>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <button
+                    onClick={() => setActivePdf(guide)}
+                    style={{
+                      backgroundColor: 'rgba(217, 119, 6, 0.1)',
+                      border: '1px solid rgba(217, 119, 6, 0.3)',
+                      padding: '8px 14px',
+                      borderRadius: '4px',
+                      color: 'var(--primary)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      fontSize: '0.8rem',
+                      fontWeight: 700,
+                      cursor: 'pointer',
+                      transition: 'var(--transition-fast)'
+                    }}
+                  >
+                    <Eye size={14} /> View PDF
+                  </button>
+                  <a
+                    href={ClarkMoUPdf}
+                    download={guide.filename}
+                    style={{
+                      backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                      border: '1px solid var(--border-color)',
+                      padding: '8px',
+                      borderRadius: '4px',
+                      color: 'var(--text-muted)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      transition: 'var(--transition-fast)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = 'var(--primary)';
+                      e.currentTarget.style.color = '#FFF';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = 'var(--border-color)';
+                      e.currentTarget.style.color = 'var(--text-muted)';
+                    }}
+                    title="Download PDF"
+                  >
+                    <Download size={16} />
+                  </a>
+                </div>
               </div>
             ))}
           </div>
@@ -591,6 +613,24 @@ export default function Suppliers() {
               </Button>
             </div>
           </div>
+        )}
+      </Modal>
+
+      {/* PDF Modal Player */}
+      <Modal
+        isOpen={activePdf !== null}
+        onClose={() => setActivePdf(null)}
+        title=""
+        maxWidth="950px"
+      >
+        {activePdf && (
+          <PdfViewer
+            fileUrl={ClarkMoUPdf}
+            fileName={activePdf.filename}
+            fileSize="240 KB"
+            title={activePdf.title}
+            subtitle={activePdf.desc}
+          />
         )}
       </Modal>
     </div>

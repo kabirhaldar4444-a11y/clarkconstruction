@@ -12,6 +12,7 @@ import {
 import Button from '../components/UI/Button';
 import Modal from '../components/UI/Modal';
 import ProjectDetailView from '../components/UI/ProjectDetailView';
+import PdfViewer from '../components/UI/PdfViewer';
 import ClarkMoUPdf from '../assets/CLARK CONSTRUCTION.pdf';
 
 // Import local project images
@@ -623,7 +624,7 @@ export default function IndiaPartnerships() {
 
       {/* MoU PDF Viewer Section */}
       <section id="mou-document" className="section-padding" style={{ backgroundColor: 'var(--bg-deep)' }}>
-        <div className="container" style={{ maxWidth: '900px' }}>
+        <div className="container" style={{ maxWidth: '1000px' }}>
           <div style={{ textAlign: 'center', marginBottom: '40px' }}>
             <span className="subtitle-amber">Document Center</span>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '16px' }}>MoU: MoHUA & Clark Construction</h2>
@@ -632,73 +633,13 @@ export default function IndiaPartnerships() {
             </p>
           </div>
 
-          <div style={{
-            backgroundColor: 'var(--bg-card)',
-            border: '1px solid var(--border-color)',
-            borderRadius: '8px',
-            padding: '24px',
-            boxShadow: 'var(--shadow-premium)',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '20px'
-          }}>
-            <div style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              gap: '16px',
-              paddingBottom: '16px',
-              borderBottom: '1px solid var(--border-color)'
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <div style={{
-                  backgroundColor: 'rgba(239, 68, 68, 0.1)',
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '6px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}>
-                  <FileText size={20} color="#EF4444" />
-                </div>
-                <div>
-                  <h4 style={{ color: 'var(--text-white)', fontSize: '0.95rem', fontWeight: 700 }}>CLARK CONSTRUCTION.pdf</h4>
-                  <span style={{ color: 'var(--text-muted)', fontSize: '0.75rem' }}>Official Partnership Memorandum • PDF • 198 KB</span>
-                </div>
-              </div>
-              <Button href={ClarkMoUPdf} download="CLARK_CONSTRUCTION_MoHUA_MoU.pdf" variant="primary" size="sm" icon={Download} iconPosition="left">
-                Download PDF
-              </Button>
-            </div>
-
-            {/* Embedded PDF Iframe */}
-            <div style={{ 
-              position: 'relative', 
-              width: '100%', 
-              height: '950px', 
-              backgroundColor: 'var(--bg-deep)', 
-              borderRadius: '6px', 
-              overflow: 'hidden',
-              border: '1px solid var(--border-color)'
-            }}>
-              <iframe
-                src={`${ClarkMoUPdf}#toolbar=1`}
-                title="MoHUA & Clark Construction MoU Document"
-                width="100%"
-                height="100%"
-                style={{ border: 'none' }}
-              />
-            </div>
-            
-            <div style={{ textAlign: 'center', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-              <span>Can't view the file directly? </span>
-              <a href={ClarkMoUPdf} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', fontWeight: 700, textDecoration: 'underline' }}>
-                Open in New Tab <ExternalLink size={10} style={{ display: 'inline', marginLeft: '2px' }} />
-              </a>
-            </div>
-          </div>
+          <PdfViewer
+            fileUrl={ClarkMoUPdf}
+            fileName="CLARK CONSTRUCTION.pdf"
+            fileSize="198 KB"
+            title="MoHUA & Clark Construction MoU Document"
+            subtitle="Official Partnership Memorandum • Government of India Collaboration"
+          />
         </div>
       </section>
 
