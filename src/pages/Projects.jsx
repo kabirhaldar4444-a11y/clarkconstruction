@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
-import { Search, MapPin, Calendar, HardHat, FileText } from 'lucide-react';
+import React, { useState, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Search, MapPin, Calendar, HardHat, FileText, LayoutGrid, List, ArrowUpDown, X, ArrowUp, CheckCircle2, Building2, ArrowRight } from 'lucide-react';
 import Card from '../components/UI/Card';
 import Modal from '../components/UI/Modal';
 import Button from '../components/UI/Button';
@@ -1479,155 +1481,616 @@ const PROJECTS = [
   }
 ];
 
+// Helper to generate clean SEO URL slugs for all projects
+export function getProjectSlug(title) {
+  if (!title) return '';
+  return title
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/[\s_-]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
 // Remove duplicates by title dynamically to prevent duplicate listings
-const UNIQUE_PROJECTS = PROJECTS.filter((project, index, self) =>
+export const UNIQUE_PROJECTS = PROJECTS.filter((project, index, self) =>
   index === self.findIndex((p) => p.title === project.title)
 );
 
+export { PROJECTS };
+
 export default function Projects() {
+  const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
+  const [sortBy, setSortBy] = useState('default');
+  const [viewMode, setViewMode] = useState('grid'); // 'grid' | 'list'
   const [activeProject, setActiveProject] = useState(null);
 
-  const filteredProjects = UNIQUE_PROJECTS.filter((project) => {
-    const matchesCategory = selectedCategory === 'All' || project.category === selectedCategory;
-    const matchesSearch = project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      project.summary.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      project.location.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  // Dynamic Category extraction
+  const categories = useMemo(() => {
+    const cats = ['All', ...Array.from(new Set(UNIQUE_PROJECTS.map((p) => p.category))).filter(Boolean)];
+    return cats;
+  }, []);
+
+  // Category counts
+  const categoryCounts = useMemo(() => {
+    const counts = { All: UNIQUE_PROJECTS.length };
+    UNIQUE_PROJECTS.forEach((p) => {
+      counts[p.category] = (counts[p.category] || 0) + 1;
+    });
+    return counts;
+  }, []);
+
+  // Filter and Sort Projects
+  const filteredProjects = useMemo(() => {
+    let result = UNIQUE_PROJECTS.filter((project) => {
+      const matchesCategory = selectedCategory === 'All' || project.category === selectedCategory;
+      const query = searchQuery.toLowerCase().trim();
+      const matchesSearch = !query ||
+        project.title.toLowerCase().includes(query) ||
+        (project.summary && project.summary.toLowerCase().includes(query)) ||
+        (project.location && project.location.toLowerCase().includes(query)) ||
+        (project.client && project.client.toLowerCase().includes(query)) ||
+        (project.category && project.category.toLowerCase().includes(query));
+      return matchesCategory && matchesSearch;
+    });
+
+    if (sortBy === 'title-asc') {
+      result = [...result].sort((a, b) => a.title.localeCompare(b.title));
+    } else if (sortBy === 'title-desc') {
+      result = [...result].sort((a, b) => b.title.localeCompare(a.title));
+    } else if (sortBy === 'location') {
+      result = [...result].sort((a, b) => (a.location || '').localeCompare(b.location || ''));
+    }
+
+    return result;
+  }, [selectedCategory, searchQuery, sortBy]);
+
+  const hasActiveFilters = selectedCategory !== 'All' || searchQuery !== '';
+
+  const clearFilters = () => {
+    setSelectedCategory('All');
+    setSearchQuery('');
+    setSortBy('default');
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <div>
-      {/* Page Hero */}
+      {/* Page Hero - Enterprise Aesthetic */}
       <section className="page-hero">
         <div className="page-hero-bg">
           <img
             src={MarketHeroImg}
-            alt="Clark Construction Project Portfolio"
+            alt="Clark Construction Complete Project Portfolio"
           />
         </div>
         <div className="container page-hero-content">
-          <span className="subtitle-amber">Our Portfolio</span>
-          <h1 className="page-hero-title">Featured Projects</h1>
-          <p style={{ color: 'var(--text-muted)', maxWidth: '600px', fontSize: '1.05rem' }}>
-            Explore our comprehensive collection of institutional, commercial, civil, industrial, and sustainable infrastructure developments.
+          <span className="subtitle-amber">Our Complete Portfolio</span>
+          <h1 className="page-hero-title">All Projects Catalog</h1>
+          <p style={{ color: 'var(--text-muted)', maxWidth: '640px', fontSize: '1.05rem', lineHeight: '1.6', margin: 0 }}>
+            Explore our complete collection of {UNIQUE_PROJECTS.length} landmark commercial, institutional, civil transit, energy, and heavy infrastructure developments across the globe.
           </p>
         </div>
       </section>
 
-      {/* Projects Gallery controls */}
+      {/* Projects Gallery & Controls Section */}
       <section className="section-padding" style={{ backgroundColor: 'var(--bg-deep)' }}>
         <div className="container">
 
-          {/* Controls bar */}
+          {/* Master Controls Toolbar */}
           <div style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            gap: '24px',
-            backgroundColor: 'var(--bg-card)',
+            backgroundColor: '#FFFFFF',
             border: '1px solid var(--border-color)',
             padding: '20px 24px',
-            borderRadius: '6px',
-            marginBottom: '40px'
+            borderRadius: '14px',
+            boxShadow: 'var(--shadow-premium)',
+            marginBottom: '28px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '18px'
           }}>
-            {/* Category tabs */}
-            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              {CATEGORIES.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
+            
+            {/* Top Row: Search, Sort & View Mode Switcher */}
+            <div style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              gap: '16px'
+            }}>
+              {/* Search input */}
+              <div style={{ position: 'relative', flexGrow: 1, maxWidth: '420px', minWidth: '240px' }}>
+                <Search
+                  size={17}
                   style={{
-                    padding: '8px 16px',
-                    borderRadius: '4px',
-                    border: 'none',
-                    backgroundColor: selectedCategory === cat ? 'var(--primary)' : 'rgba(255,255,255,0.03)',
-                    color: selectedCategory === cat ? '#FFF' : 'var(--text-muted)',
-                    cursor: 'pointer',
-                    fontSize: '0.85rem',
-                    fontWeight: 600,
-                    transition: 'var(--transition-fast)'
+                    position: 'absolute',
+                    left: '14px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    color: '#64748B'
                   }}
-                  onMouseEnter={(e) => {
-                    if (selectedCategory !== cat) e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.08)';
+                />
+                <input
+                  type="text"
+                  placeholder="Search by project name, city, client, or sector..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  style={{
+                    width: '100%',
+                    padding: '10px 38px 10px 40px',
+                    backgroundColor: '#F8FAFC',
+                    border: '1px solid var(--border-color)',
+                    borderRadius: '8px',
+                    color: 'var(--text-white)',
+                    fontSize: '0.9rem',
+                    outline: 'none',
+                    transition: 'all 0.2s ease'
                   }}
-                  onMouseLeave={(e) => {
-                    if (selectedCategory !== cat) e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.03)';
+                  onFocus={(e) => {
+                    e.target.style.backgroundColor = '#FFFFFF';
+                    e.target.style.borderColor = '#2563EB';
+                    e.target.style.boxShadow = '0 0 0 3px rgba(37, 99, 235, 0.12)';
                   }}
-                >
-                  {cat}
-                </button>
-              ))}
+                  onBlur={(e) => {
+                    e.target.style.backgroundColor = '#F8FAFC';
+                    e.target.style.borderColor = 'var(--border-color)';
+                    e.target.style.boxShadow = 'none';
+                  }}
+                />
+                {searchQuery && (
+                  <button
+                    onClick={() => setSearchQuery('')}
+                    style={{
+                      position: 'absolute',
+                      right: '12px',
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      background: 'none',
+                      border: 'none',
+                      color: '#64748B',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      padding: 0
+                    }}
+                  >
+                    <X size={16} />
+                  </button>
+                )}
+              </div>
+
+              {/* Right Side: Sort dropdown & Grid/List View switcher */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap' }}>
+                
+                {/* Sort selector */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <ArrowUpDown size={15} color="#64748B" />
+                  <select
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value)}
+                    style={{
+                      padding: '8px 14px',
+                      borderRadius: '8px',
+                      border: '1px solid var(--border-color)',
+                      backgroundColor: '#FFFFFF',
+                      color: 'var(--text-white)',
+                      fontSize: '0.85rem',
+                      fontWeight: 600,
+                      cursor: 'pointer',
+                      outline: 'none'
+                    }}
+                  >
+                    <option value="default">Default Order</option>
+                    <option value="title-asc">Project Name (A–Z)</option>
+                    <option value="title-desc">Project Name (Z–A)</option>
+                    <option value="location">Location (A–Z)</option>
+                  </select>
+                </div>
+
+                {/* View Switcher: Grid vs List */}
+                <div style={{
+                  display: 'flex',
+                  backgroundColor: '#F1F5F9',
+                  padding: '3px',
+                  borderRadius: '8px',
+                  border: '1px solid var(--border-color)'
+                }}>
+                  <button
+                    onClick={() => setViewMode('grid')}
+                    title="Grid View"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      padding: '6px 12px',
+                      borderRadius: '6px',
+                      border: 'none',
+                      backgroundColor: viewMode === 'grid' ? '#0D1A63' : 'transparent',
+                      color: viewMode === 'grid' ? '#FFFFFF' : '#64748B',
+                      cursor: 'pointer',
+                      fontSize: '0.82rem',
+                      fontWeight: 700,
+                      transition: 'all 0.2s ease'
+                    }}
+                  >
+                    <LayoutGrid size={15} />
+                    <span>Grid</span>
+                  </button>
+                  <button
+                    onClick={() => setViewMode('list')}
+                    title="List View"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      padding: '6px 12px',
+                      borderRadius: '6px',
+                      border: 'none',
+                      backgroundColor: viewMode === 'list' ? '#0D1A63' : 'transparent',
+                      color: viewMode === 'list' ? '#FFFFFF' : '#64748B',
+                      cursor: 'pointer',
+                      fontSize: '0.82rem',
+                      fontWeight: 700,
+                      transition: 'all 0.2s ease'
+                    }}
+                  >
+                    <List size={15} />
+                    <span>List</span>
+                  </button>
+                </div>
+
+              </div>
             </div>
 
-            {/* Search Input */}
-            <div style={{ position: 'relative', width: '100%', maxWidth: '300px' }}>
-              <Search
-                size={16}
-                style={{
-                  position: 'absolute',
-                  left: '12px',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  color: 'var(--text-muted)'
-                }}
-              />
-              <input
-                type="text"
-                placeholder="Search projects..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                style={{
-                  width: '100%',
-                  padding: '10px 16px 10px 40px',
-                  backgroundColor: 'rgba(8, 10, 16, 0.4)',
-                  border: '1px solid var(--border-color)',
-                  borderRadius: '4px',
-                  color: '#FFF',
-                  fontSize: '0.9rem',
-                  outline: 'none',
-                  transition: 'var(--transition-fast)'
-                }}
-                onFocus={(e) => e.target.style.borderColor = 'var(--primary)'}
-                onBlur={(e) => e.target.style.borderColor = 'var(--border-color)'}
-              />
+            {/* Bottom Row: Category Filter Pills with counts */}
+            <div style={{
+              display: 'flex',
+              gap: '8px',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              paddingTop: '8px',
+              borderTop: '1px solid var(--border-color)'
+            }}>
+              {categories.map((cat) => {
+                const isSelected = selectedCategory === cat;
+                const count = categoryCounts[cat] || 0;
+                return (
+                  <button
+                    key={cat}
+                    onClick={() => setSelectedCategory(cat)}
+                    style={{
+                      padding: '6px 14px',
+                      borderRadius: '9999px',
+                      border: isSelected ? '1px solid #2563EB' : '1px solid var(--border-color)',
+                      backgroundColor: isSelected ? '#0D1A63' : '#FFFFFF',
+                      color: isSelected ? '#FFFFFF' : 'var(--text-primary)',
+                      cursor: 'pointer',
+                      fontSize: '0.82rem',
+                      fontWeight: 700,
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
+                      boxShadow: isSelected ? '0 2px 8px rgba(13, 26, 99, 0.2)' : 'none'
+                    }}
+                    onMouseEnter={(e) => {
+                      if (!isSelected) {
+                        e.currentTarget.style.backgroundColor = '#F8FAFC';
+                        e.currentTarget.style.borderColor = 'var(--border-color-hover)';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!isSelected) {
+                        e.currentTarget.style.backgroundColor = '#FFFFFF';
+                        e.currentTarget.style.borderColor = 'var(--border-color)';
+                      }
+                    }}
+                  >
+                    <span>{cat}</span>
+                    <span style={{
+                      backgroundColor: isSelected ? 'rgba(255, 255, 255, 0.22)' : 'rgba(13, 26, 99, 0.08)',
+                      color: isSelected ? '#FFFFFF' : 'var(--primary)',
+                      fontSize: '0.72rem',
+                      padding: '1px 6px',
+                      borderRadius: '999px',
+                      fontWeight: 800
+                    }}>
+                      {count}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
+
           </div>
 
-          {/* Grid Layout */}
-          {filteredProjects.length > 0 ? (
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-              gap: '30px'
-            }}>
-              {filteredProjects.map((project) => (
-                <div key={project.id} style={{ display: 'flex', flexDirection: 'column' }}>
-                  <Card
-                    image={project.image}
-                    title={project.title}
-                    subtitle={project.category}
-                    tag={project.location}
-                    hoverEffect="zoom"
-                    onClick={() => setActiveProject(project)}
-                  >
-                    <p style={{ marginBottom: '16px' }}>{project.summary}</p>
-                    <Button variant="text" size="sm" onClick={() => setActiveProject(project)}>
-                      View Full Details &rarr;
-                    </Button>
-                  </Card>
-                </div>
-              ))}
+          {/* Results Summary Bar */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: '24px',
+            fontSize: '0.88rem',
+            color: '#64748B',
+            fontWeight: 600
+          }}>
+            <div>
+              <span>Showing <strong style={{ color: 'var(--text-white)' }}>{filteredProjects.length}</strong> of <strong style={{ color: 'var(--text-white)' }}>{UNIQUE_PROJECTS.length}</strong> total projects on one page</span>
+              {selectedCategory !== 'All' && (
+                <span style={{ marginLeft: '8px', color: '#2563EB' }}>• in {selectedCategory}</span>
+              )}
             </div>
-          ) : (
-            <div style={{ textAlign: 'center', padding: '60px 24px', backgroundColor: 'var(--bg-card)', borderRadius: '6px', border: '1px solid var(--border-color)' }}>
-              <HardHat size={48} style={{ color: 'var(--text-muted)', marginBottom: '16px', opacity: 0.5 }} />
-              <h3 style={{ color: 'var(--text-primary)', marginBottom: '8px' }}>No Projects Found</h3>
-              <p style={{ color: 'var(--text-muted)' }}>Try adjusting your filters or search keywords.</p>
-            </div>
+
+            {hasActiveFilters && (
+              <button
+                onClick={clearFilters}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: '#2563EB',
+                  fontWeight: 700,
+                  cursor: 'pointer',
+                  fontSize: '0.84rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px'
+                }}
+              >
+                <X size={14} /> Clear Active Filters
+              </button>
+            )}
+          </div>
+
+          {/* Projects View: GRID MODE */}
+          {viewMode === 'grid' && (
+            filteredProjects.length > 0 ? (
+              <motion.div
+                layout
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+                  gap: '26px'
+                }}
+              >
+                <AnimatePresence>
+                  {filteredProjects.map((project, index) => (
+                    <motion.div
+                      key={project.id}
+                      layout
+                      initial={{ opacity: 0, y: 24, scale: 0.98 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{
+                        duration: 0.4,
+                        ease: [0.16, 1, 0.3, 1],
+                        delay: Math.min(index * 0.02, 0.25)
+                      }}
+                      style={{ display: 'flex', flexDirection: 'column' }}
+                    >
+                      <Card
+                        image={project.image}
+                        title={project.title}
+                        subtitle={project.category}
+                        tag={project.location}
+                        hoverEffect="tilt"
+                        onClick={() => navigate(`/our-work/projects/${getProjectSlug(project.title)}`)}
+                      >
+                        <p style={{ marginBottom: '16px', lineHeight: '1.55', flexGrow: 1 }}>{project.summary}</p>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'auto', paddingTop: '12px', borderTop: '1px solid var(--border-color)' }}>
+                          <span style={{ fontSize: '0.76rem', color: '#64748B', fontWeight: 600 }}>
+                            {project.client ? project.client.split(';')[0] : 'Clark Construction'}
+                          </span>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              navigate(`/our-work/projects/${getProjectSlug(project.title)}`);
+                            }}
+                            style={{
+                              background: 'none',
+                              border: 'none',
+                              color: '#2563EB',
+                              fontWeight: 700,
+                              fontSize: '0.84rem',
+                              cursor: 'pointer',
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '6px',
+                              padding: '4px 0',
+                              transition: 'gap 0.2s ease, color 0.2s ease'
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.color = '#0D1A63';
+                              e.currentTarget.style.gap = '10px';
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.color = '#2563EB';
+                              e.currentTarget.style.gap = '6px';
+                            }}
+                          >
+                            <span>Full Details</span>
+                            <ArrowRight size={14} />
+                          </button>
+                        </div>
+                      </Card>
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
+              </motion.div>
+            ) : (
+              <div style={{ textAlign: 'center', padding: '60px 24px', backgroundColor: '#FFFFFF', borderRadius: '12px', border: '1px solid var(--border-color)', boxShadow: 'var(--shadow-premium)' }}>
+                <HardHat size={48} style={{ color: 'var(--text-muted)', marginBottom: '16px', opacity: 0.5 }} />
+                <h3 style={{ color: 'var(--text-white)', marginBottom: '8px' }}>No Projects Found</h3>
+                <p style={{ color: 'var(--text-muted)', marginBottom: '18px' }}>Try adjusting your filters or search keywords.</p>
+                <Button onClick={clearFilters} variant="secondary" size="sm">
+                  Reset Filters
+                </Button>
+              </div>
+            )
           )}
+
+          {/* Projects View: LIST / TABLE MODE */}
+          {viewMode === 'list' && (
+            filteredProjects.length > 0 ? (
+              <div style={{
+                backgroundColor: '#FFFFFF',
+                borderRadius: '12px',
+                border: '1px solid var(--border-color)',
+                boxShadow: 'var(--shadow-premium)',
+                overflow: 'hidden'
+              }}>
+                <div style={{ overflowX: 'auto' }}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', minWidth: '700px' }}>
+                    <thead>
+                      <tr style={{ backgroundColor: '#F8FAFC', borderBottom: '1px solid var(--border-color)' }}>
+                        <th style={{ padding: '14px 18px', fontSize: '0.75rem', textTransform: 'uppercase', color: '#64748B', fontWeight: 700, letterSpacing: '0.05em' }}>Project</th>
+                        <th style={{ padding: '14px 18px', fontSize: '0.75rem', textTransform: 'uppercase', color: '#64748B', fontWeight: 700, letterSpacing: '0.05em' }}>Sector / Category</th>
+                        <th style={{ padding: '14px 18px', fontSize: '0.75rem', textTransform: 'uppercase', color: '#64748B', fontWeight: 700, letterSpacing: '0.05em' }}>Location</th>
+                        <th style={{ padding: '14px 18px', fontSize: '0.75rem', textTransform: 'uppercase', color: '#64748B', fontWeight: 700, letterSpacing: '0.05em' }}>Key Scope / Specs</th>
+                        <th style={{ padding: '14px 18px', fontSize: '0.75rem', textTransform: 'uppercase', color: '#64748B', fontWeight: 700, letterSpacing: '0.05em', textAlign: 'right' }}>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredProjects.map((project) => (
+                        <tr
+                          key={project.id}
+                          onClick={() => navigate(`/our-work/projects/${getProjectSlug(project.title)}`)}
+                          style={{
+                            borderBottom: '1px solid var(--border-color)',
+                            cursor: 'pointer',
+                            transition: 'all 0.2s ease',
+                            borderLeft: '3px solid transparent'
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.backgroundColor = '#F8FAFC';
+                            e.currentTarget.style.borderLeft = '3px solid #2563EB';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.backgroundColor = '#FFFFFF';
+                            e.currentTarget.style.borderLeft = '3px solid transparent';
+                          }}
+                        >
+                          {/* Project thumbnail & title */}
+                          <td style={{ padding: '14px 18px', verticalAlign: 'middle' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                              <img
+                                src={project.image}
+                                alt={project.title}
+                                loading="lazy"
+                                style={{
+                                  width: '54px',
+                                  height: '42px',
+                                  borderRadius: '6px',
+                                  objectFit: 'cover',
+                                  flexShrink: 0,
+                                  border: '1px solid var(--border-color)',
+                                  transition: 'transform 0.3s ease'
+                                }}
+                              />
+                              <div>
+                                <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-white)', margin: '0 0 2px 0' }}>
+                                  {project.title}
+                                </h4>
+                                <span style={{ fontSize: '0.76rem', color: '#64748B' }}>
+                                  {project.client ? project.client.split(';')[0] : 'Clark Construction'}
+                                </span>
+                              </div>
+                            </div>
+                          </td>
+
+                          {/* Category */}
+                          <td style={{ padding: '14px 18px', verticalAlign: 'middle' }}>
+                            <span style={{
+                              display: 'inline-block',
+                              padding: '4px 10px',
+                              borderRadius: '999px',
+                              backgroundColor: 'rgba(13, 26, 99, 0.06)',
+                              color: 'var(--primary)',
+                              fontSize: '0.78rem',
+                              fontWeight: 700
+                            }}>
+                              {project.category}
+                            </span>
+                          </td>
+
+                          {/* Location */}
+                          <td style={{ padding: '14px 18px', verticalAlign: 'middle', color: '#334155', fontSize: '0.86rem', fontWeight: 600 }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                              <MapPin size={14} color="#64748B" />
+                              <span>{project.location}</span>
+                            </div>
+                          </td>
+
+                          {/* Specs */}
+                          <td style={{ padding: '14px 18px', verticalAlign: 'middle', color: '#64748B', fontSize: '0.82rem', maxWidth: '240px' }}>
+                            {project.specs || project.summary.substring(0, 75) + '...'}
+                          </td>
+
+                          {/* Action */}
+                          <td style={{ padding: '14px 18px', verticalAlign: 'middle', textAlign: 'right' }}>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                navigate(`/our-work/projects/${getProjectSlug(project.title)}`);
+                              }}
+                            >
+                              Case Study
+                            </Button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            ) : (
+              <div style={{ textAlign: 'center', padding: '60px 24px', backgroundColor: '#FFFFFF', borderRadius: '12px', border: '1px solid var(--border-color)', boxShadow: 'var(--shadow-premium)' }}>
+                <HardHat size={48} style={{ color: 'var(--text-muted)', marginBottom: '16px', opacity: 0.5 }} />
+                <h3 style={{ color: 'var(--text-white)', marginBottom: '8px' }}>No Projects Found</h3>
+                <p style={{ color: 'var(--text-muted)', marginBottom: '18px' }}>Try adjusting your filters or search keywords.</p>
+                <Button onClick={clearFilters} variant="secondary" size="sm">
+                  Reset Filters
+                </Button>
+              </div>
+            )
+          )}
+
+          {/* Quick Back to Top bar at bottom */}
+          <div style={{ textAlign: 'center', marginTop: '40px' }}>
+            <button
+              onClick={scrollToTop}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '10px 20px',
+                borderRadius: '999px',
+                border: '1px solid var(--border-color)',
+                backgroundColor: '#FFFFFF',
+                color: 'var(--primary)',
+                cursor: 'pointer',
+                fontSize: '0.85rem',
+                fontWeight: 700,
+                boxShadow: 'var(--shadow-premium)',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#0D1A63';
+                e.currentTarget.style.color = '#FFFFFF';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#FFFFFF';
+                e.currentTarget.style.color = 'var(--primary)';
+              }}
+            >
+              <ArrowUp size={16} /> Back to Top
+            </button>
+          </div>
 
         </div>
       </section>
@@ -1642,7 +2105,7 @@ export default function Projects() {
         {activeProject && (
           <div>
             <ProjectDetailView project={activeProject} />
-            <div style={{ textAlign: 'right', marginTop: '32px', paddingTop: '16px', borderTop: '1px solid var(--border-color)' }}>
+            <div style={{ textAlign: 'right', marginTop: '28px', paddingTop: '16px', borderTop: '1px solid var(--border-color)' }}>
               <Button onClick={() => setActiveProject(null)} variant="secondary">
                 Close Case Study
               </Button>
@@ -1654,3 +2117,5 @@ export default function Projects() {
     </div>
   );
 }
+
+

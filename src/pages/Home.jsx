@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, ShieldCheck, Award, Star, HardHat, HeartHandshake, Zap, Factory, Train, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Award, Star, HardHat, HeartHandshake, Zap, Factory, Train, Building2, Compass, MapPin, ChevronLeft, ChevronRight } from 'lucide-react';
 import Button from '../components/UI/Button';
 import Card from '../components/UI/Card';
 import Modal from '../components/UI/Modal';
 import ProjectDetailView from '../components/UI/ProjectDetailView';
 import AnimatedCounter from '../components/UI/AnimatedCounter';
-import KovvadaNuclearPlantImg from '../assets/kovvada_nuclear_plant.png';
+import DepthCarousel from '../components/UI/DepthCarousel';
+import CircleGallery from '../components/UI/CircleGallery';
 import RailwayMetroImg from '../assets/railway_metro_projects.png';
-import JamnagarRefineryImg from '../assets/jamnagar_refinery.png';
+import NaviMumbaiAirportImg from '../assets/airport.jpg';
+import ChenabBridgeImg from '../assets/Chenab Rail Bridge  USBRL.jpg';
+import DMICImg from '../assets/Delhi-Mumbai Industrial Corridor (DMIC).png';
+import BharatmalaImg from '../assets/Bharatmala Pariyojna.jpg';
+import TataSemiconductorImg from '../assets/Tata Electronics Semiconductor Facility.png';
 import HeroSlide1Img from '../assets/home_hero_slide1.jpg';
 import HeroSlide2Img from '../assets/home_hero_slide2.jpg';
 import HeroSlide3Img from '../assets/home_hero_slide3.jpg';
@@ -26,8 +31,95 @@ import IntelOhioImg from '../assets/Intel Ohio Mega Semiconductor Campus.jpg';
 import MidtownCenterImg from '../assets/midtown center Office.png';
 import FBICentralRobotsImg from '../assets/FBI Central Records Complex robots Technology.png';
 import NewsConcreteImg from '../assets/news_concrete_tech.jpg';
-import GoldAwardSkyscraperImg from '../assets/Gold Award Won for Central Corporate Skyscraper.jpg';
+import GoldAwardSkyscraperImg from '../assets/news_skyscraper_award.jpg';
 import TrainingBimInternshipsImg from '../assets/Training the Next Generation BIM Internships open.jpg';
+import ClarkFoundationsImg from '../assets/Clark Foundations.png';
+import C3MPowerImg from '../assets/C3M Power Systems.png';
+import CrossRiverRailImg from '../assets/cross river rail.png';
+
+const SERVICES_ITEMS = [
+  {
+    id: 1,
+    image: ClarkCivilImg,
+    tag: 'Virtual Design',
+    subtitle: '01. Phase Planning',
+    title: 'Preconstruction & VDC',
+    description: 'We run cost estimates, material stress analyses, and virtual reality BIM simulations to uncover site hazards and reduce budget deviations before ground breaking.',
+    link: '/services'
+  },
+  {
+    id: 2,
+    image: ClarkConcreteImg,
+    tag: 'Heavy Construction',
+    subtitle: '02. Core Execution',
+    title: 'General Contracting',
+    description: 'Overseeing site teams, scheduling subcontractors, enforcing quality parameters, and deploying heavy machinery to construct bridges, mass transit systems, and skyscrapers.',
+    link: '/services'
+  },
+  {
+    id: 3,
+    image: ClarkWaterImg,
+    tag: 'LEED Strategy',
+    subtitle: '03. Green Building',
+    title: 'Sustainability Consulting',
+    description: 'Deploying carbon-capturing foundations, setting up solar energy grids, organizing water reclamation structures, and guaranteeing certification under official LEED frameworks.',
+    link: '/services'
+  },
+  {
+    id: 4,
+    image: FBICentralRobotsImg,
+    tag: 'Automation & AI',
+    subtitle: '04. Smart Systems',
+    title: 'Clark Technologies & BIM',
+    description: 'Autonomous robotics, automated material tracking, 4D construction timeline monitoring, and precision laser scanning for complex high-security facilities.',
+    link: '/services'
+  },
+  {
+    id: 5,
+    image: IntelOhioImg,
+    tag: 'Industrial Mega-Sites',
+    subtitle: '05. High-Tech Execution',
+    title: 'Semiconductor & Cleanrooms',
+    description: 'Ultra-pure vibration-isolated cleanrooms, high-voltage substations, chemical logistics systems, and mega-scale semiconductor fab construction.',
+    link: '/services'
+  },
+  {
+    id: 6,
+    image: MidtownCenterImg,
+    tag: 'Adaptive Interiors',
+    subtitle: '06. Commercial Fit-Out',
+    title: 'Interiors & Modernization',
+    description: 'Architectural finishes, structural mass timber retrofits, acoustic ceilings, high-end tenant fit-outs, and rapid seismic modernization.',
+    link: '/services'
+  },
+  {
+    id: 7,
+    image: CrossRiverRailImg,
+    tag: 'Mobility & Rail',
+    subtitle: '07. Infrastructure',
+    title: 'Civil Transit & Bridges',
+    description: 'Subterranean rail tunneling, high-speed rail lines, elevated highway interchanges, and complex long-span bridge construction.',
+    link: '/services'
+  },
+  {
+    id: 8,
+    image: ClarkFoundationsImg,
+    tag: 'Deep Geotechnical',
+    subtitle: '08. Subsurface Engineering',
+    title: 'Foundations & Shoring',
+    description: 'Slurry diaphragm walls, secant piling, ground freezing, micropiles, and deep seismic base-isolation foundation systems.',
+    link: '/services'
+  },
+  {
+    id: 9,
+    image: C3MPowerImg,
+    tag: 'Power & Grid',
+    subtitle: '09. Renewable Energy',
+    title: 'Clean Energy & Traction',
+    description: 'Traction power substations, utility-scale battery energy storage systems (BESS), solar/wind interconnects, and high-voltage grid works.',
+    link: '/services'
+  }
+];
 
 const HERO_SLIDES = [
   {
@@ -127,8 +219,8 @@ export default function Home() {
   return (
     <div style={{ position: 'relative' }}>
       
-      {/* 1. HERO SLIDER BANNER - NATURAL ORIGINAL VIBRANT IMAGES */}
-      <section style={{ position: 'relative', height: '100vh', overflow: 'hidden', backgroundColor: '#0b0f19' }}>
+      {/* 1. HERO SLIDER BANNER - SAAS PLATFORM AESTHETIC */}
+      <section style={{ position: 'relative', height: '100vh', minHeight: '680px', overflow: 'hidden', backgroundColor: '#071038' }}>
         {HERO_SLIDES.map((slide, index) => (
           <div
             key={index}
@@ -140,25 +232,25 @@ export default function Home() {
               height: '100%',
               opacity: currentSlide === index ? 1 : 0,
               transform: currentSlide === index ? 'scale(1)' : 'scale(1.04)',
-              transition: 'opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 2s ease-out',
+              transition: 'opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 2s ease-out',
               zIndex: currentSlide === index ? 2 : 1
             }}
           >
-            {/* Background Image - Clean 100% Original Photo with Only Soft Text Vignette */}
+            {/* Background Image - Original vibrant architectural image */}
             <div style={{ position: 'relative', width: '100%', height: '100%' }}>
               <img
                 src={slide.image}
                 alt={slide.title}
-                style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'none' }}
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
-              {/* Soft Focused Text Vignette Gradient - Keeps 80% of photo completely clear */}
+              {/* Natural High-Tech Text Vignette */}
               <div style={{
                 position: 'absolute',
                 top: 0,
                 left: 0,
                 right: 0,
                 bottom: 0,
-                background: 'linear-gradient(to right, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.45) 45%, transparent 85%), linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 35%)',
+                background: 'linear-gradient(to right, rgba(7, 16, 56, 0.88) 0%, rgba(7, 16, 56, 0.55) 45%, rgba(7, 16, 56, 0.1) 85%), linear-gradient(to top, rgba(7, 16, 56, 0.75) 0%, transparent 40%)',
                 zIndex: 1
               }} />
             </div>
@@ -174,93 +266,69 @@ export default function Home() {
               flexDirection: 'column',
               justifyContent: 'center',
               alignItems: 'flex-start',
-              paddingBottom: '80px',
+              paddingBottom: '60px',
               zIndex: 3
             }}>
               <div 
                 className="animate-slide-up"
                 style={{ 
-                  maxWidth: '720px'
+                  maxWidth: '750px'
                 }}
               >
-                {/* High Contrast Subtitle Pill Badge */}
-                <div style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  padding: '8px 20px',
-                  borderRadius: '30px',
-                  backgroundColor: 'rgba(13, 26, 99, 0.85)',
-                  border: '1px solid #38bdf8',
-                  color: '#38bdf8',
-                  fontSize: '0.82rem',
-                  fontWeight: 800,
-                  letterSpacing: '0.15em',
-                  textTransform: 'uppercase',
-                  marginBottom: '22px',
-                  boxShadow: '0 4px 15px rgba(0,0,0,0.5)'
-                }}>
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#38bdf8', boxShadow: '0 0 10px #38bdf8' }} />
-                  {slide.subtitle}
+                {/* Hero subtitle */}
+                <div style={{ marginBottom: '16px' }}>
+                  <span className="subtitle-amber" style={{ letterSpacing: '0.08em', textTransform: 'uppercase', fontSize: '0.85rem', fontWeight: 800 }}>
+                    {slide.subtitle}
+                  </span>
                 </div>
 
-                {/* High Impact Pure White Headline */}
+                {/* Headline */}
                 <h1 style={{
-                  fontSize: 'clamp(2.6rem, 5.4vw, 4.4rem)',
-                  lineHeight: '1.1',
-                  marginBottom: '22px',
-                  fontWeight: 900,
+                  fontSize: 'clamp(2.8rem, 5.2vw, 4.4rem)',
+                  lineHeight: '1.12',
+                  marginBottom: '20px',
+                  fontWeight: 800,
                   color: '#FFFFFF',
-                  letterSpacing: '-0.02em',
-                  textShadow: '0 4px 25px rgba(0, 0, 0, 0.9), 0 2px 8px rgba(0, 0, 0, 0.9)'
+                  letterSpacing: '-0.03em'
                 }}>
                   {slide.title}
                 </h1>
 
-                {/* Crisp Light Description */}
+                {/* Description */}
                 <p style={{
-                  color: '#FFFFFF',
-                  fontSize: '1.15rem',
+                  color: '#CBD5E1',
+                  fontSize: '1.12rem',
                   lineHeight: '1.7',
-                  marginBottom: '38px',
-                  maxWidth: '640px',
-                  textShadow: '0 2px 12px rgba(0, 0, 0, 0.95), 0 1px 4px rgba(0, 0, 0, 0.95)'
+                  marginBottom: '36px',
+                  maxWidth: '620px'
                 }}>
                   {slide.description}
                 </p>
 
-                {/* High Contrast Solid CTAs */}
-                <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+                {/* Clean SaaS Action Buttons */}
+                <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'center' }}>
                   <Button 
                     to={slide.ctaLink} 
+                    variant="primary"
+                    size="lg"
+                    icon={ArrowRight}
+                    iconPosition="right"
                     style={{
-                      backgroundColor: '#0D1A63',
-                      color: '#FFFFFF',
-                      border: '1px solid #2563eb',
-                      boxShadow: '0 6px 20px rgba(13, 26, 99, 0.6)',
-                      padding: '16px 32px',
-                      fontSize: '1rem',
-                      fontWeight: 700,
-                      borderRadius: '8px',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.05em'
+                      backgroundColor: '#2563EB',
+                      borderColor: '#2563EB',
+                      boxShadow: '0 4px 18px rgba(37, 99, 235, 0.35)'
                     }}
                   >
                     {slide.ctaText}
                   </Button>
                   <Button 
                     to="/contact" 
+                    variant="glass"
+                    size="lg"
                     style={{
-                      backgroundColor: '#1E293B',
-                      border: '1px solid #475569',
-                      color: '#FFFFFF',
-                      padding: '16px 32px',
-                      fontSize: '1rem',
-                      fontWeight: 700,
-                      borderRadius: '8px',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.05em',
-                      boxShadow: '0 4px 15px rgba(0, 0, 0, 0.5)'
+                      backgroundColor: 'rgba(255, 255, 255, 0.12)',
+                      borderColor: 'rgba(255, 255, 255, 0.25)',
+                      color: '#FFFFFF'
                     }}
                   >
                     Request Quote
@@ -274,7 +342,7 @@ export default function Home() {
         {/* Hero Slider Controls Bar (Bottom Left & Right) */}
         <div className="container" style={{
           position: 'absolute',
-          bottom: '120px',
+          bottom: '95px',
           left: 0,
           right: 0,
           display: 'flex',
@@ -283,25 +351,34 @@ export default function Home() {
           zIndex: 10,
           pointerEvents: 'none'
         }}>
-          {/* Slide Numbers & Progress Bars */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', pointerEvents: 'auto' }}>
-            <span style={{ fontSize: '1rem', fontWeight: 800, color: '#38bdf8', letterSpacing: '0.1em' }}>
-              {String(currentSlide + 1).padStart(2, '0')} <span style={{ color: 'rgba(255,255,255,0.5)', fontWeight: 400 }}>/ {String(HERO_SLIDES.length).padStart(2, '0')}</span>
+          {/* SaaS Slide Counter Pill */}
+          <div style={{ 
+            display: 'inline-flex', 
+            alignItems: 'center', 
+            gap: '14px', 
+            backgroundColor: 'rgba(7, 16, 56, 0.65)', 
+            backdropFilter: 'blur(12px)',
+            padding: '8px 18px',
+            borderRadius: '9999px',
+            border: '1px solid rgba(255, 255, 255, 0.15)',
+            pointerEvents: 'auto' 
+          }}>
+            <span style={{ fontSize: '0.88rem', fontWeight: 800, color: '#FFFFFF', letterSpacing: '0.06em' }}>
+              {String(currentSlide + 1).padStart(2, '0')} <span style={{ color: 'rgba(255,255,255,0.4)', fontWeight: 400 }}>/ {String(HERO_SLIDES.length).padStart(2, '0')}</span>
             </span>
-            <div style={{ display: 'flex', gap: '8px' }}>
+            <div style={{ display: 'flex', gap: '6px' }}>
               {HERO_SLIDES.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentSlide(index)}
                   style={{
-                    width: currentSlide === index ? '45px' : '14px',
-                    height: '4px',
+                    width: currentSlide === index ? '28px' : '10px',
+                    height: '3px',
                     borderRadius: '2px',
-                    backgroundColor: currentSlide === index ? '#38bdf8' : 'rgba(255, 255, 255, 0.25)',
-                    boxShadow: currentSlide === index ? '0 0 12px #38bdf8' : 'none',
+                    backgroundColor: currentSlide === index ? '#38BDF8' : 'rgba(255, 255, 255, 0.3)',
                     border: 'none',
                     cursor: 'pointer',
-                    transition: 'all 0.4s ease'
+                    transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
                   }}
                   title={`Go to slide ${index + 1}`}
                 />
@@ -310,154 +387,114 @@ export default function Home() {
           </div>
 
           {/* Slider Prev / Next Arrows */}
-          <div style={{ display: 'flex', gap: '10px', pointerEvents: 'auto' }}>
+          <div style={{ display: 'flex', gap: '8px', pointerEvents: 'auto' }}>
             <button
               onClick={prevSlide}
+              aria-label="Previous slide"
               style={{
-                width: '46px',
-                height: '46px',
+                width: '40px',
+                height: '40px',
                 borderRadius: '50%',
-                backgroundColor: 'rgba(8, 22, 60, 0.7)',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(56, 189, 248, 0.4)',
+                backgroundColor: 'rgba(7, 16, 56, 0.65)',
+                backdropFilter: 'blur(12px)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
                 color: '#FFF',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: 'pointer',
-                transition: 'var(--transition-fast)'
+                transition: 'all 0.2s ease'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#2563eb';
-                e.currentTarget.style.borderColor = '#60a5fa';
+                e.currentTarget.style.backgroundColor = '#2563EB';
+                e.currentTarget.style.borderColor = '#2563EB';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(8, 22, 60, 0.7)';
-                e.currentTarget.style.borderColor = 'rgba(56, 189, 248, 0.4)';
+                e.currentTarget.style.backgroundColor = 'rgba(7, 16, 56, 0.65)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
               }}
-              title="Previous Slide"
             >
-              <ChevronLeft size={20} />
+              <ChevronLeft size={18} />
             </button>
             <button
               onClick={nextSlide}
+              aria-label="Next slide"
               style={{
-                width: '46px',
-                height: '46px',
+                width: '40px',
+                height: '40px',
                 borderRadius: '50%',
-                backgroundColor: 'rgba(8, 22, 60, 0.7)',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(56, 189, 248, 0.4)',
+                backgroundColor: 'rgba(7, 16, 56, 0.65)',
+                backdropFilter: 'blur(12px)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
                 color: '#FFF',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: 'pointer',
-                transition: 'var(--transition-fast)'
+                transition: 'all 0.2s ease'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#2563eb';
-                e.currentTarget.style.borderColor = '#60a5fa';
+                e.currentTarget.style.backgroundColor = '#2563EB';
+                e.currentTarget.style.borderColor = '#2563EB';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(8, 22, 60, 0.7)';
-                e.currentTarget.style.borderColor = 'rgba(56, 189, 248, 0.4)';
+                e.currentTarget.style.backgroundColor = 'rgba(7, 16, 56, 0.65)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
               }}
-              title="Next Slide"
             >
-              <ChevronRight size={20} />
+              <ChevronRight size={18} />
             </button>
-          </div>
-        </div>
-
-        {/* Bouncing Scroll Indicator */}
-        <div 
-          className="animate-bounce-down"
-          style={{
-            position: 'absolute',
-            bottom: '135px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '6px',
-            zIndex: 10,
-            cursor: 'pointer',
-            opacity: 0.9
-          }}
-          onClick={() => {
-            window.scrollTo({
-              top: window.innerHeight - 60,
-              behavior: 'smooth'
-            });
-          }}
-        >
-          <span style={{ fontSize: '0.65rem', fontWeight: 800, color: '#38bdf8', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Scroll</span>
-          <div style={{
-            width: '18px',
-            height: '28px',
-            borderRadius: '9px',
-            border: '2px solid rgba(56, 189, 248, 0.6)',
-            position: 'relative'
-          }}>
-            <div style={{
-              width: '4px',
-              height: '6px',
-              borderRadius: '2px',
-              backgroundColor: '#38bdf8',
-              position: 'absolute',
-              top: '4px',
-              left: '50%',
-              transform: 'translateX(-50%)'
-            }} />
           </div>
         </div>
       </section>
 
-      {/* 2. STATS SECTION - PREMIUM WHITE GLASS BAR WITH NAVY BLUE TEXT */}
-      <section style={{ position: 'relative', zIndex: 10, marginTop: '-55px', padding: '0 24px' }}>
+      {/* 2. STATS SECTION - SAAS BENTO METRICS BAR */}
+      <section style={{ position: 'relative', zIndex: 10, marginTop: '-50px', padding: '0 24px' }}>
         <div className="container" style={{
-          backgroundColor: 'rgba(255, 255, 255, 0.96)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-          border: '1px solid rgba(13, 26, 99, 0.12)',
-          borderTop: '4px solid var(--primary)',
+          backgroundColor: '#FFFFFF',
+          border: '1px solid var(--border-color)',
           borderRadius: '16px',
-          boxShadow: 'var(--shadow-premium), 0 20px 45px -15px rgba(13, 26, 99, 0.18)',
-          padding: '36px 32px'
+          boxShadow: 'var(--shadow-mercury)',
+          padding: '32px 28px'
         }}>
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '30px',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+            gap: '24px',
             textAlign: 'center'
           }}>
             {[
-              { label: 'Completed Projects', value: 480, suffix: '+', prefix: '' },
-              { label: 'Accident-Free Hours', value: 1.5, suffix: 'M', prefix: '' },
-              { label: 'LEED Certified Sites', value: 75, suffix: '+', prefix: '' },
-              { label: 'Years of Integrity', value: 50, suffix: '', prefix: '' }
+              { label: 'Completed Projects', value: 480, suffix: '+', prefix: '', tag: 'Verified Delivery' },
+              { label: 'Accident-Free Hours', value: 1.5, suffix: 'M', prefix: '', tag: 'Zero-Incident Target' },
+              { label: 'LEED Certified Sites', value: 75, suffix: '+', prefix: '', tag: 'Eco-Compliant' },
+              { label: 'Years of Integrity', value: 50, suffix: '', prefix: '', tag: 'Enterprise Trust' }
             ].map((stat, i) => (
               <div 
                 key={i} 
                 className="stat-col"
                 style={{ 
-                  borderRight: i < 3 ? '1px solid rgba(13, 26, 99, 0.1)' : 'none',
-                  transition: 'var(--transition-normal)',
+                  borderRight: i < 3 ? '1px solid var(--border-color)' : 'none',
+                  padding: '12px 16px',
+                  transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
                   cursor: 'default'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-4px)';
+                  e.currentTarget.style.transform = 'translateY(-3px)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'none';
                 }}
               >
-                <h3 style={{ fontSize: '3.4rem', color: 'var(--primary)', fontWeight: 900, marginBottom: '4px' }}>
-                  <AnimatedCounter end={stat.value} suffix={stat.suffix} prefix={stat.prefix} duration={2500} />
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
+                  <span className="saas-dot" style={{ backgroundColor: '#2563EB' }}></span>
+                  <span style={{ fontSize: '0.72rem', color: '#64748B', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                    {stat.tag}
+                  </span>
+                </div>
+                <h3 style={{ fontSize: '3.1rem', color: 'var(--primary)', fontWeight: 800, marginBottom: '2px', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
+                  <AnimatedCounter end={stat.value} suffix={stat.suffix} prefix={stat.prefix} duration={2200} />
                 </h3>
-                <span style={{ fontSize: '0.85rem', color: '#334155', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 700 }}>
+                <span style={{ fontSize: '0.82rem', color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700 }}>
                   {stat.label}
                 </span>
               </div>
@@ -466,86 +503,95 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. COMPANY INTRODUCTION */}
+      {/* 3. COMPANY INTRODUCTION - SAAS MODULAR BENTO */}
       <section className="section-padding" style={{ backgroundColor: 'var(--bg-deep)' }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px', alignItems: 'center' }}>
+        <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '50px', alignItems: 'center' }}>
           
-          {/* Visual element with floating badge */}
-          <div className="img-overlay-wrapper" style={{ height: '480px', position: 'relative' }}>
+          {/* Left Visual Bento Element */}
+          <div className="img-overlay-wrapper" style={{ height: '490px', position: 'relative', borderRadius: '16px', border: '1px solid var(--border-color)' }}>
             <img
               src={ClarkCivilImg}
               alt="Clark Construction heavy civil infrastructure project"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }}
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
-            {/* Floating Est. 1976 glass badge */}
+            {/* Floating SaaS Badge */}
             <div style={{
               position: 'absolute',
-              top: '24px',
-              right: '-12px',
-              backgroundColor: 'rgba(255, 255, 255, 0.85)',
-              backdropFilter: 'blur(12px)',
-              border: '1px solid rgba(255, 255, 255, 0.5)',
-              padding: '16px 24px',
-              borderRadius: '8px',
-              boxShadow: 'var(--shadow-premium), 0 10px 20px -5px rgba(13,26,99,0.1)',
+              top: '20px',
+              right: '20px',
+              backgroundColor: 'rgba(255, 255, 255, 0.95)',
+              backdropFilter: 'blur(16px)',
+              border: '1px solid var(--border-color)',
+              padding: '12px 20px',
+              borderRadius: '10px',
+              boxShadow: 'var(--shadow-mercury)',
               zIndex: 4,
               textAlign: 'center'
             }}>
-              <span style={{ display: 'block', fontSize: '1.8rem', fontWeight: 900, color: 'var(--primary)', lineHeight: 1 }}>50+</span>
-              <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '0.05em' }}>Years of Quality</span>
+              <span style={{ display: 'block', fontSize: '1.6rem', fontWeight: 900, color: 'var(--primary)', lineHeight: 1 }}>50+</span>
+              <span style={{ fontSize: '0.68rem', color: '#64748B', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '0.06em' }}>Years of Quality</span>
             </div>
 
-             <div style={{
+            {/* Bottom Platform Specs Drawer */}
+            <div style={{
               position: 'absolute',
-              bottom: '24px',
-              left: '24px',
-              right: '24px',
-              backgroundColor: 'rgba(13, 26, 99, 0.9)',
-              backdropFilter: 'blur(12px)',
-              border: '1px solid rgba(255, 255, 255, 0.15)',
-              padding: '24px',
-              borderRadius: '6px',
+              bottom: '20px',
+              left: '20px',
+              right: '20px',
+              backgroundColor: 'rgba(7, 16, 56, 0.94)',
+              backdropFilter: 'blur(16px)',
+              border: '1px solid rgba(255, 255, 255, 0.12)',
+              padding: '20px 24px',
+              borderRadius: '10px',
               zIndex: 3,
-              boxShadow: '0 10px 30px rgba(0,0,0,0.15)'
+              boxShadow: '0 12px 30px rgba(0,0,0,0.3)'
             }}>
-              <h4 style={{ color: '#FFF', marginBottom: '8px', fontSize: '1.1rem', fontWeight: 700 }}>Built to Last</h4>
-              <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.85rem', lineHeight: '1.5' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+                <span className="saas-dot-green"></span>
+                <h4 style={{ color: '#FFF', fontSize: '1rem', fontWeight: 700, margin: 0 }}>Built to Last Standard</h4>
+              </div>
+              <p style={{ color: '#94A3B8', fontSize: '0.84rem', lineHeight: '1.5', margin: 0 }}>
                 Every pillar we cast and steel beam we rivet is backed by a legacy of zero compromising on security, timeline, or environmental footprint.
               </p>
             </div>
           </div>
 
-          {/* Text content */}
+          {/* Right Text & Bento Feature Grid */}
           <div>
-            <span className="subtitle-amber">Who We Are</span>
-            <h2 style={{ fontSize: '2.5rem', marginBottom: '24px', lineHeight: '1.2' }}>
+            <h2 style={{ fontSize: '2.5rem', marginBottom: '18px', lineHeight: '1.18', letterSpacing: '-0.025em' }}>
               Shaping Tomorrow's Horizons with Rigor and Craft
             </h2>
-            <p style={{ color: 'var(--text-primary)', marginBottom: '18px', fontSize: '1rem', lineHeight: '1.7' }}>
+            <p style={{ color: 'var(--text-primary)', marginBottom: '24px', fontSize: '0.98rem', lineHeight: '1.7' }}>
               Founded on the values of safety, transparency, and innovation, Clark Construction is a leading heavy civil construction, commercial design-build, and development company. We deliver complex infrastructure solutions across Aviation, Healthcare, transit lines, and sustainable residential communities.
             </p>
             
-            {/* Core Values Grid */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '32px', marginTop: '24px' }}>
+            {/* Core Values Bento Grid */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px', marginBottom: '32px' }}>
               {[
                 { title: 'LiDAR & VDC Workflow', desc: 'Minimizing risk using drone telemetry and BIM models.' },
                 { title: 'Zero-Incident Standard', desc: 'Rigorous safety routines resulting in zero active site injuries.' },
                 { title: 'Low-Carbon Building', desc: 'Pioneering eco-friendly concrete and LEED consulting.' },
                 { title: 'Legacy of Trust', desc: 'Delivering infrastructure projects since 1976.' }
               ].map((val, idx) => (
-                <div key={idx} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-                  <span style={{ color: 'var(--primary)', fontWeight: 900, fontSize: '1.1rem', lineHeight: 1 }}>✓</span>
-                  <div>
-                    <h5 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-white)', marginBottom: '2px' }}>{val.title}</h5>
-                    <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: '1.4' }}>{val.desc}</p>
+                <div key={idx} style={{ 
+                  backgroundColor: '#FFFFFF', 
+                  border: '1px solid var(--border-color)', 
+                  padding: '14px 16px', 
+                  borderRadius: '8px',
+                  boxShadow: '0 1px 2px rgba(0,0,0,0.03)'
+                }}>
+                  <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '4px' }}>
+                    <span style={{ color: '#2563EB', fontWeight: 900, fontSize: '0.9rem' }}>✓</span>
+                    <h5 style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--text-white)', margin: 0 }}>{val.title}</h5>
                   </div>
+                  <p style={{ fontSize: '0.78rem', color: '#64748B', lineHeight: '1.4', margin: 0 }}>{val.desc}</p>
                 </div>
               ))}
             </div>
 
-            <div style={{ display: 'flex', gap: '20px' }}>
-              <Button to="/about" variant="primary">
-                Learn About Clark Construction
+            <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
+              <Button to="/about" variant="primary" icon={ArrowRight} iconPosition="right">
+                Learn About Clark
               </Button>
               <Button to="/services" variant="secondary">
                 Our Services
@@ -556,60 +602,49 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3.5. GOVERNMENT & INSTITUTIONAL PARTNERSHIP IN INDIA */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--bg-card)', borderTop: '1px solid var(--border-color)', overflow: 'hidden' }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '60px', alignItems: 'center' }}>
+      {/* 3.5. GOVERNMENT & INSTITUTIONAL PARTNERSHIP IN INDIA - 3D FLYING POSTERS */}
+      <section className="section-padding" style={{ backgroundColor: '#FFFFFF', borderTop: '1px solid var(--border-color)', overflow: 'hidden' }}>
+        <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '50px', alignItems: 'center' }}>
           
-          {/* Left Column: Details */}
+          {/* Left Column: Details & Project Selector */}
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-              <span style={{ width: '32px', height: '3px', backgroundColor: 'var(--primary)', display: 'inline-block' }} />
-              <span style={{
-                color: 'var(--primary)',
-                fontFamily: 'var(--font-heading)',
-                fontSize: '0.85rem',
-                fontWeight: 800,
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase'
-              }}>
-                Clark Construction
-              </span>
-            </div>
-            
-            <h2 style={{ fontSize: '2.5rem', marginBottom: '16px', lineHeight: '1.2' }}>
+            <h2 style={{ fontSize: '2.4rem', marginBottom: '14px', lineHeight: '1.2', letterSpacing: '-0.025em' }}>
               Government & Institutional Partnership in India
             </h2>
             
-            <p style={{ color: 'var(--text-primary)', marginBottom: '32px', fontSize: '1rem', lineHeight: '1.6' }}>
+            <p style={{ color: 'var(--text-primary)', marginBottom: '24px', fontSize: '0.96rem', lineHeight: '1.6' }}>
               Strategic collaborations driving national development and infrastructure modernization across the Republic of India.
             </p>
 
-            {/* List of projects */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '32px' }}>
+            {/* List of projects as SaaS Segmented Cards */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '24px' }}>
               {[
                 {
                   id: 0,
-                  title: 'Kovvada Nuclear Power Plant',
-                  desc: 'Strategic energy infrastructure in Andhra Pradesh, powering India\'s industrial growth.',
-                  metric: '6 AP1000 Reactors',
-                  partner: 'NPCIL & Westinghouse',
-                  icon: <Zap size={20} />
-                },
-                {
-                  id: 1,
-                  title: 'Reliance Jamnagar Refinery',
-                  desc: 'World-class industrial engineering for the world\'s largest oil refinery complex.',
-                  metric: '1.24M Barrels / Day',
-                  partner: 'Reliance Industries',
-                  icon: <Factory size={20} />
-                },
-                {
-                  id: 2,
                   title: 'Railway and Metro projects',
                   desc: 'Historically well known for Delhi Metro consulting roles and similar work on other rail/metro programs.',
                   metric: 'Transit Consulting & PM',
                   partner: 'Delhi Metro Rail Corp',
-                  icon: <Train size={20} />
+                  location: 'Delhi NCR & Pan-India',
+                  icon: <Train size={18} />
+                },
+                {
+                  id: 1,
+                  title: 'Navi Mumbai International Airport',
+                  desc: 'Major greenfield international airport development including multi-level passenger terminals.',
+                  metric: '60M+ Annual Passenger Capacity',
+                  partner: 'Airport Authority of India',
+                  location: 'Navi Mumbai, Maharashtra, India',
+                  icon: <ShieldCheck size={18} />
+                },
+                {
+                  id: 2,
+                  title: 'Chenab Rail Bridge (USBRL)',
+                  desc: 'Structural steel erection and engineering supervision for the world\'s highest railway arch bridge.',
+                  metric: '359m Above River Bed',
+                  partner: 'Northern Railways & USBRL',
+                  location: 'Jammu & Kashmir, India',
+                  icon: <Award size={18} />
                 }
               ].map((project) => {
                 const isActive = activeProject === project.id;
@@ -620,63 +655,62 @@ export default function Home() {
                     onMouseEnter={() => setActiveProject(project.id)}
                     style={{
                       display: 'flex',
-                      gap: '20px',
-                      padding: '20px',
-                      borderRadius: '8px',
-                      backgroundColor: isActive ? 'rgba(13, 26, 99, 0.03)' : 'transparent',
-                      border: isActive ? '1px solid rgba(13, 26, 99, 0.15)' : '1px solid transparent',
+                      gap: '16px',
+                      padding: '16px 18px',
+                      borderRadius: '10px',
+                      backgroundColor: isActive ? '#F8FAFC' : '#FFFFFF',
+                      border: isActive ? '1px solid #2563EB' : '1px solid var(--border-color)',
                       cursor: 'pointer',
-                      transition: 'var(--transition-normal)',
-                      alignItems: 'flex-start'
+                      transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
+                      alignItems: 'flex-start',
+                      boxShadow: isActive ? '0 4px 14px rgba(37, 99, 235, 0.12)' : 'none'
                     }}
                   >
                     <div style={{
-                      width: '48px',
-                      height: '48px',
+                      width: '40px',
+                      height: '40px',
                       borderRadius: '8px',
-                      backgroundColor: isActive ? 'var(--primary)' : 'rgba(13, 26, 99, 0.05)',
+                      backgroundColor: isActive ? '#2563EB' : 'rgba(13, 26, 99, 0.06)',
                       color: isActive ? '#FFF' : 'var(--primary)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       flexShrink: 0,
-                      transition: 'var(--transition-fast)',
-                      boxShadow: isActive ? 'var(--shadow-glow-blue)' : 'none'
+                      transition: 'all 0.2s ease',
                     }}>
                       {project.icon}
                     </div>
-                    <div>
+                    <div style={{ flexGrow: 1 }}>
                       <h4 style={{ 
-                        fontSize: '1.15rem', 
+                        fontSize: '1.05rem', 
                         color: 'var(--text-white)', 
-                        marginBottom: '6px', 
+                        marginBottom: '4px', 
                         fontWeight: 700,
-                        transition: 'var(--transition-fast)'
                       }}>
                         {project.title}
                       </h4>
-                      <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: '1.5' }}>
+                      <p style={{ color: '#64748B', fontSize: '0.86rem', lineHeight: '1.5', margin: 0 }}>
                         {project.desc}
                       </p>
                       
-                      {/* Sub metrics details - Expand smoothly on active */}
+                      {/* Sub metrics details */}
                       <div style={{
-                        maxHeight: isActive ? '60px' : '0',
+                        maxHeight: isActive ? '50px' : '0',
                         opacity: isActive ? '1' : '0',
                         overflow: 'hidden',
-                        transition: 'all 0.4s ease-in-out',
-                        marginTop: isActive ? '12px' : '0',
+                        transition: 'all 0.3s ease-in-out',
+                        marginTop: isActive ? '8px' : '0',
                         display: 'flex',
-                        gap: '24px',
+                        gap: '20px',
                         fontSize: '0.75rem'
                       }}>
                         <div>
-                          <span style={{ color: 'var(--text-muted)', display: 'block', textTransform: 'uppercase', fontSize: '0.65rem', fontWeight: 600 }}>Capacity / Scope</span>
-                          <span style={{ color: 'var(--primary)', fontWeight: 700 }}>{project.metric}</span>
+                          <span style={{ color: '#94A3B8', display: 'block', textTransform: 'uppercase', fontSize: '0.65rem', fontWeight: 700 }}>Capacity / Scope</span>
+                          <span style={{ color: '#2563EB', fontWeight: 800 }}>{project.metric}</span>
                         </div>
                         <div>
-                          <span style={{ color: 'var(--text-muted)', display: 'block', textTransform: 'uppercase', fontSize: '0.65rem', fontWeight: 600 }}>Key Partner</span>
-                          <span style={{ color: 'var(--text-white)', fontWeight: 600 }}>{project.partner}</span>
+                          <span style={{ color: '#94A3B8', display: 'block', textTransform: 'uppercase', fontSize: '0.65rem', fontWeight: 700 }}>Key Partner</span>
+                          <span style={{ color: 'var(--text-white)', fontWeight: 700 }}>{project.partner}</span>
                         </div>
                       </div>
                     </div>
@@ -690,80 +724,70 @@ export default function Home() {
             </Button>
           </div>
 
-          {/* Right Column: Dynamic Image Showcase with Stacked Images */}
+          {/* Right Column: 3D DepthCarousel Showcase (Floating in Open Air) */}
           <div style={{ 
-            height: '460px', 
-            borderRadius: '16px', 
-            overflow: 'hidden', 
+            height: '490px', 
             position: 'relative',
-            boxShadow: 'var(--shadow-premium), 0 20px 40px -10px rgba(0,0,0,0.15)'
+            background: 'transparent',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            overflow: 'visible'
           }}>
-            {[
-              { id: 0, image: KovvadaNuclearPlantImg, alt: 'Kovvada Nuclear Power Plant' },
-              { id: 1, image: JamnagarRefineryImg, alt: 'Reliance Jamnagar Refinery' },
-              { id: 2, image: RailwayMetroImg, alt: 'Railway and Metro Projects' }
-            ].map((imgData) => (
-              <img
-                key={imgData.id}
-                src={imgData.image}
-                alt={imgData.alt}
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  opacity: activeProject === imgData.id ? 1 : 0,
-                  transform: activeProject === imgData.id ? 'scale(1.03)' : 'scale(1)',
-                  transition: 'opacity 0.6s ease-in-out, transform 1s ease-in-out',
-                  zIndex: activeProject === imgData.id ? 2 : 1
-                }}
+            {/* DepthCarousel Component Floating in Air */}
+            <div style={{ width: '100%', height: '400px', position: 'relative' }}>
+              <DepthCarousel
+                items={[
+                  { image: RailwayMetroImg, alt: 'Railway and Metro projects' },
+                  { image: NaviMumbaiAirportImg, alt: 'Navi Mumbai International Airport' },
+                  { image: ChenabBridgeImg, alt: 'Chenab Rail Bridge (USBRL)' }
+                ]}
+                depth={220}
+                spread={85}
+                tilt={22}
+                tiltDirection="right"
+                perspective={1400}
+                visibleCards={3}
+                falloff={0.2}
+                blur={5}
+                cardWidth={300}
+                cardHeight={360}
+                autoplay={true}
+                autoplayDelay={3200}
+                loop={true}
+                showControls={true}
+                showIndicators={true}
+                onChange={(index) => setActiveProject(index)}
               />
-            ))}
+            </div>
 
-            {/* Subtle Gradient Overlay */}
+            {/* Dynamic Floating Telemetry Card */}
             <div style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              background: 'linear-gradient(to top, rgba(8, 10, 16, 0.7) 0%, transparent 50%)',
-              zIndex: 3
-            }} />
-
-            {/* Dynamic Glass Specs Overlay Card */}
-            <div style={{
-              position: 'absolute',
-              bottom: '24px',
-              left: '24px',
-              right: '24px',
-              backgroundColor: 'rgba(255, 255, 255, 0.85)',
-              backdropFilter: 'blur(12px)',
-              WebkitBackdropFilter: 'blur(12px)',
-              border: '1px solid rgba(255, 255, 255, 0.4)',
-              borderRadius: '8px',
-              padding: '16px 20px',
-              zIndex: 4,
-              boxShadow: 'var(--shadow-premium), 0 10px 20px rgba(0,0,0,0.1)',
+              width: '100%',
+              maxWidth: '440px',
+              backgroundColor: '#FFFFFF',
+              border: '1px solid var(--border-color)',
+              borderRadius: '12px',
+              padding: '14px 20px',
+              zIndex: 3500,
+              boxShadow: 'var(--shadow-mercury)',
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
-              transform: 'translateY(0)',
-              transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)'
+              marginTop: '10px'
             }}>
               <div>
-                <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase', display: 'block', fontWeight: 700, letterSpacing: '0.05em' }}>Location</span>
-                <span style={{ color: 'var(--primary)', fontWeight: 800, fontSize: '0.9rem' }}>
-                  {activeProject === 0 && 'Andhra Pradesh, India'}
-                  {activeProject === 1 && 'Jamnagar, Gujarat, India'}
-                  {activeProject === 2 && 'Delhi Metro & Global, India'}
+                <span style={{ fontSize: '0.65rem', color: '#64748B', textTransform: 'uppercase', display: 'block', fontWeight: 700, letterSpacing: '0.06em' }}>Location</span>
+                <span style={{ color: 'var(--primary)', fontWeight: 800, fontSize: '0.88rem' }}>
+                  {activeProject === 0 && 'Delhi NCR & Pan-India'}
+                  {activeProject === 1 && 'Navi Mumbai, Maharashtra, India'}
+                  {activeProject === 2 && 'Jammu & Kashmir, India'}
                 </span>
               </div>
               <div style={{ textAlign: 'right' }}>
-                <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase', display: 'block', fontWeight: 700, letterSpacing: '0.05em' }}>Sub Contractor</span>
-                <span style={{ color: 'var(--primary)', fontWeight: 800, fontSize: '0.9rem' }}>Clark Construction</span>
+                <span style={{ fontSize: '0.65rem', color: '#64748B', textTransform: 'uppercase', display: 'block', fontWeight: 700, letterSpacing: '0.06em' }}>Sub Contractor</span>
+                <span style={{ color: 'var(--primary)', fontWeight: 800, fontSize: '0.88rem' }}>Clark Construction</span>
               </div>
             </div>
           </div>
@@ -771,75 +795,47 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. SERVICES OVERVIEW */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--bg-card)', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
+      {/* 4. SERVICES OVERVIEW - 3D CIRCLE GALLERY */}
+      <section className="section-padding" style={{ backgroundColor: 'var(--bg-deep)', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)', overflow: 'hidden' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 60px auto' }}>
-            <span className="subtitle-amber">Our Core Expertise</span>
-            <h2 style={{ fontSize: '2.5rem', marginBottom: '16px' }}>Services Crafted for Complexity</h2>
-            <p style={{ color: 'var(--text-muted)' }}>
+          <div style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto 30px auto' }}>
+            <h2 style={{ fontSize: '2.4rem', marginBottom: '12px', letterSpacing: '-0.025em' }}>Services Crafted for Complexity</h2>
+            <p style={{ color: '#64748B', fontSize: '0.96rem' }}>
               From initial planning and environmental checks to casting final foundations, we manage the entire project lifecycle with engineering excellence.
             </p>
           </div>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '30px'
-          }}>
-            <Card
-              image={ClarkCivilImg}
-              title="Preconstruction & VDC"
-              subtitle="01. Phase Planning"
-              tag="Virtual Design"
-              hoverEffect="glow"
-            >
-              We run cost estimates, material stress analyses, and virtual reality BIM simulations to uncover site hazards and reduce budget deviations before ground breaking.
-            </Card>
+          <CircleGallery
+            items={SERVICES_ITEMS}
+            radius={450}
+            depth={160}
+            cardWidth={250}
+            cardHeight={325}
+            autoRotate={true}
+            autoRotateSpeed={0.28}
+          />
 
-            <Card
-              image={ClarkConcreteImg}
-              title="General Contracting"
-              subtitle="02. Core Execution"
-              tag="Heavy Construction"
-              hoverEffect="glow"
-            >
-              Overseeing site teams, scheduling subcontractors, enforcing quality parameters, and deploying heavy machinery to construct bridges, mass transit systems, and skyscrapers.
-            </Card>
-
-            <Card
-              image={ClarkWaterImg}
-              title="Sustainability Consulting"
-              subtitle="03. Green Building"
-              tag="LEED Strategy"
-              hoverEffect="glow"
-            >
-              Deploying carbon-capturing foundations, setting up solar energy grids, organizing water reclamation structures, and guaranteeing certification under official LEED frameworks.
-            </Card>
-          </div>
-
-          <div style={{ textAlign: 'center', marginTop: '48px' }}>
-            <Button to="/services" variant="outline" size="lg">
-              Explore All Services <ArrowRight size={16} style={{ marginLeft: '6px' }} />
+          <div style={{ textAlign: 'center', marginTop: '36px' }}>
+            <Button to="/services" variant="outline" size="lg" icon={ArrowRight} iconPosition="right">
+              Explore All Services
             </Button>
           </div>
         </div>
       </section>
 
-      {/* 5. WHY CHOOSE US (INTERACTIVE TABS) */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--bg-deep)' }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px', alignItems: 'center' }}>
+      {/* 5. WHY CHOOSE US (SEGMENTED CONTROL TABS) */}
+      <section className="section-padding" style={{ backgroundColor: '#FFFFFF' }}>
+        <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '50px', alignItems: 'center' }}>
           
           {/* Left Column: Info & Tabs */}
           <div>
-            <span className="subtitle-amber">The Clark Advantage</span>
-            <h2 style={{ fontSize: '2.5rem', marginBottom: '24px' }}>Building Safely, Constructing Responsibly</h2>
-            <p style={{ color: 'var(--text-primary)', marginBottom: '32px' }}>
+            <h2 style={{ fontSize: '2.4rem', marginBottom: '16px', letterSpacing: '-0.025em' }}>Building Safely, Constructing Responsibly</h2>
+            <p style={{ color: 'var(--text-primary)', marginBottom: '24px', fontSize: '0.96rem' }}>
               We set industry benchmarks by choosing safety first, using smart tech integration, and driving circular sustainability forward.
             </p>
 
-            {/* Tab buttons */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            {/* Tab buttons as SaaS Segmented List */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {[
                 { id: 'safety', label: 'Uncompromised Site Safety', icon: <ShieldCheck size={18} /> },
                 { id: 'quality', label: 'Digital Quality Control (VDC)', icon: <Award size={18} /> },
@@ -853,20 +849,20 @@ export default function Home() {
                     alignItems: 'center',
                     gap: '12px',
                     width: '100%',
-                    padding: '18px 24px',
+                    padding: '16px 20px',
                     textAlign: 'left',
-                    background: activeTab === tab.id ? 'rgba(13, 26, 99, 0.05)' : 'rgba(15, 23, 42, 0.02)',
-                    border: activeTab === tab.id ? '1px solid var(--primary)' : '1px solid var(--border-color)',
+                    background: activeTab === tab.id ? '#FFFFFF' : 'var(--bg-deep)',
+                    border: activeTab === tab.id ? '1px solid #2563EB' : '1px solid var(--border-color)',
                     color: activeTab === tab.id ? 'var(--primary)' : 'var(--text-muted)',
-                    borderRadius: '6px',
+                    borderRadius: '10px',
                     cursor: 'pointer',
-                    fontSize: '0.95rem',
+                    fontSize: '0.92rem',
                     fontWeight: 700,
-                    transition: 'var(--transition-fast)',
-                    boxShadow: activeTab === tab.id ? '0 4px 12px -2px rgba(13, 26, 99, 0.08)' : 'none'
+                    transition: 'all 0.2s ease',
+                    boxShadow: activeTab === tab.id ? '0 4px 14px rgba(37, 99, 235, 0.12)' : 'none'
                   }}
                 >
-                  <span style={{ color: activeTab === tab.id ? 'var(--primary)' : 'var(--text-muted)' }}>{tab.icon}</span>
+                  <span style={{ color: activeTab === tab.id ? '#2563EB' : 'var(--text-muted)' }}>{tab.icon}</span>
                   <span>{tab.label}</span>
                 </button>
               ))}
@@ -875,45 +871,40 @@ export default function Home() {
 
           {/* Tab content sheet */}
           <div style={{
-            backgroundColor: 'var(--bg-card)',
+            backgroundColor: '#FFFFFF',
             border: '1px solid var(--border-color)',
-            padding: '40px',
-            borderRadius: '12px',
-            boxShadow: 'var(--shadow-premium), 0 20px 40px -15px rgba(15, 23, 42, 0.05)',
-            minHeight: '320px',
+            padding: '38px',
+            borderRadius: '14px',
+            boxShadow: 'var(--shadow-mercury)',
+            minHeight: '290px',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            transition: 'var(--transition-normal)',
-            position: 'relative',
-            overflow: 'hidden'
+            position: 'relative'
           }}>
-            {/* Elegant top accent line */}
-            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', backgroundColor: 'var(--primary)' }} />
-
             {activeTab === 'safety' && (
               <div className="animate-fade">
-                <HardHat size={36} color="var(--primary)" style={{ marginBottom: '16px' }} />
-                <h3 style={{ color: 'var(--text-white)', fontSize: '1.4rem', marginBottom: '12px', fontWeight: 800 }}>Zero-Incident Commitment</h3>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.7' }}>
+                <HardHat size={34} color="#2563EB" style={{ marginBottom: '14px' }} />
+                <h3 style={{ color: 'var(--text-white)', fontSize: '1.35rem', marginBottom: '10px', fontWeight: 800 }}>Zero-Incident Commitment</h3>
+                <p style={{ color: '#64748B', fontSize: '0.94rem', lineHeight: '1.7', margin: 0 }}>
                   Safety is not a checkbox; it is our operational culture. Every site layout is modeled virtually to identify fall, crush, or electrocution hazards before real tools are touched. We hold daily toolbox talks, enforce PPE rules, and employ site coordinators tracking real-time telemetry.
                 </p>
               </div>
             )}
             {activeTab === 'quality' && (
               <div className="animate-fade">
-                <ShieldCheck size={36} color="var(--primary)" style={{ marginBottom: '16px' }} />
-                <h3 style={{ color: 'var(--text-white)', fontSize: '1.4rem', marginBottom: '12px', fontWeight: 800 }}>VDC Tolerances to the Millimeter</h3>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.7' }}>
+                <ShieldCheck size={34} color="#2563EB" style={{ marginBottom: '14px' }} />
+                <h3 style={{ color: 'var(--text-white)', fontSize: '1.35rem', marginBottom: '10px', fontWeight: 800 }}>VDC Tolerances to the Millimeter</h3>
+                <p style={{ color: '#64748B', fontSize: '0.94rem', lineHeight: '1.7', margin: 0 }}>
                   We utilize drone topography sweeps and LiDAR laser scanning on-site to compare active structures against raw CAD models. This prevents misalignment errors in plumbing, electrical mains, and core load paths, ensuring high quality control.
                 </p>
               </div>
             )}
             {activeTab === 'sustain' && (
               <div className="animate-fade">
-                <HeartHandshake size={36} color="var(--primary)" style={{ marginBottom: '16px' }} />
-                <h3 style={{ color: 'var(--text-white)', fontSize: '1.4rem', marginBottom: '12px', fontWeight: 800 }}>Green Building Frameworks</h3>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.7' }}>
+                <HeartHandshake size={34} color="#2563EB" style={{ marginBottom: '14px' }} />
+                <h3 style={{ color: 'var(--text-white)', fontSize: '1.35rem', marginBottom: '10px', fontWeight: 800 }}>Green Building Frameworks</h3>
+                <p style={{ color: '#64748B', fontSize: '0.94rem', lineHeight: '1.7', margin: 0 }}>
                   By specifying low-hydration concrete, recycling 85% of site waste products, and harvesting graywater on-site, we help client systems meet decarbonization requirements and secure tax advantages under regional environmental laws.
                 </p>
               </div>
@@ -924,14 +915,13 @@ export default function Home() {
       </section>
 
       {/* 6. FEATURED PROJECTS PREVIEW */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--bg-card)', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
+      <section className="section-padding" style={{ backgroundColor: 'var(--bg-deep)', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
         <div className="container">
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: '20px', marginBottom: '60px' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: '20px', marginBottom: '45px' }}>
             <div>
-              <span className="subtitle-amber">Case Studies</span>
-              <h2 style={{ fontSize: '2.5rem', margin: 0 }}>Built With Precision</h2>
+              <h2 style={{ fontSize: '2.4rem', margin: 0, letterSpacing: '-0.025em' }}>Built With Precision</h2>
             </div>
-            <Button to="/projects" variant="primary">
+            <Button to="/projects" variant="primary" icon={ArrowRight} iconPosition="right">
               View All Project Case Studies
             </Button>
           </div>
@@ -939,7 +929,7 @@ export default function Home() {
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '30px'
+            gap: '26px'
           }}>
             {[
               {
@@ -984,48 +974,47 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. CLIENT TESTIMONIALS (WITH SLIDER NAV) */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--bg-deep)' }}>
-        <div className="container" style={{ maxWidth: '800px', textAlign: 'center' }}>
-          <span className="subtitle-amber">Client Testimonials</span>
-          <h2 style={{ fontSize: '2.5rem', marginBottom: '40px' }}>What Our Partners Say</h2>
+      {/* 7. CLIENT TESTIMONIALS */}
+      <section className="section-padding" style={{ backgroundColor: '#FFFFFF' }}>
+        <div className="container" style={{ maxWidth: '820px', textAlign: 'center' }}>
+          <h2 style={{ fontSize: '2.4rem', marginBottom: '32px', letterSpacing: '-0.025em' }}>What Our Partners Say</h2>
 
           <div style={{
             position: 'relative',
-            backgroundColor: 'var(--bg-card)',
+            backgroundColor: 'var(--bg-deep)',
             border: '1px solid var(--border-color)',
-            padding: '60px 48px',
+            padding: '50px 40px',
             borderRadius: '16px',
-            boxShadow: 'var(--shadow-premium), 0 20px 40px -15px rgba(15, 23, 42, 0.05)',
+            boxShadow: 'var(--shadow-premium)',
             overflow: 'hidden'
           }}>
-            {/* Elegant large background double quotation marks */}
+            {/* Background quotation mark */}
             <div style={{
               position: 'absolute',
-              top: '20px',
-              left: '30px',
-              fontSize: '12rem',
+              top: '15px',
+              left: '25px',
+              fontSize: '10rem',
               fontFamily: 'Georgia, serif',
-              color: 'rgba(13, 26, 99, 0.035)',
+              color: 'rgba(13, 26, 99, 0.04)',
               lineHeight: 1,
               userSelect: 'none',
               pointerEvents: 'none'
             }}>“</div>
 
             {/* Stars */}
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '4px', marginBottom: '24px', position: 'relative', zIndex: 2 }}>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '4px', marginBottom: '18px', position: 'relative', zIndex: 2 }}>
               {[...Array(TESTIMONIALS[currentTestimonial].stars)].map((_, i) => (
-                <Star key={i} size={18} fill="var(--primary)" color="var(--primary)" />
+                <Star key={i} size={16} fill="#F59E0B" color="#F59E0B" />
               ))}
             </div>
 
             {/* Quote text */}
             <p style={{
-              fontSize: '1.25rem',
-              lineHeight: '1.8',
+              fontSize: '1.16rem',
+              lineHeight: '1.75',
               fontStyle: 'italic',
               color: 'var(--text-primary)',
-              marginBottom: '28px',
+              marginBottom: '22px',
               position: 'relative',
               zIndex: 2
             }}>
@@ -1033,67 +1022,71 @@ export default function Home() {
             </p>
 
             {/* Author details */}
-            <h4 style={{ color: 'var(--text-white)', fontSize: '1.15rem', fontWeight: 800, position: 'relative', zIndex: 2 }}>
+            <h4 style={{ color: 'var(--text-white)', fontSize: '1.1rem', fontWeight: 800, position: 'relative', zIndex: 2, marginBottom: '2px' }}>
               {TESTIMONIALS[currentTestimonial].author}
             </h4>
-            <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', display: 'block', marginTop: '4px', position: 'relative', zIndex: 2 }}>
+            <span style={{ fontSize: '0.82rem', color: '#64748B', display: 'block', position: 'relative', zIndex: 2 }}>
               {TESTIMONIALS[currentTestimonial].role}
             </span>
 
             {/* Slider arrows */}
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', marginTop: '30px', position: 'relative', zIndex: 2 }}>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginTop: '26px', position: 'relative', zIndex: 2 }}>
               <button
                 onClick={prevTestimonial}
+                aria-label="Previous Testimonial"
                 style={{
-                  width: '44px',
-                  height: '44px',
+                  width: '38px',
+                  height: '38px',
                   borderRadius: '50%',
-                  backgroundColor: 'rgba(15, 23, 42, 0.03)',
+                  backgroundColor: '#FFFFFF',
                   border: '1px solid var(--border-color)',
                   color: 'var(--text-white)',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  transition: 'var(--transition-fast)'
+                  transition: 'all 0.2s ease',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.05)'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = 'var(--primary)';
-                  e.currentTarget.style.color = 'var(--primary)';
-                  e.currentTarget.style.backgroundColor = 'rgba(13, 26, 99, 0.05)';
+                  e.currentTarget.style.borderColor = '#2563EB';
+                  e.currentTarget.style.color = '#2563EB';
+                  e.currentTarget.style.transform = 'translateY(-1px)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.borderColor = 'var(--border-color)';
                   e.currentTarget.style.color = 'var(--text-white)';
-                  e.currentTarget.style.backgroundColor = 'rgba(15, 23, 42, 0.03)';
+                  e.currentTarget.style.transform = 'none';
                 }}
               >
                 &#8592;
               </button>
               <button
                 onClick={nextTestimonial}
+                aria-label="Next Testimonial"
                 style={{
-                  width: '44px',
-                  height: '44px',
+                  width: '38px',
+                  height: '38px',
                   borderRadius: '50%',
-                  backgroundColor: 'rgba(15, 23, 42, 0.03)',
+                  backgroundColor: '#FFFFFF',
                   border: '1px solid var(--border-color)',
                   color: 'var(--text-white)',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  transition: 'var(--transition-fast)'
+                  transition: 'all 0.2s ease',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.05)'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = 'var(--primary)';
-                  e.currentTarget.style.color = 'var(--primary)';
-                  e.currentTarget.style.backgroundColor = 'rgba(13, 26, 99, 0.05)';
+                  e.currentTarget.style.borderColor = '#2563EB';
+                  e.currentTarget.style.color = '#2563EB';
+                  e.currentTarget.style.transform = 'translateY(-1px)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.borderColor = 'var(--border-color)';
                   e.currentTarget.style.color = 'var(--text-white)';
-                  e.currentTarget.style.backgroundColor = 'rgba(15, 23, 42, 0.03)';
+                  e.currentTarget.style.transform = 'none';
                 }}
               >
                 &#8594;
@@ -1104,18 +1097,15 @@ export default function Home() {
       </section>
 
       {/* 8. LATEST NEWS PREVIEW */}
-      <section style={{ padding: '60px 0', backgroundColor: 'var(--bg-card)', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
+      <section style={{ padding: '65px 0', backgroundColor: 'var(--bg-deep)', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
         <div className="container">
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '20px', marginBottom: '40px' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '20px', marginBottom: '38px' }}>
             <div>
-              <span className="subtitle-amber" style={{ display: 'block', color: 'var(--primary)', marginBottom: '8px' }}>
-                Our Blog & Press Releases
-              </span>
-              <h2 style={{ fontSize: '2.5rem', margin: 0, color: 'var(--text-white)' }}>
+              <h2 style={{ fontSize: '2.4rem', margin: 0, color: 'var(--text-white)', letterSpacing: '-0.025em' }}>
                 Company Chronicles
               </h2>
             </div>
-            <Button to="/news" variant="outline">
+            <Button to="/news" variant="outline" icon={ArrowRight} iconPosition="right">
               Read All News
             </Button>
           </div>
@@ -1123,7 +1113,7 @@ export default function Home() {
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '30px'
+            gap: '26px'
           }}>
             <Card
               image={NewsConcreteImg}
@@ -1158,43 +1148,44 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 9. CAREERS & CONTACT CALL-TO-ACTION (CONTAINERIZED CARDS) */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--bg-deep)', borderTop: '1px solid var(--border-color)' }}>
+      {/* 9. CAREERS & CONTACT CALL-TO-ACTION */}
+      <section className="section-padding" style={{ backgroundColor: '#FFFFFF' }}>
         <div className="container">
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '30px'
+            gap: '26px'
           }}>
             {/* Left Card: Join the Team */}
             <div 
               style={{
-                padding: '50px 40px',
-                backgroundColor: 'var(--bg-card)',
+                padding: '44px 34px',
+                backgroundColor: 'var(--bg-deep)',
                 border: '1px solid var(--border-color)',
-                borderRadius: '16px',
+                borderRadius: '14px',
                 boxShadow: 'var(--shadow-premium)',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'flex-start',
-                transition: 'var(--transition-normal)'
+                transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-6px)';
-                e.currentTarget.style.borderColor = 'var(--primary)';
+                e.currentTarget.style.transform = 'translateY(-4px)';
+                e.currentTarget.style.borderColor = '#2563EB';
+                e.currentTarget.style.boxShadow = 'var(--shadow-mercury-hover)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'none';
                 e.currentTarget.style.borderColor = 'var(--border-color)';
+                e.currentTarget.style.boxShadow = 'var(--shadow-premium)';
               }}
             >
-              <span className="subtitle-amber">Work at Clark</span>
-              <h2 style={{ fontSize: '2.2rem', color: 'var(--text-white)', marginBottom: '16px' }}>Build Your Legacy With Us</h2>
-              <p style={{ color: 'var(--text-muted)', marginBottom: '32px', fontSize: '0.95rem', lineHeight: '1.7' }}>
+              <h2 style={{ fontSize: '2.1rem', color: 'var(--text-white)', marginBottom: '12px', letterSpacing: '-0.025em' }}>Build Your Legacy With Us</h2>
+              <p style={{ color: '#64748B', marginBottom: '24px', fontSize: '0.94rem', lineHeight: '1.7' }}>
                 We offer highly competitive salaries, modern health benefits, structured training, and a site environment where your safety is our core value. Apply for one of our open engineering roles.
               </p>
-              <Button to="/careers" variant="primary">
+              <Button to="/careers" variant="primary" icon={ArrowRight} iconPosition="right">
                 View Current Openings
               </Button>
             </div>
@@ -1202,34 +1193,33 @@ export default function Home() {
             {/* Right Card: Project Inquiry */}
             <div 
               style={{
-                padding: '50px 40px',
+                padding: '44px 34px',
                 backgroundColor: 'rgba(13, 26, 99, 0.03)',
-                border: '1px solid rgba(13, 26, 99, 0.1)',
-                borderRadius: '16px',
+                border: '1px solid rgba(13, 26, 99, 0.12)',
+                borderRadius: '14px',
                 boxShadow: 'var(--shadow-premium)',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'flex-start',
-                transition: 'var(--transition-normal)'
+                transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-6px)';
-                e.currentTarget.style.borderColor = 'var(--primary)';
-                e.currentTarget.style.boxShadow = '0 20px 40px -10px rgba(13, 26, 99, 0.1)';
+                e.currentTarget.style.transform = 'translateY(-4px)';
+                e.currentTarget.style.borderColor = '#2563EB';
+                e.currentTarget.style.boxShadow = 'var(--shadow-mercury-hover)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'none';
-                e.currentTarget.style.borderColor = 'rgba(13, 26, 99, 0.1)';
+                e.currentTarget.style.borderColor = 'rgba(13, 26, 99, 0.12)';
                 e.currentTarget.style.boxShadow = 'var(--shadow-premium)';
               }}
             >
-              <span className="subtitle-amber">Project Inquiries</span>
-              <h2 style={{ fontSize: '2.2rem', color: 'var(--text-white)', marginBottom: '16px' }}>Have a Construction Challenge?</h2>
-              <p style={{ color: 'var(--text-muted)', marginBottom: '32px', fontSize: '0.95rem', lineHeight: '1.7' }}>
+              <h2 style={{ fontSize: '2.1rem', color: 'var(--text-white)', marginBottom: '12px', letterSpacing: '-0.025em' }}>Have a Construction Challenge?</h2>
+              <p style={{ color: '#64748B', marginBottom: '24px', fontSize: '0.94rem', lineHeight: '1.7' }}>
                 Whether you need preconstruction virtual simulations, project estimations, or heavy general contracting, our regional foremen are ready to configure a custom quote for you.
               </p>
-              <Button to="/contact" variant="outline">
+              <Button to="/contact" variant="outline" icon={ArrowRight} iconPosition="right">
                 Send Project Brief
               </Button>
             </div>
@@ -1246,7 +1236,7 @@ export default function Home() {
         {modalProject && (
           <div>
             <ProjectDetailView project={modalProject} />
-            <div style={{ textAlign: 'right', marginTop: '32px', paddingTop: '16px', borderTop: '1px solid var(--border-color)' }}>
+            <div style={{ textAlign: 'right', marginTop: '28px', paddingTop: '16px', borderTop: '1px solid var(--border-color)' }}>
               <Button onClick={() => setModalProject(null)} variant="secondary">
                 Close Case Study
               </Button>
@@ -1259,8 +1249,8 @@ export default function Home() {
         @media (max-width: 768px) {
           .stat-col {
             border-right: none !important;
-            padding-bottom: 24px;
-            border-bottom: 1px solid rgba(15, 23, 42, 0.08) !important;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--border-color) !important;
           }
           .stat-col:last-child {
             border-bottom: none;
@@ -1271,3 +1261,5 @@ export default function Home() {
     </div>
   );
 }
+
+

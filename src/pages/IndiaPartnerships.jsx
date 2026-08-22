@@ -436,11 +436,8 @@ export default function IndiaPartnerships() {
             <div style={{ 
               backgroundColor: 'var(--bg-card)', 
               padding: '24px', 
-              borderRadius: '6px', 
-              borderLeft: '4px solid var(--primary)',
-              borderTop: '1px solid var(--border-color)',
-              borderRight: '1px solid var(--border-color)',
-              borderBottom: '1px solid var(--border-color)',
+              borderRadius: '10px', 
+              border: '1px solid var(--border-color)',
               boxShadow: 'var(--shadow-premium)'
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>

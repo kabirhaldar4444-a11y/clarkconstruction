@@ -8,6 +8,7 @@ import About from './pages/About';
 import IndiaPartnerships from './pages/IndiaPartnerships';
 import Services from './pages/Services';
 import Projects from './pages/Projects';
+import ProjectDetail from './pages/ProjectDetail';
 import Markets from './pages/Markets';
 import Sustainability from './pages/Sustainability';
 import News from './pages/News';
@@ -51,10 +52,12 @@ function App() {
           <Route path="/our-work/markets" element={<Markets />} />
           <Route path="/our-work/expertise" element={<Services />} />
           <Route path="/our-work/projects" element={<Projects />} />
+          <Route path="/our-work/projects/:slug" element={<ProjectDetail />} />
           {/* Legacy paths redirect support */}
           <Route path="/markets" element={<Markets />} />
           <Route path="/services" element={<Services />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:slug" element={<ProjectDetail />} />
 
           {/* Business With Us Submenu */}
           <Route path="/business/strategic-partnership" element={<StrategicPartnership />} />

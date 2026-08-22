@@ -67,32 +67,46 @@ export default function Footer() {
   };
 
   return (
-    <footer style={{ backgroundColor: '#F1F5F9', borderTop: '1px solid var(--border-color)', color: 'var(--text-primary)' }}>
-      {/* Top Banner */}
-      <div style={{ borderBottom: '1px solid var(--border-color)', padding: '40px 0' }}>
-        <div className="container" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '20px' }}>
+    <footer style={{ backgroundColor: 'var(--primary-dark)', borderTop: '1px solid rgba(255, 255, 255, 0.1)', color: '#94A3B8' }}>
+      {/* Top Pre-Footer Call to Action */}
+      <div style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.08)', padding: '48px 0' }}>
+        <div className="container" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '24px' }}>
           <div>
-            <h3 style={{ color: 'var(--text-white)', fontSize: '1.4rem', marginBottom: '8px' }}>Ready to bring your vision to life?</h3>
-            <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Let's discuss how our expert engineering team can make it happen.</p>
+            <span style={{ color: '#38BDF8', fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '8px', display: 'block' }}>
+              Preconstruction & Contracting
+            </span>
+            <h3 style={{ color: '#FFFFFF', fontSize: '1.6rem', fontWeight: 800, marginBottom: '6px', lineHeight: '1.2' }}>
+              Ready to engineer your next capital landmark?
+            </h3>
+            <p style={{ fontSize: '0.92rem', color: '#94A3B8' }}>
+              Connect directly with our preconstruction executives and estimating teams.
+            </p>
           </div>
           <Link
             to="/contact"
             style={{
-              backgroundColor: 'var(--primary)',
+              backgroundColor: '#2563EB',
               color: '#FFF',
-              padding: '12px 28px',
-              borderRadius: '4px',
+              padding: '14px 30px',
+              borderRadius: '6px',
               fontWeight: 700,
               fontSize: '0.9rem',
               textTransform: 'uppercase',
-              letterSpacing: '0.05em',
-              display: 'flex',
+              letterSpacing: '0.06em',
+              display: 'inline-flex',
               alignItems: 'center',
               gap: '8px',
-              boxShadow: 'var(--shadow-glow)'
+              boxShadow: '0 4px 16px rgba(37, 99, 235, 0.3)',
+              transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)'
             }}
-            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--primary-hover)'}
-            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = '#1D4ED8';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = '#2563EB';
+              e.currentTarget.style.transform = 'none';
+            }}
           >
             <span>Start a Project</span>
             <ArrowRight size={16} />
@@ -101,31 +115,31 @@ export default function Footer() {
       </div>
 
       {/* Main Footer Links */}
-      <div className="container" style={{ padding: '80px 24px' }}>
+      <div className="container" style={{ padding: '75px 24px' }}>
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-          gap: '40px'
+          gap: '45px'
         }}>
           {/* Col 1: About */}
           <div>
-            <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '24px' }}>
+            <Link to="/" style={{ display: 'inline-block', marginBottom: '20px', padding: '6px 12px', backgroundColor: '#FFFFFF', borderRadius: '6px' }}>
               <img 
                 src={logo} 
                 alt="Clark Construction Group Logo" 
-                style={{ height: '36px', objectFit: 'contain' }} 
+                style={{ height: '32px', objectFit: 'contain', display: 'block' }} 
               />
             </Link>
-            <p style={{ fontSize: '0.9rem', lineHeight: '1.7', marginBottom: '24px' }}>
-              A leading modern infrastructure firm specializing in heavy civil, high-rise commercial, healthcare, and sustainable building solutions.
+            <p style={{ fontSize: '0.9rem', lineHeight: '1.7', marginBottom: '24px', color: '#94A3B8' }}>
+              A national infrastructure and civil engineering firm delivering high-rise commercial, airport, transit, healthcare, and sustainable building solutions.
             </p>
-            <div style={{ display: 'flex', gap: '12px' }}>
+            <div style={{ display: 'flex', gap: '10px' }}>
               {[
-                { icon: <Facebook size={18} />, href: '#', label: 'Facebook' },
-                { icon: <Twitter size={18} />, href: '#', label: 'Twitter' },
-                { icon: <Linkedin size={18} />, href: 'https://www.linkedin.com/company/clark-construction/about/?viewAsMember=true', label: 'LinkedIn' },
-                { icon: <Instagram size={18} />, href: '#', label: 'Instagram' },
-                { icon: <Youtube size={18} />, href: '#', label: 'YouTube' }
+                { icon: <Facebook size={16} />, href: '#', label: 'Facebook' },
+                { icon: <Twitter size={16} />, href: '#', label: 'Twitter' },
+                { icon: <Linkedin size={16} />, href: 'https://www.linkedin.com/company/clark-construction/about/?viewAsMember=true', label: 'LinkedIn' },
+                { icon: <Instagram size={16} />, href: '#', label: 'Instagram' },
+                { icon: <Youtube size={16} />, href: '#', label: 'YouTube' }
               ].map((social, i) => (
                 <a
                   key={i}
@@ -136,24 +150,26 @@ export default function Footer() {
                   style={{
                     width: '36px',
                     height: '36px',
-                    borderRadius: '4px',
-                    backgroundColor: 'var(--bg-deep)',
-                    border: '1px solid var(--border-color)',
+                    borderRadius: '6px',
+                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: 'var(--text-primary)',
-                    transition: 'var(--transition-fast)'
+                    color: '#CBD5E1',
+                    transition: 'all 0.25s ease'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--primary)';
-                    e.currentTarget.style.backgroundColor = 'rgba(217, 119, 6, 0.08)';
-                    e.currentTarget.style.color = 'var(--primary)';
+                    e.currentTarget.style.borderColor = '#38BDF8';
+                    e.currentTarget.style.backgroundColor = 'rgba(56, 189, 248, 0.1)';
+                    e.currentTarget.style.color = '#FFFFFF';
+                    e.currentTarget.style.transform = 'translateY(-2px)';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--border-color)';
-                    e.currentTarget.style.backgroundColor = 'var(--bg-deep)';
-                    e.currentTarget.style.color = 'var(--text-primary)';
+                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                    e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                    e.currentTarget.style.color = '#CBD5E1';
+                    e.currentTarget.style.transform = 'none';
                   }}
                 >
                   {social.icon}
@@ -164,105 +180,106 @@ export default function Footer() {
 
           {/* Col 2: Quick Links */}
           <div>
-            <h4 style={{ color: 'var(--text-white)', marginBottom: '24px', fontSize: '1.1rem', position: 'relative', paddingBottom: '8px' }}>
+            <h4 style={{ color: '#FFFFFF', marginBottom: '22px', fontSize: '1.05rem', fontWeight: 700, position: 'relative', paddingBottom: '10px' }}>
               Quick Links
-              <span style={{ position: 'absolute', bottom: 0, left: 0, width: '30px', height: '2px', backgroundColor: 'var(--primary)' }}></span>
+              <span style={{ position: 'absolute', bottom: 0, left: 0, width: '28px', height: '2px', backgroundColor: '#2563EB' }}></span>
             </h4>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '0.9rem' }}>
-              <li><Link to="/about/our-story" className="hover-amber-link">Our Story</Link></li>
-              <li><Link to="/our-work/expertise" className="hover-amber-link">Expertise & Services</Link></li>
-              <li><Link to="/our-work/projects" className="hover-amber-link">Featured Projects</Link></li>
-              <li><Link to="/business/strategic-partnership" className="hover-amber-link">Strategic Partnership</Link></li>
-              <li><Link to="/sustainability" className="hover-amber-link">Environmental Sustainability</Link></li>
-              <li><Link to="/news" className="hover-amber-link">Latest Chronicles</Link></li>
-              <li><Link to="/careers/search-apply" className="hover-amber-link">Join Our Team</Link></li>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '0.88rem' }}>
+              <li><Link to="/about/our-story" className="footer-mercury-link">Our Story</Link></li>
+              <li><Link to="/our-work/expertise" className="footer-mercury-link">Expertise & Capabilities</Link></li>
+              <li><Link to="/our-work/projects" className="footer-mercury-link">Featured Projects</Link></li>
+              <li><Link to="/business/strategic-partnership" className="footer-mercury-link">Strategic Partnership</Link></li>
+              <li><Link to="/sustainability" className="footer-mercury-link">Environmental Sustainability</Link></li>
+              <li><Link to="/news" className="footer-mercury-link">Latest News & Awards</Link></li>
+              <li><Link to="/careers/search-apply" className="footer-mercury-link">Careers at Clark</Link></li>
             </ul>
           </div>
 
           {/* Col 3: Contact Details */}
           <div>
-            <h4 style={{ color: 'var(--text-white)', marginBottom: '24px', fontSize: '1.1rem', position: 'relative', paddingBottom: '8px' }}>
+            <h4 style={{ color: '#FFFFFF', marginBottom: '22px', fontSize: '1.05rem', fontWeight: 700, position: 'relative', paddingBottom: '10px' }}>
               Headquarters
-              <span style={{ position: 'absolute', bottom: 0, left: 0, width: '30px', height: '2px', backgroundColor: 'var(--primary)' }}></span>
+              <span style={{ position: 'absolute', bottom: 0, left: 0, width: '28px', height: '2px', backgroundColor: '#2563EB' }}></span>
             </h4>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '0.9rem' }}>
-              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                <MapPin size={18} style={{ color: 'var(--primary)', flexShrink: 0, marginTop: '2px' }} />
-                <span>181 Fremont St,<br />San Francisco, CA 94105</span>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '0.88rem' }}>
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                <MapPin size={18} style={{ color: '#38BDF8', flexShrink: 0, marginTop: '2px' }} />
+                <span style={{ color: '#CBD5E1' }}>181 Fremont St,<br />San Francisco, CA 94105</span>
               </li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <Phone size={18} style={{ color: 'var(--primary)', flexShrink: 0 }} />
-                <span>+1 (800) 555-0199</span>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <Phone size={18} style={{ color: '#38BDF8', flexShrink: 0 }} />
+                <span style={{ color: '#CBD5E1' }}>+1 (800) 555-0199</span>
               </li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <Mail size={18} style={{ color: 'var(--primary)', flexShrink: 0 }} />
-                <span>info@clarkconstruction.com</span>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <Mail size={18} style={{ color: '#38BDF8', flexShrink: 0 }} />
+                <span style={{ color: '#CBD5E1' }}>info@clarkconstruction.com</span>
               </li>
             </ul>
           </div>
 
           {/* Col 4: Newsletter */}
           <div>
-            <h4 style={{ color: 'var(--text-white)', marginBottom: '24px', fontSize: '1.1rem', position: 'relative', paddingBottom: '8px' }}>
+            <h4 style={{ color: '#FFFFFF', marginBottom: '22px', fontSize: '1.05rem', fontWeight: 700, position: 'relative', paddingBottom: '10px' }}>
               Newsletter
-              <span style={{ position: 'absolute', bottom: 0, left: 0, width: '30px', height: '2px', backgroundColor: 'var(--primary)' }}></span>
+              <span style={{ position: 'absolute', bottom: 0, left: 0, width: '28px', height: '2px', backgroundColor: '#2563EB' }}></span>
             </h4>
-            <p style={{ fontSize: '0.9rem', marginBottom: '16px', lineHeight: '1.6' }}>
-              Subscribe to receive construction news, technology updates, and project highlights.
+            <p style={{ fontSize: '0.88rem', marginBottom: '16px', lineHeight: '1.6', color: '#94A3B8' }}>
+              Subscribe to receive verified construction insights, safety chronicles, and project updates.
             </p>
             <form onSubmit={handleSubscribe} style={{ display: 'flex', position: 'relative' }}>
               <input
                 type="email"
-                placeholder="Your email address"
+                placeholder="Work email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 style={{
                   width: '100%',
-                  padding: '12px 50px 12px 16px',
-                  backgroundColor: '#FFFFFF',
-                  border: '1px solid var(--border-color)',
-                  borderRadius: '4px',
-                  color: 'var(--text-white)',
-                  fontSize: '0.85rem',
+                  padding: '12px 48px 12px 16px',
+                  backgroundColor: 'rgba(255, 255, 255, 0.06)',
+                  border: '1px solid rgba(255, 255, 255, 0.15)',
+                  borderRadius: '6px',
+                  color: '#FFFFFF',
+                  fontSize: '0.88rem',
                   outline: 'none',
-                  transition: 'var(--transition-fast)'
+                  transition: 'border-color 0.2s ease'
                 }}
-                onFocus={(e) => e.target.style.borderColor = 'var(--primary)'}
-                onBlur={(e) => e.target.style.borderColor = 'var(--border-color)'}
+                onFocus={(e) => e.target.style.borderColor = '#38BDF8'}
+                onBlur={(e) => e.target.style.borderColor = 'rgba(255, 255, 255, 0.15)'}
               />
               <button
                 type="submit"
                 disabled={status === 'loading'}
+                aria-label="Subscribe"
                 style={{
                   position: 'absolute',
                   right: '4px',
                   top: '4px',
                   bottom: '4px',
-                  padding: '0 12px',
-                  backgroundColor: 'var(--primary)',
+                  padding: '0 14px',
+                  backgroundColor: '#2563EB',
                   color: '#FFF',
                   border: 'none',
-                  borderRadius: '3px',
+                  borderRadius: '4px',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  transition: 'var(--transition-fast)'
+                  transition: 'background-color 0.2s ease'
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--primary-hover)'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--primary)'}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#1D4ED8'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#2563EB'}
               >
                 {status === 'loading' ? (
                   <span className="spinner" style={{
-                    width: '16px',
-                    height: '16px',
+                    width: '14px',
+                    height: '14px',
                     border: '2px solid rgba(255,255,255,0.3)',
                     borderTop: '2px solid #FFF',
                     borderRadius: '50%',
                     animation: 'spin 1s linear infinite'
                   }}></span>
                 ) : (
-                  <ArrowRight size={16} />
+                  <ArrowRight size={15} />
                 )}
               </button>
             </form>
@@ -270,7 +287,7 @@ export default function Footer() {
               <p style={{
                 fontSize: '0.75rem',
                 marginTop: '8px',
-                color: status === 'success' ? 'var(--success)' : 'var(--error)'
+                color: status === 'success' ? '#34D399' : '#F87171'
               }}>
                 {message}
               </p>
@@ -280,30 +297,34 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div style={{ backgroundColor: '#E2E8F0', borderTop: '1px solid var(--border-color)', padding: '24px 0', color: 'var(--text-muted)' }}>
+      <div style={{ backgroundColor: 'rgba(0, 0, 0, 0.35)', borderTop: '1px solid rgba(255, 255, 255, 0.06)', padding: '22px 0', color: '#64748B' }}>
         <div className="container" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '16px', fontSize: '0.8rem' }}>
           <span>&copy; {new Date().getFullYear()} Clark Construction Group. All rights reserved.</span>
           <div style={{ display: 'flex', gap: '20px' }}>
-            <a href="#" className="hover-white">Privacy Policy</a>
-            <a href="#" className="hover-white">Terms of Use</a>
-            <a href="#" className="hover-white">Accessibility Statement</a>
-            <a href="#" className="hover-white">Sitemap</a>
+            <a href="#" className="footer-legal-link">Privacy Policy</a>
+            <a href="#" className="footer-legal-link">Terms of Use</a>
+            <a href="#" className="footer-legal-link">Accessibility Statement</a>
+            <a href="#" className="footer-legal-link">Sitemap</a>
           </div>
         </div>
       </div>
 
       <style>{`
-        .hover-amber-link {
-          color: var(--text-muted);
-          transition: var(--transition-fast);
-        }
-        .hover-amber-link:hover {
-          color: var(--primary) !important;
-          transform: translateX(4px);
+        .footer-mercury-link {
+          color: #94A3B8;
+          transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
           display: inline-block;
         }
-        .hover-white:hover {
-          color: var(--text-white) !important;
+        .footer-mercury-link:hover {
+          color: #FFFFFF !important;
+          transform: translateX(4px);
+        }
+        .footer-legal-link {
+          color: #64748B;
+          transition: color 0.2s ease;
+        }
+        .footer-legal-link:hover {
+          color: #CBD5E1 !important;
         }
         @keyframes spin {
           0% { transform: rotate(0deg); }
@@ -313,3 +334,4 @@ export default function Footer() {
     </footer>
   );
 }
+

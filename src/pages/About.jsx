@@ -124,13 +124,13 @@ export default function About() {
               Our clients value us because we build with transparent estimates, deploy virtual models to eliminate field issues, and enforce strict safety requirements.
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '24px' }}>
-              <div style={{ backgroundColor: 'var(--bg-card)', padding: '16px', borderRadius: '4px', borderLeft: '3px solid var(--primary)' }}>
-                <span style={{ fontSize: '1.8rem', color: '#FFF', fontWeight: 800 }}>98%</span>
-                <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>On-Time Delivery Rate</p>
+              <div style={{ backgroundColor: 'var(--bg-card)', padding: '16px', borderRadius: '8px', border: '1px solid var(--border-color)', boxShadow: 'var(--shadow-premium)' }}>
+                <span style={{ fontSize: '1.8rem', color: 'var(--primary)', fontWeight: 800 }}>98%</span>
+                <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700, margin: 0 }}>On-Time Delivery Rate</p>
               </div>
-              <div style={{ backgroundColor: 'var(--bg-card)', padding: '16px', borderRadius: '4px', borderLeft: '3px solid var(--primary)' }}>
-                <span style={{ fontSize: '1.8rem', color: '#FFF', fontWeight: 800 }}>85%</span>
-                <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Repeat Partner Business</p>
+              <div style={{ backgroundColor: 'var(--bg-card)', padding: '16px', borderRadius: '8px', border: '1px solid var(--border-color)', boxShadow: 'var(--shadow-premium)' }}>
+                <span style={{ fontSize: '1.8rem', color: 'var(--primary)', fontWeight: 800 }}>85%</span>
+                <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700, margin: 0 }}>Repeat Partner Business</p>
               </div>
             </div>
           </div>

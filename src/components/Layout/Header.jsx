@@ -83,12 +83,13 @@ export default function Header() {
           left: 0,
           width: '100%',
           zIndex: 100,
-          transition: 'var(--transition-normal)',
-          backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.75)',
-          backdropFilter: 'blur(12px)',
-          boxShadow: isScrolled ? 'var(--shadow-premium)' : 'none',
-          borderBottom: isScrolled ? '1px solid var(--border-color)' : '1px solid rgba(15, 23, 42, 0.05)',
-          height: isScrolled ? '80px' : '96px',
+          transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
+          backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.96)' : 'rgba(255, 255, 255, 0.82)',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)',
+          boxShadow: isScrolled ? '0 4px 20px -2px rgba(13, 26, 99, 0.08)' : 'none',
+          borderBottom: isScrolled ? '1px solid var(--border-color)' : '1px solid rgba(13, 26, 99, 0.05)',
+          height: isScrolled ? '76px' : '90px',
           display: 'flex',
           alignItems: 'center',
         }}
@@ -99,27 +100,27 @@ export default function Header() {
             <img 
               src={logo} 
               alt="Clark Construction Group Logo" 
-              style={{ height: '40px', objectFit: 'contain' }} 
+              style={{ height: '38px', objectFit: 'contain' }} 
             />
           </Link>
 
           {/* Desktop Nav */}
-          <nav style={{ display: 'flex', alignItems: 'center', gap: '30px' }} className="desktop-nav">
-            <ul style={{ display: 'flex', gap: '12px', listStyle: 'none', margin: 0, padding: 0 }}>
+          <nav style={{ display: 'flex', alignItems: 'center', gap: '28px' }} className="desktop-nav">
+            <ul style={{ display: 'flex', gap: '8px', listStyle: 'none', margin: 0, padding: 0 }}>
               {navLinks.map((link) => (
                 <li key={link.path} className="nav-item">
                   <NavLink
                     to={link.path}
                     style={({ isActive }) => ({
                       color: isActive ? 'var(--primary)' : 'var(--text-primary)',
-                      fontWeight: isActive ? '600' : '500',
-                      fontSize: '0.85rem',
-                      letterSpacing: '0.02em',
+                      fontWeight: isActive ? '700' : '600',
+                      fontSize: '0.82rem',
+                      letterSpacing: '0.04em',
                       textTransform: 'uppercase',
-                      padding: '24px 12px',
+                      padding: '20px 14px',
                       display: 'inline-flex',
                       alignItems: 'center',
-                      gap: '4px',
+                      gap: '5px',
                       transition: 'var(--transition-fast)'
                     })}
                     className={({ isActive }) => isActive ? 'nav-link nav-link-active' : 'nav-link'}
@@ -130,7 +131,7 @@ export default function Header() {
 
                   {/* Dropdown Menu */}
                   {link.submenu && (
-                    <ul className="dropdown-menu animate-fade">
+                    <ul className="dropdown-menu">
                       {link.submenu.map((sub) => (
                         <li key={sub.path}>
                           <Link to={sub.path} className="dropdown-link">
@@ -148,27 +149,30 @@ export default function Header() {
             <Link
               to="/contact"
               style={{
-                display: 'flex',
+                display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                backgroundColor: 'rgba(var(--primary-rgb), 0.1)',
+                backgroundColor: 'var(--primary)',
                 border: '1px solid var(--primary)',
-                color: 'var(--primary)',
+                color: '#FFFFFF',
                 padding: '10px 20px',
-                borderRadius: '4px',
+                borderRadius: '6px',
                 fontSize: '0.8rem',
                 fontWeight: 700,
                 textTransform: 'uppercase',
-                letterSpacing: '0.05em',
-                transition: 'var(--transition-fast)',
+                letterSpacing: '0.06em',
+                boxShadow: '0 2px 8px rgba(13, 26, 99, 0.15)',
+                transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'var(--primary)';
-                e.currentTarget.style.color = '#FFF';
+                e.currentTarget.style.backgroundColor = 'var(--primary-hover)';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 6px 18px rgba(13, 26, 99, 0.25)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(var(--primary-rgb), 0.1)';
-                e.currentTarget.style.color = 'var(--primary)';
+                e.currentTarget.style.backgroundColor = 'var(--primary)';
+                e.currentTarget.style.transform = 'none';
+                e.currentTarget.style.boxShadow = '0 2px 8px rgba(13, 26, 99, 0.15)';
               }}
             >
               <PhoneCall size={14} />

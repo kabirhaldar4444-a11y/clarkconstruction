@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
+import { motion } from 'framer-motion';
 import { 
   MapPin, 
   Calendar, 
@@ -9,8 +10,39 @@ import {
   Award, 
   FileText, 
   HardHat, 
-  Building2 
+  Building2,
+  SlidersHorizontal,
+  LayoutGrid,
+  Briefcase,
+  Box,
+  Activity,
+  Ruler,
+  DollarSign,
+  Cpu,
+  Leaf,
+  Sparkles,
+  Check
 } from 'lucide-react';
+import Carousel from './Carousel';
+
+// Helper to match appropriate high-tech icon to specification category
+function getSpecIcon(category = '') {
+  const cat = category.toLowerCase();
+  if (cat.includes('name') || cat.includes('project')) return <Building2 size={15} />;
+  if (cat.includes('client') || cat.includes('owner')) return <Briefcase size={15} />;
+  if (cat.includes('sector') || cat.includes('category') || cat.includes('type')) return <Layers size={15} />;
+  if (cat.includes('location') || cat.includes('city') || cat.includes('site')) return <MapPin size={15} />;
+  if (cat.includes('year') || cat.includes('date') || cat.includes('completion')) return <Calendar size={15} />;
+  if (cat.includes('construction') || cat.includes('contract')) return <HardHat size={15} />;
+  if (cat.includes('capacity') || cat.includes('volume') || cat.includes('seats')) return <Activity size={15} />;
+  if (cat.includes('structure') || cat.includes('foundation') || cat.includes('framing')) return <Box size={15} />;
+  if (cat.includes('size') || cat.includes('area') || cat.includes('sq')) return <Ruler size={15} />;
+  if (cat.includes('value') || cat.includes('cost') || cat.includes('budget') || cat.includes('dollar')) return <DollarSign size={15} />;
+  if (cat.includes('services') || cat.includes('scope') || cat.includes('mep') || cat.includes('tech')) return <Cpu size={15} />;
+  if (cat.includes('sustain') || cat.includes('green') || cat.includes('leed') || cat.includes('env')) return <Leaf size={15} />;
+  if (cat.includes('safety') || cat.includes('record') || cat.includes('incident')) return <ShieldCheck size={15} />;
+  return <Sparkles size={15} />;
+}
 
 /**
  * Intelligent helper to format complete, professional major construction company details
@@ -293,13 +325,34 @@ function getKeyFeatures(sector, p) {
 
 export default function ProjectDetailView({ project }) {
   const details = getProjectFullDetails(project);
+
+  const scopeCarouselItems = useMemo(() => {
+    if (!details?.scopeOfWork) return [];
+    return details.scopeOfWork.map((item, idx) => ({
+      id: idx + 1,
+      title: item.length > 40 ? (item.includes(',') ? item.split(',')[0] : item.substring(0, 38) + '...') : `Deliverable ${idx + 1}`,
+      description: item,
+      icon: <CheckCircle2 className="carousel-icon" />
+    }));
+  }, [details?.scopeOfWork]);
+
+  const keyFeaturesCarouselItems = useMemo(() => {
+    if (!details?.keyFeatures) return [];
+    return details.keyFeatures.map((item, idx) => ({
+      id: idx + 1,
+      title: `Engineering Highlight 0${idx + 1}`,
+      description: item,
+      icon: <Layers className="carousel-icon" />
+    }));
+  }, [details?.keyFeatures]);
+
   if (!details) return null;
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', color: 'var(--text-primary)' }}>
 
       {/* Hero Image & Quick Info Header */}
-      <div style={{ position: 'relative', width: '100%', height: '320px', borderRadius: '8px', overflow: 'hidden' }}>
+      <div style={{ position: 'relative', width: '100%', height: '320px', borderRadius: '12px', overflow: 'hidden' }}>
         <img
           src={details.image}
           alt={details.title}
@@ -333,70 +386,113 @@ export default function ProjectDetailView({ project }) {
             }}>
               {details.category}
             </span>
-            <h2 style={{ color: '#FFF', fontSize: '1.6rem', fontWeight: 800, margin: 0, lineHeight: 1.2 }}>
+            <h2 style={{ color: '#FFFFFF', fontSize: '1.85rem', fontWeight: 800, margin: '0 0 6px 0', lineHeight: '1.2' }}>
               {details.title}
             </h2>
-            <span style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.9rem', display: 'block', marginTop: '4px' }}>
-              Client: {details.client}
-            </span>
-          </div>
-
-          <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#FFF', fontSize: '0.85rem' }}>
-              <MapPin size={16} color="var(--primary)" />
-              <span>{details.location}</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#FFF', fontSize: '0.85rem' }}>
-              <Calendar size={16} color="var(--primary)" />
-              <span>{details.date}</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', color: '#E2E8F0', fontSize: '0.85rem', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <MapPin size={14} color="var(--primary-light)" />
+                <span>{details.location}</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <Calendar size={14} color="var(--primary-light)" />
+                <span>{details.date}</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <Building2 size={14} color="var(--primary-light)" />
+                <span>{details.client}</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* SECTION 1: Project Specifications (TABLE FORMAT) */}
+      {/* SECTION 1: Specifications Table */}
       <div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px', borderBottom: '2px solid var(--primary)', paddingBottom: '8px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px', borderBottom: '2px solid var(--primary)', paddingBottom: '8px' }}>
           <FileText size={20} color="var(--primary)" />
-          <h3 style={{ color: 'var(--text-white)', fontSize: '1.25rem', fontWeight: 800, margin: 0, letterSpacing: '0.02em' }}>
+          <h3 style={{ color: 'var(--text-white)', fontSize: '1.25rem', fontWeight: 800, margin: 0 }}>
             Project Specifications
           </h3>
         </div>
 
         <div style={{ 
           overflowX: 'auto', 
-          borderRadius: '6px', 
           border: '1px solid var(--border-color)', 
-          backgroundColor: 'var(--bg-deep)' 
+          borderRadius: '12px', 
+          boxShadow: '0 8px 24px rgba(13, 26, 99, 0.06)', 
+          backgroundColor: '#FFFFFF' 
         }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.875rem' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.88rem' }}>
             <thead>
-              <tr style={{ backgroundColor: 'rgba(13, 26, 99, 0.2)', borderBottom: '1px solid var(--border-color)' }}>
-                <th style={{ padding: '12px 16px', color: 'var(--primary)', fontWeight: 800, width: '30%', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '0.75rem' }}>
+              <tr style={{ backgroundColor: '#F8FAFC', borderBottom: '1px solid var(--border-color)' }}>
+                <th style={{ padding: '14px 20px', color: 'var(--primary)', fontWeight: 800, width: '32%', textTransform: 'uppercase', letterSpacing: '0.06em', fontSize: '0.76rem' }}>
                   Category
                 </th>
-                <th style={{ padding: '12px 16px', color: 'var(--primary)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '0.75rem' }}>
-                  Details
+                <th style={{ padding: '14px 20px', color: 'var(--primary)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', fontSize: '0.76rem' }}>
+                  Details & Engineering Metrics
                 </th>
               </tr>
             </thead>
             <tbody>
               {details.specsTable.map((row, idx) => (
-                <tr 
-                  key={idx} 
+                <motion.tr 
+                  key={idx}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.35,
+                    delay: idx * 0.025,
+                    ease: [0.16, 1, 0.3, 1]
+                  }}
+                  whileHover={{
+                    backgroundColor: 'rgba(37, 99, 235, 0.035)',
+                    transition: { duration: 0.18, ease: 'easeOut' }
+                  }}
                   style={{ 
                     borderBottom: idx < details.specsTable.length - 1 ? '1px solid var(--border-color)' : 'none',
-                    backgroundColor: idx % 2 === 0 ? 'transparent' : 'rgba(255, 255, 255, 0.015)',
-                    transition: 'var(--transition-fast)'
+                    backgroundColor: idx % 2 === 0 ? '#FFFFFF' : '#FAFCFF',
+                    cursor: 'default'
                   }}
                 >
-                  <td style={{ padding: '12px 16px', color: 'var(--text-white)', fontWeight: 700, verticalAlign: 'top' }}>
-                    {row.category}
+                  <td style={{ padding: '14px 20px', verticalAlign: 'middle' }}>
+                    <motion.div 
+                      style={{ display: 'flex', alignItems: 'center', gap: '12px' }}
+                      whileHover={{ x: 6 }}
+                      transition={{ type: 'spring', stiffness: 350, damping: 25 }}
+                    >
+                      <motion.span 
+                        whileHover={{ scale: 1.15, backgroundColor: 'rgba(37, 99, 235, 0.14)' }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          width: '30px',
+                          height: '30px',
+                          borderRadius: '8px',
+                          backgroundColor: 'rgba(37, 99, 235, 0.08)',
+                          color: '#2563EB',
+                          flexShrink: 0,
+                          transition: 'background-color 0.2s ease'
+                        }}
+                      >
+                        {getSpecIcon(row.category)}
+                      </motion.span>
+                      <span style={{ color: '#0F172A', fontWeight: 700, fontSize: '0.88rem' }}>
+                        {row.category}
+                      </span>
+                    </motion.div>
                   </td>
-                  <td style={{ padding: '12px 16px', color: 'var(--text-muted)', lineHeight: '1.5' }}>
-                    {row.details}
+                  <td style={{ padding: '14px 20px', color: '#475569', lineHeight: '1.6', verticalAlign: 'middle', fontWeight: 500 }}>
+                    <motion.span
+                      style={{ display: 'inline-block' }}
+                      whileHover={{ color: '#0F172A', x: 4 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      {row.details}
+                    </motion.span>
                   </td>
-                </tr>
+                </motion.tr>
               ))}
             </tbody>
           </table>
@@ -418,10 +514,10 @@ export default function ProjectDetailView({ project }) {
           lineHeight: '1.75', 
           fontSize: '0.95rem',
           color: 'var(--text-muted)',
-          backgroundColor: 'rgba(255, 255, 255, 0.015)',
-          borderLeft: '4px solid var(--primary)',
-          padding: '18px 20px',
-          borderRadius: '0 6px 6px 0'
+          backgroundColor: '#FFFFFF',
+          border: '1px solid var(--border-color)',
+          padding: '20px 22px',
+          borderRadius: '8px'
         }}>
           {details.overview.map((para, i) => (
             <p key={i} style={{ margin: 0 }}>{para}</p>
@@ -429,7 +525,7 @@ export default function ProjectDetailView({ project }) {
         </div>
       </div>
 
-      {/* SECTION 3: Scope of Work */}
+      {/* SECTION 3: Scope of Work - 3D Carousel */}
       <div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px', borderBottom: '2px solid var(--primary)', paddingBottom: '8px' }}>
           <HardHat size={20} color="var(--primary)" />
@@ -437,28 +533,20 @@ export default function ProjectDetailView({ project }) {
             Scope of Work
           </h3>
         </div>
+
         <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '14px' }}>
           Clark Construction was responsible for:
         </p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '10px' }}>
-          {details.scopeOfWork.map((item, idx) => (
-            <div 
-              key={idx} 
-              style={{ 
-                display: 'flex', 
-                alignItems: 'flex-start', 
-                gap: '10px', 
-                padding: '10px 14px', 
-                backgroundColor: 'var(--bg-deep)', 
-                border: '1px solid var(--border-color)', 
-                borderRadius: '4px',
-                fontSize: '0.875rem'
-              }}
-            >
-              <CheckCircle2 size={16} color="var(--primary)" style={{ flexShrink: 0, marginTop: '2px' }} />
-              <span style={{ color: 'var(--text-primary)' }}>{item}</span>
-            </div>
-          ))}
+
+        <div style={{ width: '100%', padding: '6px 0' }}>
+          <Carousel
+            items={scopeCarouselItems}
+            autoplay={true}
+            autoplayDelay={3200}
+            pauseOnHover={true}
+            loop={true}
+            round={false}
+          />
         </div>
       </div>
 
@@ -470,7 +558,7 @@ export default function ProjectDetailView({ project }) {
           backgroundColor: 'rgba(239, 68, 68, 0.03)', 
           border: '1px solid rgba(239, 68, 68, 0.2)', 
           padding: '20px', 
-          borderRadius: '6px' 
+          borderRadius: '8px' 
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
             <AlertTriangle size={18} color="var(--error)" />
@@ -490,7 +578,7 @@ export default function ProjectDetailView({ project }) {
           backgroundColor: 'rgba(16, 185, 129, 0.03)', 
           border: '1px solid rgba(16, 185, 129, 0.2)', 
           padding: '20px', 
-          borderRadius: '6px' 
+          borderRadius: '8px' 
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
             <ShieldCheck size={18} color="var(--success)" />
@@ -507,7 +595,7 @@ export default function ProjectDetailView({ project }) {
 
       </div>
 
-      {/* SECTION 6: Key Features */}
+      {/* SECTION 6: Key Features - 3D Carousel */}
       <div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px', borderBottom: '2px solid var(--primary)', paddingBottom: '8px' }}>
           <Layers size={20} color="var(--primary)" />
@@ -515,34 +603,25 @@ export default function ProjectDetailView({ project }) {
             Key Features
           </h3>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '10px' }}>
-          {details.keyFeatures.map((kf, idx) => (
-            <div 
-              key={idx} 
-              style={{ 
-                display: 'flex', 
-                alignItems: 'center', 
-                gap: '10px', 
-                padding: '12px 14px', 
-                backgroundColor: 'rgba(255, 255, 255, 0.02)', 
-                border: '1px solid var(--border-color)', 
-                borderRadius: '4px',
-                fontSize: '0.875rem'
-              }}
-            >
-              <span style={{ color: 'var(--primary)', fontWeight: 900, fontSize: '1.1rem' }}>✓</span>
-              <span style={{ color: 'var(--text-white)', fontWeight: 600 }}>{kf}</span>
-            </div>
-          ))}
+
+        <div style={{ width: '100%', padding: '6px 0' }}>
+          <Carousel
+            items={keyFeaturesCarouselItems}
+            autoplay={true}
+            autoplayDelay={3600}
+            pauseOnHover={true}
+            loop={true}
+            round={false}
+          />
         </div>
       </div>
 
       {/* SECTION 7: Project Outcome */}
       <div style={{ 
-        backgroundColor: 'rgba(13, 26, 99, 0.1)', 
+        backgroundColor: 'rgba(13, 26, 99, 0.05)', 
         border: '1px solid var(--primary)', 
         padding: '24px', 
-        borderRadius: '6px' 
+        borderRadius: '8px' 
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
           <Award size={20} color="var(--primary)" />
@@ -558,3 +637,4 @@ export default function ProjectDetailView({ project }) {
     </div>
   );
 }
+

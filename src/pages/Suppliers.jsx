@@ -199,7 +199,7 @@ export default function Suppliers() {
               </div>
             </div>
 
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.925rem', fontStyle: 'italic', borderLeft: '2px solid var(--border-color)', paddingLeft: '16px' }}>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.925rem', fontStyle: 'italic', padding: '12px 16px', backgroundColor: 'var(--bg-card)', border: '1px solid var(--border-color)', borderRadius: '6px' }}>
               <strong>Updating Account Information:</strong> If you are currently a Clark supplier and would like to update your account information, please reach out to your Clark point of contact.
             </p>
           </div>
