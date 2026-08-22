@@ -1,0 +1,183 @@
+/* Main App Layout */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+}
+
+main {
+  flex-grow: 1;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #F8FAFC;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-white);
+  font-size: 0.95rem;
+  transition: var(--transition-fast);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary);
+  background-color: #FFFFFF;
+  box-shadow: var(--shadow-glow);
+}
+
+.error-text {
+  color: var(--error);
+  font-size: 0.75rem;
+  margin-top: 4px;
+}
+
+/* Aspect Ratio image overlays */
+.img-overlay-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+.img-overlay-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-slow);
+}
+
+.img-overlay-wrapper::after {
+  display: none;
+}
+
+.img-overlay-wrapper:hover img {
+  transform: scale(1.03);
+}
+
+/* Page Intro/Hero (Non-home pages) */
+.page-hero {
+  position: relative;
+  height: 380px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.page-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.page-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.page-hero-bg::after {
+  display: none;
+}
+
+.page-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 650px;
+  padding: 36px 44px;
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: var(--shadow-premium);
+  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.container.page-hero-content {
+  margin-left: 24px;
+  margin-right: auto;
+}
+
+@media (min-width: 1200px) {
+  .container.page-hero-content {
+    margin-left: calc((100% - 1200px) / 2 + 24px);
+    margin-right: auto;
+  }
+}
+
+.page-hero-title {
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: var(--text-white);
+  margin-bottom: 12px;
+}
+
+@media (max-width: 768px) {
+  .page-hero {
+    height: auto;
+    padding: 60px 0;
+  }
+  .page-hero-content {
+    max-width: calc(100% - 32px);
+    margin: 0 16px;
+    padding: 24px 28px;
+  }
+  .page-hero-title {
+    font-size: 2.0rem;
+  }
+}
+
+/* Floating Scroll-to-Top Button */
+.scroll-to-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 45px;
+  height: 45px;
+  background-color: var(--primary);
+  color: var(--text-white);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 99;
+  box-shadow: var(--shadow-premium);
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s, background-color 0.2s;
+}
+
+.scroll-to-top-btn.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.scroll-to-top-btn:hover {
+  background-color: var(--primary-hover);
+  box-shadow: var(--shadow-glow);
+}
