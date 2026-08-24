@@ -28,6 +28,12 @@ import LifeAtClark from './pages/LifeAtClark';
 import OneClark from './pages/OneClark';
 import RecentGraduates from './pages/RecentGraduates';
 
+// Import Legal & Directory Pages
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfUse from './pages/TermsOfUse';
+import AccessibilityStatement from './pages/AccessibilityStatement';
+import Sitemap from './pages/Sitemap';
+
 import './App.css';
 
 function App() {
@@ -71,6 +77,15 @@ function App() {
           <Route path="/careers/search-apply" element={<Careers />} />
           <Route path="/careers/recent-graduates" element={<RecentGraduates />} />
           <Route path="/sustainability" element={<Sustainability />} />
+
+          {/* Legal & Governance Routes */}
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-use" element={<TermsOfUse />} />
+          <Route path="/terms" element={<TermsOfUse />} />
+          <Route path="/accessibility" element={<AccessibilityStatement />} />
+          <Route path="/accessibility-statement" element={<AccessibilityStatement />} />
+          <Route path="/sitemap" element={<Sitemap />} />
 
           {/* 404 Fallback */}
           <Route path="*" element={<NotFound />} />

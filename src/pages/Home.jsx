@@ -22,6 +22,7 @@ import CapitalOneArenaImg from '../assets/Capital One Arena.jpg';
 import TheWharfImg from '../assets/The Wharf (Phase 1 & 2).jpg';
 import LAXMidfieldImg from '../assets/LAX Midfield Satellite Concourse.jpg';
 import ClarkCivilImg from '../assets/Clark Civil.png';
+import ShapingTomorrowImg from "../assets/Shaping Tomorrow's Horizons with Rigor and Craft.png";
 import ClarkConcreteImg from '../assets/Clark Concrete.png';
 import ClarkWaterImg from '../assets/Clark Water.png';
 import CareersHeroImg from '../assets/careers_hero.png';
@@ -30,9 +31,6 @@ import TradeSafetyImg from '../assets/trade_contractors_safety.png';
 import IntelOhioImg from '../assets/Intel Ohio Mega Semiconductor Campus.jpg';
 import MidtownCenterImg from '../assets/midtown center Office.png';
 import FBICentralRobotsImg from '../assets/FBI Central Records Complex robots Technology.png';
-import NewsConcreteImg from '../assets/news_concrete_tech.jpg';
-import GoldAwardSkyscraperImg from '../assets/news_skyscraper_award.jpg';
-import TrainingBimInternshipsImg from '../assets/Training the Next Generation BIM Internships open.jpg';
 import ClarkFoundationsImg from '../assets/Clark Foundations.png';
 import C3MPowerImg from '../assets/C3M Power Systems.png';
 import CrossRiverRailImg from '../assets/cross river rail.png';
@@ -510,8 +508,8 @@ export default function Home() {
           {/* Left Visual Bento Element */}
           <div className="img-overlay-wrapper" style={{ height: '490px', position: 'relative', borderRadius: '16px', border: '1px solid var(--border-color)' }}>
             <img
-              src={ClarkCivilImg}
-              alt="Clark Construction heavy civil infrastructure project"
+              src={ShapingTomorrowImg}
+              alt="Clark Construction engineering team on active site"
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
             {/* Floating SaaS Badge */}
@@ -1096,57 +1094,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 8. LATEST NEWS PREVIEW */}
-      <section style={{ padding: '65px 0', backgroundColor: 'var(--bg-deep)', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
-        <div className="container">
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '20px', marginBottom: '38px' }}>
-            <div>
-              <h2 style={{ fontSize: '2.4rem', margin: 0, color: 'var(--text-white)', letterSpacing: '-0.025em' }}>
-                Company Chronicles
-              </h2>
-            </div>
-            <Button to="/news" variant="outline" icon={ArrowRight} iconPosition="right">
-              Read All News
-            </Button>
-          </div>
-
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '26px'
-          }}>
-            <Card
-              image={NewsConcreteImg}
-              title="Clark Construction Implements Low-Hydration Concrete Mixes"
-              subtitle="Innovation & Tech"
-              tag="Press Release"
-              hoverEffect="zoom"
-            >
-              We have partnered with CarbonCure to deploy specialized concrete mixes that permanently lock in carbon dioxide, cutting foundation emissions by 25%.
-            </Card>
-
-            <Card
-              image={GoldAwardSkyscraperImg}
-              title="Gold Award Won for Central Corporate Skyscraper"
-              subtitle="Company Awards"
-              tag="Award"
-              hoverEffect="zoom"
-            >
-              The Association of General Contractors (AGC) has awarded Clark Construction the design excellence medal for the dual structural glass core of Seattle Financial Tower.
-            </Card>
-
-            <Card
-              image={TrainingBimInternshipsImg}
-              title="Training the Next Generation: BIM Internships open"
-              subtitle="Careers & Internships"
-              tag="Notice"
-              hoverEffect="zoom"
-            >
-              Applications are now open for the Autumn 2026 Virtual Design and Construction internship. Work with senior BIM engineers on live infrastructure mockups.
-            </Card>
-          </div>
-        </div>
-      </section>
 
       {/* 9. CAREERS & CONTACT CALL-TO-ACTION */}
       <section className="section-padding" style={{ backgroundColor: '#FFFFFF' }}>

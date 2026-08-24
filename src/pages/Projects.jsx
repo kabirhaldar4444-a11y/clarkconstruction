@@ -116,7 +116,7 @@ import AnthemMusicVenueJpg from '../assets/The Anthem Music Venue.jpg';
 import JWMarriottAustinImg from '../assets/jw-marriott-austin.jpeg';
 import CrossRiverRailImg from '../assets/cross river rail.png';
 import NEOMImg from '../assets/NEOM.png';
-import VanBurenImg from '../assets/Clark Construction Mobilizes at 566 West Van Buren.png';
+import VanBurenImg from '../assets/The 78 Chicago Development.jpg';
 
 const CATEGORIES = ['All', 'Aviation & Infrastructure', 'Commercial & Mixed-Use', 'Healthcare & Government', 'Museums & Culture', 'Education', 'Industrial', 'Energy'];
 

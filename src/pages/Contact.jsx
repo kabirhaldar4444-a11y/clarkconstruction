@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle, HelpCircle, Globe } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, HelpCircle, Globe as GlobeIcon } from 'lucide-react';
 import Button from '../components/UI/Button';
 import Accordion from '../components/UI/Accordion';
+import Globe from '../components/UI/Globe';
 import MarketHeroImg from '../assets/Market hero image.png';
 
 const OFFICES = [
@@ -261,118 +262,12 @@ export default function Contact() {
               ))}
             </div>
 
-            {/* Mock Google Map - Dark aesthetic custom vector */}
-            <div style={{
-              height: '220px',
-              backgroundColor: '#07090E',
-              border: '1px solid var(--border-color)',
-              borderRadius: '6px',
-              position: 'relative',
-              overflow: 'hidden',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              boxShadow: 'var(--shadow-premium)'
-            }}>
-              <Globe size={100} style={{ color: 'rgba(255, 255, 255, 0.02)', position: 'absolute' }} />
-              
-              {/* Map grid lines */}
-              <div style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                backgroundImage: 'radial-gradient(rgba(217,119,6,0.1) 1px, transparent 0)',
-                backgroundSize: '24px 24px'
-              }} />
-
-              {/* Map Pins */}
-              {/* San Francisco Pin (Northwest) */}
-              <div
-                onClick={() => setActivePin('San Francisco HQ')}
-                style={{
-                  position: 'absolute',
-                  top: '40px',
-                  left: '70px',
-                  cursor: 'pointer',
-                  zIndex: 2
-                }}
-              >
-                <div style={{
-                  width: '14px',
-                  height: '14px',
-                  borderRadius: '50%',
-                  backgroundColor: activePin === 'San Francisco HQ' ? 'var(--primary)' : 'var(--text-muted)',
-                  border: '2px solid #000',
-                  boxShadow: activePin === 'San Francisco HQ' ? 'var(--shadow-glow)' : 'none',
-                  transition: 'var(--transition-fast)'
-                }} />
-                {activePin === 'San Francisco HQ' && (
-                  <span style={{ position: 'absolute', top: '-24px', left: '-20px', backgroundColor: 'var(--primary)', color: '#FFF', fontSize: '0.65rem', padding: '2px 6px', borderRadius: '3px', fontWeight: 800, whiteSpace: 'nowrap' }}>
-                    San Francisco HQ
-                  </span>
-                )}
-              </div>
-
-              {/* Arizona Pin (Southwest) */}
-              <div
-                onClick={() => setActivePin('Southwest Office')}
-                style={{
-                  position: 'absolute',
-                  top: '130px',
-                  left: '120px',
-                  cursor: 'pointer',
-                  zIndex: 2
-                }}
-              >
-                <div style={{
-                  width: '14px',
-                  height: '14px',
-                  borderRadius: '50%',
-                  backgroundColor: activePin === 'Southwest Office' ? 'var(--primary)' : 'var(--text-muted)',
-                  border: '2px solid #000',
-                  boxShadow: activePin === 'Southwest Office' ? 'var(--shadow-glow)' : 'none',
-                  transition: 'var(--transition-fast)'
-                }} />
-                {activePin === 'Southwest Office' && (
-                  <span style={{ position: 'absolute', top: '18px', left: '-30px', backgroundColor: 'var(--primary)', color: '#FFF', fontSize: '0.65rem', padding: '2px 6px', borderRadius: '3px', fontWeight: 800, whiteSpace: 'nowrap' }}>
-                    Phoenix
-                  </span>
-                )}
-              </div>
-
-              {/* Washington DC Pin (East Coast) */}
-              <div
-                onClick={() => setActivePin('Mid-Atlantic Office')}
-                style={{
-                  position: 'absolute',
-                  top: '90px',
-                  left: '260px',
-                  cursor: 'pointer',
-                  zIndex: 2
-                }}
-              >
-                <div style={{
-                  width: '14px',
-                  height: '14px',
-                  borderRadius: '50%',
-                  backgroundColor: activePin === 'Mid-Atlantic Office' ? 'var(--primary)' : 'var(--text-muted)',
-                  border: '2px solid #000',
-                  boxShadow: activePin === 'Mid-Atlantic Office' ? 'var(--shadow-glow)' : 'none',
-                  transition: 'var(--transition-fast)'
-                }} />
-                {activePin === 'Mid-Atlantic Office' && (
-                  <span style={{ position: 'absolute', top: '-24px', left: '-40px', backgroundColor: 'var(--primary)', color: '#FFF', fontSize: '0.65rem', padding: '2px 6px', borderRadius: '3px', fontWeight: 800, whiteSpace: 'nowrap' }}>
-                    Washington DC
-                  </span>
-                )}
-              </div>
-
-              <span style={{ position: 'absolute', bottom: '12px', right: '16px', fontSize: '0.7rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                <Globe size={12} /> Interactive Regional Map Mockup
-              </span>
-            </div>
+            {/* Interactive 3D Earth Globe Component */}
+            <Globe
+              activeLocation={activePin}
+              onSelectLocation={setActivePin}
+              style={{ height: '380px', width: '100%' }}
+            />
           </div>
 
         </div>

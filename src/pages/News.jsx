@@ -6,9 +6,9 @@ import Modal from '../components/UI/Modal';
 import Button from '../components/UI/Button';
 
 // Local Assets for Featured News
-import VanBurenImg from '../assets/Clark Construction Mobilizes at 566 West Van Buren.png';
+import VanBurenImg from '../assets/The 78 Chicago Development.jpg';
 import AspectWestEndImg from '../assets/Aspect at WestEnd Alexandria.jpg';
-import RootedInPerformanceImg from '../assets/Rooted in Performance Logistics Hub.jpg';
+import RootedInPerformanceImg from '../assets/Washington Nationals Ballpark (Nationals Park).png';
 
 // Local Assets for All Articles
 import CannonHouseImg from '../assets/Cannon House Balancing Modernization with Preservation.png';
