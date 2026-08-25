@@ -15,10 +15,10 @@ import ProjectDetailView from '../components/UI/ProjectDetailView';
 import PdfViewer from '../components/UI/PdfViewer';
 import ClarkMoUPdf from '../assets/CLARK CONSTRUCTION.pdf';
 import BuildingWhatMattersHero from '../assets/Market hero image.png';
-import ShapingTomorrowImg from "../assets/Shaping Tomorrow's Horizons with Rigor and Craft.png";
+import CommercialComplexImg from "../assets/Commercial_complex_construction_…_202608251128.jpeg";
 
 // Import local project images
-import KovvadaNuclearImg from '../assets/Kovvada Nuclear Power Plant.jpg';
+import KovvadaNuclearImg from '../assets/Nuclear_power_plant_construction…_202608251151.jpeg';
 import RelianceJamnagarImg from '../assets/reliance-jamnagar.jpeg';
 import GIFTCityImg from '../assets/gift-city-correct.png';
 import NaviMumbaiAirportImg from '../assets/airport.jpg';
@@ -456,7 +456,7 @@ export default function IndiaPartnerships() {
           {/* Isometric Graphic / Image montage */}
           <div className="img-overlay-wrapper" style={{ height: '480px' }}>
             <img
-              src={ShapingTomorrowImg}
+              src={CommercialComplexImg}
               alt="Clark Construction high-end engineering schematics"
             />
             <div style={{

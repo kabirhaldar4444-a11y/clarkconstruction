@@ -69,7 +69,7 @@ import ArgonneScienceImg from '../assets/Argonne Science.png';
 import KiaForumImg from '../assets/The Kia Forum Renovation & Historic Preservation.png';
 import ParklineChicagoImg from '../assets/Parkline in Chicago Residential & Mixed-Use.jpg';
 import RestonGatewayImg from '../assets/Interiors & Tenant Fit-Out - Reston Gateway.png';
-import KovvadaNuclearImg from '../assets/Kovvada Nuclear Power Plant.jpg';
+import KovvadaNuclearImg from '../assets/Nuclear_power_plant_construction…_202608251151.jpeg';
 import RelianceJamnagarImg from '../assets/reliance-jamnagar.jpeg';
 import GIFTCityImg from '../assets/gift-city-correct.png';
 import NaviMumbaiAirportImg from '../assets/airport.jpg';
