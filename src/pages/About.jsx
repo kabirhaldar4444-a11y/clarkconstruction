@@ -5,7 +5,7 @@ import User1Img from '../assets/user1.png';
 import User2Img from '../assets/user2.png';
 import User3Img from '../assets/user3.jpeg';
 import MarketHeroImg from '../assets/Market hero image.png';
-import ShapingTomorrowImg from "../assets/Shaping Tomorrow's Horizons with Rigor and Craft.png";
+import download from '../assets/download.png';
 
 const VALUES = [
   {
@@ -137,7 +137,7 @@ export default function About() {
 
           <div className="img-overlay-wrapper" style={{ height: '420px' }}>
             <img
-              src={ShapingTomorrowImg}
+              src={download}
               alt="Heavy cranes and construction crew members"
             />
           </div>

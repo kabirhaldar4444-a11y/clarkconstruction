@@ -22,7 +22,7 @@ import CapitalOneArenaImg from '../assets/Capital One Arena.jpg';
 import TheWharfImg from '../assets/The Wharf (Phase 1 & 2).jpg';
 import LAXMidfieldImg from '../assets/LAX Midfield Satellite Concourse.jpg';
 import ClarkCivilImg from '../assets/Clark Civil.png';
-import ShapingTomorrowImg from "../assets/Shaping Tomorrow's Horizons with Rigor and Craft.png";
+import download from '../assets/download.png';
 import ClarkConcreteImg from '../assets/Clark Concrete.png';
 import ClarkWaterImg from '../assets/Clark Water.png';
 import CareersHeroImg from '../assets/careers_hero.png';
@@ -508,7 +508,7 @@ export default function Home() {
           {/* Left Visual Bento Element */}
           <div className="img-overlay-wrapper" style={{ height: '490px', position: 'relative', borderRadius: '16px', border: '1px solid var(--border-color)' }}>
             <img
-              src={ShapingTomorrowImg}
+              src={download}
               alt="Clark Construction engineering team on active site"
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
