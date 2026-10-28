@@ -33,6 +33,9 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfUse from './pages/TermsOfUse';
 import AccessibilityStatement from './pages/AccessibilityStatement';
 import Sitemap from './pages/Sitemap';
+import EmploymentVerification from './pages/EmploymentVerification';
+import FraudulentDisclaimer from './pages/FraudulentDisclaimer';
+import TradeContractorInterestForm from './pages/TradeContractorInterestForm';
 
 import './App.css';
 
@@ -44,6 +47,12 @@ function App() {
           {/* Core Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/employment-verification" element={<EmploymentVerification />} />
+          <Route path="/contact/employment-verification" element={<EmploymentVerification />} />
+          <Route path="/fraudulent-employment-opportunity-disclaimer" element={<FraudulentDisclaimer />} />
+          <Route path="/careers/fraudulent-employment-opportunity-disclaimer" element={<FraudulentDisclaimer />} />
+          <Route path="/trade-contractor-interest-form" element={<TradeContractorInterestForm />} />
+          <Route path="/business/trade-contractors/interest-form" element={<TradeContractorInterestForm />} />
           <Route path="/news" element={<News />} />
 
           {/* About Us Submenu */}

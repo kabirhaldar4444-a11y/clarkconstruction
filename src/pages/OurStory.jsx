@@ -4,6 +4,29 @@ import Button from '../components/UI/Button';
 import StoryHeroImg from '../assets/Gemini_Generated_Image_agl3gdagl3gdagl3.png';
 import StoryOriginsImg from '../assets/Gemini_Generated_Image_tv3t6etv3t6etv3t.png';
 
+const EXECUTIVES = [
+  {
+    name: "Robert D. Moser Jr.",
+    role: "Chief Executive Officer (CEO)",
+    bio: "Provides overall executive direction for Clark's national operations, infrastructure ventures, and capital development while advancing a culture of innovation, craft, and safety."
+  },
+  {
+    name: "James Anderson",
+    role: "Chief Financial Officer (CFO)",
+    bio: "Leads enterprise fiscal strategy, capital allocation, and financial risk governance, ensuring long-term balance sheet strength across multi-billion dollar construction programs."
+  },
+  {
+    name: "William Parker",
+    role: "Chief Operating Officer (COO)",
+    bio: "Oversees nationwide project delivery, field operational efficiency, and stringent safety standards across commercial, civil, and institutional market sectors."
+  },
+  {
+    name: "Joe Abidin",
+    role: "Executive Vice President",
+    bio: "Provides executive leadership for Clark Civil, spearheading complex mass transit networks, heavy civil infrastructure, and mission-critical environmental facilities."
+  }
+];
+
 const TIMELINE = [
   {
     year: "1906",
@@ -139,12 +162,90 @@ export default function OurStory() {
             <span style={{ color: 'var(--primary)', fontWeight: 800, fontSize: '1.2rem', display: 'block', marginBottom: '8px' }}>
               {TIMELINE[activeIndex].year}
             </span>
-            <h3 style={{ color: '#FFF', fontSize: '1.5rem', marginBottom: '16px' }}>
+            <h3 style={{ color: 'var(--text-white)', fontSize: '1.5rem', marginBottom: '16px' }}>
               {TIMELINE[activeIndex].title}
             </h3>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.7', maxWidth: '600px', margin: '0 auto' }}>
               {TIMELINE[activeIndex].desc}
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Executive Leadership Section */}
+      <section className="section-padding" style={{ backgroundColor: 'var(--bg-deep)', borderTop: '1px solid var(--border-color)' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto 56px auto' }}>
+            <span className="subtitle-amber">Stewards of Our Legacy</span>
+            <h2 style={{ fontSize: '2.5rem', marginBottom: '16px', color: 'var(--text-white)' }}>
+              Executive Leadership
+            </h2>
+            <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: '1.6' }}>
+              Meet the executive leaders steering Clark Construction Group with a steadfast commitment to engineering excellence, safety, and operational integrity.
+            </p>
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+            gap: '30px'
+          }}>
+            {EXECUTIVES.map((exec, idx) => (
+              <div
+                key={idx}
+                style={{
+                  backgroundColor: 'var(--bg-card)',
+                  border: '1px solid var(--border-color)',
+                  borderTop: '3px solid var(--primary)',
+                  borderRadius: '8px',
+                  padding: '32px 26px',
+                  boxShadow: 'var(--shadow-premium)',
+                  transition: 'var(--transition-normal)',
+                  display: 'flex',
+                  flexDirection: 'column'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--primary)';
+                  e.currentTarget.style.transform = 'translateY(-4px)';
+                  e.currentTarget.style.boxShadow = 'var(--shadow-mercury)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--border-color)';
+                  e.currentTarget.style.borderTopColor = 'var(--primary)';
+                  e.currentTarget.style.transform = 'none';
+                  e.currentTarget.style.boxShadow = 'var(--shadow-premium)';
+                }}
+              >
+                <span style={{
+                  color: 'var(--primary)',
+                  fontWeight: 700,
+                  fontSize: '0.85rem',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.06em',
+                  marginBottom: '10px',
+                  display: 'block'
+                }}>
+                  {exec.role}
+                </span>
+                <h3 style={{
+                  fontSize: '1.35rem',
+                  fontWeight: 700,
+                  color: 'var(--text-white)',
+                  marginBottom: '14px',
+                  fontFamily: 'var(--font-heading)'
+                }}>
+                  {exec.name}
+                </h3>
+                <p style={{
+                  color: 'var(--text-muted)',
+                  fontSize: '0.94rem',
+                  lineHeight: '1.65',
+                  margin: 0
+                }}>
+                  {exec.bio}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

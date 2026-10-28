@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { 
   ShieldCheck, CheckCircle2, Send
 } from 'lucide-react';
@@ -120,7 +121,11 @@ export default function TradeContractors() {
             <h2 style={{ fontSize: '2.5rem', marginBottom: '24px' }}>Interested in Working with Clark?</h2>
             
             <p style={{ color: 'var(--text-muted)', fontSize: '1.025rem', lineHeight: '1.6', marginBottom: '24px' }}>
-              We invite firms to submit their interest in working with Clark on future opportunities by filling out our trade contractor interest form. We form long-term bonds with regional trade teams who share our commitment to safety and quality.
+              We invite firms to submit their interest in working with Clark on future opportunities by filling out our{' '}
+              <Link to="/trade-contractor-interest-form" style={{ color: 'var(--primary)', textDecoration: 'underline' }}>
+                trade contractor interest form
+              </Link>
+              . We form long-term bonds with regional trade teams who share our commitment to safety and quality.
             </p>
 
             {/* Safety Week Image Container */}
@@ -175,7 +180,13 @@ export default function TradeContractors() {
             ) : (
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 <span className="subtitle-amber" style={{ marginBottom: 0 }}>Register Interest</span>
-                <h3 style={{ color: 'var(--text-white)', fontSize: '1.5rem', marginBottom: '8px' }}>Trade Contractor Interest Form</h3>
+                <h3 style={{ color: 'var(--text-white)', fontSize: '1.5rem', marginBottom: '4px' }}>Trade Contractor Interest Form</h3>
+                <Link
+                  to="/trade-contractor-interest-form"
+                  style={{ color: '#0060B6', fontSize: '0.86rem', fontWeight: 600, textDecoration: 'underline', marginBottom: '10px', display: 'inline-block' }}
+                >
+                  Open Full Form Page &rarr;
+                </Link>
 
                 <input
                   type="text"

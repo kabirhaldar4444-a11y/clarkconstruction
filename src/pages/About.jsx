@@ -6,6 +6,10 @@ import User2Img from '../assets/user2.png';
 import User3Img from '../assets/user3.jpeg';
 import MarketHeroImg from '../assets/Market hero image.png';
 import download from '../assets/download.png';
+import RobertMoserImg from '../assets/robert_moser_ceo.jpg';
+import JamesAndersonImg from '../assets/james_anderson_cfo.jpg';
+import WilliamParkerImg from '../assets/william_parker_coo.jpg';
+import JoeAbidinImg from '../assets/joe_abidin_evp.jpg';
 
 const VALUES = [
   {

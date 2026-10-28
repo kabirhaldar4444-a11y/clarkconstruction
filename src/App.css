@@ -145,3 +145,205 @@ main {
   }
 }
 
+/* Contact Page Resources & Quick Links (Below Hero) */
+.contact-resources-section {
+  background-color: #FFFFFF;
+  border-bottom: 1px solid var(--border-color);
+  padding: 68px 0 64px 0;
+}
+
+.contact-resources-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 72px;
+  row-gap: 48px;
+}
+
+.contact-resource-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+}
+
+.contact-resource-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0060B6;
+  margin-top: 2px;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contact-resource-item:hover .contact-resource-icon {
+  transform: translateY(-2px) scale(1.05);
+}
+
+.contact-resource-content {
+  flex: 1;
+}
+
+.contact-resource-content h3 {
+  font-size: 1.32rem;
+  font-weight: 700;
+  color: #0B1736;
+  margin-bottom: 10px;
+  line-height: 1.28;
+  letter-spacing: -0.015em;
+  font-family: var(--font-heading);
+}
+
+.contact-resource-content h3 a {
+  transition: color 0.18s ease;
+}
+
+.contact-resource-content h3 a:hover {
+  color: #0060B6;
+}
+
+.contact-resource-content p {
+  font-size: 0.98rem;
+  color: #334155;
+  line-height: 1.65;
+  margin-bottom: 12px;
+  font-family: var(--font-body);
+}
+
+.contact-resource-content p:last-child {
+  margin-bottom: 0;
+}
+
+.contact-inline-link {
+  color: #0060B6;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.18s ease, text-decoration 0.18s ease;
+}
+
+.contact-inline-link:hover {
+  color: #003F80;
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .contact-resources-grid {
+    grid-template-columns: 1fr;
+    row-gap: 36px;
+  }
+
+  .contact-resources-section {
+    padding: 48px 0 44px 0;
+  }
+}
+
+/* Trade Contractor Interest Form - Rounded Corners & Distinct Borders */
+.trade-form-card {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 44px 40px;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+}
+
+.trade-form-input {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #ffffff;
+  border: 1.5px solid #475569;
+  border-radius: 9px;
+  font-size: 0.96rem;
+  color: #0f172a;
+  outline: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+  font-family: var(--font-body);
+  box-sizing: border-box;
+}
+
+.trade-form-input:hover {
+  border-color: #1e293b;
+}
+
+.trade-form-input:focus {
+  border-color: #0060b6;
+  box-shadow: 0 0 0 3px rgba(0, 96, 182, 0.15);
+}
+
+.trade-form-input.has-error {
+  border-color: #dc2626 !important;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15) !important;
+}
+
+.trade-form-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23334155' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px 16px;
+  padding-right: 42px !important;
+  cursor: pointer;
+}
+
+.trade-form-phone-group {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1.5px solid #475569;
+  border-radius: 9px;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+  overflow: hidden;
+}
+
+.trade-form-phone-group:hover {
+  border-color: #1e293b;
+}
+
+.trade-form-phone-group:focus-within {
+  border-color: #0060b6;
+  box-shadow: 0 0 0 3px rgba(0, 96, 182, 0.15);
+}
+
+.trade-form-phone-group.has-error {
+  border-color: #dc2626 !important;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15) !important;
+}
+
+.trade-form-phone-code {
+  padding: 12px 10px;
+  background-color: transparent;
+  border: none;
+  border-right: 1.5px solid #cbd5e1;
+  font-size: 0.95rem;
+  color: #0f172a;
+  outline: none;
+  cursor: pointer;
+  font-weight: 500;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23334155' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 12px 12px;
+  padding-right: 24px;
+}
+
+.trade-form-phone-input {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: transparent;
+  border: none;
+  font-size: 0.96rem;
+  color: #0f172a;
+  outline: none;
+  font-family: var(--font-body);
+}
+
+@media (max-width: 640px) {
+  .trade-form-card {
+    padding: 28px 20px;
+  }
+}
+
