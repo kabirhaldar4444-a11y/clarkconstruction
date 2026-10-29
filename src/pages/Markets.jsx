@@ -223,8 +223,8 @@ export default function Markets() {
                   key={category}
                   onClick={() => setActiveCategory(category)}
                   style={{
-                    backgroundColor: isActive ? 'rgba(217, 119, 6, 0.12)' : 'rgba(255, 255, 255, 0.02)',
-                    color: isActive ? 'var(--primary)' : 'var(--text-muted)',
+                    backgroundColor: isActive ? 'var(--primary)' : '#FFFFFF',
+                    color: isActive ? '#FFFFFF' : 'var(--text-primary)',
                     border: isActive ? '1px solid var(--primary)' : '1px solid var(--border-color)',
                     padding: '10px 22px',
                     borderRadius: '50px',
@@ -234,30 +234,47 @@ export default function Markets() {
                     transition: 'var(--transition-fast)',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '8px'
+                    gap: '8px',
+                    boxShadow: isActive ? '0 4px 14px rgba(13, 26, 99, 0.25)' : '0 1px 3px rgba(0,0,0,0.05)'
                   }}
                   onMouseEnter={(e) => {
                     if (!isActive) {
                       e.currentTarget.style.borderColor = 'var(--primary)';
-                      e.currentTarget.style.color = '#FFF';
+                      e.currentTarget.style.backgroundColor = 'rgba(13, 26, 99, 0.08)';
+                      e.currentTarget.style.color = 'var(--primary)';
+                      const badge = e.currentTarget.querySelector('.market-pill-badge');
+                      if (badge) {
+                        badge.style.backgroundColor = 'var(--primary)';
+                        badge.style.color = '#FFFFFF';
+                      }
                     }
                   }}
                   onMouseLeave={(e) => {
                     if (!isActive) {
                       e.currentTarget.style.borderColor = 'var(--border-color)';
-                      e.currentTarget.style.color = 'var(--text-muted)';
+                      e.currentTarget.style.backgroundColor = '#FFFFFF';
+                      e.currentTarget.style.color = 'var(--text-primary)';
+                      const badge = e.currentTarget.querySelector('.market-pill-badge');
+                      if (badge) {
+                        badge.style.backgroundColor = '#F1F5F9';
+                        badge.style.color = 'var(--text-muted)';
+                      }
                     }
                   }}
                 >
                   <span>{category}</span>
-                  <span style={{
-                    fontSize: '0.75rem',
-                    backgroundColor: isActive ? 'var(--primary)' : 'rgba(255, 255, 255, 0.05)',
-                    color: isActive ? '#FFF' : 'var(--text-muted)',
-                    padding: '2px 8px',
-                    borderRadius: '10px',
-                    fontWeight: 700
-                  }}>
+                  <span 
+                    className="market-pill-badge"
+                    style={{
+                      fontSize: '0.75rem',
+                      backgroundColor: isActive ? 'rgba(255, 255, 255, 0.22)' : '#F1F5F9',
+                      color: isActive ? '#FFFFFF' : 'var(--text-muted)',
+                      padding: '2px 8px',
+                      borderRadius: '10px',
+                      fontWeight: 700,
+                      transition: 'all 0.2s ease'
+                    }}
+                  >
                     {count}
                   </span>
                 </button>

@@ -184,7 +184,7 @@ export default function About() {
                 }}
               >
                 <div style={{ marginBottom: '20px' }}>{val.icon}</div>
-                <h3 style={{ color: '#FFF', fontSize: '1.2rem', marginBottom: '12px' }}>{val.title}</h3>
+                <h3 style={{ color: 'var(--text-white)', fontSize: '1.2rem', marginBottom: '12px', fontWeight: 700 }}>{val.title}</h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem', lineHeight: '1.6' }}>{val.desc}</p>
               </div>
             ))}
@@ -263,7 +263,7 @@ export default function About() {
             <span style={{ color: 'var(--primary)', fontWeight: 800, fontSize: '1.2rem', display: 'block', marginBottom: '8px' }}>
               {HISTORY[selectedHistory].year}
             </span>
-            <h3 style={{ color: '#FFF', fontSize: '1.5rem', marginBottom: '16px' }}>
+            <h3 style={{ color: 'var(--text-white)', fontSize: '1.5rem', marginBottom: '16px', fontWeight: 800 }}>
               {HISTORY[selectedHistory].title}
             </h3>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.7', maxWidth: '600px', margin: '0 auto' }}>
@@ -318,7 +318,7 @@ export default function About() {
                 </div>
                 {/* Text info */}
                 <div style={{ padding: '24px' }}>
-                  <h3 style={{ fontSize: '1.15rem', color: '#FFF', marginBottom: '4px' }}>{leader.name}</h3>
+                  <h3 style={{ fontSize: '1.15rem', color: 'var(--text-white)', marginBottom: '4px', fontWeight: 700 }}>{leader.name}</h3>
                   <span style={{ display: 'block', color: 'var(--primary)', fontSize: '0.8rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '8px' }}>
                     {leader.role}
                   </span>

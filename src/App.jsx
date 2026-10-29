@@ -29,7 +29,7 @@ import OneClark from './pages/OneClark';
 import RecentGraduates from './pages/RecentGraduates';
 
 // Import Legal & Directory Pages
-import PrivacyPolicy from './pages/PrivacyPolicy';
+import PrivacyPolicy from './pages/LegalPrivacy';
 import TermsOfUse from './pages/TermsOfUse';
 import AccessibilityStatement from './pages/AccessibilityStatement';
 import Sitemap from './pages/Sitemap';

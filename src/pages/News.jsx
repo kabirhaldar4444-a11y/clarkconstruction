@@ -405,10 +405,10 @@ export default function News() {
                 style={{
                   width: '100%',
                   padding: '12px 16px 12px 48px',
-                  backgroundColor: 'var(--bg-deep)',
+                  backgroundColor: '#FFFFFF',
                   border: '1px solid var(--border-color)',
                   borderRadius: '4px',
-                  color: '#FFF',
+                  color: 'var(--text-white)',
                   fontSize: '0.9rem',
                   outline: 'none',
                   transition: 'var(--transition-fast)'
@@ -532,15 +532,15 @@ export default function News() {
                       position: 'absolute',
                       top: '12px',
                       left: '12px',
-                      backgroundColor: 'rgba(8, 10, 16, 0.75)',
-                      backdropFilter: 'blur(4px)',
-                      border: '1px solid var(--border-color)',
-                      color: 'var(--primary)',
+                      backgroundColor: 'var(--primary)',
+                      color: '#FFFFFF',
+                      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.28)',
                       padding: '4px 10px',
-                      fontSize: '0.65rem',
-                      fontWeight: 700,
+                      fontSize: '0.68rem',
+                      fontWeight: 800,
                       borderRadius: '4px',
                       textTransform: 'uppercase',
+                      letterSpacing: '0.06em',
                       zIndex: 2
                     }}>
                       {art.contentType}

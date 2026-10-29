@@ -40,7 +40,7 @@ export default function CorporateResponsibility() {
 
           {/* Small Business Efforts */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <h3 style={{ color: '#FFF', fontSize: '1.3rem', marginBottom: '10px' }}>Our Small Business Efforts Include:</h3>
+            <h3 style={{ color: 'var(--text-white)', fontSize: '1.3rem', marginBottom: '10px', fontWeight: 800 }}>Our Small Business Efforts Include:</h3>
             {[
               {
                 title: "Strategic Partnership Program",
@@ -84,7 +84,7 @@ export default function CorporateResponsibility() {
               }
             ].map((pillar, idx) => (
               <div key={idx} style={{ backgroundColor: 'var(--bg-deep)', border: '1px solid var(--border-color)', padding: '20px', borderRadius: '6px' }}>
-                <h4 style={{ color: '#FFF', fontSize: '1.05rem', fontWeight: 700, marginBottom: '6px' }}>{pillar.title}</h4>
+                <h4 style={{ color: 'var(--text-white)', fontSize: '1.05rem', fontWeight: 700, marginBottom: '6px' }}>{pillar.title}</h4>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', lineHeight: '1.5' }}>{pillar.desc}</p>
               </div>
             ))}
@@ -110,7 +110,7 @@ export default function CorporateResponsibility() {
             {/* Community Engagement */}
             <div style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border-color)', padding: '40px', borderRadius: '6px' }}>
               <span className="subtitle-amber">Acts of Service</span>
-              <h3 style={{ color: '#FFF', fontSize: '1.8rem', marginBottom: '16px' }}>Community Engagement</h3>
+              <h3 style={{ color: 'var(--text-white)', fontSize: '1.8rem', marginBottom: '16px', fontWeight: 800 }}>Community Engagement</h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.925rem', lineHeight: '1.7', marginBottom: '20px' }}>
                 We believe in building community beyond the jobsite. At Clark, we cultivate deep and lasting relationships with the communities where we live and build.
               </p>
@@ -129,7 +129,7 @@ export default function CorporateResponsibility() {
             {/* We Are #OneClark */}
             <div style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border-color)', padding: '40px', borderRadius: '6px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <span className="subtitle-amber">Inclusion & Respect</span>
-              <h3 style={{ color: '#FFF', fontSize: '1.8rem', marginBottom: '16px' }}>We Are #OneClark</h3>
+              <h3 style={{ color: 'var(--text-white)', fontSize: '1.8rem', marginBottom: '16px', fontWeight: 800 }}>We Are #OneClark</h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.925rem', lineHeight: '1.7', marginBottom: '24px' }}>
                 By embracing uniqueness, fostering a culture of respect, and engaging our employees and partners, we provide an environment where everyone can thrive as individuals and succeed together as #OneClark.
               </p>

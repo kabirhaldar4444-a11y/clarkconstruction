@@ -108,7 +108,9 @@ export default function Card({
           pointerEvents: 'none',
           zIndex: 10,
           borderRadius: '14px',
-          background: `radial-gradient(circle at ${glare.x}% ${glare.y}%, rgba(255, 255, 255, ${glare.opacity}) 0%, rgba(255, 255, 255, 0) 65%)`,
+          background: variant === 'dark'
+            ? `radial-gradient(circle at ${glare.x}% ${glare.y}%, rgba(255, 255, 255, ${glare.opacity}) 0%, rgba(255, 255, 255, 0) 65%)`
+            : `radial-gradient(circle at ${glare.x}% ${glare.y}%, rgba(37, 99, 235, 0.05) 0%, rgba(37, 99, 235, 0) 65%)`,
           transition: 'opacity 0.25s ease'
         }}
       />

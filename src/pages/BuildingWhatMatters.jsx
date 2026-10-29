@@ -84,7 +84,7 @@ export default function BuildingWhatMatters() {
                   {item.icon}
                 </div>
                 <div>
-                  <h4 style={{ color: '#FFF', fontSize: '1.1rem', marginBottom: '6px' }}>{item.title}</h4>
+                  <h4 style={{ color: 'var(--text-white)', fontSize: '1.1rem', marginBottom: '6px', fontWeight: 700 }}>{item.title}</h4>
                   <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem', lineHeight: '1.5' }}>{item.desc}</p>
                 </div>
               </div>

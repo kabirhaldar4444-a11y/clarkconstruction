@@ -205,7 +205,7 @@ export default function LifeAtClark() {
                     }}>
                       {benefit.icon}
                     </div>
-                    <h3 style={{ color: '#FFF', fontSize: '1.8rem', fontWeight: 800 }}>{benefit.title}</h3>
+                    <h3 style={{ color: 'var(--text-white)', fontSize: '1.8rem', fontWeight: 800 }}>{benefit.title}</h3>
                   </div>
                   {benefit.content}
                 </div>
@@ -229,20 +229,27 @@ export default function LifeAtClark() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '30px', maxWidth: '800px', margin: '0 auto' }}>
             {/* Skilled Craft Card */}
             <div style={{
-              backgroundColor: 'var(--bg-deep)',
+              backgroundColor: '#FFFFFF',
               border: '1px solid var(--border-color)',
+              boxShadow: 'var(--shadow-premium)',
               padding: '40px',
-              borderRadius: '6px',
+              borderRadius: '8px',
               textAlign: 'center',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',
               transition: 'var(--transition-normal)'
             }}
-            onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--primary)'}
-            onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--border-color)'}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = 'var(--primary)';
+              e.currentTarget.style.transform = 'translateY(-4px)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = 'var(--border-color)';
+              e.currentTarget.style.transform = 'none';
+            }}
             >
-              <h3 style={{ color: '#FFF', fontSize: '1.4rem', marginBottom: '16px', fontWeight: 800 }}>Skilled Craft</h3>
+              <h3 style={{ color: 'var(--text-white)', fontSize: '1.4rem', marginBottom: '16px', fontWeight: 800 }}>Skilled Craft</h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', lineHeight: '1.5', marginBottom: '24px' }}>
                 Benefits coverage details, union agreements, safety equipment vouchers, and wellness support for our field tradesmen.
               </p>
@@ -253,20 +260,27 @@ export default function LifeAtClark() {
 
             {/* Professionals & Grads Card */}
             <div style={{
-              backgroundColor: 'var(--bg-deep)',
+              backgroundColor: '#FFFFFF',
               border: '1px solid var(--border-color)',
+              boxShadow: 'var(--shadow-premium)',
               padding: '40px',
-              borderRadius: '6px',
+              borderRadius: '8px',
               textAlign: 'center',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',
               transition: 'var(--transition-normal)'
             }}
-            onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--primary)'}
-            onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--border-color)'}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = 'var(--primary)';
+              e.currentTarget.style.transform = 'translateY(-4px)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = 'var(--border-color)';
+              e.currentTarget.style.transform = 'none';
+            }}
             >
-              <h3 style={{ color: '#FFF', fontSize: '1.4rem', marginBottom: '16px', fontWeight: 800 }}>Professionals & Grads</h3>
+              <h3 style={{ color: 'var(--text-white)', fontSize: '1.4rem', marginBottom: '16px', fontWeight: 800 }}>Professionals & Grads</h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', lineHeight: '1.5', marginBottom: '24px' }}>
                 Retirement plans, continuing education packages, flexible accounts, and healthcare solutions for office and operations managers.
               </p>

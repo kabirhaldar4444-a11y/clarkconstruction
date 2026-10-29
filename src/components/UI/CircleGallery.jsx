@@ -16,7 +16,6 @@ export default function CircleGallery({
   const [rotation, setRotation] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const [activeIdx, setActiveIdx] = useState(0);
 
   const startXRef = useRef(0);
   const startRotationRef = useRef(0);
@@ -57,12 +56,11 @@ export default function CircleGallery({
     return () => window.removeEventListener('resize', handleResize);
   }, [radius, depth, cardWidth]);
 
-  // Track active front index
-  useEffect(() => {
-    if (count === 0) return;
+  // Derive active front index directly from rotation without triggering secondary state updates
+  const activeIdx = useMemo(() => {
+    if (count === 0) return 0;
     const normalized = ((-rotation % 360) + 360) % 360;
-    const idx = Math.round(normalized / angleStep) % count;
-    setActiveIdx(idx);
+    return Math.round(normalized / angleStep) % count;
   }, [rotation, angleStep, count]);
 
   // Smooth continuous rotation & drag inertia loop

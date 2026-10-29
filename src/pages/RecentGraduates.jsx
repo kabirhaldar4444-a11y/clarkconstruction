@@ -142,7 +142,7 @@ export default function RecentGraduates() {
                 }}>
                   {pillar.icon}
                 </div>
-                <h3 style={{ color: '#FFF', fontSize: '1.25rem', fontWeight: 700, marginBottom: '12px' }}>{pillar.title}</h3>
+                <h3 style={{ color: 'var(--text-white)', fontSize: '1.25rem', fontWeight: 700, marginBottom: '12px' }}>{pillar.title}</h3>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', lineHeight: '1.6' }}>{pillar.desc}</p>
               </div>
             ))}
@@ -206,7 +206,7 @@ export default function RecentGraduates() {
                 </div>
                 
                 <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-                  <h3 style={{ fontSize: '1.2rem', color: '#FFF', fontWeight: 700, marginBottom: '8px' }}>{role.title}</h3>
+                  <h3 style={{ fontSize: '1.2rem', color: 'var(--text-white)', fontWeight: 700, marginBottom: '8px' }}>{role.title}</h3>
                   <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', lineHeight: '1.5', marginBottom: '20px', flexGrow: 1 }}>
                     {role.desc}
                   </p>
@@ -242,7 +242,7 @@ export default function RecentGraduates() {
             gap: '16px'
           }}>
             <span className="subtitle-amber">Thrive With Us</span>
-            <h3 style={{ color: '#FFF', fontSize: '1.6rem', fontWeight: 800 }}>Explore Our Benefit Programs</h3>
+            <h3 style={{ color: 'var(--text-white)', fontSize: '1.6rem', fontWeight: 800 }}>Explore Our Benefit Programs</h3>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.6', maxWidth: '600px' }}>
               Find out more about the benefits of joining our team, including your career development, Clark community, health and wellness, ability to recharge, and financial security.
             </p>

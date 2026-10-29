@@ -130,7 +130,7 @@ export default function OneClark() {
                     }}>
                       {p.icon}
                     </div>
-                    <h3 style={{ fontSize: '1.25rem', color: '#FFF', fontWeight: 700 }}>{p.title}</h3>
+                    <h3 style={{ fontSize: '1.25rem', color: 'var(--text-white)', fontWeight: 700 }}>{p.title}</h3>
                   </div>
                   <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', lineHeight: '1.5', flexGrow: 1 }}>{p.desc}</p>
                 </div>
@@ -141,28 +141,42 @@ export default function OneClark() {
       </section>
 
       {/* Strategic Partnership Callout */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--bg-card)', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
-        <div className="container" style={{ maxWidth: '800px', textAlign: 'center' }}>
+      <section className="section-padding" style={{ backgroundColor: 'var(--bg-deep)', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
+        <div className="container" style={{ maxWidth: '820px', textAlign: 'center' }}>
           <div style={{
-            backgroundColor: 'rgba(15, 19, 30, 0.7)',
-            backdropFilter: 'blur(12px)',
-            border: '1.5px solid var(--primary)',
-            padding: '40px',
-            borderRadius: '6px',
-            boxShadow: 'var(--shadow-glow), var(--shadow-premium)',
+            backgroundColor: '#FFFFFF',
+            border: '1px solid var(--border-color)',
+            padding: '48px 40px',
+            borderRadius: '12px',
+            boxShadow: 'var(--shadow-mercury)',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: '20px'
+            gap: '16px'
           }}>
-            <BookOpen size={36} color="var(--primary)" />
-            <h3 style={{ color: '#FFF', fontSize: '1.6rem', fontWeight: 800 }}>Business Partnerships</h3>
-            <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: '1.6', maxWidth: '600px' }}>
+            <div style={{
+              width: '56px',
+              height: '56px',
+              borderRadius: '12px',
+              backgroundColor: 'rgba(13, 26, 99, 0.06)',
+              border: '1px solid rgba(13, 26, 99, 0.12)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginBottom: '4px'
+            }}>
+              <BookOpen size={28} color="var(--primary)" />
+            </div>
+            <span className="subtitle-amber">Strategic Growth</span>
+            <h3 style={{ color: 'var(--text-white)', fontSize: '1.8rem', fontWeight: 800, margin: 0 }}>Business Partnerships</h3>
+            <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: '1.7', maxWidth: '620px', margin: 0 }}>
               Company-led programs like our Strategic Partnership Program help expand the capability and capacity of small businesses.
             </p>
-            <Button to="/business/strategic-partnership" variant="primary">
-              LEARN ABOUT OUR STRATEGIC PARTNERSHIP PROGRAM
-            </Button>
+            <div style={{ marginTop: '8px' }}>
+              <Button to="/business/strategic-partnership" variant="primary" size="lg">
+                LEARN ABOUT OUR STRATEGIC PARTNERSHIP PROGRAM
+              </Button>
+            </div>
           </div>
         </div>
       </section>

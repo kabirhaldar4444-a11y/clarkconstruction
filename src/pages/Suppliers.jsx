@@ -150,14 +150,15 @@ export default function Suppliers() {
             </p>
 
             <div style={{
-              backgroundColor: 'rgba(15, 19, 30, 0.6)',
+              backgroundColor: '#FFFFFF',
               border: '1px solid var(--border-color)',
-              borderRadius: '6px',
+              borderRadius: '8px',
               padding: '24px',
-              marginBottom: '24px'
+              marginBottom: '24px',
+              boxShadow: 'var(--shadow-premium)'
             }}>
-              <h4 style={{ color: '#FFF', fontSize: '1.05rem', marginBottom: '12px', fontWeight: 700 }}>Coupa allows you to:</h4>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <h4 style={{ color: 'var(--text-white)', fontSize: '1.05rem', marginBottom: '14px', fontWeight: 800 }}>Coupa allows you to:</h4>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {[
                   "Submit invoices electronically",
                   "Review invoice status",
@@ -167,9 +168,9 @@ export default function Suppliers() {
                   "Send shipping/tracking information for orders",
                   "Grant other employees access and configure their permissions"
                 ].map((item, idx) => (
-                  <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.9rem', color: 'var(--text-primary)' }}>
-                    <CheckCircle2 size={16} color="var(--primary)" style={{ flexShrink: 0, marginTop: '3px' }} />
-                    <span>{item}</span>
+                  <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', fontSize: '0.925rem', color: 'var(--text-primary)', lineHeight: '1.5' }}>
+                    <CheckCircle2 size={18} color="#2563EB" style={{ flexShrink: 0, marginTop: '2px' }} />
+                    <span style={{ fontWeight: 500 }}>{item}</span>
                   </li>
                 ))}
               </ul>
@@ -181,19 +182,20 @@ export default function Suppliers() {
 
             {/* Warning Alert Panel */}
             <div style={{
-              backgroundColor: 'rgba(239, 68, 68, 0.05)',
-              border: '1px solid var(--error)',
+              backgroundColor: '#FEF2F2',
+              border: '1.5px solid #FCA5A5',
               padding: '20px',
-              borderRadius: '6px',
+              borderRadius: '8px',
               display: 'flex',
               gap: '14px',
               alignItems: 'flex-start',
-              marginBottom: '20px'
+              marginBottom: '20px',
+              boxShadow: '0 2px 8px rgba(239, 68, 68, 0.08)'
             }}>
-              <AlertTriangle size={24} color="var(--error)" style={{ flexShrink: 0, marginTop: '2px' }} />
+              <AlertTriangle size={24} color="#DC2626" style={{ flexShrink: 0, marginTop: '2px' }} />
               <div>
-                <h4 style={{ color: '#FFF', fontSize: '0.95rem', fontWeight: 700, marginBottom: '6px' }}>“No PO, No Pay” Policy</h4>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.825rem', lineHeight: '1.5' }}>
+                <h4 style={{ color: '#991B1B', fontSize: '1rem', fontWeight: 800, marginBottom: '6px' }}>“No PO, No Pay” Policy</h4>
+                <p style={{ color: '#7F1D1D', fontSize: '0.875rem', lineHeight: '1.6', margin: 0 }}>
                   Clark has a “No PO, No Pay” Policy in effect. Please check our invoicing standards. Failure to meet these requirements will cause payment delays and may result in your invoice being rejected.
                 </p>
               </div>
@@ -215,7 +217,7 @@ export default function Suppliers() {
               boxShadow: 'var(--shadow-premium)'
             }}>
               <span className="subtitle-amber">Supplier Portal</span>
-              <h3 style={{ color: '#FFF', fontSize: '1.5rem', marginBottom: '16px' }}>Coupa Supplier Portal</h3>
+              <h3 style={{ color: 'var(--text-white)', fontSize: '1.5rem', marginBottom: '16px' }}>Coupa Supplier Portal</h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: '1.6', marginBottom: '24px' }}>
                 Authorized suppliers can log into the Coupa Supplier Portal directly to submit invoices or modify billing details.
               </p>
@@ -238,7 +240,7 @@ export default function Suppliers() {
               boxShadow: 'var(--shadow-premium)'
             }}>
               <span className="subtitle-amber">Status Center</span>
-              <h3 style={{ color: '#FFF', fontSize: '1.5rem', marginBottom: '12px' }}>Quick Invoice Tracking</h3>
+              <h3 style={{ color: 'var(--text-white)', fontSize: '1.5rem', marginBottom: '12px' }}>Quick Invoice Tracking</h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginBottom: '20px' }}>
                 Enter your PO code or Invoice ID to view immediate processing state metrics.
               </p>
@@ -255,10 +257,10 @@ export default function Suppliers() {
                   style={{
                     flex: 1,
                     padding: '12px 16px',
-                    backgroundColor: 'var(--bg-deep)',
+                    backgroundColor: '#FFFFFF',
                     border: '1px solid var(--border-color)',
                     borderRadius: '4px',
-                    color: '#FFF',
+                    color: 'var(--text-white)',
                     fontSize: '0.9rem',
                     outline: 'none'
                   }}
@@ -315,7 +317,7 @@ export default function Suppliers() {
               borderBottom: '1px solid rgba(255, 255, 255, 0.05)'
             }}>
               <div>
-                <h4 style={{ color: '#FFF', fontSize: '1rem', fontWeight: 700, marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <h4 style={{ color: 'var(--text-white)', fontSize: '1rem', fontWeight: 700, marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <Mail size={16} color="var(--primary)" />
                   Coupa Support
                 </h4>
@@ -327,7 +329,7 @@ export default function Suppliers() {
               </div>
 
               <div>
-                <h4 style={{ color: '#FFF', fontSize: '1rem', fontWeight: 700, marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <h4 style={{ color: 'var(--text-white)', fontSize: '1rem', fontWeight: 700, marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <Phone size={16} color="var(--primary)" />
                   Accounts Payable
                 </h4>
@@ -342,7 +344,7 @@ export default function Suppliers() {
             </div>
 
             <div>
-              <h4 style={{ color: '#FFF', fontSize: '1.1rem', fontWeight: 700, marginBottom: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+              <h4 style={{ color: 'var(--text-white)', fontSize: '1.1rem', fontWeight: 700, marginBottom: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
                 <Calendar size={18} color="var(--primary)" />
                 Weekly Live Training Webinars
               </h4>
@@ -389,14 +391,14 @@ export default function Suppliers() {
             </div>
 
             <div>
-              <h4 style={{ color: '#FFF', fontSize: '1.05rem', fontWeight: 700, marginBottom: '8px' }}>About This Tutorial</h4>
+              <h4 style={{ color: 'var(--text-white)', fontSize: '1.05rem', fontWeight: 700, marginBottom: '8px' }}>About This Tutorial</h4>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: '1.6' }}>
                 {activeMedia.description}
               </p>
             </div>
 
             <div>
-              <h4 style={{ color: '#FFF', fontSize: '1.05rem', fontWeight: 700, marginBottom: '12px' }}>Video Chapters & Actions:</h4>
+              <h4 style={{ color: 'var(--text-white)', fontSize: '1.05rem', fontWeight: 700, marginBottom: '12px' }}>Video Chapters & Actions:</h4>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {activeMedia.steps.map((step, idx) => (
                   <div key={idx} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
