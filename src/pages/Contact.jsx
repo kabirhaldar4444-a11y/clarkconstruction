@@ -90,7 +90,15 @@ function FactSheetIcon() {
 
 const OFFICES = [
   {
+    city: "Mumbai Office",
+    badge: "India Corporate Office",
+    address: "Altimus, Level 35, Pandurang Budhkar Marg, Worli",
+    zip: "Mumbai – 400018, Maharashtra, India",
+    isPrimary: true
+  },
+  {
     city: "San Francisco HQ",
+    badge: "Global Headquarters",
     address: "181 Fremont St",
     zip: "San Francisco, CA 94105",
     phone: "+1 (800) 555-0199",
@@ -98,6 +106,7 @@ const OFFICES = [
   },
   {
     city: "Mid-Atlantic Office",
+    badge: "Regional Division",
     address: "420 Constitution Ave NE",
     zip: "Washington, DC 20002",
     phone: "+1 (202) 555-0143",
@@ -105,6 +114,7 @@ const OFFICES = [
   },
   {
     city: "Southwest Office",
+    badge: "Regional Division",
     address: "500 Phoenix Plaza, Suite 12",
     zip: "Phoenix, AZ 85001",
     phone: "+1 (602) 555-0188",
@@ -136,7 +146,7 @@ export default function Contact() {
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [activePin, setActivePin] = useState('San Francisco HQ');
+  const [activePin, setActivePin] = useState('Mumbai Office');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -422,43 +432,90 @@ export default function Contact() {
             <h2 style={{ fontSize: '2.2rem', color: 'var(--text-white)' }}>Our Offices</h2>
             
             {/* Offices list */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px' }}>
-              {OFFICES.map((office, idx) => (
-                <div
-                  key={idx}
-                  onClick={() => setActivePin(office.city)}
-                  style={{
-                    backgroundColor: activePin === office.city ? 'rgba(0, 214, 171, 0.05)' : 'var(--bg-card)',
-                    border: '1px solid',
-                    borderColor: activePin === office.city ? 'var(--primary)' : 'var(--border-color)',
-                    padding: '24px',
-                    borderRadius: '6px',
-                    cursor: 'pointer',
-                    transition: 'var(--transition-fast)'
-                  }}
-                >
-                  <h4 style={{ color: 'var(--text-white)', fontSize: '1.1rem', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <MapPin size={16} color={activePin === office.city ? 'var(--primary)' : 'var(--text-muted)'} />
-                    {office.city}
-                  </h4>
-                  <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '12px', lineHeight: '1.5' }}>
-                    {office.address}<br />{office.zip}
-                  </p>
-                  <span style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-primary)', fontWeight: 600 }}>
-                    {office.phone}
-                  </span>
-                  <span style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                    {office.email}
-                  </span>
-                </div>
-              ))}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
+              {OFFICES.map((office, idx) => {
+                const isActive = activePin === office.city;
+                return (
+                  <div
+                    key={idx}
+                    onClick={() => setActivePin(office.city)}
+                    style={{
+                      backgroundColor: isActive ? 'rgba(0, 96, 182, 0.08)' : 'var(--bg-card)',
+                      borderWidth: '1.5px',
+                      borderStyle: 'solid',
+                      borderColor: isActive ? '#0060B6' : 'var(--border-color)',
+                      padding: '20px',
+                      borderRadius: '8px',
+                      cursor: 'pointer',
+                      transition: 'all 0.25s ease',
+                      position: 'relative',
+                      boxShadow: isActive ? '0 8px 24px rgba(0, 96, 182, 0.18)' : 'none'
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+                      <span
+                        style={{
+                          fontSize: '0.68rem',
+                          fontWeight: 700,
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.05em',
+                          padding: '2px 8px',
+                          borderRadius: '4px',
+                          backgroundColor: isActive ? 'rgba(0, 96, 182, 0.15)' : 'rgba(255, 255, 255, 0.05)',
+                          color: isActive ? '#38BDF8' : 'var(--text-muted)'
+                        }}
+                      >
+                        {office.badge}
+                      </span>
+                      {isActive && (
+                        <span
+                          style={{
+                            fontSize: '0.65rem',
+                            fontWeight: 700,
+                            color: '#10B981',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '4px'
+                          }}
+                        >
+                          <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#10B981', display: 'inline-block' }} />
+                          Pinned
+                        </span>
+                      )}
+                    </div>
+                    <h4 style={{ color: 'var(--text-white)', fontSize: '1.08rem', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <MapPin size={16} color={isActive ? '#0060B6' : 'var(--text-muted)'} />
+                      {office.city}
+                    </h4>
+                    <p style={{ fontSize: '0.84rem', color: 'var(--text-muted)', marginBottom: '12px', lineHeight: '1.5' }}>
+                      {office.address}<br />{office.zip}
+                    </p>
+                    {(office.phone || office.email) && (
+                      <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.08)', paddingTop: '10px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                        {office.phone && (
+                          <span style={{ fontSize: '0.8rem', color: 'var(--text-primary)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '6px' }}>
+                            <Phone size={13} color="var(--primary)" />
+                            {office.phone}
+                          </span>
+                        )}
+                        {office.email && (
+                          <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                            <Mail size={13} color="var(--text-muted)" />
+                            {office.email}
+                          </span>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
 
-            {/* Interactive 3D Earth Globe Component */}
+            {/* Interactive 3D Earth Network Globe Component */}
             <Globe
               activeLocation={activePin}
               onSelectLocation={setActivePin}
-              style={{ height: '380px', width: '100%' }}
+              style={{ height: '460px', width: '100%' }}
             />
           </div>
 
