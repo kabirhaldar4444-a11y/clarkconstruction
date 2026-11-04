@@ -1,5 +1,5 @@
-import React, { useState, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useMemo, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, MapPin, Calendar, HardHat, FileText, LayoutGrid, List, ArrowUpDown, X, ArrowUp, CheckCircle2, Building2, ArrowRight } from 'lucide-react';
 import Card from '../components/UI/Card';
@@ -1501,11 +1501,24 @@ export { PROJECTS };
 
 export default function Projects() {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('default');
   const [viewMode, setViewMode] = useState('grid'); // 'grid' | 'list'
   const [activeProject, setActiveProject] = useState(null);
+
+  // Sync state from URL query parameters (e.g. ?category=... or ?search=...)
+  useEffect(() => {
+    const categoryParam = searchParams.get('category');
+    const searchParam = searchParams.get('search');
+    if (categoryParam) {
+      setSelectedCategory(categoryParam);
+    }
+    if (searchParam) {
+      setSearchQuery(searchParam);
+    }
+  }, [searchParams]);
 
   // Dynamic Category extraction
   const categories = useMemo(() => {
@@ -1532,7 +1545,9 @@ export default function Projects() {
         (project.summary && project.summary.toLowerCase().includes(query)) ||
         (project.location && project.location.toLowerCase().includes(query)) ||
         (project.client && project.client.toLowerCase().includes(query)) ||
-        (project.category && project.category.toLowerCase().includes(query));
+        (project.category && project.category.toLowerCase().includes(query)) ||
+        (project.details && project.details.toLowerCase().includes(query)) ||
+        (project.specs && project.specs.toLowerCase().includes(query));
       return matchesCategory && matchesSearch;
     });
 
@@ -1553,6 +1568,7 @@ export default function Projects() {
     setSelectedCategory('All');
     setSearchQuery('');
     setSortBy('default');
+    setSearchParams({});
   };
 
   const scrollToTop = () => {
