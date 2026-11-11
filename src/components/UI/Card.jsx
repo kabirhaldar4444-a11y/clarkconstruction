@@ -122,6 +122,10 @@ export default function Card({
             src={image}
             alt={title || 'card media'}
             loading="lazy"
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = 'https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=1200&q=80';
+            }}
             className="card-img"
             style={{
               position: 'absolute',

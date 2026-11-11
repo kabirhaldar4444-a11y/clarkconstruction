@@ -289,7 +289,7 @@ const SECTORS = [
   {
     market: "Sports & Entertainment",
     project: "Chase Center",
-    featuredProjectSlug: "capital-one-arena",
+    featuredProjectSlug: "chase-center",
     searchQuery: "Arena",
     desc: "Chase Center basketball court during a game, featuring world-class sports facilities.",
     detailedDesc: "Clark delivers world-class sports arenas, MLB ballparks, concert halls, and FIFA World Cup stadiums engineered for maximum sightlines, acoustic clarity, and high-velocity crowd circulation.",

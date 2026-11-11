@@ -22,17 +22,13 @@ import KovvadaNuclearImg from '../assets/Nuclear_power_plant_construction…_202
 import RelianceJamnagarImg from '../assets/reliance-jamnagar.jpeg';
 import GIFTCityImg from '../assets/gift-city-correct.png';
 import NaviMumbaiAirportImg from '../assets/airport.jpg';
-import RailwayMetroImg from '../assets/railway_metro_projects.png';
-import DMICImg from '../assets/Delhi-Mumbai Industrial Corridor (DMIC).png';
 import AKICImg from '../assets/Amritsar-Kolkata Industrial Corridor (AKIC).jpg';
 import PaimanaImg from '../assets/Paimana.png';
-import ChenabBridgeImg from '../assets/Chenab Rail Bridge  USBRL.jpg';
 import BharatmalaImg from '../assets/Bharatmala Pariyojna.jpg';
 import NationalMaritimeImg from '../assets/National Maritime Heritage Complex.jpg';
 import AhmedabadDholeraImg from '../assets/Ahmedabad-Dholera Express.jpg';
 import VisakhapatnamChennaiImg from '../assets/Visakhapatnam-Chennai Industrial Corridor.png';
 import SagarmalaImg from '../assets/Sagarmala Project.png';
-import BengaluruSuburbanImg from '../assets/Bengaluru Suburban Railway Project.png';
 import JSWGreenEnergyImg from "../assets/JSW Group's Green Energy Projects.png";
 import DholeraSmartCityImg from '../assets/Dholera Smart City Project.png';
 import GangaVikasImg from '../assets/Ganga Vikas Project (Riverfront).png';
@@ -108,32 +104,8 @@ const PROJECTS = [
     status: "Under Construction",
     image: NaviMumbaiAirportImg
   },
-  {
-    title: "Railway and Metro Projects – Global",
-    subtitle: "Transit & Consulting",
-    description: "Providing General Consulting, project management, and construction supervision services for extensive subway and light rail networks in metropolitan hubs. The scope includes underground tunnel boring, elevated viaduct structures, and signaling synchronization. It is a critical component of India's urban transit modernization program.",
-    category: "Infrastructure",
-    type: "Mass Transit Systems",
-    budget: "$1–40 Billion (Portfolio Value)",
-    duration: "Ongoing Projects",
-    location: "Delhi NCR & Multiple Cities, India",
-    contractor: "DMRC, L&T Metro, Tata Projects & Alstom",
-    status: "Ongoing Operations",
-    image: RailwayMetroImg
-  },
-  {
-    title: "Delhi-Mumbai Industrial Corridor (DMIC)",
-    subtitle: "Industrial Infrastructure",
-    description: "A mega-infrastructure project aiming to develop new smart industrial cities and logistics parks along a 1,500 km high-speed freight rail line. The project aims to double employment and industrial output, linking India's political capital with its financial hub.",
-    category: "Infrastructure",
-    type: "Industrial Corridor",
-    budget: "$90 Billion",
-    duration: "2018 - 2027",
-    location: "Western India Corridor",
-    contractor: "NICDIT & Larsen & Toubro (L&T)",
-    status: "Under Construction",
-    image: DMICImg
-  },
+
+  
   {
     title: "Amritsar-Kolkata Industrial Corridor (AKIC)",
     subtitle: "Industrial Infrastructure",
@@ -160,32 +132,8 @@ const PROJECTS = [
     status: "Under Construction",
     image: PaimanaImg
   },
-  {
-    title: "Chenab Rail Bridge / USBRL",
-    subtitle: "Transit Infrastructure",
-    description: "Construction of the world's highest railway bridge, spanning the Chenab River at a height of 359 meters. The engineering masterpiece utilized structural steel arches designed to withstand wind speeds of 266 km/h and high-intensity seismic activities, connecting Kashmir with the national rail network.",
-    category: "Infrastructure",
-    type: "Railway Bridge",
-    budget: "$0.18 Billion",
-    duration: "2004 - 2024",
-    location: "Jammu & Kashmir, India",
-    contractor: "Afcons Infrastructure & Konkan Railway",
-    status: "Completed",
-    image: ChenabBridgeImg
-  },
-  {
-    title: "High Productivity Freight Networks",
-    subtitle: "Transit Infrastructure",
-    description: "Enhancing the freight transit network by constructing dedicated corridors with double-stack container capacity. The project involves automatic track layout, high-capacity catenary installations, and automatic warning systems, reducing transportation costs and transit times.",
-    category: "Infrastructure",
-    type: "Freight Transport Corridor",
-    budget: "$12 Billion",
-    duration: "2019 - 2025",
-    location: "Various Corridors, India",
-    contractor: "DFCCIL & GMR Infrastructure",
-    status: "Completed",
-    image: RailwayMetroImg
-  },
+  
+  
   {
     title: "Bharatmala Pariyojna",
     subtitle: "Road Development",
@@ -264,19 +212,7 @@ const PROJECTS = [
     status: "Under Construction",
     image: SagarmalaImg
   },
-  {
-    title: "Bengaluru Suburban Railway Project (BSRP)",
-    subtitle: "Transit Infrastructure",
-    description: "Construction of a 148 km suburban commuter rail network featuring four corridors. The project introduces elevated commuter stations, automatic train protection, and grade-separated crossings to resolve transit congestion in Bengaluru.",
-    category: "Infrastructure",
-    type: "Railways & Urban Transit",
-    budget: "$2.1 Billion",
-    duration: "2028",
-    location: "Bengaluru, Karnataka, India",
-    contractor: "K-RIDE & L&T Construction",
-    status: "Under Construction",
-    image: BengaluruSuburbanImg
-  },
+  
   {
     title: "JSW Group's Green Energy Projects",
     subtitle: "Renewable Energy",

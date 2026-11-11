@@ -21,7 +21,8 @@ import {
   Cpu,
   Leaf,
   Sparkles,
-  Check
+  Check,
+  ExternalLink
 } from 'lucide-react';
 import Carousel from './Carousel';
 
@@ -89,6 +90,7 @@ export function getProjectFullDetails(project) {
 
       specsTable = [
         { category: 'Project Name', details: project.title },
+        ...(project.projectType ? [{ category: 'Project Type', details: project.projectType }] : []),
         { category: 'Client', details: project.client || project.contractor || 'Government & Institutional Entity' },
         { category: 'Sector / Category', details: sector },
         { category: 'Location', details: project.location || (isIndia ? 'India' : 'USA') },
@@ -101,6 +103,7 @@ export function getProjectFullDetails(project) {
         { category: 'Primary Services', details: primarySvcs },
         { category: 'Sustainability Features', details: sustain },
         { category: 'Safety Record', details: safety },
+        ...(project.officialSource ? [{ category: 'Official Source', details: project.officialSource }] : [])
       ];
     }
   }
@@ -232,6 +235,8 @@ export function getProjectFullDetails(project) {
     location: project.location,
     date: project.date || project.duration,
     image: project.image,
+    officialSource: project.officialSource,
+    projectType: project.projectType,
     specsTable,
     overview,
     scopeOfWork,
@@ -356,6 +361,10 @@ export default function ProjectDetailView({ project }) {
         <img
           src={details.image}
           alt={details.title}
+          onError={(e) => {
+            e.currentTarget.onerror = null;
+            e.currentTarget.src = 'https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=1200&q=80';
+          }}
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
         <div style={{
@@ -372,20 +381,36 @@ export default function ProjectDetailView({ project }) {
           gap: '16px'
         }}>
           <div>
-            <span style={{ 
-              backgroundColor: 'var(--primary)', 
-              color: '#FFF', 
-              padding: '4px 10px', 
-              borderRadius: '4px', 
-              fontSize: '0.75rem', 
-              fontWeight: 700, 
-              textTransform: 'uppercase', 
-              letterSpacing: '0.08em',
-              display: 'inline-block',
-              marginBottom: '8px'
-            }}>
-              {details.category}
-            </span>
+            <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '8px', flexWrap: 'wrap' }}>
+              <span style={{ 
+                backgroundColor: 'var(--primary)', 
+                color: '#FFF', 
+                padding: '4px 10px', 
+                borderRadius: '4px', 
+                fontSize: '0.75rem', 
+                fontWeight: 700, 
+                textTransform: 'uppercase', 
+                letterSpacing: '0.08em',
+                display: 'inline-block'
+              }}>
+                {details.category}
+              </span>
+              {details.projectType && (
+                <span style={{ 
+                  backgroundColor: 'rgba(255, 255, 255, 0.2)', 
+                  backdropFilter: 'blur(8px)',
+                  color: '#FFF', 
+                  padding: '4px 10px', 
+                  borderRadius: '4px', 
+                  fontSize: '0.75rem', 
+                  fontWeight: 600, 
+                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                  display: 'inline-block'
+                }}>
+                  {details.projectType}
+                </span>
+              )}
+            </div>
             <h2 style={{ color: '#FFFFFF', fontSize: '1.85rem', fontWeight: 800, margin: '0 0 6px 0', lineHeight: '1.2' }}>
               {details.title}
             </h2>
@@ -404,8 +429,101 @@ export default function ProjectDetailView({ project }) {
               </div>
             </div>
           </div>
+
+          {details.officialSource && (
+            <a
+              href={details.officialSource}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '10px 16px',
+                backgroundColor: '#FFFFFF',
+                color: '#0D1A63',
+                borderRadius: '8px',
+                fontSize: '0.84rem',
+                fontWeight: 800,
+                textDecoration: 'none',
+                boxShadow: '0 4px 14px rgba(0,0,0,0.25)',
+                transition: 'all 0.2s ease',
+                flexShrink: 0
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#2563EB';
+                e.currentTarget.style.color = '#FFFFFF';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#FFFFFF';
+                e.currentTarget.style.color = '#0D1A63';
+              }}
+            >
+              <ShieldCheck size={16} color="#16A34A" />
+              <span>Official Clark Source</span>
+              <ExternalLink size={14} />
+            </a>
+          )}
         </div>
       </div>
+
+      {/* Official Clark Source Verification Bar */}
+      {details.officialSource && (
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: '12px',
+          padding: '14px 20px',
+          backgroundColor: '#F0FDF4',
+          border: '1px solid #BBF7D0',
+          borderRadius: '10px',
+          boxShadow: '0 2px 6px rgba(22, 163, 74, 0.05)'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <CheckCircle2 size={18} color="#16A34A" style={{ flexShrink: 0 }} />
+            <div>
+              <span style={{ color: '#166534', fontWeight: 800, fontSize: '0.9rem' }}>
+                Official Clark Construction Group Project
+              </span>
+              <span style={{ color: '#15803D', fontSize: '0.84rem', marginLeft: '8px' }}>
+                {details.projectType ? `— Recognized as a landmark ${details.projectType.toLowerCase()}.` : '— Verified landmark execution.'}
+              </span>
+            </div>
+          </div>
+          <a
+            href={details.officialSource}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '6px 12px',
+              backgroundColor: '#FFFFFF',
+              border: '1px solid #86EFAC',
+              borderRadius: '6px',
+              color: '#166534',
+              fontWeight: 700,
+              fontSize: '0.8rem',
+              textDecoration: 'none',
+              transition: 'all 0.2s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = '#166534';
+              e.currentTarget.style.color = '#FFFFFF';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = '#FFFFFF';
+              e.currentTarget.style.color = '#166534';
+            }}
+          >
+            <span>View on clarkconstruction.com</span>
+            <ExternalLink size={13} />
+          </a>
+        </div>
+      )}
 
       {/* SECTION 1: Specifications Table */}
       <div>

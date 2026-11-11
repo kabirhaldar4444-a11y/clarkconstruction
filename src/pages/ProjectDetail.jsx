@@ -15,12 +15,14 @@ export default function ProjectDetail() {
     window.scrollTo(0, 0);
   }, [slug]);
 
-  // Locate project by slug or ID
+  // Locate project by slug, official source slug, or ID
   const project = useMemo(() => {
     if (!slug) return null;
+    const cleanSlug = slug.toLowerCase().trim();
     return UNIQUE_PROJECTS.find((p) => {
       const pSlug = getProjectSlug(p.title);
-      return pSlug === slug || String(p.id) === slug;
+      const officialSlug = p.officialSource ? p.officialSource.split('/').filter(Boolean).pop().toLowerCase() : null;
+      return pSlug === cleanSlug || officialSlug === cleanSlug || String(p.id) === cleanSlug;
     });
   }, [slug]);
 

@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, MapPin, Calendar, HardHat, FileText, LayoutGrid, List, ArrowUpDown, X, ArrowUp, CheckCircle2, Building2, ArrowRight } from 'lucide-react';
+import { Search, MapPin, Calendar, HardHat, FileText, LayoutGrid, List, ArrowUpDown, X, ArrowUp, CheckCircle2, Building2, ArrowRight, ExternalLink } from 'lucide-react';
 import Card from '../components/UI/Card';
 import Modal from '../components/UI/Modal';
 import Button from '../components/UI/Button';
@@ -73,16 +73,12 @@ import KovvadaNuclearImg from '../assets/Nuclear_power_plant_construction…_202
 import RelianceJamnagarImg from '../assets/reliance-jamnagar.jpeg';
 import GIFTCityImg from '../assets/gift-city-correct.png';
 import NaviMumbaiAirportImg from '../assets/airport.jpg';
-import RailwayMetroImg from '../assets/railway_metro_projects.png';
-import DMICImg from '../assets/Delhi-Mumbai Industrial Corridor (DMIC).png';
 import AKICImg from '../assets/Amritsar-Kolkata Industrial Corridor (AKIC).jpg';
-import ChenabBridgeImg from '../assets/Chenab Rail Bridge  USBRL.jpg';
 import BharatmalaImg from '../assets/Bharatmala Pariyojna.jpg';
 import NationalMaritimeImg from '../assets/National Maritime Heritage Complex.jpg';
 import AhmedabadDholeraImg from '../assets/Ahmedabad-Dholera Express.jpg';
 import VisakhapatnamChennaiImg from '../assets/Visakhapatnam-Chennai Industrial Corridor.png';
 import SagarmalaImg from '../assets/Sagarmala Project.png';
-import BengaluruSuburbanImg from '../assets/Bengaluru Suburban Railway Project.png';
 import JSWGreenEnergyImg from "../assets/JSW Group's Green Energy Projects.png";
 import DholeraSmartCityImg from '../assets/Dholera Smart City Project.png';
 import GangaVikasImg from '../assets/Ganga Vikas Project (Riverfront).png';
@@ -237,10 +233,13 @@ const PROJECTS = [
     id: 9,
     title: 'National Museum of African American History and Culture',
     category: 'Museums & Culture',
-    image: AfricanAmericanMuseumImg,
-    location: 'Washington, D.C.',
+    projectType: 'Smithsonian museum',
+    officialSource: 'https://www.clarkconstruction.com/our-work/projects/national-museum-african-american-history-and-culture',
+    isOfficialUSProject: true,
+    image: 'https://www.clarkconstruction.com/sites/default/files/styles/gallery_image/public/2023-03/10236-17_jpg.jpg?itok=-mV2G-hj',
+    location: 'Washington, DC',
     client: 'Smithsonian Institution',
-    specs: '400,000 sq. ft., Bronze Corona Facade',
+    specs: '400,000 sq. ft., Bronze Corona Facade, LEED Gold',
     date: '2016',
     summary: 'An architectural icon on the National Mall featuring a three-tiered bronze-colored corona.',
     details: 'Clark managed the construction of this Smithsonian museum. The project required deep excavation beneath the water table and support of historic trees.',
@@ -265,12 +264,15 @@ const PROJECTS = [
     id: 11,
     title: 'National Museum of the United States Army',
     category: 'Museums & Culture',
-    image: MuseumsMonumentsImg,
+    projectType: 'Military history museum',
+    officialSource: 'https://www.clarkconstruction.com/our-work/projects/national-museum-united-states-army',
+    isOfficialUSProject: true,
+    image: 'https://www.clarkconstruction.com/sites/default/files/styles/gallery_image/public/2023-03/NMUSA%20Aerial%20Enhanced%20%238186%20112119%206x10_1.png?itok=T6ZtEOSW',
     location: 'Fort Belvoir, Virginia',
-    client: 'Army Historical Foundation',
-    specs: '185,000 sq. ft., Stainless Steel Panels',
+    client: 'Army Historical Foundation / U.S. Army Corps of Engineers',
+    specs: '185,000 sq. ft., Stainless Steel Panels, LEED Silver',
     date: '2020',
-    summary: 'A museum honoring the history of the US Army, featuring reflective steel panels.',
+    summary: 'A museum honoring the history of the US Army, featuring reflective laser-aligned steel panels.',
     details: 'Constructed the museum building clad in laser-aligned stainless steel panels, housing exhibition halls, administrative suites, and memorial gardens.',
     challenge: 'Aligning the reflective steel facade panels to ensure seamless reflection lines.',
     solution: 'Deployed high-accuracy robotic total stations to inspect brackets and framing positions within millimeter tolerances.'
@@ -307,12 +309,15 @@ const PROJECTS = [
     id: 14,
     title: 'Inova Schar Cancer Institute',
     category: 'Healthcare & Government',
-    image: InovaScharImg,
-    location: 'Fairfax, Virginia',
+    projectType: 'Cancer center renovation and expansion',
+    officialSource: 'https://www.clarkconstruction.com/our-work/projects/inova-schar-cancer-institute',
+    isOfficialUSProject: true,
+    image: 'https://www.clarkconstruction.com/sites/default/files/styles/gallery_image/public/2023-04/2019_05_07_WSInova02_A_jpg.jpg?itok=Z2hTd-nY',
+    location: 'Falls Church, Virginia',
     client: 'Inova Health System',
-    specs: '450,000 sq. ft., Cancer Care Center',
+    specs: '450,000 sq. ft., Cancer Care Center & Proton Therapy',
     date: '2019',
-    summary: 'A modern cancer care center housing radiation vaults and clinical research suites.',
+    summary: 'A modern cancer care center housing radiation vaults and clinical research suites in Falls Church, Virginia.',
     details: 'Constructed outpatient care facilities, research labs, and heavy concrete shielding vaults for advanced proton therapy equipment.',
     challenge: 'Casting concrete vaults with zero void tolerances to block radiation leaks.',
     solution: 'We specified high-density aggregate concrete and used continuous thermal monitoring during the curing process.'
@@ -1157,34 +1162,8 @@ const PROJECTS = [
     challenge: 'Leveling regional rock hills and diverting the Ulwe river course to establish runway grade levels.',
     solution: 'Controlled precision blasting and engineered concrete river diversion culverts.'
   },
-  {
-    id: 75,
-    title: 'Railway and Metro Projects - Global & Regional',
-    category: 'Aviation & Infrastructure',
-    image: RailwayMetroImg,
-    location: 'Delhi NCR & Metropolitan Cities',
-    client: 'DMRC, L&T Metro, Tata Projects',
-    specs: 'Mass Transit Systems & Elevated Viaducts',
-    date: 'Ongoing Projects',
-    summary: 'General consulting and construction supervision for urban subway and light rail networks.',
-    details: 'Underground tunnel boring, elevated viaduct structures, station terminals, and signaling synchronization.',
-    challenge: 'Boring tunnels under congested historic urban centers with low depth of cover.',
-    solution: 'Operated earth pressure balance (EPB) TBMs with continuous ground settlement sensors.'
-  },
-  {
-    id: 76,
-    title: 'Delhi-Mumbai Industrial Corridor (DMIC)',
-    category: 'Aviation & Infrastructure',
-    image: DMICImg,
-    location: 'Western India Corridor',
-    client: 'NICDIT & L&T',
-    specs: '1,500 km Smart Freight Corridor',
-    date: '2018 - 2027',
-    summary: 'A mega-infrastructure project developing new smart industrial cities along freight rail lines.',
-    details: 'Smart industrial zones, logistics hubs, dedicated freight tracks, and power generation nodes.',
-    challenge: 'Integrating cross-state logistics infrastructure across diverse geological terrains.',
-    solution: 'Standardized modular prefabricated station structures and automated track laying trains.'
-  },
+  
+  
   {
     id: 77,
     title: 'Amritsar-Kolkata Industrial Corridor (AKIC)',
@@ -1199,20 +1178,7 @@ const PROJECTS = [
     challenge: 'Crossing major river floodplains without interrupting seasonal agricultural runoff.',
     solution: 'Erected long-span concrete viaduct bridges with elevated pier footings.'
   },
-  {
-    id: 78,
-    title: 'Chenab Rail Bridge / USBRL',
-    category: 'Aviation & Infrastructure',
-    image: ChenabBridgeImg,
-    location: 'Jammu & Kashmir, India',
-    client: 'Afcons Infrastructure & Konkan Railway',
-    specs: '359m Height, World\'s Highest Rail Bridge',
-    date: '2004 - 2024',
-    summary: 'Construction of the world\'s highest railway bridge, spanning the Chenab River.',
-    details: 'Structural steel arch, high-wind cable rigging, thermal expansion joints, and seismic-resistant steel girders.',
-    challenge: 'Erecting a heavy steel arch over a 359-meter deep gorge subject to 266 km/h winds.',
-    solution: 'Designed a high-capacity cable crane system spanning the gorge to lift arch segments into place.'
-  },
+  
   {
     id: 79,
     title: 'Bharatmala Pariyojna Highway Network',
@@ -1283,20 +1249,7 @@ const PROJECTS = [
     challenge: 'Deepening harbor channels without destabilizing existing berth seawalls.',
     solution: 'Employed cutter suction dredgers with automated acoustic bathymetric scanning.'
   },
-  {
-    id: 84,
-    title: 'Bengaluru Suburban Railway Project (BSRP)',
-    category: 'Aviation & Infrastructure',
-    image: BengaluruSuburbanImg,
-    location: 'Bengaluru, Karnataka, India',
-    client: 'K-RIDE & L&T',
-    specs: '148 km Commuter Rail Network, 4 Corridors',
-    date: '2028',
-    summary: 'Construction of a 148 km suburban commuter rail network featuring four corridors.',
-    details: 'Elevated commuter stations, automatic train protection, grade-separated rail crossings, and depot yards.',
-    challenge: 'Installing viaduct pillars in ultra-congested city streets with dense overhead utility networks.',
-    solution: 'Used utility-mapping radar and pre-cast concrete pier caps set during midnight work windows.'
-  },
+  
   {
     id: 85,
     title: 'JSW Group Green Energy Projects',
@@ -2067,20 +2020,7 @@ const PROJECTS = [
     challenge: 'Severe desert sand dust storms reducing solar panel generation efficiency.',
     solution: 'Installed automated waterless robotic cleaning bots to maintain maximum solar panel light absorption.'
   },
-  {
-    id: 140,
-    title: 'High Productivity Freight Networks',
-    category: 'Aviation & Infrastructure',
-    image: 'https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1200&q=80',
-    location: 'Various Corridors, India',
-    client: 'DFCCIL & GMR Infrastructure',
-    specs: 'Double-Stack Container Freight Corridors',
-    date: '2019–2025',
-    summary: 'Constructing dedicated heavy-haul freight railway corridors capable of carrying double-stack container trains.',
-    details: 'High-capacity track beds, electrified overhead catenary networks, grade-separated flyovers, and automatic train warnings.',
-    challenge: 'Laying heavy track beds through varied soil foundations with zero settlement tolerance.',
-    solution: 'Employed high-speed automated track-laying trains (NTC) achieving precise millimeter alignment.'
-  },
+  
   {
     id: 141,
     title: 'New Power Transformer Mfg. Project in Solan',
@@ -2183,15 +2123,18 @@ const PROJECTS = [
     id: 148,
     title: 'Chase Center',
     category: 'Commercial & Mixed-Use',
-    image: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80',
+    projectType: 'Sports and entertainment arena',
+    officialSource: 'https://www.clarkconstruction.com/our-work/projects/chase-center',
+    isOfficialUSProject: true,
+    image: 'https://www.clarkconstruction.com/sites/default/files/styles/news_detail/public/2023-06/Chase%20Center%20east%20side%20view%20with%20Seeing%20spheres2_photo%20credit%20Jason%20ORear_jpg_jpg.jpg.webp',
     location: 'San Francisco, California',
-    client: 'Golden State Warriors',
-    specs: '18,064 Seats, State-of-the-Art Arena',
-    date: '2019–2024',
-    summary: 'A waterfront sports and entertainment arena hosting the NBA Golden State Warriors and major concert tours.',
-    details: 'Constructed bowl seating decks, massive structural roof trusses, luxury suites, and an expansive public waterfront plaza.',
-    challenge: 'Excavating two subterranean parking levels directly adjacent to the San Francisco Bay tidal zone.',
-    solution: 'Installed a continuous cement-bentonite slurry cutoff wall and extensive perimeter dewatering pumps.'
+    client: 'Golden State Warriors / GSW Arena LLC',
+    specs: '18,064 Seats, 11-Acre District, Waterfront Arena',
+    date: '2019',
+    summary: 'A state-of-the-art waterfront sports and entertainment arena anchoring an 11-acre mixed-use district in Mission Bay.',
+    details: 'Clark delivered this premier multi-purpose sports and entertainment arena, home to the NBA Golden State Warriors. The project encompasses an 18,064-seat arena, two 11-story commercial office towers comprising 580,000 sq. ft., 100,000 sq. ft. of retail, 925 subterranean parking spaces, and a 3.2-acre public waterfront plaza. To construct two subterranean levels below the San Francisco Bay water table, Clark engineered a 3,000-linear-foot soil-bentonite cutoff wall and executed deep dewatering operations.',
+    challenge: 'Excavating 28 feet below sea level in saturated bay mud directly adjacent to San Francisco Bay while protecting neighboring bioscience laboratories.',
+    solution: 'Installed a continuous cement-bentonite slurry cutoff wall, drilled socketed foundation caissons, and deployed automated real-time seismic vibration sensors to ensure zero impact on adjacent research labs.'
   },
   {
     id: 149,
@@ -2221,20 +2164,7 @@ const PROJECTS = [
     challenge: 'Erecting 180-meter long orthotropic steel deck spans in sensitive flamingo sanctuary mudflats and tidal shipping channels.',
     solution: 'Deployed massive crane barges and specialized marine strand jacks to lift prefabricated steel spans during high tide cycles.'
   },
-  {
-    id: 151,
-    title: 'Delhi–Meerut Regional Rapid Transit System (RRTS)',
-    category: 'Aviation & Infrastructure',
-    image: 'https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?auto=format&fit=crop&w=1200&q=80',
-    location: 'Delhi – Ghaziabad – Meerut, India',
-    client: 'NCRTC',
-    specs: '82.15 km Semi-High-Speed Rail Corridor',
-    date: '2019–2025',
-    summary: 'India\'s first high-speed regional commuter rail network operating at 160 km/h.',
-    details: 'Elevated viaducts, underground bored twin tunnels, modern multi-modal station hubs, and European Train Control System (ETCS Level 2) signaling.',
-    challenge: 'Constructing elevated viaducts and underground stations through densely populated urban corridors without halting highway traffic.',
-    solution: 'Utilized overhead launching gantries for segment erection and Earth Pressure Balance (EPB) TBMs for vibration-controlled tunneling.'
-  },
+  
   {
     id: 152,
     title: 'Mumbai–Ahmedabad High-Speed Rail Corridor',
@@ -2291,48 +2221,9 @@ const PROJECTS = [
     challenge: 'Extremely thin oxygen levels and freezing sub-zero conditions preventing conventional diesel engine operations.',
     solution: 'Deployed electric and turbocharged high-altitude equipment supported by dedicated on-site oxygen and medical shelter hubs.'
   },
-  {
-    id: 156,
-    title: 'New Pamban Railway Bridge',
-    category: 'Aviation & Infrastructure',
-    image: 'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=80',
-    location: 'Rameswaram, Tamil Nadu, India',
-    client: 'Rail Vikas Nigam Limited (RVNL)',
-    specs: '2.07 km Vertical Lift Sea Bridge',
-    date: '2020–2024',
-    summary: 'India\'s first vertical lift sea bridge connecting mainland India to Rameswaram Island.',
-    details: '100 spans with a central 72.5-meter navigational vertical lift span that elevates mechanically to allow shipping vessels to pass underneath.',
-    challenge: 'Corrosive marine environment with severe high-velocity coastal cyclonic winds.',
-    solution: 'Applied specialized metallized anti-corrosion thermal spray coatings and electro-mechanical synchronized lift jacks.'
-  },
-  {
-    id: 157,
-    title: 'Anji Khad Railway Bridge',
-    category: 'Aviation & Infrastructure',
-    image: 'https://images.unsplash.com/photo-1545642442-f87c126ecba2?auto=format&fit=crop&w=1200&q=80',
-    location: 'Reasi, Jammu & Kashmir, India',
-    client: 'Northern Railway / Konkan Railway',
-    specs: 'Cable-Stayed Rail Bridge, 331m Tower',
-    date: '2017–2024',
-    summary: 'India\'s first cable-stayed railway bridge connecting Katra and Reasi across a deep Himalayan gorge.',
-    details: 'Central inverted Y-shaped pylon standing 331 meters above the riverbed supporting 96 high-tensile stay cables.',
-    challenge: 'Constructing an asymmetrical cable-stayed bridge on steep, geologically unstable limestone cliff faces.',
-    solution: 'Anchored the central pylon deep into bedrock using extensive micro-piles and heavy post-tensioned rock anchors.'
-  },
-  {
-    id: 158,
-    title: 'Bogibeel Rail-Cum-Road Bridge',
-    category: 'Aviation & Infrastructure',
-    image: 'https://images.unsplash.com/photo-1558441719-aa34bbe5f347?auto=format&fit=crop&w=1200&q=80',
-    location: 'Dibrugarh, Assam, India',
-    client: 'Northeast Frontier Railway',
-    specs: '4.94 km Double-Decker Steel Truss Bridge',
-    date: '2002–2024',
-    summary: 'The longest rail-cum-road bridge in India spanning the Brahmaputra River.',
-    details: 'Double-decker welded steel truss design featuring a two-line broad gauge railway on the lower deck and a 3-lane road on the upper deck.',
-    challenge: 'Heavy monsoon river flooding, scouring riverbed sandbanks, and severe seismic Zone V requirements.',
-    solution: 'Designed fully welded steel-concrete composite trusses resting on massive circular concrete well foundations.'
-  },
+  
+  
+  
   {
     id: 159,
     title: 'Dhola–Sadiya Bridge (Bhupen Hazarika Setu)',
@@ -2557,104 +2448,13 @@ const PROJECTS = [
     challenge: 'Building stable embankments across soft coastal marshlands and low-lying mud beds.',
     solution: 'Installed prefabricated vertical drains (PVD) and stone column ground improvement networks.'
   },
-  {
-    id: 175,
-    title: 'Kochi Water Metro Project',
-    category: 'Aviation & Infrastructure',
-    image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80',
-    location: 'Kochi, Kerala, India',
-    client: 'KMRL',
-    specs: '78 km Network, 38 Terminals, Electric Ferries',
-    date: '2019–2024',
-    summary: 'Asia\'s first integrated water metro system connecting 10 islands with mainland Kochi.',
-    details: 'Battery-powered electric-hybrid passenger ferries, floating pontoon jetties, disabled-friendly air-conditioned terminals, and automated ticketing.',
-    challenge: 'Designing floating boat docks that automatically adapt to heavy ocean tidal level fluctuations.',
-    solution: 'Engineered self-adjusting floating pontoon jetties secured by heavy vertical guide piles.'
-  },
-  {
-    id: 176,
-    title: 'Patna Metro Rail Project',
-    category: 'Aviation & Infrastructure',
-    image: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1200&q=80',
-    location: 'Patna, Bihar, India',
-    client: 'PMRC / DMRC',
-    specs: '31.39 km, 2 Transit Corridors',
-    date: '2020–2026',
-    summary: 'Modern rapid transit subway and elevated rail system serving the historic city of Patna.',
-    details: 'Elevated viaducts, underground bored tunnels beneath historic urban zones, automated ticketing, and modern depots.',
-    challenge: 'Tunneling in soft Gangetic alluvial silt near the Ganges River without disturbing historic surface buildings.',
-    solution: 'Operated Earth Pressure Balance (EPB) TBMs with continuous ground settlement telemetry.'
-  },
-  {
-    id: 177,
-    title: 'Agra Metro Rail Project',
-    category: 'Aviation & Infrastructure',
-    image: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1200&q=80',
-    location: 'Agra, Uttar Pradesh, India',
-    client: 'UPMRC',
-    specs: '29.65 km, 2 Corridors',
-    date: '2020–2025',
-    summary: 'Urban rapid transit system connecting the Taj Mahal, Agra Fort, and regional rail terminals.',
-    details: 'Underground stations, elevated tracks, third-rail 750V DC power systems, and noise-damping rail pads.',
-    challenge: 'Zero-vibration and zero-pollution heritage protection mandates near the UNESCO World Heritage Taj Mahal.',
-    solution: 'Utilized ultra-low vibration TBM cutters, acoustic enclosures, and continuous structural laser monitoring.'
-  },
-  {
-    id: 178,
-    title: 'Kanpur Metro Rail Project',
-    category: 'Aviation & Infrastructure',
-    image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=1200&q=80',
-    location: 'Kanpur, Uttar Pradesh, India',
-    client: 'UPMRC',
-    specs: '32.38 km Rapid Transit Network',
-    date: '2019–2025',
-    summary: 'High-capacity metro network de-congesting the industrial metropolis of Kanpur.',
-    details: 'Underground stations, elevated spans, regenerative braking train sets, and LEED-certified green station houses.',
-    challenge: 'Fast-track station construction inside narrow commercial streets with heavy subterranean utilities.',
-    solution: 'Conducted 3D ground penetrating radar (GPR) utility mapping and utilized precast top-down construction.'
-  },
-  {
-    id: 179,
-    title: 'Indore Metro Rail Project',
-    category: 'Aviation & Infrastructure',
-    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80',
-    location: 'Indore, Madhya Pradesh, India',
-    client: 'MPMRCL',
-    specs: '31.55 km Yellow Ring Line',
-    date: '2019–2025',
-    summary: 'Ring metro system connecting major economic hubs, the airport, and railway terminals across Indore.',
-    details: 'Precast elevated viaducts, modern island platforms, automated signaling, and centralized operations control.',
-    challenge: 'Erecting heavy concrete U-girders along central road medians during active city commercial hours.',
-    solution: 'Executed midnight launching gantry operations with synchronized police traffic detours.'
-  },
-  {
-    id: 180,
-    title: 'Bhopal Metro Rail Project',
-    category: 'Aviation & Infrastructure',
-    image: 'https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=80',
-    location: 'Bhopal, Madhya Pradesh, India',
-    client: 'MPMRCL',
-    specs: '27.87 km Orange & Blue Corridors',
-    date: '2019–2025',
-    summary: 'Urban transit system linking suburban growth centers with Bhopal central business districts.',
-    details: 'Elevated viaducts, multi-modal interchange hubs, solar-powered station roofs, and automated train control.',
-    challenge: 'Balancing structural pier placement around historic water lakes and undulating topography.',
-    solution: 'Engineered custom varying-height concrete piers and utilized long-span structural steel bridge spans.'
-  },
-  {
-    id: 181,
-    title: 'Surat Metro Rail Project',
-    category: 'Aviation & Infrastructure',
-    image: 'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=1200&q=80',
-    location: 'Surat, Gujarat, India',
-    client: 'GMRC',
-    specs: '40.35 km, 2 Metro Corridors',
-    date: '2021–2026',
-    summary: 'Rapid transit rail system linking diamond hubs, textile industrial centers, and suburban nodes in Surat.',
-    details: 'Elevated guideways, underground tunnel sections, river crossing over the Tapi, and high-efficiency traction power.',
-    challenge: 'High water tables and sandy alluvial soils during underground station excavation.',
-    solution: 'Constructed continuous concrete diaphragm cutoff walls (D-walls) with multi-level pre-stressed ground anchors.'
-  },
+  
+  
+  
+  
+  
+  
+  
   {
     id: 182,
     title: 'Jaipur Metro Phase 1C',
@@ -2669,34 +2469,8 @@ const PROJECTS = [
     challenge: 'Underpinning century-old heritage masonry structures directly above the tunnel alignment.',
     solution: 'Implemented chemical jet grouting and real-time digital structural tilt meters on all historic monuments.'
   },
-  {
-    id: 183,
-    title: 'Guwahati Metro Project',
-    category: 'Aviation & Infrastructure',
-    image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80',
-    location: 'Guwahati, Assam, India',
-    client: 'Guwahati Metro Rail Corp',
-    specs: '61.4 km Elevated Metro Network',
-    date: '2023–2028',
-    summary: 'Planned modern light rail and metro system providing transit across the gateway city of Northeast India.',
-    details: 'Elevated transit guideways, riverfront stations, integrated bus terminals, and high seismic zone bracing.',
-    challenge: 'High seismicity (Zone V) and heavy monsoon precipitation affecting foundation stability.',
-    solution: 'Specified ductile moment-resisting concrete pier frames and base-isolated viaduct bearings.'
-  },
-  {
-    id: 184,
-    title: 'Delhi Metro Phase IV',
-    category: 'Aviation & Infrastructure',
-    image: 'https://images.unsplash.com/photo-1568285564883-7c3093952ba5?auto=format&fit=crop&w=1200&q=80',
-    location: 'Delhi NCR, India',
-    client: 'DMRC',
-    specs: '65.1 km Expansion, 3 Priority Corridors',
-    date: '2020–2026',
-    summary: 'Massive fourth phase expansion of the Delhi Metro adding outer orbital links and driverless trains.',
-    details: 'Deep underground stations, elevated double-decker viaducts sharing road flyovers, and Communication-Based Train Control (CBTC).',
-    challenge: 'Building multi-tier integrated structures combining road flyovers on lower levels and metro tracks on top.',
-    solution: 'Engineered specialized heavy single-pier composite portal frames to carry dual traffic levels.'
-  },
+  
+  
   {
     id: 185,
     title: 'Vadhavan Port Development',
@@ -3592,6 +3366,193 @@ const PROJECTS = [
     details: 'Three 210-meter tall slender concrete towers, overlapping stay cables for maximum rigidity, and aerodynamic wind shielding.',
     challenge: 'High coastal wind speeds up to 100 mph causing bridge closures on neighboring crossings.',
     solution: 'Installed 3.5-meter high curved transparent wind deflection barriers that deflect 75% of gale-force winds.'
+  },
+  {
+    id: 249,
+    title: 'SDSU Snapdragon Stadium',
+    category: 'Commercial & Mixed-Use',
+    projectType: 'Multi-use stadium',
+    officialSource: 'https://www.clarkconstruction.com/our-work/projects/sdsu-snapdragon-stadium',
+    isOfficialUSProject: true,
+    image: 'https://www.clarkconstruction.com/sites/default/files/styles/gallery_image/public/2023-03/20220824_DIG_3896_MAS_jpg.jpg?itok=Ba97Aroe',
+    location: 'San Diego, California',
+    client: 'San Diego State University (SDSU)',
+    specs: '35,000 Seats, LEED Gold Multi-Use Stadium',
+    date: '2022',
+    summary: 'A premier 35,000-seat multi-use stadium serving as the cornerstone of the SDSU Mission Valley campus expansion.',
+    details: 'Clark teamed with Gensler in an integrated design-build partnership to deliver the 35,000-seat multi-use stadium. Serving SDSU Aztecs football, professional soccer, major concerts, and community events, the facility features 30,000 cubic yards of concrete, 3,000 tons of structural steel, concourse concessions, premium luxury suites, the Sycuan Piers viewing decks, and state-of-the-art broadcast infrastructure, achieved on a fast-track 17-month construction schedule.',
+    challenge: 'Constructing within an active 100-year San Diego River floodplain requiring massive ground elevation before vertical work could start.',
+    solution: 'Hauled 40,000 truckloads of soil (173,000 cubic yards) to elevate the site up to 35 feet, constructed a designated floodplain wildlife corridor, and managed round-the-clock concrete pours to meet the season opener deadline.'
+  },
+  {
+    id: 250,
+    title: 'Petco Park Gallagher Square',
+    category: 'Commercial & Mixed-Use',
+    projectType: 'Public park and outdoor event space',
+    officialSource: 'https://www.clarkconstruction.com/our-work/projects/petco-park-gallagher-square',
+    isOfficialUSProject: true,
+    image: 'https://www.clarkconstruction.com/sites/default/files/styles/gallery_image/public/2024-11/Petco%20Park%20Gallagher%20Square.jpg?itok=gWf5gpqq',
+    location: 'San Diego, California',
+    client: 'San Diego Padres',
+    specs: '2.8-Acre Community Park & Event Amphitheater',
+    date: '2024',
+    summary: 'A complete revitalization of the 2.8-acre park and amphitheater space beyond Petco Park\'s outfield wall.',
+    details: 'To celebrate Petco Park\'s 20th anniversary, Clark transformed the former "Park at the Park" into an elevated year-round public destination and premier outdoor entertainment venue. The project features an expansive tiered amphitheater lawn, an elevated viewing deck at the Tony Gwynn Terrace, a custom fenced dog park, pickleball courts, an upgraded Play Ball field, expanded food and beverage concessions, and full event production infrastructure.',
+    challenge: 'Executing complex structural concrete, hardscaping, and utility overhauls within a compressed off-season window inside an active urban ballpark.',
+    solution: 'Deployed 24/7 dual-shift operations and synchronized modular precast installations to complete the full 2.8-acre redevelopment in time for 2024 MLB Opening Day.'
+  },
+  {
+    id: 251,
+    title: 'Wintrust Arena',
+    category: 'Commercial & Mixed-Use',
+    projectType: 'Sports and events arena',
+    officialSource: 'https://www.clarkconstruction.com/our-work/projects/wintrust-arena',
+    isOfficialUSProject: true,
+    image: 'https://www.clarkconstruction.com/sites/default/files/styles/gallery_image/public/2023-03/5471100003_jpg_0.jpg?itok=6JGM57Ea',
+    location: 'Chicago, Illinois',
+    client: 'Metropolitan Pier and Exposition Authority (MPEA) & DePaul University',
+    specs: '10,387 Seats, 300,000 sq. ft. Multi-Purpose Arena, LEED Gold',
+    date: '2017',
+    summary: 'A signature 10,387-seat urban arena in Chicago\'s McCormick Square housing DePaul basketball and WNBA Chicago Sky.',
+    details: 'Clark served as the lead builder of Prairie District 3 Partners to construct the $150M Wintrust Arena. Designed by Pelli Clarke & Partners, the 300,000 sq. ft. building features an iconic sweeping arch roof with a continuous curved steel diagrid system, 22 private suites, 479 club seats, two VIP lounges, state-of-the-art broadcast rooms, and seamless pedestrian bridges connecting to McCormick Place convention center.',
+    challenge: 'Erecting long-span swooping steel roof trusses over a tight urban footprint bordered by active commuter rail tracks.',
+    solution: 'Engineered a synchronized dual-crane tandem hoist strategy and utilized 4D BIM modeling to sequence truss connections with zero track disruptions.'
+  },
+  {
+    id: 252,
+    title: 'CFG Bank Arena',
+    category: 'Commercial & Mixed-Use',
+    projectType: 'Arena renovation',
+    officialSource: 'https://www.clarkconstruction.com/our-work/projects/cfg-bank-arena',
+    isOfficialUSProject: true,
+    image: 'https://www.clarkconstruction.com/sites/default/files/styles/gallery_image/public/2023-06/CFG-3327_jpg.jpg',
+    location: 'Baltimore, Maryland',
+    client: 'Oak View Group (OVG)',
+    specs: '14,000 Seats, $200M Complete Arena Transformation',
+    date: '2023',
+    summary: 'A fast-track modernization transforming a 61-year-old historic civic center into a world-class concert venue.',
+    details: 'Clark served as construction manager for the $200M complete revitalization of Baltimore\'s iconic downtown arena. In an intense 12-month schedule, Clark completely gutted the interior, demolished the historic proscenium stage wall, shifted the event floor, reinforced the structural roof, added premium suites, club lounges, and modernized MEP/acoustics, capped off with a striking maritime sail-inspired exterior glass facade.',
+    challenge: 'Demolishing a massive structural proscenium wall holding up the arena roof within an aggressive 12-month turnaround.',
+    solution: 'Installed temporary shoring towers, engineered a permanent 180-ton transfer truss to support the roof load, and ran continuous round-the-clock trade shifts.'
+  },
+  {
+    id: 253,
+    title: 'The Pinnacle',
+    category: 'Commercial & Mixed-Use',
+    projectType: 'Live music venue',
+    officialSource: 'https://www.clarkconstruction.com/our-work/projects/pinnacle',
+    isOfficialUSProject: true,
+    image: 'https://www.clarkconstruction.com/sites/default/files/styles/gallery_image/public/2025-03/5.%20ThePinnacle_20250227_0723-Enhanced-NR-ALIVECOVERAGE_0.jpg',
+    location: 'Nashville, Tennessee',
+    client: 'Southwest Value Partners & AEG Presents',
+    specs: '4,500 Capacity, 130,000 sq. ft. Entertainment Venue',
+    date: '2024–2025',
+    summary: 'A state-of-the-art 4,500-capacity live music and entertainment venue anchoring the Nashville Yards development.',
+    details: 'Constructed by Clark in the heart of the 19-acre Nashville Yards master development, The Pinnacle is a multi-level concert hall designed by HOK for AEG Presents. The 130,000 sq. ft. venue features column-free sightlines, premier acoustic finishes, an expansive open general admission floor, reserved tiered mezzanine seating, an open-air rooftop bar, and specialized underground loading docks that handle multiple tour semi-trucks simultaneously.',
+    challenge: 'Achieving concert-grade acoustic containment directly adjacent to high-end residential towers and luxury hotels in Nashville Yards.',
+    solution: 'Constructed an acoustically decoupled "box-in-a-box" double-wall structural concrete envelope with elastomeric ceiling isolators.'
+  },
+  {
+    id: 254,
+    title: 'International Spy Museum',
+    category: 'Museums & Culture',
+    projectType: 'Museum',
+    officialSource: 'https://www.clarkconstruction.com/our-work/projects/international-spy-museum',
+    isOfficialUSProject: true,
+    image: 'https://www.clarkconstruction.com/sites/default/files/styles/gallery_image/public/2023-04/776.126_jpg_0.jpg?itok=SiVxRe8C',
+    location: 'Washington, DC',
+    client: 'The Malrite Company & JBG SMITH',
+    specs: '140,000 sq. ft., 8 Stories, Steel & Glass "Veil"',
+    date: '2019',
+    summary: 'A landmark 140,000 sq. ft. purpose-built museum at L\'Enfant Plaza featuring an iconic glass veil facade.',
+    details: 'Clark constructed the eight-story headquarters of the International Spy Museum in Southwest D.C. Designed by Rogers Stirk Harbour + Partners and Hickok Cole, the building features an angular steel frame, a distinctive "black box" exhibit block wrapped in metal louvers, an exterior suspended glass-enclosed atrium staircase known as "The Veil", interactive immersive exhibit floors, and a glass-enclosed rooftop event space overlooking the capital.',
+    challenge: 'Constructing a heavy structural steel building directly on top of an active subterranean 1960s parking garage and rail transit concourse.',
+    solution: 'Reinforced existing subterranean concrete columns with carbon fiber wraps and drove new micro-piles through the garage floor to bedrock.'
+  },
+  {
+    id: 255,
+    title: 'Seattle Convention Center Addition (Summit)',
+    category: 'Commercial & Mixed-Use',
+    projectType: 'Convention center expansion',
+    officialSource: 'https://www.clarkconstruction.com/our-work/projects/seattle-convention-center-addition',
+    isOfficialUSProject: true,
+    image: 'https://www.clarkconstruction.com/sites/default/files/styles/gallery_image/public/2023-07/13033_Final%2009-WSCC-2885_jpg.jpg',
+    location: 'Seattle, Washington',
+    client: 'Washington State Public Facilities District / Pine Street Group',
+    specs: '1.5M sq. ft., LEED Platinum, 15-Story Vertically-Stacked Venue',
+    date: '2023',
+    summary: 'North America\'s first high-rise, vertically-stacked convention center adding 1.5 million sq. ft. in downtown Seattle.',
+    details: 'Built by the Clark | Lewis joint venture, the Summit building is a 1.5 million sq. ft. convention venue designed by LMN Architects. Nearly doubling the facility\'s capacity, the 15-story facility features a 58,000 sq. ft. column-free ballroom, 248,000 sq. ft. of exhibit space, 62 meeting rooms, a 14,000 sq. ft. garden terrace, and 21,000 tons of structural steel, achieving LEED Platinum with an innovative rainwater harvesting system integrated into the truck ramp.',
+    challenge: 'Executing a massive 1.5M sq. ft. deep urban excavation constrained by Interstate 5 and active downtown transit tunnels.',
+    solution: 'Engineered a perimeter tieback shoring wall up to 100 feet deep and assembled long-span structural trusses using modular offsite fabrication.'
+  },
+  {
+    id: 256,
+    title: 'BWI Concourse A/B Connector and Baggage Handling System',
+    category: 'Aviation & Infrastructure',
+    projectType: 'Airport terminal and baggage upgrades',
+    officialSource: 'https://www.clarkconstruction.com/our-work/projects/bwi-concourse-ab-connector-and-baggage-handling-system',
+    isOfficialUSProject: true,
+    image: 'https://www.clarkconstruction.com/sites/default/files/styles/gallery_image/public/2025-10/BWI%20Baggage%20Handling%20System%20%26%20Concourse%20Connector%20machine.jpg',
+    location: 'Baltimore, Maryland',
+    client: 'Maryland Aviation Administration (MAA) / MDOT',
+    specs: 'Multi-Level Connector, Central Atrium & In-Line Baggage System',
+    date: '2024–2026',
+    summary: 'The largest capital project in BWI Airport history, unifying Concourses A and B with a modern connector and automated baggage network.',
+    details: 'Clark was selected by MDOT MAA to construct the multi-level passenger connector between Concourses A and B. The project provides direct passenger transit, expanded holdrooms for Southwest Airlines, new food and retail spaces, smart restrooms, and an architecturally exposed structural steel (AESS) skylit atrium. Beneath the concourse, Clark is installing a state-of-the-art automated in-line baggage handling system with high-speed security screening.',
+    challenge: 'Building directly across the airport\'s primary active baggage tug routes without disrupting 24/7 flight operations.',
+    solution: 'Built temporary illuminated subterranean bypass tunnels to maintain continuous baggage train circulation throughout construction.'
+  },
+  {
+    id: 257,
+    title: 'Frost Tower',
+    category: 'Commercial & Mixed-Use',
+    projectType: 'Office and retail tower',
+    officialSource: 'https://www.clarkconstruction.com/our-work/projects/frost-tower',
+    isOfficialUSProject: true,
+    image: 'https://www.clarkconstruction.com/sites/default/files/styles/gallery_image/public/2023-03/Frost%20Tower%20Aerial%20-%20122318-1_jpg.jpg?itok=NsomEIMb',
+    location: 'San Antonio, Texas',
+    client: 'Weston Urban & KDC',
+    specs: '23 Stories, 460,000 sq. ft., 400-Foot Architectural Skyscraper',
+    date: '2019',
+    summary: 'A 23-story, 400-foot crystalline glass tower—the first high-rise office skyscraper built in downtown San Antonio in 30 years.',
+    details: 'Clark served as general contractor for the iconic Frost Tower designed by Pelli Clarke & Partners. The 460,000 sq. ft. tower features an octagonal cast-in-place post-tensioned concrete superstructure that tapers as it rises into a faceted, illuminated glass crown. The project includes 20,000 sq. ft. of ground-level retail, a tenant fitness center, a multi-level integrated parking structure, and advanced high-efficiency building envelopes.',
+    challenge: 'Pouring complex post-tensioned concrete floor slabs for an octagonal footprint that changes angle at every single floor.',
+    solution: 'Developed custom parametric 3D BIM formwork schedules and utilized self-climbing perimeter protection screens.'
+  },
+  {
+    id: 258,
+    title: 'I-90 Keechelus Dam to Stampede Pass, Phase 2A',
+    category: 'Aviation & Infrastructure',
+    projectType: 'Highway improvements',
+    officialSource: 'https://www.clarkconstruction.com/our-work/projects/i-90-keechelus-dam-stampede-pass-phase-2a',
+    isOfficialUSProject: true,
+    image: 'https://www.clarkconstruction.com/sites/default/files/styles/gallery_image/public/2023-04/DJI_0024.JPG',
+    location: 'Hyak, Washington',
+    client: 'Washington State Department of Transportation (WSDOT)',
+    specs: '6-Lane Highway Widening, 3 Creek Bridges & Wildlife Overcrossings',
+    date: '2021',
+    summary: 'Major mountain corridor improvements widening I-90 through Snoqualmie Pass with wildlife overcrossings.',
+    details: 'Clark\'s heavy civil subsidiary, Guy F. Atkinson Construction, delivered this major mountain corridor project for WSDOT along Interstate 90 through Snoqualmie Pass. The project widened I-90 from 4 to 6 lanes, built replacement bridges over Unnamed Creek, Price Creek, and Noble Creek, stabilized rugged rock avalanche slopes, installed ITS monitoring systems, and constructed an architecturally naturalized wildlife overcrossing to preserve animal migration paths across the Cascade Mountains.',
+    challenge: 'Executing heavy rock blasting, bridge erection, and grading in an alpine mountain pass with severe winter closures.',
+    solution: 'Deployed specialized accelerated bridge construction (ABC) methods and coordinated phased traffic shifts to maintain commuter flow.'
+  },
+  {
+    id: 259,
+    title: 'Atlanta Water Supply Program, Phases 1A and 2',
+    category: 'Industrial',
+    projectType: 'Water supply tunnel and storage infrastructure',
+    officialSource: 'https://www.clarkconstruction.com/our-work/projects/atlanta-water-supply-program-phase-1a-and-2',
+    isOfficialUSProject: true,
+    image: 'https://www.clarkconstruction.com/sites/default/files/styles/gallery_image/public/2023-04/DJI_0566_jpg.jpg?itok=ReshataW',
+    location: 'Atlanta, Georgia',
+    client: 'City of Atlanta Department of Watershed Management',
+    specs: '5-Mile 12.5-ft TBM Hard-Rock Tunnel & 2.4-Billion-Gallon Quarry Reservoir',
+    date: '2020',
+    summary: 'A transformative 5-mile hard-rock tunnel and 2.4-billion-gallon reservoir securing Atlanta\'s water supply for 100 years.',
+    details: 'Clark\'s heavy civil subsidiary, Guy F. Atkinson Construction, completed the subterranean hard-rock tunneling and shaft construction for the $321M Atlanta Water Supply Program. The project converted the 400-foot-deep former Bellwood Quarry into a 2.4-billion-gallon raw water storage reservoir and bored an 5-mile-long, 12.5-foot-diameter tunnel using a Robbins hard-rock TBM ("Dr. Geoff") to connect the quarry with the Chattahoochee River and Hemphill Water Treatment Plant, boosting Atlanta\'s water reserves from 3 days to over 30 days.',
+    challenge: 'Boring an 5-mile hard-rock tunnel hundreds of feet beneath active interstate highways, rail lines, and residential neighborhoods.',
+    solution: 'Operated a custom high-performance Robbins Main Beam TBM with pre-excavation probe drilling and automated micro-seismic settlement monitoring.'
   }
 ];
 
@@ -3611,7 +3572,37 @@ export const UNIQUE_PROJECTS = PROJECTS.filter((project, index, self) =>
   index === self.findIndex((p) => p.title === project.title)
 );
 
+// Helper to identify Indian projects
+export function isIndianProject(project) {
+  if (!project) return false;
+  const loc = (project.location || '').toLowerCase();
+  return (
+    loc.includes('india') ||
+    loc.includes('maharashtra') ||
+    loc.includes('gujarat') ||
+    loc.includes('delhi') ||
+    loc.includes('karnataka') ||
+    loc.includes('tamil nadu') ||
+    loc.includes('uttar pradesh') ||
+    loc.includes('andhra pradesh') ||
+    loc.includes('ladakh') ||
+    loc.includes('himachal pradesh') ||
+    loc.includes('madhya pradesh') ||
+    loc.includes('assam') ||
+    loc.includes('kerala') ||
+    loc.includes('telangana') ||
+    loc.includes('rajasthan') ||
+    loc.includes('bihar') ||
+    loc.includes('odisha') ||
+    loc.includes('sikkim') ||
+    loc.includes('arunachal') ||
+    loc.includes('bengaluru') ||
+    loc.includes('mumbai')
+  );
+}
+
 export { PROJECTS };
+export { INDIAN_PROJECTS } from '../data/indianProjects';
 
 export default function Projects() {
   const navigate = useNavigate();
@@ -3649,13 +3640,32 @@ export default function Projects() {
     return counts;
   }, []);
 
+  // Official U.S. Portfolio count
+  const officialUSProjectsCount = useMemo(() => {
+    return UNIQUE_PROJECTS.filter((p) => p.isOfficialUSProject || p.officialSource).length;
+  }, []);
+
+  // India Portfolio count
+  const indianProjectsCount = useMemo(() => {
+    return UNIQUE_PROJECTS.filter(isIndianProject).length;
+  }, []);
+
   // Filter and Sort Projects
   const filteredProjects = useMemo(() => {
     let result = UNIQUE_PROJECTS.filter((project) => {
-      const matchesCategory = selectedCategory === 'All' || project.category === selectedCategory;
+      let matchesCategory = true;
+      if (selectedCategory === 'Official U.S. Projects') {
+        matchesCategory = !!(project.isOfficialUSProject || project.officialSource);
+      } else if (selectedCategory === 'India Projects') {
+        matchesCategory = isIndianProject(project);
+      } else if (selectedCategory !== 'All') {
+        matchesCategory = project.category === selectedCategory;
+      }
+
       const query = searchQuery.toLowerCase().trim();
       const matchesSearch = !query ||
         project.title.toLowerCase().includes(query) ||
+        (project.projectType && project.projectType.toLowerCase().includes(query)) ||
         (project.summary && project.summary.toLowerCase().includes(query)) ||
         (project.location && project.location.toLowerCase().includes(query)) ||
         (project.client && project.client.toLowerCase().includes(query)) ||
@@ -3889,49 +3899,139 @@ export default function Projects() {
                 const isSelected = selectedCategory === cat;
                 const count = categoryCounts[cat] || 0;
                 return (
-                  <button
-                    key={cat}
-                    onClick={() => setSelectedCategory(cat)}
-                    style={{
-                      padding: '6px 14px',
-                      borderRadius: '9999px',
-                      border: isSelected ? '1px solid #2563EB' : '1px solid var(--border-color)',
-                      backgroundColor: isSelected ? '#0D1A63' : '#FFFFFF',
-                      color: isSelected ? '#FFFFFF' : 'var(--text-primary)',
-                      cursor: 'pointer',
-                      fontSize: '0.82rem',
-                      fontWeight: 700,
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '6px',
-                      transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
-                      boxShadow: isSelected ? '0 2px 8px rgba(13, 26, 99, 0.2)' : 'none'
-                    }}
-                    onMouseEnter={(e) => {
-                      if (!isSelected) {
-                        e.currentTarget.style.backgroundColor = '#F8FAFC';
-                        e.currentTarget.style.borderColor = 'var(--border-color-hover)';
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      if (!isSelected) {
-                        e.currentTarget.style.backgroundColor = '#FFFFFF';
-                        e.currentTarget.style.borderColor = 'var(--border-color)';
-                      }
-                    }}
-                  >
-                    <span>{cat}</span>
-                    <span style={{
-                      backgroundColor: isSelected ? 'rgba(255, 255, 255, 0.22)' : 'rgba(13, 26, 99, 0.08)',
-                      color: isSelected ? '#FFFFFF' : 'var(--primary)',
-                      fontSize: '0.72rem',
-                      padding: '1px 6px',
-                      borderRadius: '999px',
-                      fontWeight: 800
-                    }}>
-                      {count}
-                    </span>
-                  </button>
+                  <React.Fragment key={cat}>
+                    <button
+                      onClick={() => setSelectedCategory(cat)}
+                      style={{
+                        padding: '6px 14px',
+                        borderRadius: '9999px',
+                        border: isSelected ? '1px solid #2563EB' : '1px solid var(--border-color)',
+                        backgroundColor: isSelected ? '#0D1A63' : '#FFFFFF',
+                        color: isSelected ? '#FFFFFF' : 'var(--text-primary)',
+                        cursor: 'pointer',
+                        fontSize: '0.82rem',
+                        fontWeight: 700,
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
+                        boxShadow: isSelected ? '0 2px 8px rgba(13, 26, 99, 0.2)' : 'none'
+                      }}
+                      onMouseEnter={(e) => {
+                        if (!isSelected) {
+                          e.currentTarget.style.backgroundColor = '#F8FAFC';
+                          e.currentTarget.style.borderColor = 'var(--border-color-hover)';
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        if (!isSelected) {
+                          e.currentTarget.style.backgroundColor = '#FFFFFF';
+                          e.currentTarget.style.borderColor = 'var(--border-color)';
+                        }
+                      }}
+                    >
+                      <span>{cat}</span>
+                      <span style={{
+                        backgroundColor: isSelected ? 'rgba(255, 255, 255, 0.22)' : 'rgba(13, 26, 99, 0.08)',
+                        color: isSelected ? '#FFFFFF' : 'var(--primary)',
+                        fontSize: '0.72rem',
+                        padding: '1px 6px',
+                        borderRadius: '9999px',
+                        fontWeight: 800
+                      }}>
+                        {count}
+                      </span>
+                    </button>
+
+                    {cat === 'All' && (
+                      <button
+                        onClick={() => setSelectedCategory(selectedCategory === 'Official U.S. Projects' ? 'All' : 'Official U.S. Projects')}
+                        style={{
+                          padding: '6px 14px',
+                          borderRadius: '9999px',
+                          border: selectedCategory === 'Official U.S. Projects' ? '1px solid #16A34A' : '1px solid #BBF7D0',
+                          backgroundColor: selectedCategory === 'Official U.S. Projects' ? '#166534' : '#F0FDF4',
+                          color: selectedCategory === 'Official U.S. Projects' ? '#FFFFFF' : '#166534',
+                          cursor: 'pointer',
+                          fontSize: '0.82rem',
+                          fontWeight: 800,
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '6px',
+                          transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
+                          boxShadow: selectedCategory === 'Official U.S. Projects' ? '0 2px 8px rgba(22, 101, 52, 0.25)' : 'none'
+                        }}
+                        onMouseEnter={(e) => {
+                          if (selectedCategory !== 'Official U.S. Projects') {
+                            e.currentTarget.style.backgroundColor = '#DCFCE7';
+                          }
+                        }}
+                        onMouseLeave={(e) => {
+                          if (selectedCategory !== 'Official U.S. Projects') {
+                            e.currentTarget.style.backgroundColor = '#F0FDF4';
+                          }
+                        }}
+                      >
+                        <CheckCircle2 size={13} color={selectedCategory === 'Official U.S. Projects' ? '#FFF' : '#16A34A'} />
+                        <span>Official U.S. Projects</span>
+                        <span style={{
+                          backgroundColor: selectedCategory === 'Official U.S. Projects' ? 'rgba(255, 255, 255, 0.25)' : 'rgba(22, 163, 74, 0.15)',
+                          color: selectedCategory === 'Official U.S. Projects' ? '#FFFFFF' : '#166534',
+                          fontSize: '0.72rem',
+                          padding: '1px 6px',
+                          borderRadius: '9999px',
+                          fontWeight: 800
+                        }}>
+                          {officialUSProjectsCount}
+                        </span>
+                      </button>
+                    )}
+
+                    {/* Dedicated India Projects Filter Button */}
+                    {cat === 'All' && (
+                      <button
+                        onClick={() => setSelectedCategory('India Projects')}
+                        style={{
+                          padding: '6px 14px',
+                          borderRadius: '9999px',
+                          border: selectedCategory === 'India Projects' ? '1px solid #D97706' : '1px solid #FDE68A',
+                          backgroundColor: selectedCategory === 'India Projects' ? '#D97706' : '#FFFBEB',
+                          color: selectedCategory === 'India Projects' ? '#FFFFFF' : '#B45309',
+                          cursor: 'pointer',
+                          fontSize: '0.82rem',
+                          fontWeight: 800,
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '6px',
+                          transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
+                          boxShadow: selectedCategory === 'India Projects' ? '0 2px 8px rgba(217, 119, 6, 0.25)' : 'none'
+                        }}
+                        onMouseEnter={(e) => {
+                          if (selectedCategory !== 'India Projects') {
+                            e.currentTarget.style.backgroundColor = '#FEF3C7';
+                          }
+                        }}
+                        onMouseLeave={(e) => {
+                          if (selectedCategory !== 'India Projects') {
+                            e.currentTarget.style.backgroundColor = '#FFFBEB';
+                          }
+                        }}
+                      >
+                        <Building2 size={13} color={selectedCategory === 'India Projects' ? '#FFF' : '#D97706'} />
+                        <span>India Projects</span>
+                        <span style={{
+                          backgroundColor: selectedCategory === 'India Projects' ? 'rgba(255, 255, 255, 0.25)' : 'rgba(217, 119, 6, 0.15)',
+                          color: selectedCategory === 'India Projects' ? '#FFFFFF' : '#B45309',
+                          fontSize: '0.72rem',
+                          padding: '1px 6px',
+                          borderRadius: '9999px',
+                          fontWeight: 800
+                        }}>
+                          {indianProjectsCount}
+                        </span>
+                      </button>
+                    )}
+                  </React.Fragment>
                 );
               })}
             </div>
@@ -3950,9 +4050,13 @@ export default function Projects() {
           }}>
             <div>
               <span>Showing <strong style={{ color: 'var(--text-white)' }}>{filteredProjects.length}</strong> of <strong style={{ color: 'var(--text-white)' }}>{UNIQUE_PROJECTS.length}</strong> total projects on one page</span>
-              {selectedCategory !== 'All' && (
+              {selectedCategory === 'Official U.S. Projects' ? (
+                <span style={{ marginLeft: '8px', color: '#16A34A', fontWeight: 700 }}>• Official Clark U.S. Portfolio</span>
+              ) : selectedCategory === 'India Projects' ? (
+                <span style={{ marginLeft: '8px', color: '#D97706', fontWeight: 700 }}>• Indian Infrastructure & Landmark Portfolio ({indianProjectsCount} projects)</span>
+              ) : selectedCategory !== 'All' ? (
                 <span style={{ marginLeft: '8px', color: '#2563EB' }}>• in {selectedCategory}</span>
-              )}
+              ) : null}
             </div>
 
             {hasActiveFilters && (
@@ -4004,11 +4108,30 @@ export default function Projects() {
                       <Card
                         image={project.image}
                         title={project.title}
-                        subtitle={project.category}
+                        subtitle={project.projectType || project.category}
                         tag={project.location}
                         hoverEffect="tilt"
                         onClick={() => navigate(`/our-work/projects/${getProjectSlug(project.title)}`)}
                       >
+                        {(project.isOfficialUSProject || project.officialSource) && (
+                          <div style={{ display: 'flex', gap: '6px', alignItems: 'center', marginBottom: '10px', flexWrap: 'wrap' }}>
+                            <span style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '4px',
+                              backgroundColor: '#F0FDF4',
+                              border: '1px solid #BBF7D0',
+                              color: '#166534',
+                              padding: '2px 8px',
+                              borderRadius: '999px',
+                              fontSize: '0.68rem',
+                              fontWeight: 800
+                            }}>
+                              <CheckCircle2 size={11} color="#16A34A" />
+                              <span>Official Clark Project</span>
+                            </span>
+                          </div>
+                        )}
                         <p style={{ marginBottom: '16px', lineHeight: '1.55', flexGrow: 1 }}>{project.summary}</p>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'auto', paddingTop: '12px', borderTop: '1px solid var(--border-color)' }}>
                           <span style={{ fontSize: '0.76rem', color: '#64748B', fontWeight: 600 }}>
@@ -4110,6 +4233,10 @@ export default function Projects() {
                                 src={project.image}
                                 alt={project.title}
                                 loading="lazy"
+                                onError={(e) => {
+                                  e.currentTarget.onerror = null;
+                                  e.currentTarget.src = 'https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=400&q=80';
+                                }}
                                 style={{
                                   width: '54px',
                                   height: '42px',
@@ -4121,11 +4248,30 @@ export default function Projects() {
                                 }}
                               />
                               <div>
-                                <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-white)', margin: '0 0 2px 0' }}>
-                                  {project.title}
-                                </h4>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '2px' }}>
+                                  <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-white)', margin: 0 }}>
+                                    {project.title}
+                                  </h4>
+                                  {(project.isOfficialUSProject || project.officialSource) && (
+                                    <span style={{
+                                      display: 'inline-flex',
+                                      alignItems: 'center',
+                                      gap: '3px',
+                                      backgroundColor: '#F0FDF4',
+                                      border: '1px solid #BBF7D0',
+                                      color: '#166534',
+                                      padding: '1px 6px',
+                                      borderRadius: '999px',
+                                      fontSize: '0.65rem',
+                                      fontWeight: 800
+                                    }}>
+                                      <CheckCircle2 size={10} color="#16A34A" />
+                                      <span>Official U.S.</span>
+                                    </span>
+                                  )}
+                                </div>
                                 <span style={{ fontSize: '0.76rem', color: '#64748B' }}>
-                                  {project.client ? project.client.split(';')[0] : 'Clark Construction'}
+                                  {project.projectType || (project.client ? project.client.split(';')[0] : 'Clark Construction')}
                                 </span>
                               </div>
                             </div>

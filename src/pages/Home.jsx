@@ -7,10 +7,8 @@ import ProjectDetailView from '../components/UI/ProjectDetailView';
 import AnimatedCounter from '../components/UI/AnimatedCounter';
 import DepthCarousel from '../components/UI/DepthCarousel';
 import CircleGallery from '../components/UI/CircleGallery';
-import RailwayMetroImg from '../assets/railway_metro_projects.png';
+import AKICImg from '../assets/Amritsar-Kolkata Industrial Corridor (AKIC).jpg';
 import NaviMumbaiAirportImg from '../assets/airport.jpg';
-import ChenabBridgeImg from '../assets/Chenab Rail Bridge  USBRL.jpg';
-import DMICImg from '../assets/Delhi-Mumbai Industrial Corridor (DMIC).png';
 import BharatmalaImg from '../assets/Bharatmala Pariyojna.jpg';
 import TataSemiconductorImg from '../assets/Tata Electronics Semiconductor Facility.png';
 import HeroSlide1Img from '../assets/home_hero_slide1.jpg';
@@ -619,11 +617,11 @@ export default function Home() {
               {[
                 {
                   id: 0,
-                  title: 'Railway and Metro projects',
-                  desc: 'Historically well known for Delhi Metro consulting roles and similar work on other rail/metro programs.',
-                  metric: 'Transit Consulting & PM',
-                  partner: 'Delhi Metro Rail Corp',
-                  location: 'Delhi NCR & Pan-India',
+                  title: 'Amritsar–Kolkata Industrial Corridor (AKIC)',
+                  desc: 'Eastern Dedicated Freight Corridor spanning 20 industrial cities, setting up dry ports and smart logistics.',
+                  metric: 'EDFC Freight Rail Backbone',
+                  partner: 'Tata Projects & L&T',
+                  location: 'Northern & Eastern India',
                   icon: <Train size={18} />
                 },
                 {
@@ -637,11 +635,11 @@ export default function Home() {
                 },
                 {
                   id: 2,
-                  title: 'Chenab Rail Bridge (USBRL)',
-                  desc: 'Structural steel erection and engineering supervision for the world\'s highest railway arch bridge.',
-                  metric: '359m Above River Bed',
-                  partner: 'Northern Railways & USBRL',
-                  location: 'Jammu & Kashmir, India',
+                  title: 'Mumbai–Ahmedabad High-Speed Rail',
+                  desc: 'High-speed bullet train corridor utilizing Shinkansen E5 technology with undersea tunnels.',
+                  metric: '508 km, 320 km/h Bullet Train',
+                  partner: 'NHSRCL & Japanese Consortium',
+                  location: 'Maharashtra & Gujarat, India',
                   icon: <Award size={18} />
                 }
               ].map((project) => {
@@ -737,9 +735,9 @@ export default function Home() {
             <div style={{ width: '100%', height: '400px', position: 'relative' }}>
               <DepthCarousel
                 items={[
-                  { image: RailwayMetroImg, alt: 'Railway and Metro projects' },
+                  { image: AKICImg, alt: 'Amritsar–Kolkata Industrial Corridor (AKIC)' },
                   { image: NaviMumbaiAirportImg, alt: 'Navi Mumbai International Airport' },
-                  { image: ChenabBridgeImg, alt: 'Chenab Rail Bridge (USBRL)' }
+                  { image: TataSemiconductorImg, alt: 'Tata Semiconductor Facility' }
                 ]}
                 depth={220}
                 spread={85}
@@ -778,9 +776,9 @@ export default function Home() {
               <div>
                 <span style={{ fontSize: '0.65rem', color: '#64748B', textTransform: 'uppercase', display: 'block', fontWeight: 700, letterSpacing: '0.06em' }}>Location</span>
                 <span style={{ color: 'var(--primary)', fontWeight: 800, fontSize: '0.88rem' }}>
-                  {activeProject === 0 && 'Delhi NCR & Pan-India'}
+                  {activeProject === 0 && 'Northern & Eastern India'}
                   {activeProject === 1 && 'Navi Mumbai, Maharashtra, India'}
-                  {activeProject === 2 && 'Jammu & Kashmir, India'}
+                  {activeProject === 2 && 'Maharashtra & Gujarat, India'}
                 </span>
               </div>
               <div style={{ textAlign: 'right' }}>
