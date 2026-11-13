@@ -63,7 +63,14 @@ export default function FraudulentDisclaimer() {
               </li>
 
               <li style={{ paddingLeft: '8px' }}>
-                The email address indicated in the phony job vacancy posting does not end in clarkconstruction.com (most read @gmail.com, @yahoo.com, @clark-construction.com, or @clarkconstruction.us).
+                The email address indicated in the phony job vacancy posting does not end in official Clark domains: <strong>clarkindia.co</strong> or <strong>clarkconstruction.com</strong> (phony solicitations typically come from @gmail.com, @yahoo.com, @clark-construction.com, or @clarkconstruction.us). Official correspondence originates strictly from verified addresses such as{' '}
+                <a href="mailto:recruitment@clarkindia.co" style={{ color: '#0060B6', fontWeight: 600, textDecoration: 'none' }}>
+                  recruitment@clarkindia.co
+                </a>{' '}
+                or{' '}
+                <a href="mailto:talentacquisition@clarkindia.co" style={{ color: '#0060B6', fontWeight: 600, textDecoration: 'none' }}>
+                  talentacquisition@clarkindia.co
+                </a>.
               </li>
 
               <li style={{ paddingLeft: '8px' }}>
@@ -84,6 +91,29 @@ export default function FraudulentDisclaimer() {
                 ).
               </li>
             </ol>
+
+            <div style={{
+              marginTop: '40px',
+              padding: '24px',
+              backgroundColor: '#F8FAFC',
+              borderRadius: '8px',
+              borderLeft: '4px solid #0060B6',
+              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)'
+            }}>
+              <h4 style={{ color: '#0B1736', fontSize: '1.1rem', fontWeight: 700, marginBottom: '8px' }}>
+                Report Fraudulent Communications
+              </h4>
+              <p style={{ margin: 0, fontSize: '0.95rem', color: '#475569', lineHeight: '1.6' }}>
+                If you receive a suspicious job offer or recruitment communication, please forward the email with full headers directly to our legal compliance and recruitment departments at{' '}
+                <a href="mailto:legal@clarkindia.co" style={{ color: '#0060B6', fontWeight: 600, textDecoration: 'none' }}>
+                  legal@clarkindia.co
+                </a>{' '}
+                and{' '}
+                <a href="mailto:recruitment@clarkindia.co" style={{ color: '#0060B6', fontWeight: 600, textDecoration: 'none' }}>
+                  recruitment@clarkindia.co
+                </a>.
+              </p>
+            </div>
           </div>
         </div>
       </section>

@@ -254,7 +254,9 @@ export default function TermsOfUse() {
                   <div style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-white)' }}>Office of the General Counsel</div>
                   <div style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginTop: '4px' }}>Clark Construction Group, LLC</div>
                   <div style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>7500 Old Georgetown Road, Bethesda, MD 20814</div>
-                  <div style={{ fontSize: '0.875rem', color: 'var(--accent-cobalt)', marginTop: '6px', fontWeight: 600 }}>legal@clarkconstruction.com</div>
+                  <div style={{ fontSize: '0.875rem', marginTop: '6px', fontWeight: 600 }}>
+                    <a href="mailto:legal@clarkindia.co" style={{ color: 'var(--accent-cobalt)', textDecoration: 'none' }}>legal@clarkindia.co</a>
+                  </div>
                 </div>
               </section>
 

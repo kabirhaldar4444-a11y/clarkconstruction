@@ -37,8 +37,19 @@ export default function EmploymentVerification() {
               Clark Construction Group uses The Work Number to provide employment and income verification for employees.
             </p>
 
-            <p style={{ margin: 0 }}>
+            <p style={{ margin: 0, marginBottom: '24px' }}>
               For verification, visit The Work Number or call +1 (800) 555-0199.
+            </p>
+
+            <p style={{ margin: 0, fontSize: '0.98rem', color: '#475569' }}>
+              For direct enterprise verification requests, new joiner credentials, or corporate HR inquiries, please contact our Onboarding & HR desk at{' '}
+              <a href="mailto:onboarding@clarkindia.co" style={{ color: '#0060B6', fontWeight: 600, textDecoration: 'none' }}>
+                onboarding@clarkindia.co
+              </a>{' '}
+              or{' '}
+              <a href="mailto:hrd@clarkindia.co" style={{ color: '#0060B6', fontWeight: 600, textDecoration: 'none' }}>
+                hrd@clarkindia.co
+              </a>.
             </p>
           </div>
         </div>

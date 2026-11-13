@@ -181,7 +181,7 @@ export default function Footer() {
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                 <Mail size={18} style={{ color: '#38BDF8', flexShrink: 0 }} />
-                <span style={{ color: '#CBD5E1' }}>info@clarkconstruction.com</span>
+                <a href="mailto:hrd@clarkindia.co" style={{ color: '#CBD5E1', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = '#FFFFFF'} onMouseLeave={(e) => e.currentTarget.style.color = '#CBD5E1'}>hrd@clarkindia.co</a>
               </li>
             </ul>
           </div>

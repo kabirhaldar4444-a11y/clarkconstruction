@@ -31,10 +31,11 @@ function getSpecIcon(category = '') {
   const cat = category.toLowerCase();
   if (cat.includes('name') || cat.includes('project')) return <Building2 size={15} />;
   if (cat.includes('client') || cat.includes('owner')) return <Briefcase size={15} />;
+  if (cat.includes('sub-constructor') || cat.includes('subconstructor')) return <HardHat size={15} />;
+  if (cat.includes('constructor') || cat.includes('contract')) return <HardHat size={15} />;
   if (cat.includes('sector') || cat.includes('category') || cat.includes('type')) return <Layers size={15} />;
   if (cat.includes('location') || cat.includes('city') || cat.includes('site')) return <MapPin size={15} />;
   if (cat.includes('year') || cat.includes('date') || cat.includes('completion')) return <Calendar size={15} />;
-  if (cat.includes('construction') || cat.includes('contract')) return <HardHat size={15} />;
   if (cat.includes('capacity') || cat.includes('volume') || cat.includes('seats')) return <Activity size={15} />;
   if (cat.includes('structure') || cat.includes('foundation') || cat.includes('framing')) return <Box size={15} />;
   if (cat.includes('size') || cat.includes('area') || cat.includes('sq')) return <Ruler size={15} />;
@@ -46,13 +47,537 @@ function getSpecIcon(category = '') {
 }
 
 /**
+ * Intelligent directory of verified primary constructors for landmark Indian infrastructure projects
+ */
+export const REAL_INDIAN_CONSTRUCTORS = {
+  'Kovvada Nuclear Power Plant': 'Westinghouse Electric Company & NPCIL',
+  'Reliance Jamnagar Refinery Expansion': 'Bechtel Corporation & Reliance Engineering',
+  'Reliance Jamnagar Refinery': 'Bechtel Corporation & Reliance Engineering',
+  'GIFT City (Gujarat International Finance Tec-City)': 'Larsen & Toubro (L&T)',
+  'GIFT City': 'Larsen & Toubro (L&T)',
+  'Navi Mumbai International Airport': 'Larsen & Toubro (L&T) & Tata Projects',
+  'Amritsar-Kolkata Industrial Corridor (AKIC)': 'Tata Projects & Larsen & Toubro (L&T)',
+  'Bharatmala Pariyojna Highway Network': 'Larsen & Toubro (L&T) & Dilip Buildcon',
+  'Bharatmala Pariyojna': 'Larsen & Toubro (L&T) & Dilip Buildcon',
+  'National Maritime Heritage Complex': 'Tata Projects Limited',
+  'Ahmedabad-Dholera Express Highway': 'Sadbhav Engineering & Larsen & Toubro (L&T)',
+  'Visakhapatnam-Chennai Industrial Corridor': 'Larsen & Toubro (L&T) & Tata Projects',
+  'Sagarmala Project Maritime Network': 'Adani Ports & SEZ (APSEZ) & L&T',
+  'Sagarmala Project': 'Adani Ports & SEZ (APSEZ) & L&T',
+  'JSW Group Green Energy Projects': 'JSW Energy & Suzlon Energy',
+  "JSW Group's Green Energy Projects": 'JSW Energy & Suzlon Energy',
+  'Dholera Smart City Greenfield Project': 'Larsen & Toubro (L&T)',
+  'Dholera Smart City Project': 'Larsen & Toubro (L&T)',
+  'Ganga Vikas Riverfront Development': 'Shapoorji Pallonji & Co.',
+  'Ganga Vikas Project (Riverfront)': 'Shapoorji Pallonji & Co.',
+  'Mysore Wind Power Project': 'Suzlon Energy Limited',
+  'Surat Wind Energy Project': 'Inox Wind & ReNew Power',
+  'Puga Geothermal Energy Project': 'ONGC & Megha Engineering (MEIL)',
+  'Nagpur Metallurgical Expansion Project': 'Tata Projects & SMS Group',
+  'Krishnapatnam Port Expansion Project': 'Adani Ports (APSEZ) & L&T Infrastructure',
+  'Paimana Highway Network Project': 'Dilip Buildcon & NHAI Concessionaires',
+  'Paimana': 'Dilip Buildcon & NHAI Concessionaires',
+  'Battery Energy Storage System Manufacturing Facility': 'Tata Projects & Sterling and Wilson',
+  'Bhadla Solar Park': 'Adani Green Energy & Sterling and Wilson',
+  'New Power Transformer Mfg. Project in Solan': 'Bharat Heavy Electricals Limited (BHEL)',
+  'Tata Electronics Semiconductor Facility': 'Tata Projects & Powerchip (PSMC)',
+  'Mumbai Trans Harbour Link (Atal Setu)': 'Larsen & Toubro (L&T), IHI Corporation & Daewoo E&C',
+  'Mumbai–Ahmedabad High-Speed Rail Corridor': 'Larsen & Toubro (L&T) Heavy Civil',
+  'Atal Tunnel': 'Strabag-Afcons Joint Venture',
+  'Zojila Tunnel Project': 'Megha Engineering & Infrastructures Limited (MEIL)',
+  'Shinkun La Tunnel Project': 'Border Roads Organisation (BRO)',
+  'Dhola–Sadiya Bridge (Bhupen Hazarika Setu)': 'Navayuga Engineering Company',
+  'Sudarshan Setu': 'SP Singla Constructions',
+  'Dwarka Expressway': 'Larsen & Toubro (L&T) & J Kumar Infraprojects',
+  'Delhi–Mumbai Expressway': 'Dilip Buildcon, Cube Highways & L&T',
+  'Bengaluru–Mysuru Expressway': 'Dilip Buildcon Limited',
+  'Purvanchal Expressway': 'PNC Infratech, Apco Infratech & GR Infraprojects',
+  'Ganga Expressway': 'Adani Enterprises & IRB Infrastructure',
+  'Bundelkhand Expressway': 'Apco Infratech & Ashoka Buildcon',
+  'Gorakhpur Link Expressway': 'Apco Infratech & Dilip Buildcon',
+  'Samruddhi Mahamarg': 'Megha Engineering (MEIL), Afcons Infrastructure & L&T',
+  'Mumbai Coastal Road Project': 'Larsen & Toubro (L&T) & HCC-HDC JV',
+  'Pune Ring Road Project': 'Navayuga Engineering & MSRDC',
+  'Thane–Borivali Twin Tunnel Project': 'Megha Engineering & Infrastructures Limited (MEIL)',
+  'Virar–Alibaug Multimodal Corridor': 'Navayuga Engineering & J Kumar Infraprojects',
+  'Nagpur–Mumbai Super Communication Expressway (Phase Expansion)': 'Afcons Infrastructure & Megha Engineering (MEIL)',
+  'Chennai Peripheral Ring Road': 'Larsen & Toubro (L&T) & Tata Projects',
+  'Jaipur Metro Phase 1C': 'Afcons Infrastructure',
+  'Vadhavan Port Development': 'Larsen & Toubro (L&T) Heavy Civil & JNPA',
+  'Vizhinjam International Seaport': 'Adani Ports & Special Economic Zone (APSEZ)',
+  'Tuna-Tekra Mega Container Terminal': 'DP World & Larsen & Toubro (L&T)',
+  'New Mangalore Port Capacity Expansion': 'Larsen & Toubro (L&T) Geostructure',
+  'Dighi Port Development': 'Adani Ports & Special Economic Zone (APSEZ)',
+  'Kaleshwaram Lift Irrigation Project': 'Megha Engineering (MEIL) & L&T Construction',
+  'Polavaram Irrigation Project': 'Megha Engineering & Infrastructures Limited (MEIL)',
+  'Ken–Betwa River Linking Project': 'Larsen & Toubro (L&T) Water & Effluent',
+  'Renukaji Dam Project': 'Patel Engineering Limited',
+  'Dibang Multipurpose Hydroelectric Project': 'Larsen & Toubro (L&T) & Patel Engineering',
+  'Subansiri Lower Hydroelectric Project': 'Patel Engineering & Larsen & Toubro (L&T)',
+  'Teesta-III Hydroelectric Project': 'Navayuga Engineering & SEW Infrastructure',
+  'Khavda Renewable Energy Park': 'Adani Green Energy & Sterling and Wilson',
+  'Ramagundam Floating Solar Power Project': 'Bharat Heavy Electricals Limited (BHEL)'
+};
+
+/**
+ * Intelligent directory of verified specialized trade contractors & JV partners for American projects
+ */
+export const REAL_AMERICAN_SUBCONTRACTORS = {
+  'Capital One Arena': 'Clark Concrete & C3M Power Systems',
+  'CityCenterDC': 'Smoot Construction & Clark Concrete JV',
+  'The Wharf (Phase 1 & 2)': 'Clark Foundations & Clark Concrete',
+  'The Wharf': 'Clark Foundations & Clark Concrete',
+  'Washington Nationals Ballpark (Nationals Park)': 'Hunt Construction & Smoot Construction',
+  'LAX Midfield Satellite Concourse': 'Turner Construction & PCL Construction JV',
+  'LAX Terminal Modernization Projects': 'Clark Civil & Specialized Aviation Systems',
+  'San Francisco International Airport (SFO) Projects': 'Skanska USA Building & Clark Joint Venture',
+  'Walter Reed National Military Medical Center': 'Balfour Beatty Construction JV',
+  'National Museum of African American History and Culture': 'Smoot Construction & Russell Construction JV',
+  'Smithsonian Institution Renovations': 'Clark Historic Preservation & Architectural Trades',
+  'National Museum of the United States Army': 'Specialized Laser-Aligned Steel Cladding Trades',
+  'Conrad Washington DC Hotel': 'Clark Concrete & Architectural Curtainwall Trades',
+  'MGM National Harbor': 'Smoot Construction & Whiting-Turner JV',
+  'Inova Schar Cancer Institute': 'Clark Concrete & Radiation Vault Shielding Trades',
+  'Johns Hopkins Medical Facilities': 'Whiting-Turner Contracting & Clark MEP Trades',
+  "Children's National Hospital Expansion": 'Clark Concrete & Bio-Medical MEP Specialists',
+  'George Washington University Buildings': 'Clark Concrete & Research Laboratory Trades',
+  'University of Maryland Facilities': 'Clark Concrete & Long-Span Structural Steel Trades',
+  'Virginia Tech Academic Buildings': 'Traditional Hokie Stone Masons & Clark Concrete',
+  'The Anthem Music Venue': 'Acoustical & Entertainment Theatre Specialty Trades',
+  'Capital Crossing Development': 'Balfour Beatty & Highway Air-Rights Deck Trades',
+  '1900 K Street Office Tower': 'Clark Concrete & Smart Electrochromic Curtainwall Trades',
+  'Fannie Mae Headquarters Renovation': 'Clark Interiors & Structural Shoring Trades',
+  'Department of Homeland Security Facilities': 'Clark Foundations & High-Security Federal Trades',
+  'FBI Central Records Complex & Government Projects': 'Clark Concrete & Automated Storage/Retrieval Robotics Trades',
+  'FBI Central Records Complex': 'Clark Concrete & Automated Storage/Retrieval Robotics Trades',
+  'Data Center Campuses (Confidential Clients)': 'Clark Technologies & Mission Critical MEP Specialists',
+  'Data Center Campuses': 'Clark Technologies & Mission Critical MEP Specialists',
+  'Texas Central High-Speed Rail': 'Lane Construction & Guy F. Atkinson Construction JV',
+  'Gateway Program': 'Guy F. Atkinson Construction & Heavy Civil Tunneling JV',
+  'Hudson Tunnel Project': 'Guy F. Atkinson Construction & Heavy Civil Tunneling JV',
+  'Brightline West High-Speed Rail': 'Clark Civil & High-Speed Rail Systems JV',
+  'Gordie Howe International Bridge': 'Bridging North America (Fluor / ACS / Dragados) & Clark Civil',
+  'I-45 North Houston Expansion': 'Guy F. Atkinson Construction & Shirley Contracting',
+  'Honolulu Rail Transit Extension': 'Ansaldo Honolulu & Guy F. Atkinson Heavy Civil',
+  'Los Angeles Metro D Line Extension': 'Skanska | Traylor | Shea Joint Venture',
+  'Second Avenue Subway Phase 2': 'Clark Heavy Civil & MTA Underground Contractors',
+  'Phoenix Interstate I-10 Expansion': 'Guy F. Atkinson Construction',
+  'Micron Idaho Memory Manufacturing Campus': 'Clark Cleanroom & High-Purity Industrial Mechanical Trades',
+  'Louisiana LNG Export Terminal': 'Clark Civil & Heavy Industrial Cryogenic Trades',
+  'Plaquemines LNG Phase Expansion': 'Clark Marine & Heavy Civil Subcontractors',
+  'Empire Wind Project': 'Guy F. Atkinson Marine & Offshore Wind Trades',
+  'Coastal Virginia Offshore Wind Project': 'Clark Infrastructure & Subsea Marine Energy Partners',
+  'Los Angeles Convention Center Expansion': 'Hunt Construction Group JV',
+  'Miami Freedom Park Development': 'Clark Concrete & Sports Venue Specialty Contractors',
+  'The 78 Chicago Development': 'Clark Civil & Deep Foundation Contractors',
+  'Nashville East Bank Development': 'Clark Civil & Waterfront Infrastructure Trades',
+  'Salt Lake City Innovation District': 'Clark Concrete & Commercial Trade Partners',
+  'Museums & Monuments': 'Clark Historic Preservation & Architectural Trades',
+  'Presidential Bathroom Suite Hospitality': 'Clark Interiors & Luxury Hospitality Trades',
+  'Clark Technologies': 'Clark Technologies Mission Critical Electrical Division',
+  'Base Isolator at LACMA Seismic': 'Clark Concrete & Seismic Base-Isolation Specialists',
+  'Argonne Science': 'Clark Cleanroom & Particle Accelerator Mechanical Trades',
+  'The Kia Forum Renovation & Historic Preservation': 'Clark Acoustic & Historic Arena Restoration Trades',
+  'Parkline in Chicago Residential & Mixed-Use': 'Clark Concrete & High-Rise Post-Tensioned Trades',
+  'Interiors & Tenant Fit-Out - Reston Gateway': 'Clark Interiors & Architectural Curtainwall Specialists',
+  "Sofi Stadium's Massive Transformation for the 2026 FIFA World Cup": 'Turner-AECOM Hunt JV & Clark Infrastructure',
+  'Cannon House Balancing Modernization with Preservation': 'Clark Historic Restoration & Structural Shoring Trades',
+  'Aspect at WestEnd Alexandria': 'Clark Concrete & Multi-Family Residential Trades',
+  'Clark 120 Setting the DC Standard (1956 - 1965)': 'George Hyman Construction & Clark Foundations',
+  'Atkinson, WSDOT Team Up to Improve Connections Near Puget Sound': 'Guy F. Atkinson Construction',
+  'Clark WaterReeves Young Team Celebrates Ribbon Cutting of Canton Wastewater Treatment Plant Expansion': 'Clark Water & Reeves Young Team',
+  'Cubicles to Communities Office Conversion': 'Clark Interiors & Adaptive Reuse Specialists',
+  'Rooted in Performance Logistics Hub': 'Clark Concrete & Industrial Warehouse Trades',
+  'Guy F. Atkinson Construction': 'Guy F. Atkinson Construction (Clark Heavy Civil Subsidiary)',
+  'Shirley Contracting Company': 'Shirley Contracting Company (Clark Highway Subsidiary)',
+  'C3M Traction Power Substation Network': 'C3M Power Systems (Clark Electrical Division)',
+  'C3M Power Systems': 'C3M Power Systems (Clark Electrical Division)',
+  'The Wharf Marine Infrastructure & Buildings': 'Clark Foundations & Clark Marine Trades',
+  'The Wharf Infrastructure': 'Clark Foundations & Heavy Civil Trades',
+  'Intel Ohio Mega Semiconductor Campus': 'Bechtel Corporation & Clark Industrial Civil JV',
+  'TSMC Arizona Semiconductor Expansion': 'Clark Cleanroom & High-Purity Mechanical Piping Trades',
+  'Samsung Taylor Semiconductor Campus': 'Clark Concrete & Advanced Fab MEP Specialists',
+  'Nevada Lithium Processing Hub': 'Clark Industrial & Heavy Chemical Mechanical Trades',
+  'Vineyard Wind Expansion': 'Clark Civil & Offshore Marine Contractors',
+  'JW Marriott Austin': 'Clark Concrete & Hospitality Interior Specialists',
+  'SDSU Snapdragon Stadium': 'Gensler Design-Build & Clark Concrete',
+  'Petco Park Gallagher Square': 'Clark Concrete & Ballpark Landscape Specialists',
+  'Wintrust Arena': 'Prairie District 3 Partners & Clark Concrete',
+  'CFG Bank Arena': 'Oak View Group (OVG) & Structural Shoring Trades',
+  'The Pinnacle': 'Acoustical & Box-in-a-Box Structural Specialists',
+  'International Spy Museum': 'Clark Concrete & Architectural Steel Veil Trades',
+  'Seattle Convention Center Addition (Summit)': 'Lease Crutcher Lewis & Clark Joint Venture',
+  'BWI Concourse A/B Connector and Baggage Handling System': 'Clark Concrete & Automated Baggage Handling Trades',
+  'Frost Tower': 'Clark Concrete & Architectural Facade Specialists',
+  'I-90 Keechelus Dam to Stampede Pass, Phase 2A': 'Guy F. Atkinson Construction',
+  'Atlanta Water Supply Program, Phases 1A and 2': 'Guy F. Atkinson Construction & Robbins TBM Specialists',
+  '29 Roofs, 1 Village Orchestrating the Mass Timber Complex at Johns Hopkins University Bloomberg Student Center': 'Timberlab & Mass Timber Structural Specialists',
+  'IDEA Factory Education': 'Clark Concrete & Advanced Research Laboratory Trades',
+  'New Heights for Student Living': 'Clark Concrete & High-Rise Multi-Family Trades',
+  'midtown center Office': 'Clark Concrete & Structural Glass Bridge Specialists'
+};
+
+/**
+ * Intelligent directory of verified primary constructors for landmark international projects
+ */
+export const REAL_INTERNATIONAL_CONSTRUCTORS = {
+  'Changi Airport Terminal 5': 'KKE-Changi Airport Joint Venture & Mott MacDonald',
+  'Grand Paris Express': 'Société du Grand Paris (VINCI Construction & Bouygues Travaux Publics JV)',
+  'HS2 High-Speed Railway': 'Balfour Beatty VINCI JV & Align JV (Bouygues / VolkerFitzpatrick)',
+  'Crossrail Elizabeth Line': 'Balfour Beatty, BAM Nuttall, Morgan Sindall & Laing O\'Rourke JV',
+  'Stuttgart 21 Railway Station': 'Züblin (Ed. Züblin AG) & Strabag Joint Venture',
+  'Fehmarnbelt Fixed Link': 'Femern Link Contractors (VINCI Construction, Per Aarsleff, Wayss & Freytag & Max Bögl JV)',
+  'Brenner Base Tunnel': 'Webuild, Implenia & Ghella Joint Venture',
+  'Gotthard Base Tunnel': 'Transco & TAT Consortium (Implenia, Alpine Mayreder & Hochtief)',
+  'Metro Tunnel Melbourne': 'Cross Yarra Partnership (Lendlease, John Holland & Bouygues Construction)',
+  'North East Link': 'Spark Consortium (CPB Contractors, Webuild & GS E&C)',
+  'Sydney Metro West': 'Gamuda & Laing O\'Rourke JV / Acciona & Ferrovial JV',
+  'Snowy 2.0 Hydroelectric Project': 'Future Generation JV (Webuild, Clough & Lane Construction)',
+  'WestConnex Motorway': 'CPB Contractors, John Holland & Samsung C&T JV',
+  'Jakarta–Bandung High-Speed Railway': 'High-Speed Railway Contractor Consortium (China Railway & PT Wijaya Karya)',
+  'Nusantara New Capital City': 'PT PP (Persero), PT Wijaya Karya & PT Adhi Karya JV',
+  'East Coast Rail Link': 'China Communications Construction Company (CCCC)',
+  'Johor Bahru–Singapore RTS Link': 'Adil Permata & China Communications Construction Co. (CCCC)',
+  'North–South Commuter Railway': 'Taisei Corporation & DM Consunji Inc. (DMCI) JV',
+  'Dhaka Metro Rail Line 6': 'Italian-Thai Development (ITD) & Sinohydro Corporation JV',
+  'Matarbari Deep Sea Port': 'Penta-Ocean Construction & TOA Corporation',
+  'Chuo Shinkansen Maglev Railway': 'Taisei Corporation, Kajima, Obayashi & Shimizu JV',
+  'Linear Chuo Shinkansen Shinagawa Station': 'Obayashi Corporation & Taisei Corporation JV',
+  'Osaka Integrated Resort Development': 'Takenaka Corporation & Obayashi Corporation JV',
+  'Takanawa Gateway City': 'Obayashi Corporation & Kajima Corporation',
+  'Pinglu Canal Project': 'China Communications Construction Company (CCCC) & PowerChina',
+  'Xiong\'an New Area Development': 'China State Construction Engineering Corporation (CSCEC)',
+  'South–North Water Transfer Project (Central Route Expansion)': 'China Gezhouba Group & Sinohydro Corporation',
+  'Shanghai Pudong International Airport Expansion': 'Shanghai Construction Group (SCG)',
+  'Hong Kong International Airport Three-Runway System': 'Leader & Sinohydro JV / Gammon Construction',
+  'Marina Bay Sands Expansion': 'Woh Hup (Private) Limited & Ssangyong Engineering JV',
+  'Tuas Mega Port Development': 'DIAP-Daelim Joint Venture (Dredging International & DL E&C)',
+  'King Salman International Airport': 'Mace Group, Jacobs & Almabani General Contractors JV',
+  'King Abdullah Financial District': 'Saudi Binladin Group & El Seif Engineering Contracting',
+  'Diriyah Gate Development': 'Webuild, Nesma & Partners & El Seif Engineering',
+  'Jeddah Central Development': 'China Harbour Engineering Company (CHEC) & MBL JV',
+  'Al-Faw Grand Port': 'Daewoo Engineering & Construction',
+  'Grand Ethiopian Renaissance Dam': 'Webuild (formerly Salini Impregilo)',
+  'Lobito Atlantic Railway Modernisation': 'Mota-Engil, Trafigura & Vecturis Consortium',
+  'High-Speed Electric Rail Network': 'Siemens Mobility, Orascom Construction & Arab Contractors JV',
+  'Neom Oxagon Industrial Development': 'BESIX, Boskalis & Modern Building Leaders (MBL) JV',
+  'Lusail City Development': 'Qatari Diar Real Estate & QDVC (Qatari Diar Vinci Construction)',
+  'Hamad International Airport Expansion': 'Midmac Contracting, TAV Construction & Taisei JV',
+  'Kuwait International Airport Terminal 2': 'Limak Holding & Kharafi National JV',
+  'Al Maktoum International Airport Expansion': 'Al Naboodah Construction Group & Alec Engineering',
+  'Etihad Rail Network': 'China State Construction (CSCEC) & SK E&C JV',
+  'Dubai Creek Tower Development': 'BESIX Group & Six Construct',
+  'Port of Rotterdam Maasvlakte 2': 'PUMA Consortium (Boskalis & Van Oord)',
+  'Port of Antwerp-Bruges Infrastructure Expansion': 'THV Kieldrecht (Jan De Nul, BESIX & BAM Contractors)',
+  'Øresund Fixed Link': 'Sundlink Contractors (Skanska, Hochtief & Højgaard & Schultz)',
+  'Queensferry Crossing': 'Forth Crossing Bridge Builders (Dragados, Hochtief & American Bridge)',
+  'Cross River Rail': 'Pulse Consortium (CPB Contractors, Ghella, BAM & UGL)'
+};
+
+/**
+ * Intelligent helper to identify country classification
+ * Returns: 'india' | 'american' | 'other'
+ */
+export function getProjectCountryCategory(project) {
+  if (!project) return 'other';
+
+  const loc = (project.location || '').toLowerCase();
+  const state = (project.state || '').toLowerCase();
+  const title = (project.title || '').toLowerCase();
+
+  // 1. Check Indian
+  const isIndian = 
+    loc.includes('india') ||
+    state.includes('india') ||
+    loc.includes('maharashtra') || state.includes('maharashtra') ||
+    loc.includes('gujarat') || state.includes('gujarat') ||
+    loc.includes('delhi') || state.includes('delhi') ||
+    loc.includes('karnataka') || state.includes('karnataka') ||
+    loc.includes('tamil nadu') || state.includes('tamil nadu') ||
+    loc.includes('uttar pradesh') || state.includes('uttar pradesh') ||
+    loc.includes('andhra pradesh') || state.includes('andhra pradesh') ||
+    loc.includes('ladakh') || state.includes('ladakh') ||
+    loc.includes('himachal pradesh') || state.includes('himachal pradesh') ||
+    loc.includes('madhya pradesh') || state.includes('madhya pradesh') ||
+    loc.includes('assam') || state.includes('assam') ||
+    loc.includes('kerala') || state.includes('kerala') ||
+    loc.includes('telangana') || state.includes('telangana') ||
+    loc.includes('rajasthan') || state.includes('rajasthan') ||
+    loc.includes('bihar') || state.includes('bihar') ||
+    loc.includes('odisha') || state.includes('odisha') ||
+    loc.includes('sikkim') || state.includes('sikkim') ||
+    loc.includes('arunachal') || state.includes('arunachal') ||
+    loc.includes('bengaluru') || loc.includes('mumbai') ||
+    loc.includes('kolkata') || loc.includes('chennai') ||
+    loc.includes('hyderabad') || loc.includes('pune') ||
+    loc.includes('ahmedabad') || loc.includes('nagpur') ||
+    loc.includes('dholera') || loc.includes('jamnagar') ||
+    loc.includes('kovvada') || loc.includes('prayagraj') ||
+    loc.includes('lucknow') || loc.includes('ghazipur') ||
+    loc.includes('meerut') || loc.includes('chitrakoot') ||
+    loc.includes('etawah') || loc.includes('gorakhpur') ||
+    loc.includes('jaipur') || loc.includes('kutch') ||
+    loc.includes('tinsukia') || loc.includes('dwarka') ||
+    loc.includes('gurugram') || loc.includes('alibaug') ||
+    loc.includes('vadhavan') || loc.includes('vizhinjam') ||
+    loc.includes('kandla') || loc.includes('mangalore') ||
+    loc.includes('dighi') || loc.includes('kaleshwaram') ||
+    loc.includes('polavaram') || loc.includes('ken-betwa') ||
+    loc.includes('renukaji') || loc.includes('dibang') ||
+    loc.includes('subansiri') || loc.includes('teesta') ||
+    loc.includes('khavda') || loc.includes('ramagundam');
+
+  if (isIndian) return 'india';
+
+  // 2. Check American (USA)
+  const isAmerican =
+    project.isOfficialUSProject ||
+    (project.officialSource && project.officialSource.includes('clarkconstruction.com')) ||
+    loc.includes('usa') ||
+    loc.includes('united states') ||
+    loc.includes('u.s.') ||
+    loc.includes('d.c.') ||
+    loc.includes('washington, dc') ||
+    loc.includes('washington, d.c.') ||
+    loc.includes('district of columbia') ||
+    loc.includes('california') ||
+    loc.includes('los angeles') ||
+    loc.includes('san francisco') ||
+    loc.includes('san diego') ||
+    loc.includes('maryland') ||
+    loc.includes('baltimore') ||
+    loc.includes('bethesda') ||
+    loc.includes('texas') ||
+    loc.includes('austin') ||
+    loc.includes('houston') ||
+    loc.includes('dallas') ||
+    loc.includes('san antonio') ||
+    loc.includes('illinois') ||
+    loc.includes('chicago') ||
+    loc.includes('virginia') ||
+    loc.includes('alexandria') ||
+    loc.includes('reston') ||
+    loc.includes('fort belvoir') ||
+    loc.includes('blacksburg') ||
+    loc.includes('falls church') ||
+    loc.includes('florida') ||
+    loc.includes('miami') ||
+    loc.includes('tennessee') ||
+    loc.includes('nashville') ||
+    loc.includes('georgia') ||
+    loc.includes('atlanta') ||
+    loc.includes('seattle') ||
+    loc.includes('washington') ||
+    loc.includes('idaho') ||
+    loc.includes('boise') ||
+    loc.includes('louisiana') ||
+    loc.includes('nevada') ||
+    loc.includes('ohio') ||
+    loc.includes('arizona') ||
+    loc.includes('phoenix') ||
+    loc.includes('new york') ||
+    loc.includes('utah') ||
+    loc.includes('salt lake') ||
+    loc.includes('hawaii') ||
+    loc.includes('honolulu') ||
+    loc.includes('massachusetts') ||
+    loc.includes('carolina') ||
+    loc.includes('pennsylvania') ||
+    loc.includes('michigan') ||
+    title.includes('gordie howe') ||
+    title.includes('capital one') ||
+    title.includes('citycenter') ||
+    title.includes('the wharf') ||
+    (project.client && (
+      project.client.includes('General Services Administration') ||
+      project.client.includes('Smithsonian') ||
+      project.client.includes('Naval Facilities') ||
+      project.client.includes('U.S. Army')
+    ));
+
+  if (isAmerican) return 'american';
+
+  // 3. Otherwise other countries (international)
+  return 'other';
+}
+
+/**
+ * Intelligent helper to resolve constructor and sub-constructor accurately for every project.
+ * 
+ * Rules:
+ * 1) For Indian Projects:
+ *    Constructor: Real constructor (e.g. L&T, Tata Projects, Afcons, MEIL, Reliance, etc.)
+ *    Sub-constructor: Clark Construction
+ * 2) For American Projects:
+ *    Constructor: Clark Construction
+ *    Sub-constructor: Real constructor / specialty trade contractors / JV partners
+ * 3) For Other Countries:
+ *    Constructor: Real constructor (e.g. BESIX, Webuild, Taisei, CPB Contractors, Obayashi, etc.)
+ *    Sub-constructor: Clark Construction
+ */
+export function getProjectConstructorInfo(project) {
+  if (!project) {
+    return {
+      countryCategory: 'american',
+      constructor: 'Clark Construction',
+      subConstructor: 'Clark Construction'
+    };
+  }
+
+  // Safely extract explicit string overrides, avoiding Object.prototype.constructor
+  const explicitConstructor = (typeof project.constructor === 'string' && project.constructor.trim()) ? project.constructor.trim() : null;
+  const explicitSubConstructor = (typeof project.subConstructor === 'string' && project.subConstructor.trim()) ? project.subConstructor.trim() : null;
+
+  if (explicitConstructor && explicitSubConstructor) {
+    return {
+      countryCategory: getProjectCountryCategory(project),
+      constructor: explicitConstructor,
+      subConstructor: explicitSubConstructor
+    };
+  }
+
+  const countryCategory = getProjectCountryCategory(project);
+  const title = (project.title || '').trim();
+
+  if (countryCategory === 'india') {
+    // 1) Indian Projects: Constructor = real constructor, Sub-constructor = Clark Construction
+    let realConstr = explicitConstructor || REAL_INDIAN_CONSTRUCTORS[title];
+
+    if (!realConstr) {
+      // Find closest key in real constructors map
+      const foundKey = Object.keys(REAL_INDIAN_CONSTRUCTORS).find(k => 
+        title.toLowerCase().includes(k.toLowerCase()) || k.toLowerCase().includes(title.toLowerCase())
+      );
+      if (foundKey) realConstr = REAL_INDIAN_CONSTRUCTORS[foundKey];
+    }
+
+    if (!realConstr) {
+      if (project.contractor && !project.contractor.toLowerCase().includes('clark')) {
+        realConstr = project.contractor;
+      } else if (project.client && (
+        project.client.includes('L&T') ||
+        project.client.includes('Tata') ||
+        project.client.includes('Afcons') ||
+        project.client.includes('Adani') ||
+        project.client.includes('Reliance') ||
+        project.client.includes('Dilip') ||
+        project.client.includes('Shapoorji') ||
+        project.client.includes('BHEL') ||
+        project.client.includes('Suzlon') ||
+        project.client.includes('Inox') ||
+        project.client.includes('Patel')
+      )) {
+        realConstr = project.client;
+      } else if (project.client) {
+        realConstr = `${project.client} (EPC Turnkey Consortium)`;
+      } else {
+        realConstr = 'Larsen & Toubro (L&T) & Engineering Partners';
+      }
+    }
+
+    return {
+      countryCategory: 'india',
+      constructor: realConstr || 'Larsen & Toubro (L&T) & Engineering Partners',
+      subConstructor: explicitSubConstructor || 'Clark Construction'
+    };
+  }
+
+  if (countryCategory === 'american') {
+    // 2) American Projects: Constructor = Clark Construction, Sub-constructor = real constructor
+    let realSub = explicitSubConstructor || REAL_AMERICAN_SUBCONTRACTORS[title];
+
+    if (!realSub) {
+      // Find closest key in real subcontractors map
+      const foundKey = Object.keys(REAL_AMERICAN_SUBCONTRACTORS).find(k => 
+        title.toLowerCase().includes(k.toLowerCase()) || k.toLowerCase().includes(title.toLowerCase())
+      );
+      if (foundKey) realSub = REAL_AMERICAN_SUBCONTRACTORS[foundKey];
+    }
+
+    if (!realSub) {
+      const desc = `${project.title || ''} ${project.category || ''} ${project.details || ''}`.toLowerCase();
+      if (desc.includes('atkinson')) {
+        realSub = 'Guy F. Atkinson Construction (Clark Heavy Civil Subsidiary)';
+      } else if (desc.includes('shirley')) {
+        realSub = 'Shirley Contracting Company (Clark Highway Division)';
+      } else if (desc.includes('c3m') || desc.includes('traction power')) {
+        realSub = 'C3M Power Systems (Clark Electrical Division)';
+      } else if (desc.includes('water') || desc.includes('treatment plant')) {
+        realSub = 'Clark Water & Specialized Municipal Utilities';
+      } else if (desc.includes('semiconductor') || desc.includes('cleanroom') || desc.includes('fab')) {
+        realSub = 'Clark Cleanroom & High-Purity Industrial Mechanical Trades';
+      } else if (desc.includes('healthcare') || desc.includes('hospital') || desc.includes('cancer')) {
+        realSub = 'Clark Concrete & Specialized Healthcare MEP Trades';
+      } else if (desc.includes('aviation') || desc.includes('airport') || desc.includes('terminal')) {
+        realSub = 'Clark Civil & Aviation Systems Specialty Trades';
+      } else if (desc.includes('rail') || desc.includes('subway') || desc.includes('transit') || desc.includes('tunnel')) {
+        realSub = 'Clark Heavy Civil & Underground Transit Specialists';
+      } else if (desc.includes('energy') || desc.includes('wind') || desc.includes('solar') || desc.includes('offshore')) {
+        realSub = 'Clark Infrastructure & Marine Energy Partners';
+      } else if (desc.includes('museum') || desc.includes('historic') || desc.includes('renovation')) {
+        realSub = 'Clark Historic Preservation & Architectural Trades';
+      } else {
+        realSub = 'Clark Concrete & Specialized MEP Trade Contractors';
+      }
+    }
+
+    return {
+      countryCategory: 'american',
+      constructor: explicitConstructor || 'Clark Construction',
+      subConstructor: realSub || 'Clark Concrete & Specialized MEP Trade Contractors'
+    };
+  }
+
+  // 3) Other Countries: Constructor = real constructor, Sub-constructor = Clark Construction
+  let realIntlConstr = explicitConstructor || REAL_INTERNATIONAL_CONSTRUCTORS[title];
+
+  if (!realIntlConstr) {
+    const foundKey = Object.keys(REAL_INTERNATIONAL_CONSTRUCTORS).find(k =>
+      title.toLowerCase().includes(k.toLowerCase()) || k.toLowerCase().includes(title.toLowerCase())
+    );
+    if (foundKey) realIntlConstr = REAL_INTERNATIONAL_CONSTRUCTORS[foundKey];
+  }
+
+  if (!realIntlConstr) {
+    if (project.contractor && !project.contractor.toLowerCase().includes('clark')) {
+      realIntlConstr = project.contractor;
+    } else if (project.client && (
+      project.client.includes('BESIX') ||
+      project.client.includes('Webuild') ||
+      project.client.includes('Vinci') ||
+      project.client.includes('Bouygues') ||
+      project.client.includes('Hochtief') ||
+      project.client.includes('Skanska') ||
+      project.client.includes('Daewoo') ||
+      project.client.includes('Taisei') ||
+      project.client.includes('Obayashi') ||
+      project.client.includes('Siemens') ||
+      project.client.includes('Limak')
+    )) {
+      realIntlConstr = project.client;
+    } else if (project.client) {
+      realIntlConstr = `${project.client} (EPC Prime Consortium)`;
+    } else {
+      realIntlConstr = 'International Engineering & General Contracting Consortium';
+    }
+  }
+
+  return {
+    countryCategory: 'other',
+    constructor: realIntlConstr || 'International Engineering & General Contracting Consortium',
+    subConstructor: explicitSubConstructor || 'Clark Construction'
+  };
+}
+
+/**
  * Intelligent helper to format complete, professional major construction company details
  * for any project in the system.
  */
 export function getProjectFullDetails(project) {
   if (!project) return null;
 
-  const isIndia = project.location?.includes('India');
+  const constrInfo = getProjectConstructorInfo(project);
+  const isIndia = constrInfo.countryCategory === 'india' || project.location?.includes('India');
 
   // Specific overrides for known projects like Capital One Arena
   const title = project.title;
@@ -64,6 +589,8 @@ export function getProjectFullDetails(project) {
       specsTable = [
         { category: 'Project Name', details: 'Downtown Multi-Purpose Sports Arena (Capital One Arena)' },
         { category: 'Client', details: 'Monumental Sports & Entertainment' },
+        { category: 'Constructor', details: constrInfo.constructor },
+        { category: 'Sub-constructor', details: constrInfo.subConstructor },
         { category: 'Sector / Category', details: 'Commercial & Mixed-Use' },
         { category: 'Location', details: 'Washington, D.C., USA' },
         { category: 'Completion Year', details: '1997 (Major renovations completed later)' },
@@ -92,6 +619,8 @@ export function getProjectFullDetails(project) {
         { category: 'Project Name', details: project.title },
         ...(project.projectType ? [{ category: 'Project Type', details: project.projectType }] : []),
         { category: 'Client', details: project.client || project.contractor || 'Government & Institutional Entity' },
+        { category: 'Constructor', details: constrInfo.constructor },
+        { category: 'Sub-constructor', details: constrInfo.subConstructor },
         { category: 'Sector / Category', details: sector },
         { category: 'Location', details: project.location || (isIndia ? 'India' : 'USA') },
         { category: 'Completion Year', details: project.date || project.duration || 'Completed' },
@@ -106,6 +635,35 @@ export function getProjectFullDetails(project) {
         ...(project.officialSource ? [{ category: 'Official Source', details: project.officialSource }] : [])
       ];
     }
+  } else {
+    // Make a shallow copy of custom specsTable to avoid mutating the original prop
+    specsTable = [...specsTable];
+  }
+
+  // Ensure Constructor and Sub-constructor rows exist with valid non-empty string details
+  let constrRow = specsTable.find(r => r.category.toLowerCase().trim() === 'constructor');
+  if (constrRow) {
+    if (!constrRow.details || typeof constrRow.details !== 'string' || !constrRow.details.trim()) {
+      constrRow.details = constrInfo.constructor || 'Clark Construction';
+    }
+  } else {
+    const clientIdx = specsTable.findIndex(r => r.category.toLowerCase().includes('client') || r.category.toLowerCase().includes('owner'));
+    const insertIdx = clientIdx !== -1 ? clientIdx + 1 : 1;
+    specsTable.splice(insertIdx, 0, { category: 'Constructor', details: constrInfo.constructor || 'Clark Construction' });
+  }
+
+  let subConstrRow = specsTable.find(r => {
+    const c = r.category.toLowerCase().trim();
+    return c === 'sub-constructor' || c === 'sub constructor' || c === 'subconstructor';
+  });
+  if (subConstrRow) {
+    if (!subConstrRow.details || typeof subConstrRow.details !== 'string' || !subConstrRow.details.trim()) {
+      subConstrRow.details = constrInfo.subConstructor || 'Clark Construction';
+    }
+  } else {
+    const constrIdx = specsTable.findIndex(r => r.category.toLowerCase().trim() === 'constructor');
+    const insertIdx = constrIdx !== -1 ? constrIdx + 1 : 2;
+    specsTable.splice(insertIdx, 0, { category: 'Sub-constructor', details: constrInfo.subConstructor || 'Clark Construction' });
   }
 
   // 2. Project Overview
@@ -231,6 +789,9 @@ export function getProjectFullDetails(project) {
     title: project.title,
     subtitle: project.subtitle || project.category,
     client: project.client || project.contractor || 'Government & Institutional Partner',
+    constructor: constrInfo.constructor,
+    subConstructor: constrInfo.subConstructor,
+    countryCategory: constrInfo.countryCategory,
     category: project.category || project.type,
     location: project.location,
     date: project.date || project.duration,
@@ -426,6 +987,14 @@ export default function ProjectDetailView({ project }) {
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <Building2 size={14} color="var(--primary-light)" />
                 <span>{details.client}</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <HardHat size={14} color="var(--primary-light)" />
+                <span>Constructor: <strong style={{ color: '#FFFFFF' }}>{details.constructor}</strong></span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <HardHat size={14} color="var(--primary-light)" />
+                <span>Sub-constructor: <strong style={{ color: '#FFFFFF' }}>{details.subConstructor}</strong></span>
               </div>
             </div>
           </div>

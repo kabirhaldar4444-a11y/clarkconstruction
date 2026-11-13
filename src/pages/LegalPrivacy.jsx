@@ -347,8 +347,8 @@ export default function PrivacyPolicy() {
                     <Mail size={20} style={{ color: 'var(--primary)', marginTop: '2px', flexShrink: 0 }} />
                     <div>
                       <strong style={{ color: 'var(--text-white)', display: 'block', fontSize: '0.95rem' }}>Direct Email</strong>
-                      <a href="mailto:privacy@clarkconstruction.com" style={{ fontSize: '0.85rem', color: 'var(--accent-cobalt)', fontWeight: 600 }}>
-                        privacy@clarkconstruction.com
+                      <a href="mailto:legal@clarkindia.co" style={{ fontSize: '0.85rem', color: 'var(--accent-cobalt)', fontWeight: 600 }}>
+                        legal@clarkindia.co
                       </a>
                       <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', display: 'block', marginTop: '4px' }}>
                         Response SLA: Within 48 business hours

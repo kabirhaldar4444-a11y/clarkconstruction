@@ -259,7 +259,7 @@ export default function Careers() {
             <CheckCircle size={56} color="var(--success)" style={{ margin: '0 auto 20px auto' }} />
             <h3 style={{ color: 'var(--text-white)', fontSize: '1.4rem', marginBottom: '10px' }}>Application Submitted!</h3>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '24px', lineHeight: '1.6' }}>
-              Thank you for applying for the <strong>{selectedJob?.title}</strong> role. Our human resources staff will review your credentials and contact you via email or phone.
+              Thank you for applying for the <strong>{selectedJob?.title}</strong> role. Our talent team will review your credentials and contact you shortly. Direct recruitment inquiries can also be routed to <a href="mailto:recruitment@clarkindia.co" style={{ color: '#38BDF8', textDecoration: 'none', fontWeight: 600 }}>recruitment@clarkindia.co</a>.
             </p>
             <Button onClick={handleCloseModal} variant="primary">
               Close Window

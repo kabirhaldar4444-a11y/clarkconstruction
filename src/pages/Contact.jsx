@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Send, CheckCircle, HelpCircle, Globe as GlobeIcon } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, HelpCircle, Globe as GlobeIcon, Users, ShieldCheck, Briefcase, UserPlus, UserCheck } from 'lucide-react';
 import Button from '../components/UI/Button';
 import Accordion from '../components/UI/Accordion';
 import Globe from '../components/UI/Globe';
@@ -94,6 +94,8 @@ const OFFICES = [
     badge: "India Corporate Office",
     address: "Altimus, Level 35, Pandurang Budhkar Marg, Worli",
     zip: "Mumbai – 400018, Maharashtra, India",
+    phone: "+91 (22) 6988-4000",
+    email: "hrd@clarkindia.co",
     isPrimary: true
   },
   {
@@ -101,31 +103,71 @@ const OFFICES = [
     badge: "Global Headquarters",
     address: "181 Fremont St",
     zip: "San Francisco, CA 94105",
-    phone: "+1 (800) 555-0199",
-    email: "sf@clarkconstruction.com"
+    phone: "+1 (800) 555-0199"
   },
   {
     city: "Mid-Atlantic Office",
     badge: "Regional Division",
     address: "420 Constitution Ave NE",
     zip: "Washington, DC 20002",
-    phone: "+1 (202) 555-0143",
-    email: "dc@clarkconstruction.com"
+    phone: "+1 (202) 555-0143"
   },
   {
     city: "Southwest Office",
     badge: "Regional Division",
     address: "500 Phoenix Plaza, Suite 12",
     zip: "Phoenix, AZ 85001",
-    phone: "+1 (602) 555-0188",
-    email: "phx@clarkconstruction.com"
+    phone: "+1 (602) 555-0188"
+  }
+];
+
+const DEPARTMENT_CONTACTS = [
+  {
+    dept: "Human Resources Department",
+    badge: "Corporate & HR",
+    email: "hrd@clarkindia.co",
+    desc: "General corporate governance, employee relations, policy administration, and executive affairs.",
+    icon: Users,
+    color: "#38BDF8"
+  },
+  {
+    dept: "Legal & Corporate Compliance",
+    badge: "Legal & Governance",
+    email: "legal@clarkindia.co",
+    desc: "Regulatory filings, contract administration, NDAs, statutory compliance, and corporate legal notices.",
+    icon: ShieldCheck,
+    color: "#60A5FA"
+  },
+  {
+    dept: "Careers & Recruitment",
+    badge: "Hiring & Resumes",
+    email: "recruitment@clarkindia.co",
+    desc: "Active job openings, candidate evaluations, resume submissions, and interview scheduling.",
+    icon: Briefcase,
+    color: "#34D399"
+  },
+  {
+    dept: "Talent Acquisition",
+    badge: "Executive Sourcing",
+    email: "talentacquisition@clarkindia.co",
+    desc: "Executive search, senior leadership staffing, and specialized engineering talent pipelines.",
+    icon: UserPlus,
+    color: "#F59E0B"
+  },
+  {
+    dept: "Candidate & Employee Onboarding",
+    badge: "New Hires",
+    email: "onboarding@clarkindia.co",
+    desc: "New hire verification, induction schedules, credentials validation, and joining logistics.",
+    icon: UserCheck,
+    color: "#A78BFA"
   }
 ];
 
 const FAQS = [
   {
     title: "How do I request a budget estimation for a project?",
-    content: "Submit your details via this contact form or email our preconstruction team directly at rfp@clarkconstruction.com. Please attach any preliminary architectural specs, soil surveys, or land plots. Our surveyors will reply in 3-5 business days."
+    content: "Submit your details via this contact form or reach out directly to our preconstruction desk. Please attach any preliminary architectural specs, soil surveys, or land plots. Our surveyors will reply in 3-5 business days."
   },
   {
     title: "Does Clark Construction handle design-build or just general contracting?",
@@ -500,8 +542,15 @@ export default function Contact() {
                         )}
                         {office.email && (
                           <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                            <Mail size={13} color="var(--text-muted)" />
-                            {office.email}
+                            <Mail size={13} color="var(--primary)" />
+                            <a
+                              href={`mailto:${office.email}`}
+                              style={{ color: '#38BDF8', textDecoration: 'none' }}
+                              onMouseEnter={(e) => e.currentTarget.style.color = '#FFFFFF'}
+                              onMouseLeave={(e) => e.currentTarget.style.color = '#38BDF8'}
+                            >
+                              {office.email}
+                            </a>
                           </span>
                         )}
                       </div>
@@ -519,6 +568,117 @@ export default function Contact() {
             />
           </div>
 
+        </div>
+      </section>
+
+      {/* Departmental Email Directory Section */}
+      <section className="section-padding" style={{ backgroundColor: 'var(--bg-deep)', borderTop: '1px solid var(--border-color)' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 48px auto' }}>
+            <span className="subtitle-amber">Direct Inquiries</span>
+            <h2 style={{ fontSize: '2.3rem', color: 'var(--text-white)', marginBottom: '12px', fontWeight: 800 }}>
+              Departmental Email Directory
+            </h2>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.98rem', lineHeight: '1.6' }}>
+              Connect directly with our specialized divisional desks. Each department monitors inbound correspondence to ensure timely review and SLA-backed responses.
+            </p>
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '24px'
+          }}>
+            {DEPARTMENT_CONTACTS.map((item, idx) => {
+              const IconComponent = item.icon;
+              return (
+                <div
+                  key={idx}
+                  style={{
+                    backgroundColor: 'var(--bg-card)',
+                    border: '1px solid var(--border-color)',
+                    borderRadius: '10px',
+                    padding: '28px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    boxShadow: 'var(--shadow-card)',
+                    transition: 'all 0.25s ease',
+                    position: 'relative'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-4px)';
+                    e.currentTarget.style.borderColor = '#0060B6';
+                    e.currentTarget.style.boxShadow = '0 12px 28px rgba(0, 96, 182, 0.16)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'none';
+                    e.currentTarget.style.borderColor = 'var(--border-color)';
+                    e.currentTarget.style.boxShadow = 'var(--shadow-card)';
+                  }}
+                >
+                  <div>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '18px' }}>
+                      <div style={{
+                        width: '46px',
+                        height: '46px',
+                        borderRadius: '8px',
+                        backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                        border: '1px solid rgba(255, 255, 255, 0.08)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: item.color
+                      }}>
+                        <IconComponent size={22} />
+                      </div>
+                      <span style={{
+                        fontSize: '0.7rem',
+                        fontWeight: 700,
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.06em',
+                        padding: '4px 10px',
+                        borderRadius: '20px',
+                        backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                        color: item.color,
+                        border: '1px solid rgba(255, 255, 255, 0.08)'
+                      }}>
+                        {item.badge}
+                      </span>
+                    </div>
+
+                    <h3 style={{ color: 'var(--text-white)', fontSize: '1.2rem', fontWeight: 700, marginBottom: '10px' }}>
+                      {item.dept}
+                    </h3>
+                    <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', lineHeight: '1.6', marginBottom: '22px' }}>
+                      {item.desc}
+                    </p>
+                  </div>
+
+                  <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.08)', paddingTop: '16px' }}>
+                    <a
+                      href={`mailto:${item.email}`}
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        color: '#38BDF8',
+                        textDecoration: 'none',
+                        fontSize: '0.92rem',
+                        fontWeight: 600,
+                        transition: 'color 0.2s ease'
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.color = '#FFFFFF'}
+                      onMouseLeave={(e) => e.currentTarget.style.color = '#38BDF8'}
+                    >
+                      <Mail size={16} />
+                      <span>{item.email}</span>
+                    </a>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
