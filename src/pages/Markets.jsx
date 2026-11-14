@@ -50,8 +50,8 @@ const SECTORS = [
   },
   {
     market: "Infrastructure",
-    project: "The Wharf",
-    featuredProjectSlug: "the-wharf-marine-infrastructure-buildings",
+    project: "Puget Sound Highway & Bridge Connectivity",
+    featuredProjectSlug: "puget-sound-highway-bridge-connectivity",
     searchQuery: "Infrastructure",
     desc: "Engineering and constructing robust heavy civil infrastructure, bridge networks, and marine systems.",
     detailedDesc: "Through Clark and our heavy civil subsidiaries (Atkinson Construction & Shirley Contracting), we deliver regional transit networks, bridge spans, highway corridors, marine bulkheads, and deep tunnel bores connecting millions across North America.",
@@ -67,8 +67,8 @@ const SECTORS = [
   },
   {
     market: "Convention Centers",
-    project: "Convention Center",
-    featuredProjectSlug: "los-angeles-convention-center-expansion",
+    project: "Seattle Convention Center Addition (Summit)",
+    featuredProjectSlug: "seattle-convention-center-addition-summit",
     searchQuery: "Convention",
     desc: "Creating massive, high-capacity venues with flexible spaces and modern structural designs.",
     detailedDesc: "We construct massive civic exhibition centers and convention destinations designed for high-capacity public gatherings, column-free event halls, long-span structural roof trusses, and multi-modal transit connectivity.",
@@ -152,8 +152,8 @@ const SECTORS = [
   },
   {
     market: "Interiors & Tenant Fit-Out",
-    project: "Interiors & Tenant Fit-Out - Reston Gateway",
-    featuredProjectSlug: "reston-gateway-interiors-tenant-fit-out",
+    project: "Fannie Mae Headquarters Renovation",
+    featuredProjectSlug: "fannie-mae-headquarters-renovation",
     searchQuery: "Interiors",
     desc: "Creating customized tenant fit-outs and high-end workspaces optimized for collaboration.",
     detailedDesc: "Clark’s specialized interior fit-out division transforms raw commercial spaces into high-performance, collaborative corporate workplaces equipped with smart-building integrations and acoustic craftsmanship.",
@@ -170,8 +170,8 @@ const SECTORS = [
   {
     market: "Judicial & Correctional",
     project: "Howard County Circuit Courthouse",
-    featuredProjectSlug: "department-of-homeland-security-facilities",
-    searchQuery: "Homeland",
+    featuredProjectSlug: "howard-county-circuit-courthouse",
+    searchQuery: "Courthouse",
     desc: "Constructing modern, secure courthouses and correctional structures with specialized systems.",
     detailedDesc: "Clark constructs secure courthouses, detention facilities, and judicial chambers incorporating separate public, judicial, and detainee circulation pathways, bullet-resistant casework, and secure acoustic designs.",
     capabilities: [
@@ -203,7 +203,7 @@ const SECTORS = [
   },
   {
     market: "Office",
-    project: "midtown center",
+    project: "1900 K Street Office Tower",
     featuredProjectSlug: "1900-k-street-office-tower",
     searchQuery: "Office",
     desc: "Constructing premium glass-faced corporate office towers and sustainable urban developments.",
@@ -220,9 +220,9 @@ const SECTORS = [
   },
   {
     market: "Renovation & Historic Preservation",
-    project: "The Kia Forum",
-    featuredProjectSlug: "the-kia-forum-renovation-historic-preservation",
-    searchQuery: "Preservation",
+    project: "Cannon House Office Building Renovation",
+    featuredProjectSlug: "cannon-house-office-building-renovation",
+    searchQuery: "Renovation",
     desc: "Restoring and upgrading historic landmarks, combining classical form with modern structural integrity.",
     detailedDesc: "Clark excels at breathing new life into historic landmarks and iconic entertainment venues. We reinforce load-bearing columns, restore landmark plaster and stone facades, and upgrade MEP systems without altering historic aesthetics.",
     capabilities: [
@@ -237,10 +237,10 @@ const SECTORS = [
   },
   {
     market: "Residential & Mixed-Use",
-    project: "Parkline in Chicago",
-    featuredProjectSlug: "parkline-in-chicago-residential-mixed-use",
+    project: "Aspect at WestEnd Alexandria",
+    featuredProjectSlug: "aspect-at-westend-alexandria",
     searchQuery: "Residential",
-    desc: "The interior of the residential building Parkline in Chicago with couches, chairs, and overhead lighting.",
+    desc: "The interior of modern residential communities featuring premium living spaces and amenities.",
     detailedDesc: "Constructing luxury residential high-rises, multi-family apartment communities, and integrated retail environments in dense urban settings with complex transit boundary coordination.",
     capabilities: [
       "High-rise post-tensioned residential concrete framing",
@@ -254,8 +254,8 @@ const SECTORS = [
   },
   {
     market: "Science",
-    project: "Argonne",
-    featuredProjectSlug: "argonne-national-laboratory-science-facility",
+    project: "IDEA Factory at University of Maryland",
+    featuredProjectSlug: "idea-factory-at-university-of-maryland",
     searchQuery: "Science",
     desc: "Building high-tech laboratories, clean rooms, and computing facilities for scientific innovation.",
     detailedDesc: "Clark builds high-performance research laboratories, cleanrooms, and supercomputing centers for the Department of Energy and national research laboratories, meeting strict vibration and EMI thresholds.",
@@ -271,10 +271,10 @@ const SECTORS = [
   },
   {
     market: "Seismic",
-    project: "Base isolator at LACMA",
-    featuredProjectSlug: "lacma-seismic-retrofit-base-isolation",
+    project: "Salesforce Tower",
+    featuredProjectSlug: "salesforce-tower",
     searchQuery: "Seismic",
-    desc: "Implementing advanced seismic base isolators and engineering retrofits to secure public infrastructure.",
+    desc: "Implementing advanced seismic engineering and structural retrofits to secure public infrastructure.",
     detailedDesc: "Engineering advanced seismic retrofits, base isolation bearings, and dampers for hospitals, museums, and bridges to ensure structural survivability and continuous functionality during major seismic events.",
     capabilities: [
       "Friction pendulum base isolation bearings & sliders",
