@@ -1862,31 +1862,12 @@ export default function Projects() {
     return cats;
   }, []);
 
-  // Category counts
-  const categoryCounts = useMemo(() => {
-    const counts = { All: UNIQUE_PROJECTS.length };
-    UNIQUE_PROJECTS.forEach((p) => {
-      counts[p.category] = (counts[p.category] || 0) + 1;
-    });
-    return counts;
-  }, []);
-
-  // Official U.S. Portfolio count
-  const officialUSProjectsCount = useMemo(() => {
-    return UNIQUE_PROJECTS.filter((p) => p.isOfficialUSProject || p.officialSource).length;
-  }, []);
-
-  // India Portfolio count
-  const indianProjectsCount = useMemo(() => {
-    return UNIQUE_PROJECTS.filter(isIndianProject).length;
-  }, []);
-
   // Filter and Sort Projects
   const filteredProjects = useMemo(() => {
     let result = UNIQUE_PROJECTS.filter((project) => {
       let matchesCategory = true;
       if (selectedCategory === 'Official U.S. Projects') {
-        matchesCategory = !!(project.isOfficialUSProject || project.officialSource);
+        matchesCategory = !isIndianProject(project);
       } else if (selectedCategory === 'India Projects') {
         matchesCategory = isIndianProject(project);
       } else if (selectedCategory !== 'All') {
@@ -1944,7 +1925,7 @@ export default function Projects() {
           <span className="subtitle-amber">Our Complete Portfolio</span>
           <h1 className="page-hero-title">All Projects Catalog</h1>
           <p style={{ color: 'var(--text-muted)', maxWidth: '640px', fontSize: '1.05rem', lineHeight: '1.6', margin: 0 }}>
-            Explore our complete collection of {UNIQUE_PROJECTS.length} landmark commercial, institutional, civil transit, energy, and heavy infrastructure developments across the globe.
+            Explore our complete collection of landmark commercial, institutional, civil transit, energy, and heavy infrastructure developments across the globe.
           </p>
         </div>
       </section>
@@ -2117,7 +2098,7 @@ export default function Projects() {
               </div>
             </div>
 
-            {/* Bottom Row: Category Filter Pills with counts */}
+            {/* Bottom Row: Category Filter Pills */}
             <div style={{
               display: 'flex',
               gap: '8px',
@@ -2128,23 +2109,21 @@ export default function Projects() {
             }}>
               {categories.map((cat) => {
                 const isSelected = selectedCategory === cat;
-                const count = categoryCounts[cat] || 0;
                 return (
                   <React.Fragment key={cat}>
                     <button
                       onClick={() => setSelectedCategory(cat)}
                       style={{
-                        padding: '6px 14px',
+                        padding: '7px 16px',
                         borderRadius: '9999px',
                         border: isSelected ? '1px solid #2563EB' : '1px solid var(--border-color)',
                         backgroundColor: isSelected ? '#0D1A63' : '#FFFFFF',
                         color: isSelected ? '#FFFFFF' : 'var(--text-primary)',
                         cursor: 'pointer',
-                        fontSize: '0.82rem',
+                        fontSize: '0.84rem',
                         fontWeight: 700,
                         display: 'inline-flex',
                         alignItems: 'center',
-                        gap: '6px',
                         transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
                         boxShadow: isSelected ? '0 2px 8px rgba(13, 26, 99, 0.2)' : 'none'
                       }}
@@ -2162,29 +2141,19 @@ export default function Projects() {
                       }}
                     >
                       <span>{cat}</span>
-                      <span style={{
-                        backgroundColor: isSelected ? 'rgba(255, 255, 255, 0.22)' : 'rgba(13, 26, 99, 0.08)',
-                        color: isSelected ? '#FFFFFF' : 'var(--primary)',
-                        fontSize: '0.72rem',
-                        padding: '1px 6px',
-                        borderRadius: '9999px',
-                        fontWeight: 800
-                      }}>
-                        {count}
-                      </span>
                     </button>
 
                     {cat === 'All' && (
                       <button
                         onClick={() => setSelectedCategory(selectedCategory === 'Official U.S. Projects' ? 'All' : 'Official U.S. Projects')}
                         style={{
-                          padding: '6px 14px',
+                          padding: '7px 16px',
                           borderRadius: '9999px',
                           border: selectedCategory === 'Official U.S. Projects' ? '1px solid #16A34A' : '1px solid #BBF7D0',
                           backgroundColor: selectedCategory === 'Official U.S. Projects' ? '#166534' : '#F0FDF4',
                           color: selectedCategory === 'Official U.S. Projects' ? '#FFFFFF' : '#166534',
                           cursor: 'pointer',
-                          fontSize: '0.82rem',
+                          fontSize: '0.84rem',
                           fontWeight: 800,
                           display: 'inline-flex',
                           alignItems: 'center',
@@ -2205,31 +2174,21 @@ export default function Projects() {
                       >
                         <CheckCircle2 size={13} color={selectedCategory === 'Official U.S. Projects' ? '#FFF' : '#16A34A'} />
                         <span>Official U.S. Projects</span>
-                        <span style={{
-                          backgroundColor: selectedCategory === 'Official U.S. Projects' ? 'rgba(255, 255, 255, 0.25)' : 'rgba(22, 163, 74, 0.15)',
-                          color: selectedCategory === 'Official U.S. Projects' ? '#FFFFFF' : '#166534',
-                          fontSize: '0.72rem',
-                          padding: '1px 6px',
-                          borderRadius: '9999px',
-                          fontWeight: 800
-                        }}>
-                          {officialUSProjectsCount}
-                        </span>
                       </button>
                     )}
 
                     {/* Dedicated India Projects Filter Button */}
                     {cat === 'All' && (
                       <button
-                        onClick={() => setSelectedCategory('India Projects')}
+                        onClick={() => setSelectedCategory(selectedCategory === 'India Projects' ? 'All' : 'India Projects')}
                         style={{
-                          padding: '6px 14px',
+                          padding: '7px 16px',
                           borderRadius: '9999px',
                           border: selectedCategory === 'India Projects' ? '1px solid #D97706' : '1px solid #FDE68A',
                           backgroundColor: selectedCategory === 'India Projects' ? '#D97706' : '#FFFBEB',
                           color: selectedCategory === 'India Projects' ? '#FFFFFF' : '#B45309',
                           cursor: 'pointer',
-                          fontSize: '0.82rem',
+                          fontSize: '0.84rem',
                           fontWeight: 800,
                           display: 'inline-flex',
                           alignItems: 'center',
@@ -2250,16 +2209,6 @@ export default function Projects() {
                       >
                         <Building2 size={13} color={selectedCategory === 'India Projects' ? '#FFF' : '#D97706'} />
                         <span>India Projects</span>
-                        <span style={{
-                          backgroundColor: selectedCategory === 'India Projects' ? 'rgba(255, 255, 255, 0.25)' : 'rgba(217, 119, 6, 0.15)',
-                          color: selectedCategory === 'India Projects' ? '#FFFFFF' : '#B45309',
-                          fontSize: '0.72rem',
-                          padding: '1px 6px',
-                          borderRadius: '9999px',
-                          fontWeight: 800
-                        }}>
-                          {indianProjectsCount}
-                        </span>
                       </button>
                     )}
                   </React.Fragment>
@@ -2270,27 +2219,26 @@ export default function Projects() {
           </div>
 
           {/* Results Summary Bar */}
-          <div style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            marginBottom: '24px',
-            fontSize: '0.88rem',
-            color: '#64748B',
-            fontWeight: 600
-          }}>
-            <div>
-              <span>Showing <strong style={{ color: 'var(--text-white)' }}>{filteredProjects.length}</strong> of <strong style={{ color: 'var(--text-white)' }}>{UNIQUE_PROJECTS.length}</strong> total projects on one page</span>
-              {selectedCategory === 'Official U.S. Projects' ? (
-                <span style={{ marginLeft: '8px', color: '#16A34A', fontWeight: 700 }}>• Official Clark U.S. Portfolio</span>
-              ) : selectedCategory === 'India Projects' ? (
-                <span style={{ marginLeft: '8px', color: '#D97706', fontWeight: 700 }}>• Indian Infrastructure & Landmark Portfolio ({indianProjectsCount} projects)</span>
-              ) : selectedCategory !== 'All' ? (
-                <span style={{ marginLeft: '8px', color: '#2563EB' }}>• in {selectedCategory}</span>
-              ) : null}
-            </div>
+          {hasActiveFilters && (
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginBottom: '24px',
+              fontSize: '0.88rem',
+              color: '#64748B',
+              fontWeight: 600
+            }}>
+              <div>
+                {selectedCategory === 'Official U.S. Projects' ? (
+                  <span style={{ color: '#16A34A', fontWeight: 700 }}>• Official Clark U.S. Portfolio</span>
+                ) : selectedCategory === 'India Projects' ? (
+                  <span style={{ color: '#D97706', fontWeight: 700 }}>• Indian Infrastructure & Landmark Portfolio</span>
+                ) : selectedCategory !== 'All' ? (
+                  <span style={{ color: '#2563EB' }}>• Filtered by {selectedCategory}</span>
+                ) : null}
+              </div>
 
-            {hasActiveFilters && (
               <button
                 onClick={clearFilters}
                 style={{
@@ -2307,8 +2255,8 @@ export default function Projects() {
               >
                 <X size={14} /> Clear Active Filters
               </button>
-            )}
-          </div>
+            </div>
+          )}
 
           {/* Projects View: GRID MODE */}
           {viewMode === 'grid' && (
